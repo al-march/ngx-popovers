@@ -14,9 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@ngx-popovers/tooltip": ["tooltip/src/index.ts"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
