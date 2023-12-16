@@ -1,0 +1,18 @@
+.main {
+  padding: 40px;
+}
+
+.tooltip {
+  width: max-content;
+  background: #222;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 90%;
+  position: absolute;
+
+  &.hide {
+    opacity: 0;
+  }
+}

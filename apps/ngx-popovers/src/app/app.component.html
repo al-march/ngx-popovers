@@ -1,2 +1,9 @@
-<ngx-popovers-nx-welcome></ngx-popovers-nx-welcome>
-<router-outlet></router-outlet>
+<div class="main">
+  <button #button aria-describedby="tooltip" (click)="showPopup()">
+    My button
+  </button>
+
+  <div #tooltip class="tooltip" [class.hide]="!isShowing" role="tooltip">
+    My Tooltip
+  </div>
+</div>

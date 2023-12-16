@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { computePosition } from '@floating-ui/dom';
 
 @Component({
   standalone: true,
@@ -10,5 +11,25 @@ import { NxWelcomeComponent } from './nx-welcome.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'ngx-popovers';
+  @ViewChild('button')
+  button!: ElementRef<HTMLButtonElement>;
+
+  @ViewChild('tooltip')
+  tooltip!: ElementRef<HTMLElement>;
+
+  isShowing = false;
+
+  showPopup() {
+    const button = this.button.nativeElement;
+    const tooltip = this.tooltip.nativeElement;
+    this.isShowing = true;
+
+    computePosition(button, tooltip).then((result) => {
+      console.log(result);
+      Object.assign(tooltip.style, {
+        left: `${result.x}px`,
+        top: `${result.y}px`,
+      });
+    });
+  }
 }
