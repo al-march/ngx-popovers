@@ -1,9 +1,3 @@
 <div class="main">
-  <button #button aria-describedby="tooltip" (click)="showPopup()">
-    My button
-  </button>
-
-  <div #tooltip class="tooltip" [class.hide]="!isShowing" role="tooltip">
-    My Tooltip
-  </div>
+  <button ngxTooltip="Tooltip text">My button</button>
 </div>
