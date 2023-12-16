@@ -1,0 +1,30 @@
+{
+  "name": "ngx-popovers-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/ngx-popovers-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/ngx-popovers-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "ngx-popovers:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "ngx-popovers:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "ngx-popovers:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["ngx-popovers"]
+}
