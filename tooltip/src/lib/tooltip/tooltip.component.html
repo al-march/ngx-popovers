@@ -1,1 +1,7 @@
-<span class="ngx-tooltip">{{text}}</span>
+<div
+  class="ngx-tooltip"
+  [@openClose]="isOpen ? 'open' : 'closed'"
+  (@openClose.done)="onHideAnimationEnd($event)"
+>
+  {{ text }}
+</div>

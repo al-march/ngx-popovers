@@ -12,6 +12,7 @@ import {
 import { TooltipComponent } from './tooltip.component';
 import { DOCUMENT } from '@angular/common';
 import { computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import { take } from 'rxjs';
 
 const isEmbeddedViewRef = (obj: unknown): obj is EmbeddedViewRef<any> => {
   if (typeof obj === 'object' && obj !== null) {
@@ -53,7 +54,11 @@ export class NgxTooltip {
     if (!this.tooltipRef) {
       return;
     }
-    this.destroy();
+
+    this.tooltipRef.setInput('isOpen', false);
+    this.tooltipRef.instance.hideAnimationEnd
+      .pipe(take(1))
+      .subscribe(() => this.destroy());
   }
 
   create() {
@@ -89,6 +94,7 @@ export class NgxTooltip {
       const { x, y } = await this.getCoords();
       this.tooltipRef.setInput('left', x);
       this.tooltipRef.setInput('top', y);
+      this.tooltipRef.setInput('isOpen', true);
     }
   }
 

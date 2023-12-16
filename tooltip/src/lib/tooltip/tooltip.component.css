@@ -1,6 +1,10 @@
 :host {
   position: absolute;
   display: inline-flex;
+
+  &.closing {
+    pointer-events: none;
+  }
 }
 
 .ngx-tooltip {
