@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
 import { DOCUMENT } from '@angular/common';
-import { computePosition, flip, offset } from '@floating-ui/dom';
+import { computePosition, flip, offset, Placement } from '@floating-ui/dom';
 
 const isEmbeddedViewRef = (obj: unknown): obj is EmbeddedViewRef<any> => {
   if (typeof obj === 'object' && obj !== null) {
@@ -27,6 +27,9 @@ const isEmbeddedViewRef = (obj: unknown): obj is EmbeddedViewRef<any> => {
 export class NgxTooltip {
   @Input('ngxTooltip')
   tooltipText = '';
+
+  @Input()
+  placement: Placement = 'bottom';
 
   tooltipRef?: ComponentRef<TooltipComponent>;
 
@@ -95,6 +98,7 @@ export class NgxTooltip {
 
     if (trigger && tooltip) {
       const { x, y } = await computePosition(trigger, tooltip, {
+        placement: this.placement,
         middleware: [flip(), offset(6)],
       });
       return { x, y };

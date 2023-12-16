@@ -6,5 +6,6 @@
 .ngx-tooltip {
   padding: 4px 10px;
   border-radius: 3px;
+  background: #fff;
   border: 1px solid #ddd
 }
