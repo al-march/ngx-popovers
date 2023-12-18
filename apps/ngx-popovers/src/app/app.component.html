@@ -1,6 +1,36 @@
 <div class="main">
-  <button ngxTooltip="Tooltip 1" placement="top">top</button>
-  <button ngxTooltip="Tooltip 2" placement="bottom">bottom</button>
-  <button ngxTooltip="Tooltip 3" placement="left">left</button>
-  <button ngxTooltip="Tooltip 4" placement="right">right</button>
+  <div>
+    <button ngxTooltip="Tooltip 1" placement="top">top</button>
+    <button ngxTooltip="Tooltip 2" placement="bottom">bottom</button>
+    <button ngxTooltip="Tooltip 3" placement="left">left</button>
+    <button ngxTooltip="Tooltip 4" placement="right">right</button>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="center">
+    <div #floatingTrigger class="floating-trigger">
+      @for (button of placementList;track button) {
+        <button
+          (click)="placement = button"
+          (mousemove)="placement = button"
+          (focus)="placement = button"
+        >
+          {{ button }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <ngx-floating
+    [trigger]="floatingTrigger"
+    [placement]="placement"
+    [offset]="10"
+  >
+    <div class="floating">
+      <p>{{ placement }}</p>
+    </div>
+  </ngx-floating>
 </div>
