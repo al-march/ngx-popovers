@@ -1,0 +1,19 @@
+<ng-content />
+
+@if (isTooltipCreated()) {
+<ngx-portal>
+  <div
+    #tooltipRef
+    class="tooltip-wrapper"
+    [style.left.px]="coords().left"
+    [style.top.px]="coords().top"
+  >
+    <ngx-tooltip-template
+      [isOpen]="isTooltipShowing()"
+      [text]="tooltipText"
+      (hideAnimationEnd)="onHideAnimationEnd()"
+      (showAnimationEnd)="onOpenAnimationEnd()"
+    />
+  </div>
+</ngx-portal>
+}

@@ -3,12 +3,12 @@
     pointer-events: none;
   }
 
-  --ngx-tooltip-background: #FFFFFF;
+  --ngx-tooltip-background: #ffffff;
   --ngx-tooltip-padding-y: 4px;
   --ngx-tooltip-padding-x: 10px;
   --ngx-tooltip-border-width: 1px;
   --ngx-tooltip-border-radius: 4px;
-  --ngx-tooltip-stroke: #DDDDDD;
+  --ngx-tooltip-stroke: #dddddd;
 }
 
 .ngx-tooltip {

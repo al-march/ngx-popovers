@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ngx-popovers/core": ["core/src/index.ts"],
-      "@ngx-popovers/tooltip": ["tooltip/src/index.ts"]
+      "@ngx-popovers/core": ["packages/core/src/index.ts"],
+      "@ngx-popovers/tooltip": ["packages/tooltip/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

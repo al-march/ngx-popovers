@@ -8,7 +8,7 @@ import {
   Renderer2,
   TemplateRef,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 

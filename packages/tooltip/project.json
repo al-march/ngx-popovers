@@ -1,7 +1,7 @@
 {
   "name": "tooltip",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "tooltip/src",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/tooltip/src",
   "prefix": "ngx-popovers",
   "tags": [],
   "projectType": "library",
@@ -10,14 +10,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "tooltip/ng-package.json"
+        "project": "packages/tooltip/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "tooltip/tsconfig.lib.prod.json"
+          "tsConfig": "packages/tooltip/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "tooltip/tsconfig.lib.json"
+          "tsConfig": "packages/tooltip/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
@@ -26,7 +26,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "tooltip/jest.config.ts"
+        "jestConfig": "packages/tooltip/jest.config.ts"
       }
     },
     "lint": {
