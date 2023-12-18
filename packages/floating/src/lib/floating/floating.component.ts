@@ -1,13 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  signal,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortalComponent } from '@ngx-popovers/core';
 import {
@@ -60,10 +51,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
     });
   }
 
-  async ngOnChanges(changes: SimpleChanges) {
-    if (changes['placement'].currentValue) {
-      await this.bind();
-    }
+  async ngOnChanges() {
+    await this.bind();
   }
 
   async bind() {

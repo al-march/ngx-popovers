@@ -1,7 +1,29 @@
 # floating
 
-This library was generated with [Nx](https://nx.dev).
+This library was generated with [Nx](https://nx.dev) using [floating.ui](https://floating-ui.com/) 
 
-## Running unit tests
 
-Run `nx test floating` to execute the unit tests.
+> **Note**
+> I strongly recommend not using this library until its stable version is released.
+
+## Usage
+
+Add `ngxTooltip` to the html element to use this library.
+
+In the template:
+
+```angular2html
+<div #trigger>
+    <p>Trigger content</p>
+</div>
+
+<ngx-floating
+  [trigger]="trigger"
+  [placement]="'bottom'"
+  [offset]="10"
+>
+  <div class="floating">
+    <p>Floating content</p>
+  </div>
+</ngx-floating>
+```
