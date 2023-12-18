@@ -2,12 +2,18 @@
   &.closing {
     pointer-events: none;
   }
+
+  --ngx-tooltip-background: #FFFFFF;
+  --ngx-tooltip-padding-y: 4px;
+  --ngx-tooltip-padding-x: 10px;
+  --ngx-tooltip-border-width: 1px;
+  --ngx-tooltip-border-radius: 4px;
+  --ngx-tooltip-stroke: #DDDDDD;
 }
 
 .ngx-tooltip {
-  padding: 4px 10px;
-  border-radius: 3px;
-  background: #fff;
-  border: 1px solid #ddd;
-  opacity: 0;
+  padding: var(--ngx-tooltip-padding-y) var(--ngx-tooltip-padding-x);
+  border-radius: var(--ngx-tooltip-border-radius);
+  background: var(--ngx-tooltip-background);
+  border: var(--ngx-tooltip-border-width) solid var(--ngx-tooltip-stroke);
 }
