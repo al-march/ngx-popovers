@@ -8,7 +8,7 @@ import {
   Input,
   Output,
   signal,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { PortalComponent } from '@ngx-popovers/core';
 import { Template } from './template/template';
@@ -20,7 +20,7 @@ import { computePosition, flip, offset, Placement } from '@floating-ui/dom';
   imports: [PortalComponent, Template],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxTooltip {
   @ViewChild('tooltipRef')
@@ -49,7 +49,7 @@ export class NgxTooltip {
 
   coords = signal({
     left: 0,
-    top: 0,
+    top: 0
   });
 
   constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
@@ -62,8 +62,9 @@ export class NgxTooltip {
 
     this.show();
     this.showTooltip();
+    // Changes need to be detected to help Angular find the tooltipRef
     this.ref.detectChanges();
-    this.setCoords();
+    await this.setCoords();
   }
 
   @HostListener('mouseleave')
@@ -111,7 +112,7 @@ export class NgxTooltip {
     if (trigger && tooltip) {
       const { x, y } = await computePosition(trigger, tooltip, {
         placement: this.placement,
-        middleware: [flip(), offset(6)],
+        middleware: [flip(), offset(6)]
       });
       return { x, y };
     } else {
