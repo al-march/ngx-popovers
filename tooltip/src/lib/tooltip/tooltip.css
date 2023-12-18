@@ -1,0 +1,5 @@
+.tooltip-wrapper {
+  position: absolute;
+  display: inline-flex;
+  pointer-events: none;
+}

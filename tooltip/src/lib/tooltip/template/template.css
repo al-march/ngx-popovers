@@ -1,7 +1,4 @@
 :host {
-  position: absolute;
-  display: inline-flex;
-
   &.closing {
     pointer-events: none;
   }
@@ -11,5 +8,6 @@
   padding: 4px 10px;
   border-radius: 3px;
   background: #fff;
-  border: 1px solid #ddd
+  border: 1px solid #ddd;
+  opacity: 0;
 }

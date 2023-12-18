@@ -4,10 +4,7 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 @Component({
   standalone: true,
-  imports: [
-    RouterModule,
-    NgxTooltip,
-  ],
+  imports: [RouterModule, NgxTooltip],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

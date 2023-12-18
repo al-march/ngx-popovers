@@ -1,0 +1,7 @@
+<div
+  class="ngx-tooltip"
+  [@openClose]="animation()"
+  (@openClose.done)="onAnimationEmit($event)"
+>
+  {{ text }}
+</div>
