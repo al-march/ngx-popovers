@@ -20,7 +20,7 @@ import { PortalComponent } from '@ngx-popovers/core';
 ```
 In the template:
 
-```angular2html
+```html
 <ngx-portal>
     <p>It will be displayed as the last child of the body</p>
 </ngx-portal>

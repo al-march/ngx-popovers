@@ -17,7 +17,7 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 In the template:
 
-```angular2html
+```html
 <div ngxTooltip="tooltip text">
     <p>Trigger content</p>
 </div>

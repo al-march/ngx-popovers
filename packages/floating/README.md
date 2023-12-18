@@ -8,11 +8,7 @@ This library was generated with [Nx](https://nx.dev) using [floating.ui](https:/
 
 ## Usage
 
-Add `ngxTooltip` to the html element to use this library.
-
-In the template:
-
-```angular2html
+```html
 <div #trigger>
     <p>Trigger content</p>
 </div>
