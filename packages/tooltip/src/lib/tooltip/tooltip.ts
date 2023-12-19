@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -8,19 +7,20 @@ import {
   Input,
   Output,
   signal,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { PortalComponent } from '@ngx-popovers/core';
 import { Template } from './template/template';
-import { computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@floating-ui/dom';
+import { FloatingComponent } from '@ngx-popovers/floating';
 
 @Component({
   selector: '[ngxTooltip]',
   standalone: true,
-  imports: [PortalComponent, Template],
+  imports: [PortalComponent, Template, FloatingComponent],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxTooltip {
   @ViewChild('tooltipRef')
@@ -31,6 +31,16 @@ export class NgxTooltip {
 
   @Input()
   placement: Placement = 'bottom';
+
+  @Input()
+  flip?: FlipOptions | Derivable<FlipOptions>;
+
+  @Input()
+  shift?: ShiftOptions | Derivable<ShiftOptions>;
+
+  @Input()
+  offset?: OffsetOptions = 4;
+
 
   /**
    * Emits when tooltip show animation ends
@@ -47,12 +57,11 @@ export class NgxTooltip {
   isTooltipCreated = signal(false);
   isTooltipShowing = signal(false);
 
-  coords = signal({
-    left: 0,
-    top: 0,
-  });
+  get trigger() {
+    return this.el.nativeElement;
+  }
 
-  constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
+  constructor(private el: ElementRef) {}
 
   @HostListener('mousemove')
   async onMousemove() {
@@ -62,9 +71,6 @@ export class NgxTooltip {
 
     this.show();
     this.showTooltip();
-    // Changes need to be detected to help Angular find the tooltipRef
-    this.ref.detectChanges();
-    await this.setCoords();
   }
 
   @HostListener('mouseleave')
@@ -98,25 +104,5 @@ export class NgxTooltip {
 
   hideTooltip() {
     this.isTooltipShowing.set(false);
-  }
-
-  async setCoords() {
-    const { x, y } = await this.getCoords();
-    this.coords.set({ left: x, top: y });
-  }
-
-  private async getCoords() {
-    const trigger = this.el.nativeElement;
-    const tooltip = this.tooltipRef?.nativeElement;
-
-    if (trigger && tooltip) {
-      const { x, y } = await computePosition(trigger, tooltip, {
-        placement: this.placement,
-        middleware: [flip(), offset(6)],
-      });
-      return { x, y };
-    } else {
-      return { x: 0, y: 0 };
-    }
   }
 }

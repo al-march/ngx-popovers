@@ -1,12 +1,12 @@
 <ng-content />
 
 @if (isTooltipCreated()) {
-<ngx-portal>
-  <div
-    #tooltipRef
-    class="tooltip-wrapper"
-    [style.left.px]="coords().left"
-    [style.top.px]="coords().top"
+  <ngx-floating
+    [trigger]="trigger"
+    [placement]="placement"
+    [flip]="flip"
+    [shift]="shift"
+    [offset]="offset"
   >
     <ngx-tooltip-template
       [isOpen]="isTooltipShowing()"
@@ -14,6 +14,5 @@
       (hideAnimationEnd)="onHideAnimationEnd()"
       (showAnimationEnd)="onOpenAnimationEnd()"
     />
-  </div>
-</ngx-portal>
+  </ngx-floating>
 }
