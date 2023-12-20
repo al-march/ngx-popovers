@@ -1,18 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  Output,
-  signal,
-  ViewChild
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, signal } from '@angular/core';
 import { PortalComponent } from '@ngx-popovers/core';
 import { Template } from './template/template';
 import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@floating-ui/dom';
 import { FloatingComponent } from '@ngx-popovers/floating';
+import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 
 @Component({
   selector: '[ngxTooltip]',
@@ -23,9 +14,6 @@ import { FloatingComponent } from '@ngx-popovers/floating';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxTooltip {
-  @ViewChild('tooltipRef')
-  tooltipRef?: ElementRef<HTMLElement>;
-
   @Input('ngxTooltip')
   tooltipText = '';
 
@@ -41,6 +29,11 @@ export class NgxTooltip {
   @Input()
   offset?: OffsetOptions = 4;
 
+  /**
+   * Time delay before the tooltip is displayed
+   */
+  @Input()
+  debounce = 100;
 
   /**
    * Emits when tooltip show animation ends
@@ -56,29 +49,43 @@ export class NgxTooltip {
 
   isTooltipCreated = signal(false);
   isTooltipShowing = signal(false);
+  isTriggerHovered = signal(false);
+  isTooltipHovered = signal(false);
 
   get trigger() {
     return this.el.nativeElement;
   }
 
-  constructor(private el: ElementRef) {}
-
-  @HostListener('mousemove')
-  async onMousemove() {
-    if (this.isTooltipCreated()) {
-      return;
-    }
-
-    this.show();
-    this.showTooltip();
+  constructor(private el: ElementRef) {
+    this.mouseMoveListener();
+    this.mouseleaveListener();
   }
 
-  @HostListener('mouseleave')
-  onMouseleave() {
-    if (!this.isTooltipCreated()) {
-      return;
-    }
-    this.hideTooltip();
+  mouseMoveListener() {
+    fromEvent(this.el.nativeElement, 'mousemove').pipe(
+      tap(() => this.isTriggerHovered.set(true)),
+      filter(() => !this.isTooltipCreated()),
+      debounceTime(this.debounce),
+      filter(() => this.isTriggerHovered())
+    ).subscribe(() => {
+      if (this.isTooltipCreated()) {
+        return;
+      }
+
+      this.show();
+      this.showTooltip();
+    });
+  }
+
+  mouseleaveListener() {
+    fromEvent(this.el.nativeElement, 'mouseleave').pipe(
+      tap(() => this.isTriggerHovered.set(false)),
+      filter(() => this.isTooltipCreated()),
+      debounceTime(this.debounce),
+      filter(() => !this.isTooltipHovered())
+    ).subscribe(() => {
+      this.hideTooltip();
+    });
   }
 
   onOpenAnimationEnd() {
@@ -104,5 +111,12 @@ export class NgxTooltip {
 
   hideTooltip() {
     this.isTooltipShowing.set(false);
+  }
+
+  setTooltipHovered($event: boolean) {
+    if (!$event) {
+      this.hideTooltip();
+    }
+    this.isTooltipHovered.set($event);
   }
 }

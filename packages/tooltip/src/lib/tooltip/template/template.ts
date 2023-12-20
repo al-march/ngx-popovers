@@ -7,17 +7,10 @@ import {
   OnChanges,
   OnInit,
   Output,
-  signal,
+  signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  animate,
-  AnimationEvent,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
 import { PortalComponent } from '@ngx-popovers/core';
 
 enum AnimationState {
@@ -37,26 +30,26 @@ enum AnimationState {
       state(
         AnimationState.OPEN,
         style({
-          opacity: 1,
+          opacity: 1
         })
       ),
       state(
         AnimationState.CLOSE,
         style({
-          opacity: 0,
+          opacity: 0
         })
       ),
       transition(`${AnimationState.CLOSE} => ${AnimationState.OPEN}`, [
-        animate('0.15s'),
+        animate('0.15s')
       ]),
       transition(`${AnimationState.OPEN} => ${AnimationState.CLOSE}`, [
-        animate('0.15s'),
-      ]),
-    ]),
+        animate('0.15s')
+      ])
+    ])
   ],
   host: {
-    '[class.closing]': '!isOpen',
-  },
+    '[class.closing]': '!isOpen'
+  }
 })
 export class Template implements OnInit, AfterViewInit, OnChanges {
   @Input()
@@ -71,6 +64,10 @@ export class Template implements OnInit, AfterViewInit, OnChanges {
   @Output()
   hideAnimationEnd = new EventEmitter();
 
+  @Output()
+  hovered = new EventEmitter<boolean>();
+
+  isHovered = signal(false);
   animation = signal<AnimationState>(AnimationState.CLOSE);
 
   ngOnInit() {
@@ -94,6 +91,20 @@ export class Template implements OnInit, AfterViewInit, OnChanges {
       case AnimationState.CLOSE:
         this.hideAnimationEnd.emit();
         break;
+    }
+  }
+
+  onMousemove() {
+    if (!this.isHovered()) {
+      this.isHovered.set(true);
+      this.hovered.emit(true);
+    }
+  }
+
+  onMouseleave() {
+    if (this.isHovered()) {
+      this.isHovered.set(false);
+      this.hovered.emit(false);
     }
   }
 }

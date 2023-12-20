@@ -1,5 +1,7 @@
 <div
   class="ngx-tooltip"
+  (mousemove)="onMousemove()"
+  (mouseleave)="onMouseleave()"
   [@openClose]="animation()"
   (@openClose.done)="onAnimationEmit($event)"
 >

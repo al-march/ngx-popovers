@@ -13,6 +13,7 @@
       [text]="tooltipText"
       (hideAnimationEnd)="onHideAnimationEnd()"
       (showAnimationEnd)="onOpenAnimationEnd()"
+      (hovered)="setTooltipHovered($event)"
     />
   </ngx-floating>
 }
