@@ -7,11 +7,4 @@
   position: absolute;
   top: 0;
   left: 0;
-
-  transition: ease .2s;
-  transition-property: left, top;
-
-  &.no-transition {
-    transition: none;
-  }
 }

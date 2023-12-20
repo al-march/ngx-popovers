@@ -40,15 +40,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   offset?: OffsetOptions;
 
   coords = signal({ x: 0, y: 0 });
-  needTransition = signal(false);
 
   async ngAfterViewInit() {
     await this.bind();
-
-    // Set transition styles after the first coords applied
-    setTimeout(() => {
-      this.needTransition.set(true);
-    });
   }
 
   async ngOnChanges() {
