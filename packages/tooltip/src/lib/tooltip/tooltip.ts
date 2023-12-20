@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, signal } from '@angular/core';
 import { PortalComponent } from '@ngx-popovers/core';
-import { Template } from './template/template';
+import { TooltipTemplate } from './template/tooltip-template.component';
 import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@floating-ui/dom';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { debounceTime, filter, fromEvent, tap } from 'rxjs';
@@ -8,7 +8,7 @@ import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 @Component({
   selector: '[ngxTooltip]',
   standalone: true,
-  imports: [PortalComponent, Template, FloatingComponent],
+  imports: [PortalComponent, TooltipTemplate, FloatingComponent],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
   changeDetection: ChangeDetectionStrategy.OnPush

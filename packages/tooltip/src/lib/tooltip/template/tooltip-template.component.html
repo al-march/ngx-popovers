@@ -1,9 +1,11 @@
 <div
-  class="ngx-tooltip"
   (mousemove)="onMousemove()"
   (mouseleave)="onMouseleave()"
   [@openClose]="animation()"
   (@openClose.done)="onAnimationEmit($event)"
 >
-  {{ text }}
+  <ng-template
+    [ngComponentOutlet]="component"
+    [ngComponentOutletInputs]="{text: text}"
+  />
 </div>

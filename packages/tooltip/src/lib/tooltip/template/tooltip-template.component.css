@@ -1,0 +1,5 @@
+:host {
+  &.closing {
+    pointer-events: none;
+  }
+}

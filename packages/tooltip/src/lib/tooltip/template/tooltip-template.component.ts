@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   OnInit,
@@ -10,48 +11,24 @@ import {
   signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
+import { AnimationEvent } from '@angular/animations';
 import { PortalComponent } from '@ngx-popovers/core';
-
-enum AnimationState {
-  OPEN = 'open',
-  CLOSE = 'close',
-}
+import { AnimationState, openClose } from '../core/template.animations';
+import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({
   selector: 'ngx-tooltip-template',
   standalone: true,
   imports: [CommonModule, PortalComponent],
-  templateUrl: './template.html',
-  styleUrl: './template.css',
+  templateUrl: './tooltip-template.component.html',
+  styleUrl: './tooltip-template.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('openClose', [
-      state(
-        AnimationState.OPEN,
-        style({
-          opacity: 1
-        })
-      ),
-      state(
-        AnimationState.CLOSE,
-        style({
-          opacity: 0
-        })
-      ),
-      transition(`${AnimationState.CLOSE} => ${AnimationState.OPEN}`, [
-        animate('0.15s')
-      ]),
-      transition(`${AnimationState.OPEN} => ${AnimationState.CLOSE}`, [
-        animate('0.15s')
-      ])
-    ])
-  ],
+  animations: [openClose],
   host: {
     '[class.closing]': '!isOpen'
   }
 })
-export class Template implements OnInit, AfterViewInit, OnChanges {
+export class TooltipTemplate implements OnInit, AfterViewInit, OnChanges {
   @Input()
   text = '';
 
@@ -70,7 +47,9 @@ export class Template implements OnInit, AfterViewInit, OnChanges {
   isHovered = signal(false);
   animation = signal<AnimationState>(AnimationState.CLOSE);
 
-  ngOnInit() {
+  component = inject(NGX_TOOLTIP_COMPONENT);
+
+  async ngOnInit() {
     this.animation.set(AnimationState.CLOSE);
   }
 
@@ -79,7 +58,9 @@ export class Template implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges() {
-    const animation = this.isOpen ? AnimationState.OPEN : AnimationState.CLOSE;
+    const animation = this.isOpen
+      ? AnimationState.OPEN
+      : AnimationState.CLOSE;
     this.animation.set(animation);
   }
 
