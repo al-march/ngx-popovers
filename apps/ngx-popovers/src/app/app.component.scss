@@ -6,6 +6,13 @@
   padding: 40px;
 }
 
+button {
+  &[ngxTooltip] {
+    padding: 10px;
+    min-height: 100px;
+  }
+}
+
 .center {
   width: 100%;
   display: flex;
