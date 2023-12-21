@@ -1,19 +1,25 @@
 {
   "name": "@ngx-popovers/core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/al-march/ngx-popovers.git",
     "directory": "packages/core"
   },
+  "keywords": [
+    "components",
+    "angular",
+    "floating",
+    "popover",
+    "ui",
+    "ux"
+  ],
   "author": "al-march",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
+    "@angular/core": "^17.0.0",
+    "@floating-ui/dom": "^1.5.0"
   },
   "sideEffects": false
 }

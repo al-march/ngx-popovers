@@ -1,6 +1,6 @@
 # floating
 
-This library was generated with [Nx](https://nx.dev) using [floating.ui](https://floating-ui.com/) 
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) 
 
 
 > **Note**

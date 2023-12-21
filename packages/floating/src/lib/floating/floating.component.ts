@@ -1,22 +1,23 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, Input, OnChanges, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortalComponent } from '@ngx-popovers/core';
 import {
-  computePosition,
   Derivable,
   flip,
   FlipOptions,
+  FloatingService,
   offset,
   OffsetOptions,
   Placement,
+  PortalComponent,
   shift,
   ShiftOptions
-} from '@floating-ui/dom';
+} from '@ngx-popovers/core';
 
 @Component({
   selector: 'ngx-floating',
   standalone: true,
   imports: [CommonModule, PortalComponent],
+  providers: [FloatingService],
   templateUrl: './floating.component.html',
   styleUrl: './floating.component.css'
 })
@@ -41,6 +42,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
 
   coords = signal({ x: 0, y: 0 });
 
+  floatingService = inject(FloatingService);
+
   async ngAfterViewInit() {
     await this.bind();
   }
@@ -53,7 +56,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
     const trigger = this.trigger;
     const floating = this.floatingRef?.nativeElement;
     if (trigger && floating) {
-      const { x, y } = await computePosition(trigger, floating, {
+      const { x, y } = await this.floatingService.computePosition(trigger, floating, {
         placement: this.placement,
         middleware: [
           flip(this.flip),

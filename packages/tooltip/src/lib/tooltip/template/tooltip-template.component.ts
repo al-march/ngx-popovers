@@ -49,7 +49,7 @@ export class TooltipTemplate implements OnInit, AfterViewInit, OnChanges {
 
   component = inject(NGX_TOOLTIP_COMPONENT);
 
-  async ngOnInit() {
+  ngOnInit() {
     this.animation.set(AnimationState.CLOSE);
   }
 
