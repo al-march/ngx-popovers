@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/tooltip",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "keywords": [
     "components",
     "angular",
@@ -19,8 +19,8 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.8",
-    "@ngx-popovers/floating": "0.0.8"
+    "@ngx-popovers/core": "0.0.9",
+    "@ngx-popovers/floating": "0.0.9"
   },
   "sideEffects": false
 }
