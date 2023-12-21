@@ -7,11 +7,22 @@ import {
   FloatingService,
   offset,
   OffsetOptions,
+  openClose,
+  OpenCloseState,
   Placement,
   PortalComponent,
   shift,
   ShiftOptions
 } from '@ngx-popovers/core';
+import { arrow } from '@floating-ui/dom';
+import { NGX_FLOATING_ARROW_COMPONENT } from './core/floating.injections';
+
+const staticSides: Record<string, string> = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right'
+};
 
 @Component({
   selector: 'ngx-floating',
@@ -19,11 +30,15 @@ import {
   imports: [CommonModule, PortalComponent],
   providers: [FloatingService],
   templateUrl: './floating.component.html',
-  styleUrl: './floating.component.css'
+  styleUrl: './floating.component.scss',
+  animations: [openClose]
 })
 export class FloatingComponent implements AfterViewInit, OnChanges {
   @ViewChild('floating')
   floatingRef?: ElementRef<HTMLElement>;
+
+  @ViewChild('arrow')
+  arrowRef?: ElementRef<HTMLElement>;
 
   @Input()
   trigger?: HTMLElement;
@@ -40,12 +55,29 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   @Input()
   offset?: OffsetOptions;
 
+  @Input()
+  withArrow = false;
+
+  @Input()
+  arrowPadding = 0;
+
   coords = signal({ x: 0, y: 0 });
+  arrowStyles = signal<Record<string, string>>({});
+  animation = signal<OpenCloseState>(OpenCloseState.CLOSE);
 
   floatingService = inject(FloatingService);
+  arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
+
+  // Uses for cleanup autoUpdate function
+  cleanup?: () => void;
+
+  get arrowEl() {
+    return this.arrowRef?.nativeElement;
+  }
 
   async ngAfterViewInit() {
     await this.bind();
+    this.animation.set(OpenCloseState.OPEN);
   }
 
   async ngOnChanges() {
@@ -53,18 +85,50 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   }
 
   async bind() {
+    this.cleanup?.();
     const trigger = this.trigger;
     const floating = this.floatingRef?.nativeElement;
+
     if (trigger && floating) {
-      const { x, y } = await this.floatingService.computePosition(trigger, floating, {
-        placement: this.placement,
-        middleware: [
-          flip(this.flip),
-          shift(this.shift),
-          offset(this.offset)
-        ]
+      this.cleanup = this.floatingService.autoUpdate(trigger, floating, async () => {
+        const { x, y, middlewareData, placement } = await this.floatingService.computePosition(trigger, floating, {
+          placement: this.placement,
+          middleware: [
+            flip(this.flip),
+            shift(this.shift),
+            offset(this.offset),
+            arrow({
+              element: this.arrowEl!,
+              padding: this.arrowPadding
+            })
+          ]
+        });
+
+        if (middlewareData.arrow) {
+          const { x, y } = middlewareData.arrow;
+
+          const staticSide = this.getSide(placement);
+          const styles: Record<string, string> = {};
+          if (x != null) {
+            styles['left'] = `${x}px`;
+          }
+          if (y != null) {
+            styles['top'] = `${y}px`;
+          }
+          if (staticSide) {
+            styles[staticSide] = `${-this.arrowEl!.offsetWidth / 2}px`;
+          }
+
+          this.arrowStyles.set(styles);
+        }
+
+        this.coords.set({ x, y });
       });
-      this.coords.set({ x, y });
     }
+  }
+
+  private getSide(placement: Placement) {
+    const side = placement.split('-')[0];
+    return staticSides[side];
   }
 }

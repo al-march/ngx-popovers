@@ -1,9 +1,9 @@
 <div class="main">
-  <div>
-    <button ngxTooltip="Tooltip 1" placement="top">top</button>
-    <button ngxTooltip="Tooltip 2" placement="bottom">bottom</button>
-    <button ngxTooltip="Tooltip 3" placement="left">left</button>
-    <button ngxTooltip="Tooltip 4" placement="right">right</button>
+  <div class="tooltips">
+    <button ngxTooltip="Tooltip 1" [offset]="10" [withArrow]="true" placement="top">top</button>
+    <button ngxTooltip="Tooltip 2" [offset]="10" [withArrow]="true" placement="bottom">bottom</button>
+    <button ngxTooltip="Tooltip 3" [offset]="10" [withArrow]="true" placement="left">left</button>
+    <button ngxTooltip="Tooltip 4" [offset]="10" [withArrow]="true" placement="right">right</button>
   </div>
 
   <br>
@@ -28,6 +28,8 @@
     [trigger]="floatingTrigger"
     [placement]="placement"
     [offset]="10"
+    [withArrow]="true"
+    [arrowPadding]="6"
   >
     <div class="floating">
       <p>{{ placement }}</p>

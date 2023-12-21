@@ -12,8 +12,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimationEvent } from '@angular/animations';
-import { PortalComponent } from '@ngx-popovers/core';
-import { AnimationState, openClose } from '../core/template.animations';
+import { OpenCloseState, openClose, PortalComponent } from '@ngx-popovers/core';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({
@@ -45,31 +44,31 @@ export class TooltipTemplate implements OnInit, AfterViewInit, OnChanges {
   hovered = new EventEmitter<boolean>();
 
   isHovered = signal(false);
-  animation = signal<AnimationState>(AnimationState.CLOSE);
+  animation = signal<OpenCloseState>(OpenCloseState.CLOSE);
 
   component = inject(NGX_TOOLTIP_COMPONENT);
 
   ngOnInit() {
-    this.animation.set(AnimationState.CLOSE);
+    this.animation.set(OpenCloseState.CLOSE);
   }
 
   ngAfterViewInit() {
-    this.animation.set(AnimationState.OPEN);
+    this.animation.set(OpenCloseState.OPEN);
   }
 
   ngOnChanges() {
     const animation = this.isOpen
-      ? AnimationState.OPEN
-      : AnimationState.CLOSE;
+      ? OpenCloseState.OPEN
+      : OpenCloseState.CLOSE;
     this.animation.set(animation);
   }
 
   onAnimationEmit($event: AnimationEvent) {
     switch ($event.toState) {
-      case AnimationState.OPEN:
+      case OpenCloseState.OPEN:
         this.showAnimationEnd.emit();
         break;
-      case AnimationState.CLOSE:
+      case OpenCloseState.CLOSE:
         this.hideAnimationEnd.emit();
         break;
     }

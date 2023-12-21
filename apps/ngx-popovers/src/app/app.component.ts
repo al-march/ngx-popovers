@@ -4,6 +4,7 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { Placement } from '@floating-ui/dom';
 import { TooltipProvider } from './core/custom-tooltip';
+import { ArrowProvider } from './core/custom-arrow';
 
 @Component({
   standalone: true,
@@ -11,7 +12,7 @@ import { TooltipProvider } from './core/custom-tooltip';
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [TooltipProvider]
+  providers: [TooltipProvider, ArrowProvider]
 })
 export class AppComponent {
   placement: Placement = 'left';

@@ -6,5 +6,20 @@
     [style.top.px]="coords().y"
   >
     <ng-content />
+
+    <div
+      #arrow
+      class="floating__arrow"
+      [class.hidden]="!withArrow"
+      [style]="arrowStyles()"
+    >
+      @if (withArrow) {
+        <div [@openClose]="animation()">
+          <ng-template
+            [ngComponentOutlet]="arrowComponent"
+          />
+        </div>
+      }
+    </div>
   </div>
 </ngx-portal>

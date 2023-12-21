@@ -35,6 +35,12 @@ export class NgxTooltip {
   debounce = 100;
 
   /**
+   * Show arrow or not
+   */
+  @Input()
+  withArrow = false;
+
+  /**
    * Emits when tooltip show animation ends
    */
   @Output()
@@ -50,6 +56,11 @@ export class NgxTooltip {
   isTooltipShowing = signal(false);
   isTriggerHovered = signal(false);
   isTooltipHovered = signal(false);
+
+  /**
+   * Is need arrow for tooltip
+   */
+  isArrowShowed = signal(false);
 
   get trigger() {
     return this.el.nativeElement;
@@ -98,6 +109,9 @@ export class NgxTooltip {
 
   show() {
     this.isTooltipCreated.set(true);
+    if (this.withArrow) {
+      this.isArrowShowed.set(true);
+    }
   }
 
   showTooltip() {
@@ -110,6 +124,7 @@ export class NgxTooltip {
 
   hideTooltip() {
     this.isTooltipShowing.set(false);
+    this.isArrowShowed.set(false);
   }
 
   setTooltipHovered($event: boolean) {

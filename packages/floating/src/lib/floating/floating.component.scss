@@ -1,0 +1,20 @@
+:host {
+  width: max-content;
+}
+
+.floating {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  &__arrow {
+    position: absolute;
+    z-index: -1;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+}

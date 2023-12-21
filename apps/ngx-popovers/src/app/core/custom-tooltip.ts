@@ -11,12 +11,12 @@ import { NGX_TOOLTIP_COMPONENT, TooltipBase } from '@ngx-popovers/tooltip';
       gap: 4px;
       background: #fff;
       border: 1px solid #dedede;
+      border-radius: 4px;
     }
   `,
   template: `
-      <div class="my-tooltip">
-      <span>I Custom Tooltip!</span>
-      <span>text: {{ text }}</span>
+    <div class="my-tooltip">
+      <span><b>text:</b> {{ text }}</span>
     </div>
   `
 })

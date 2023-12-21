@@ -1,27 +1,27 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-export enum AnimationState {
+export enum OpenCloseState {
   OPEN = 'open',
   CLOSE = 'close',
 }
 
 export const openClose = trigger('openClose', [
   state(
-    AnimationState.OPEN,
+    OpenCloseState.OPEN,
     style({
       opacity: 1
     })
   ),
   state(
-    AnimationState.CLOSE,
+    OpenCloseState.CLOSE,
     style({
       opacity: 0
     })
   ),
-  transition(`${AnimationState.CLOSE} => ${AnimationState.OPEN}`, [
+  transition(`${OpenCloseState.CLOSE} => ${OpenCloseState.OPEN}`, [
     animate('0.15s')
   ]),
-  transition(`${AnimationState.OPEN} => ${AnimationState.CLOSE}`, [
+  transition(`${OpenCloseState.OPEN} => ${OpenCloseState.CLOSE}`, [
     animate('0.10s')
   ])
 ]);
