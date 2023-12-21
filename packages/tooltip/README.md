@@ -28,35 +28,37 @@ In the template:
 
 ### Inputs
 
-#### **placement** `@Input`
+#### `@Input()` **placement** 
 
 controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
-#### **flip** `@Input`
+#### `@Input()` **flip** 
 
 changes the placement of the floating element to keep it in view ([docs](https://floating-ui.com/docs/flip))
 
-#### **shift** `@Input`
+#### `@Input()` **shift** 
 
 shifts the floating element to keep it in view ([docs](https://floating-ui.com/docs/shift))
 
-#### **offset**`@Input`
+#### `@Input()` **offset**
 
 translates the floating element along the specified axes ([docs](https://floating-ui.com/docs/offset))
 
-#### **debounce** `@Input`
+#### `@Input()` **debounce** 
 
 time delay before the tooltip is displayed
 
-#### **showEnd** `@Output`
+### Outputs
+
+#### `@Output()` **showEnd**
 
 Emits when tooltip show animation ends
 
-#### **hideEnd** `@Output`
+#### `@Output()` **hideEnd**
 
 Emits when tooltip hide animation ends
 
-### Custom view
+## Custom view
 
 You can use your own component to visualize tooltips.
 
