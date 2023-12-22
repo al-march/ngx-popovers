@@ -55,6 +55,9 @@ export class NgxTooltip {
   @Input()
   arrow = this.config.arrow;
 
+  /**
+   * Show arrow or not
+   */
   @Input()
   arrowPadding = this.config.arrowPadding;
 
@@ -84,29 +87,37 @@ export class NgxTooltip {
   }
 
   mouseMoveListener() {
-    fromEvent(this.el.nativeElement, 'mousemove').pipe(
+    fromEvent(this.trigger, 'mousemove').pipe(
       tap(() => this.isTriggerHovered.set(true)),
       filter(() => !this.isTooltipCreated()),
       debounceTime(this.debounce),
       filter(() => this.isTriggerHovered())
     ).subscribe(() => {
-      if (this.isTooltipCreated()) {
-        return;
-      }
-
-      this.show();
+      this.onMouseMove();
     });
   }
 
+  onMouseMove() {
+    if (this.isTooltipCreated()) {
+      return;
+    }
+
+    this.show();
+  }
+
   mouseleaveListener() {
-    fromEvent(this.el.nativeElement, 'mouseleave').pipe(
+    fromEvent(this.trigger, 'mouseleave').pipe(
       tap(() => this.isTriggerHovered.set(false)),
       filter(() => this.isTooltipCreated()),
       debounceTime(this.debounce),
       filter(() => !this.isTooltipHovered())
     ).subscribe(() => {
-      this.hide();
+      this.onMouseLeave();
     });
+  }
+
+  onMouseLeave() {
+    this.hide();
   }
 
   show() {

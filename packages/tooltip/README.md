@@ -48,6 +48,16 @@ translates the floating element along the specified axes ([docs](https://floatin
 
 time delay before the tooltip is displayed
 
+
+#### `@Input()` `arrow`
+
+Adds arrow to tooltip
+
+#### `@Input()` `arrowPadding`
+
+If your tooltip element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
+
+
 ### Outputs
 
 #### `@Output()` `showEnd`

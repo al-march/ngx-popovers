@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Provider } from '@angular/core';
+import { Component, Provider } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { NgxTooltip } from './tooltip';
 import { NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
 import { NgxTooltipConfig } from './core/tooltip-config';
@@ -68,3 +69,73 @@ describe('Tooltip.DI', () => {
     expect(component.config).toEqual(config);
   });
 });
+
+describe('Tooltip.DOM', () => {
+  const tooltipText = 'tooltip text';
+
+  @Component({
+    template: `
+        <button [ngxTooltip]="tooltipText">Button</button>
+    `,
+    imports: [NgxTooltip],
+    standalone: true
+  })
+  class NgxTooltipTest {
+    tooltipText = tooltipText;
+  }
+
+  let component: NgxTooltipTest;
+  let fixture: ComponentFixture<NgxTooltipTest>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [NgxTooltipTest, BrowserAnimationsModule],
+      providers: [
+        {
+          provide: NGX_TOOLTIP_CONFIG,
+          useValue: new NgxTooltipConfig({
+            debounce: 0
+          })
+        }
+      ]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(NgxTooltipTest);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  const button = () => fixture.debugElement.query(By.css('button'));
+  const tooltip = () => fixture.debugElement.query(By.directive(NgxTooltip));
+  const tooltipInstance = () => tooltip().componentInstance as NgxTooltip;
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+
+  it('should open tooltip after mouse events', async () => {
+    const mousemove = new MouseEvent('mousemove');
+    button().nativeElement.dispatchEvent(mousemove);
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    expect(tooltipInstance().isTooltipCreated()).toBeTruthy();
+    expect(tooltipInstance().tooltipText).toBe(tooltipText);
+
+    let floatingEl = document.querySelector('.floating');
+    expect(floatingEl).toBeInTheDocument();
+    expect(floatingEl).toHaveTextContent(tooltipText);
+
+    // remove mouse from trigger
+    const mouseleave = new MouseEvent('mouseleave');
+    button().nativeElement.dispatchEvent(mouseleave);
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    expect(tooltipInstance().isTooltipCreated()).toBeFalsy();
+    floatingEl = document.querySelector('.floating');
+    expect(floatingEl).not.toBeInTheDocument();
+  });
+});
+

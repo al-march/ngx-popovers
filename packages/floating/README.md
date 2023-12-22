@@ -1,6 +1,6 @@
 # floating
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) 
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
 
 
 > **Note**
@@ -11,6 +11,7 @@ This library was generated with [Nx](https://nx.dev) using [floating-ui](https:/
 See more information about the properties in the official documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
 ```html
+
 <div #trigger>
     <p>Trigger content</p>
 </div>
@@ -48,17 +49,16 @@ translates the floating element along the specified axes ([docs](https://floatin
 
 #### `@Input()` `arrow`
 
-Adds arrow to tooltip according floating state
+Adds arrow to floating
 
 #### `@Input()` `arrowPadding`
 
 If your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
-
 ## Configuration
 
 There is a configuration token `NGX_TOOLTIP_CONFIG`.
-Please, use the `NgxTooltipConfig` class to change the  default tooltip properties.
+Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
 
 ```typescript
 export const FloatingConfigProvider: Provider = {
