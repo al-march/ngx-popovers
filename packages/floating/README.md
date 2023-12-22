@@ -33,7 +33,7 @@ See more information about the properties in the official documentation [floatin
 
 #### `@Input()` `placement`
 
-controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
+controls the position of the floating relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
 #### `@Input()` `flip`
 
@@ -57,8 +57,8 @@ If your floating element has border-radius, this will prevent it from overflowin
 
 ## Configuration
 
-There is a configuration token `NGX_TOOLTIP_CONFIG`.
-Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
+There is a configuration token `NGX_FLOATING_CONFIG`.
+Please, use the `NgxFloatingConfig` class to change the default floating properties.
 
 ```typescript
 export const FloatingConfigProvider: Provider = {
