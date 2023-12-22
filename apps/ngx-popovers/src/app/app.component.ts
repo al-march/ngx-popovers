@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { Placement } from '@floating-ui/dom';
-import { TooltipProvider } from './core/custom-tooltip';
+import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 
 @Component({
@@ -12,7 +12,7 @@ import { ArrowProvider } from './core/custom-arrow';
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [TooltipProvider, ArrowProvider]
+  providers: [TooltipProvider, TooltipConfigProvider, ArrowProvider]
 })
 export class AppComponent {
   placement: Placement = 'left';

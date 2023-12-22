@@ -58,6 +58,21 @@ Emits when tooltip show animation ends
 
 Emits when tooltip hide animation ends
 
+## Configuration
+
+There is a configuration token `NGX_TOOLTIP_CONFIG`. 
+Please, use the `NgxTooltipConfig` class to change the  default tooltip properties.
+
+```typescript
+export const TooltipConfigProvider: Provider = {
+  provide: NGX_TOOLTIP_CONFIG,
+  useValue: new NgxTooltipConfig({
+    debounce: 50,
+    placement: 'top-end'
+  })
+};
+```
+
 ## Custom view
 
 You can use your own component to visualize tooltips.

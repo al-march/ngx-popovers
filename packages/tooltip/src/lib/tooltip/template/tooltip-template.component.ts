@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimationEvent } from '@angular/animations';
-import { OpenCloseState, openClose, PortalComponent } from '@ngx-popovers/core';
+import { openClose, OpenCloseState, PortalComponent } from '@ngx-popovers/core';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({

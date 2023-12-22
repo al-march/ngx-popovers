@@ -1,8 +1,18 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  signal
+} from '@angular/core';
 import { Derivable, FlipOptions, OffsetOptions, Placement, PortalComponent, ShiftOptions } from '@ngx-popovers/core';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
+import { NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
 
 @Component({
   selector: '[ngxTooltip]',
@@ -13,32 +23,37 @@ import { TooltipTemplate } from './template/tooltip-template.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxTooltip {
+  config = inject(NGX_TOOLTIP_CONFIG);
+
   @Input('ngxTooltip')
   tooltipText = '';
 
   @Input()
-  placement: Placement = 'bottom';
+  placement: Placement = this.config.placement;
 
   @Input()
-  flip?: FlipOptions | Derivable<FlipOptions>;
+  flip?: FlipOptions | Derivable<FlipOptions> = this.config.flip;
 
   @Input()
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
+  shift?: ShiftOptions | Derivable<ShiftOptions> = this.config.shift;
 
   @Input()
-  offset?: OffsetOptions = 4;
+  offset?: OffsetOptions = this.config.offset;
 
   /**
    * Time delay before the tooltip is displayed
    */
   @Input()
-  debounce = 100;
+  debounce = this.config.debounce;
 
   /**
    * Show arrow or not
    */
   @Input()
-  withArrow = false;
+  arrow = this.config.arrow;
+
+  @Input()
+  arrowPadding = this.config.arrowPadding;
 
   /**
    * Emits when tooltip show animation ends
@@ -56,11 +71,6 @@ export class NgxTooltip {
   isTooltipShowing = signal(false);
   isTriggerHovered = signal(false);
   isTooltipHovered = signal(false);
-
-  /**
-   * Is need arrow for tooltip
-   */
-  isArrowShowed = signal(false);
 
   get trigger() {
     return this.el.nativeElement;
@@ -109,9 +119,6 @@ export class NgxTooltip {
 
   show() {
     this.isTooltipCreated.set(true);
-    if (this.withArrow) {
-      this.isArrowShowed.set(true);
-    }
   }
 
   showTooltip() {
@@ -124,7 +131,6 @@ export class NgxTooltip {
 
   hideTooltip() {
     this.isTooltipShowing.set(false);
-    this.isArrowShowed.set(false);
   }
 
   setTooltipHovered($event: boolean) {

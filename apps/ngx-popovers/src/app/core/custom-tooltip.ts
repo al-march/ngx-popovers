@@ -1,5 +1,5 @@
 import { Component, Provider } from '@angular/core';
-import { NGX_TOOLTIP_COMPONENT, TooltipBase } from '@ngx-popovers/tooltip';
+import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG, NgxTooltipConfig, TooltipBase } from '@ngx-popovers/tooltip';
 
 @Component({
   standalone: true,
@@ -15,7 +15,7 @@ import { NGX_TOOLTIP_COMPONENT, TooltipBase } from '@ngx-popovers/tooltip';
     }
   `,
   template: `
-    <div class="my-tooltip">
+      <div class="my-tooltip">
       <span><b>text:</b> {{ text }}</span>
     </div>
   `
@@ -26,4 +26,12 @@ export class CustomTooltip extends TooltipBase {
 export const TooltipProvider: Provider = {
   provide: NGX_TOOLTIP_COMPONENT,
   useValue: CustomTooltip
+};
+
+export const TooltipConfigProvider: Provider = {
+  provide: NGX_TOOLTIP_CONFIG,
+  useValue: new NgxTooltipConfig({
+    debounce: 50,
+    placement: 'top-end'
+  })
 };
