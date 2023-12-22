@@ -1,8 +1,6 @@
 <div
   (mousemove)="onMousemove()"
   (mouseleave)="onMouseleave()"
-  [@openClose]="animation()"
-  (@openClose.done)="onAnimationEmit($event)"
 >
   <ng-template
     [ngComponentOutlet]="component"

@@ -14,11 +14,9 @@
       [style]="arrowStyles()"
     >
       @if (arrow) {
-        <div [@openClose]="animation()">
-          <ng-template
-            [ngComponentOutlet]="arrowComponent"
-          />
-        </div>
+        <ng-template
+          [ngComponentOutlet]="arrowComponent"
+        />
       }
     </div>
   </div>

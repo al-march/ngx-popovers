@@ -1,18 +1,7 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  signal
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimationEvent } from '@angular/animations';
-import { openClose, OpenCloseState, PortalComponent } from '@ngx-popovers/core';
+import { OpenCloseState, PortalComponent } from '@ngx-popovers/core';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({
@@ -22,12 +11,11 @@ import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
   templateUrl: './tooltip-template.component.html',
   styleUrl: './tooltip-template.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [openClose],
   host: {
-    '[class.closing]': '!isOpen'
+    '[class.closed]': '!isOpen'
   }
 })
-export class TooltipTemplate implements OnInit, AfterViewInit, OnChanges {
+export class TooltipTemplate {
   @Input()
   text = '';
 
@@ -44,35 +32,8 @@ export class TooltipTemplate implements OnInit, AfterViewInit, OnChanges {
   hovered = new EventEmitter<boolean>();
 
   isHovered = signal(false);
-  animation = signal<OpenCloseState>(OpenCloseState.CLOSE);
 
   component = inject(NGX_TOOLTIP_COMPONENT);
-
-  ngOnInit() {
-    this.animation.set(OpenCloseState.CLOSE);
-  }
-
-  ngAfterViewInit() {
-    this.animation.set(OpenCloseState.OPEN);
-  }
-
-  ngOnChanges() {
-    const animation = this.isOpen
-      ? OpenCloseState.OPEN
-      : OpenCloseState.CLOSE;
-    this.animation.set(animation);
-  }
-
-  onAnimationEmit($event: AnimationEvent) {
-    switch ($event.toState) {
-      case OpenCloseState.OPEN:
-        this.showAnimationEnd.emit();
-        break;
-      case OpenCloseState.CLOSE:
-        this.hideAnimationEnd.emit();
-        break;
-    }
-  }
 
   onMousemove() {
     if (!this.isHovered()) {

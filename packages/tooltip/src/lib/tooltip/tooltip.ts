@@ -56,19 +56,18 @@ export class NgxTooltip {
   arrowPadding = this.config.arrowPadding;
 
   /**
-   * Emits when tooltip show animation ends
+   * Emits when tooltip shows
    */
   @Output()
   showEnd = new EventEmitter();
 
   /**
-   * Emits when tooltip hide animation ends
+   * Emits when tooltip hides
    */
   @Output()
   hideEnd = new EventEmitter();
 
   isTooltipCreated = signal(false);
-  isTooltipShowing = signal(false);
   isTriggerHovered = signal(false);
   isTooltipHovered = signal(false);
 
@@ -93,7 +92,6 @@ export class NgxTooltip {
       }
 
       this.show();
-      this.showTooltip();
     });
   }
 
@@ -104,38 +102,23 @@ export class NgxTooltip {
       debounceTime(this.debounce),
       filter(() => !this.isTooltipHovered())
     ).subscribe(() => {
-      this.hideTooltip();
+      this.hide();
     });
-  }
-
-  onOpenAnimationEnd() {
-    this.showEnd.emit();
-  }
-
-  onHideAnimationEnd() {
-    this.hide();
-    this.hideEnd.emit();
   }
 
   show() {
     this.isTooltipCreated.set(true);
-  }
-
-  showTooltip() {
-    this.isTooltipShowing.set(true);
+    this.showEnd.emit();
   }
 
   hide() {
     this.isTooltipCreated.set(false);
-  }
-
-  hideTooltip() {
-    this.isTooltipShowing.set(false);
+    this.hideEnd.emit();
   }
 
   setTooltipHovered($event: boolean) {
     if (!$event) {
-      this.hideTooltip();
+      this.hide();
     }
     this.isTooltipHovered.set($event);
   }

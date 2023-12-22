@@ -1,5 +1,5 @@
 :host {
-  &.closing {
+  &.closed {
     pointer-events: none;
   }
 }

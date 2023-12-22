@@ -7,8 +7,6 @@ import {
   FloatingService,
   offset,
   OffsetOptions,
-  openClose,
-  OpenCloseState,
   Placement,
   PortalComponent,
   shift,
@@ -30,8 +28,7 @@ const staticSides: Record<string, string> = {
   imports: [CommonModule, PortalComponent],
   providers: [FloatingService],
   templateUrl: './floating.component.html',
-  styleUrl: './floating.component.scss',
-  animations: [openClose]
+  styleUrl: './floating.component.scss'
 })
 export class FloatingComponent implements AfterViewInit, OnChanges {
   config = inject(NGX_FLOATING_CONFIG);
@@ -68,7 +65,6 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
 
   coords = signal({ x: 0, y: 0 });
   arrowStyles = signal<Record<string, string>>({});
-  animation = signal<OpenCloseState>(OpenCloseState.CLOSE);
 
   // Uses for cleanup autoUpdate function
   cleanup?: () => void;
@@ -79,7 +75,6 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
 
   async ngAfterViewInit() {
     await this.bind();
-    this.animation.set(OpenCloseState.OPEN);
   }
 
   async ngOnChanges() {

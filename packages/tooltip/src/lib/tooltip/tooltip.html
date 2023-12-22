@@ -11,10 +11,8 @@
     [arrowPadding]="arrowPadding"
   >
     <ngx-tooltip-template
-      [isOpen]="isTooltipShowing()"
+      [isOpen]="true"
       [text]="tooltipText"
-      (hideAnimationEnd)="onHideAnimationEnd()"
-      (showAnimationEnd)="onOpenAnimationEnd()"
       (hovered)="setTooltipHovered($event)"
     />
   </ngx-floating>

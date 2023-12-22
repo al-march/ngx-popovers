@@ -52,11 +52,11 @@ time delay before the tooltip is displayed
 
 #### `@Output()` `showEnd`
 
-Emits when tooltip show animation ends
+Emits when tooltip show ends
 
 #### `@Output()` `hideEnd`
 
-Emits when tooltip hide animation ends
+Emits when tooltip hide ends
 
 ## Configuration
 
