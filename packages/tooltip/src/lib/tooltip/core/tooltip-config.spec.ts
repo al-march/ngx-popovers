@@ -1,8 +1,5 @@
 import { NgxTooltipConfig } from './tooltip-config';
-
-const Keys = <T extends object>(obj: T) => {
-  return Object.keys(obj) as Array<keyof T>;
-};
+import { Keys } from '@ngx-popovers/core';
 
 describe('TooltipConfig', () => {
   it('should create an instance', () => {

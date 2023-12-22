@@ -28,17 +28,49 @@ See more information about the properties in the official documentation [floatin
 </ngx-floating>
 ```
 
-### Arrow
+### Inputs
 
-#### `@Input()` withArrow
+#### `@Input()` `placement`
+
+controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
+
+#### `@Input()` `flip`
+
+changes the placement of the floating element to keep it in view ([docs](https://floating-ui.com/docs/flip))
+
+#### `@Input()` `shift`
+
+shifts the floating element to keep it in view ([docs](https://floating-ui.com/docs/shift))
+
+#### `@Input()` `offset`
+
+translates the floating element along the specified axes ([docs](https://floating-ui.com/docs/offset))
+
+#### `@Input()` `arrow`
 
 Adds arrow to tooltip according floating state
 
-#### `@Input()` arrowPadding
+#### `@Input()` `arrowPadding`
 
 If your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
-### Arrow custom component
+
+## Configuration
+
+There is a configuration token `NGX_TOOLTIP_CONFIG`.
+Please, use the `NgxTooltipConfig` class to change the  default tooltip properties.
+
+```typescript
+export const FloatingConfigProvider: Provider = {
+  provide: NGX_FLOATING_CONFIG,
+  useValue: new NgxFloatingConfig({
+    placement: 'top-end',
+    arrow: true
+  })
+};
+```
+
+## Arrow custom component
 
 You can provide your own component for arrow visualization
 

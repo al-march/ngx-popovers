@@ -10,10 +10,10 @@
     <div
       #arrow
       class="floating__arrow"
-      [class.hidden]="!withArrow"
+      [class.hidden]="!arrow"
       [style]="arrowStyles()"
     >
-      @if (withArrow) {
+      @if (arrow) {
         <div [@openClose]="animation()">
           <ng-template
             [ngComponentOutlet]="arrowComponent"

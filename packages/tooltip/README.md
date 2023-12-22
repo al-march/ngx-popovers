@@ -28,33 +28,33 @@ In the template:
 
 ### Inputs
 
-#### `@Input()` **placement** 
+#### `@Input()` `placement` 
 
 controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
-#### `@Input()` **flip** 
+#### `@Input()` `flip` 
 
 changes the placement of the floating element to keep it in view ([docs](https://floating-ui.com/docs/flip))
 
-#### `@Input()` **shift** 
+#### `@Input()` `shift` 
 
 shifts the floating element to keep it in view ([docs](https://floating-ui.com/docs/shift))
 
-#### `@Input()` **offset**
+#### `@Input()` `offset`
 
 translates the floating element along the specified axes ([docs](https://floating-ui.com/docs/offset))
 
-#### `@Input()` **debounce** 
+#### `@Input()` `debounce` 
 
 time delay before the tooltip is displayed
 
 ### Outputs
 
-#### `@Output()` **showEnd**
+#### `@Output()` `showEnd`
 
 Emits when tooltip show animation ends
 
-#### `@Output()` **hideEnd**
+#### `@Output()` `hideEnd`
 
 Emits when tooltip hide animation ends
 

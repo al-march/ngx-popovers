@@ -15,7 +15,7 @@ import {
   ShiftOptions
 } from '@ngx-popovers/core';
 import { arrow } from '@floating-ui/dom';
-import { NGX_FLOATING_ARROW_COMPONENT } from './core/floating.injections';
+import { NGX_FLOATING_ARROW_COMPONENT, NGX_FLOATING_CONFIG } from './core/floating.injections';
 
 const staticSides: Record<string, string> = {
   top: 'bottom',
@@ -34,6 +34,11 @@ const staticSides: Record<string, string> = {
   animations: [openClose]
 })
 export class FloatingComponent implements AfterViewInit, OnChanges {
+  config = inject(NGX_FLOATING_CONFIG);
+  arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
+
+  floatingService = inject(FloatingService);
+
   @ViewChild('floating')
   floatingRef?: ElementRef<HTMLElement>;
 
@@ -44,29 +49,26 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   trigger?: HTMLElement;
 
   @Input()
-  placement: Placement = 'bottom';
+  placement = this.config.placement;
 
   @Input()
-  flip?: FlipOptions | Derivable<FlipOptions>;
+  flip?: FlipOptions | Derivable<FlipOptions> = this.config.flip;
 
   @Input()
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
+  shift?: ShiftOptions | Derivable<ShiftOptions> = this.config.shift;
 
   @Input()
-  offset?: OffsetOptions;
+  offset?: OffsetOptions = this.config.offset;
 
   @Input()
-  withArrow = false;
+  arrow = this.config.arrow;
 
   @Input()
-  arrowPadding = 0;
+  arrowPadding = this.config.arrowPadding;
 
   coords = signal({ x: 0, y: 0 });
   arrowStyles = signal<Record<string, string>>({});
   animation = signal<OpenCloseState>(OpenCloseState.CLOSE);
-
-  floatingService = inject(FloatingService);
-  arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
 
   // Uses for cleanup autoUpdate function
   cleanup?: () => void;
