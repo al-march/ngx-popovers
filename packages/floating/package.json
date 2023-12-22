@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/floating",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "keywords": [
     "components",
     "angular",
@@ -19,7 +19,7 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.9"
+    "@ngx-popovers/core": "0.0.10"
   },
   "sideEffects": false
 }
