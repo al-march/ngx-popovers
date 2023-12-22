@@ -12,7 +12,7 @@ import { Derivable, FlipOptions, OffsetOptions, Placement, PortalComponent, Shif
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
-import { NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
+import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
 
 @Component({
   selector: '[ngxTooltip]',
@@ -27,6 +27,9 @@ export class NgxTooltip {
 
   @Input('ngxTooltip')
   tooltipText = '';
+
+  @Input()
+  tooltipComponent = inject(NGX_TOOLTIP_COMPONENT);
 
   @Input()
   placement: Placement = this.config.placement;

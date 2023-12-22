@@ -1,7 +1,15 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+  signal
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnimationEvent } from '@angular/animations';
-import { OpenCloseState, PortalComponent } from '@ngx-popovers/core';
+import { PortalComponent } from '@ngx-popovers/core';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({
@@ -10,31 +18,21 @@ import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
   imports: [CommonModule, PortalComponent],
   templateUrl: './tooltip-template.component.html',
   styleUrl: './tooltip-template.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '[class.closed]': '!isOpen'
-  }
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipTemplate {
   @Input()
   text = '';
 
   @Input()
-  isOpen = false;
-
-  @Output()
-  showAnimationEnd = new EventEmitter();
-
-  @Output()
-  hideAnimationEnd = new EventEmitter();
+  component = inject(NGX_TOOLTIP_COMPONENT);
 
   @Output()
   hovered = new EventEmitter<boolean>();
 
   isHovered = signal(false);
 
-  component = inject(NGX_TOOLTIP_COMPONENT);
-
+  @HostListener('mousemove', ['$event'])
   onMousemove() {
     if (!this.isHovered()) {
       this.isHovered.set(true);
@@ -42,6 +40,7 @@ export class TooltipTemplate {
     }
   }
 
+  @HostListener('mouseleave', ['$event'])
   onMouseleave() {
     if (this.isHovered()) {
       this.isHovered.set(false);
