@@ -124,7 +124,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  private getSide(placement: Placement) {
+  getSide(placement: Placement) {
     const side = placement.split('-')[0];
     return staticSides[side];
   }
