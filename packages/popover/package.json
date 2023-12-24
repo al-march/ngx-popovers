@@ -1,6 +1,21 @@
 {
   "name": "@ngx-popovers/popover",
-  "version": "0.0.1",
+  "version": "0.0.10",
+  "keywords": [
+    "components",
+    "angular",
+    "floating",
+    "popover",
+    "ui",
+    "ux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/al-march/ngx-popovers.git",
+    "directory": "packages/floating"
+  },
+  "author": "al-march",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
