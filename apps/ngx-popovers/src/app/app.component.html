@@ -46,4 +46,16 @@
       <p>{{ placement }}</p>
     </div>
   </ngx-floating>
+
+  <br>
+  <br>
+  <br>
+
+  <button [ngxPopover]="popover" [offset]="10">Popover</button>
+
+  <ng-template #popover>
+    <div class="popover">
+      <p>I am popover!</p>
+    </div>
+  </ng-template>
 </div>

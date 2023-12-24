@@ -1,0 +1,14 @@
+{
+  "name": "@ngx-popovers/popover",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@ngx-popovers/core": "0.0.10",
+    "@ngx-popovers/floating": "0.0.10"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

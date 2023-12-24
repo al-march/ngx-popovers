@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+@if (template && isShow()) {
+  <ngx-portal>
+    <ngx-floating
+      [trigger]="trigger"
+      [placement]="placement"
+      [flip]="flip"
+      [shift]="shift"
+      [offset]="offset"
+    >
+      <ng-container *ngTemplateOutlet="template" />
+    </ngx-floating>
+  </ngx-portal>
+}
