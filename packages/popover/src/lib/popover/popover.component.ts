@@ -1,8 +1,9 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, signal, TemplateRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, inject, Input, Output, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Derivable, FlipOptions, OffsetOptions, PortalComponent, ShiftOptions } from '@ngx-popovers/core';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { Placement } from '@floating-ui/dom';
+import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
 
 @Component({
   selector: '[ngxPopover]',
@@ -13,28 +14,40 @@ import { Placement } from '@floating-ui/dom';
   styleUrl: './popover.component.scss'
 })
 export class PopoverComponent {
+  private config = inject(NGX_POPOVER_CONFIG);
+
   @Input('ngxPopover')
   template?: TemplateRef<any>;
 
   @Input()
-  placement: Placement = 'bottom';
+  placement: Placement = this.config.placement;
 
   @Input()
-  flip?: FlipOptions | Derivable<FlipOptions>;
+  flip?: FlipOptions | Derivable<FlipOptions> = this.config.flip;
 
   @Input()
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
+  shift?: ShiftOptions | Derivable<ShiftOptions> = this.config.shift;
 
   @Input()
-  offset?: OffsetOptions;
+  offset?: OffsetOptions = this.config.offset;
+
+  @Input()
+  arrow = this.config.arrow;
+
+  @Input()
+  arrowPadding = this.config.arrowPadding;
+
+  @Input()
+  ngxValue = false;
+
+  @Output()
+  ngxValueChange = new EventEmitter();
 
   @Output()
   show = new EventEmitter();
 
   @Output()
   hide = new EventEmitter();
-
-  isShow = signal(false);
 
   get trigger() {
     return this.el.nativeElement;
@@ -46,7 +59,7 @@ export class PopoverComponent {
 
   @HostListener('click', ['$event'])
   onClick() {
-    if (this.isShow()) {
+    if (this.ngxValue) {
       this.close();
       this.hide.emit();
     } else {
@@ -56,10 +69,12 @@ export class PopoverComponent {
   }
 
   open() {
-    this.isShow.set(true);
+    this.ngxValue = true;
+    this.ngxValueChange.emit(true);
   }
 
   close() {
-    this.isShow.set(false);
+    this.ngxValue = false;
+    this.ngxValueChange.emit(false);
   }
 }
