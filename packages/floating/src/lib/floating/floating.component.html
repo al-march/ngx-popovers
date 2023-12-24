@@ -7,17 +7,17 @@
   >
     <ng-content />
 
-    <div
-      #arrow
-      class="floating__arrow"
-      [class.hidden]="!arrow"
-      [style]="arrowStyles()"
-    >
-      @if (arrow) {
+    @if (arrow) {
+      <div
+        #arrow
+        class="floating__arrow"
+        [class.hidden]="!arrow"
+        [style]="arrowStyles()"
+      >
         <ng-template
           [ngComponentOutlet]="arrowComponent"
         />
-      }
-    </div>
+      </div>
+    }
   </div>
 </ngx-portal>

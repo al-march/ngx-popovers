@@ -101,7 +101,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
           ]
         });
 
-        if (middlewareData.arrow) {
+        if (middlewareData.arrow && this.arrowEl) {
           const { x, y } = middlewareData.arrow;
 
           const staticSide = this.getSide(placement);
