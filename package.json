@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve ngx-popovers",
-    "build:all": "nx build core && nx build floating && nx build tooltip"
+    "build:all": "nx build core && nx build floating && nx build tooltip && nx build popover"
   },
   "private": true,
   "dependencies": {
