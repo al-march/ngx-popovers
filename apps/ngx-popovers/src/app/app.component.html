@@ -51,13 +51,23 @@
   <br>
   <br>
 
-  <button [ngxPopover]="popover" #popoverComponent [offset]="10">Popover</button>
+  <button
+    #popover
+    [ngxPopover]="popoverContent"
+    [offset]="10"
+    [ngxValue]="true"
+  >
+    Popover
+  </button>
 
-  <ng-template #popover>
+  <ng-template #popoverContent>
     <div class="popover">
       <p>I am popover!</p>
-      <br>
-      <button (click)="popoverComponent.close()">Close</button>
+      <button
+        (click)="popover.close()"
+      >
+        Close
+      </button>
     </div>
   </ng-template>
 </div>
