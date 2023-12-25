@@ -116,3 +116,10 @@ Any module:
   providers: [ArrowProvider]
 })
 ```
+
+## Sources
+Another packages from this library:
+* [core](https://www.npmjs.com/package/@ngx-popovers/core)
+* [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
+* [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
+* [portal](https://www.npmjs.com/package/@ngx-popovers/portal)

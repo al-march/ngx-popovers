@@ -96,3 +96,10 @@ export const PopoverConfigProvider: Provider = {
   })
 };
 ```
+
+## Sources
+Another packages from this library:
+* [core](https://www.npmjs.com/package/@ngx-popovers/core)
+* [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
+* [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
+* [portal](https://www.npmjs.com/package/@ngx-popovers/portal)

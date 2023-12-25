@@ -125,3 +125,10 @@ export const TooltipProvider: Provider = {
   useValue: CustomTooltip
 };
 ```
+
+## Sources
+Another packages from this library:
+* [core](https://www.npmjs.com/package/@ngx-popovers/core)
+* [portal](https://www.npmjs.com/package/@ngx-popovers/portal)
+* [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
+* [popover](https://www.npmjs.com/package/@ngx-popovers/popover)

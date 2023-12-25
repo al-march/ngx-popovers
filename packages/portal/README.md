@@ -14,7 +14,9 @@ The `<ngx-portal/>` component displays the content on the body.
 
 This component is required to display tooltips correctly without overlapping with other elements on the page.
 
-It uses here:
+## Sources
+Another packages from this library:
+* [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
-* [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
+* [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)

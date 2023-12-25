@@ -6,11 +6,6 @@ This library was generated with [Nx](https://nx.dev) and [floating-ui](https://f
 >
 > I strongly recommend not using this library until its stable version is released.
 
-This package is a major dependency for other packages:
-* [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
-* [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
-* [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
-
 ## Usage
 
 ### FloatingService
@@ -54,3 +49,8 @@ import {
   ShiftOptions 
 } from '@ngx-popovers/core';
 ```
+## Sources
+This package is a major dependency for other packages:
+* [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
+* [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
+* [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
