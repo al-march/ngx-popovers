@@ -1,16 +1,14 @@
 <ng-content></ng-content>
 
 @if (template && ngxValue) {
-  <ngx-portal>
-    <ngx-floating
-      [trigger]="trigger"
-      [placement]="placement"
-      [flip]="flip"
-      [shift]="shift"
-      [offset]="offset"
-      [autoUpdate]="autoUpdate"
-    >
-      <ng-container *ngTemplateOutlet="template" />
-    </ngx-floating>
-  </ngx-portal>
+  <ngx-floating
+    [trigger]="trigger"
+    [placement]="placement"
+    [flip]="flip"
+    [shift]="shift"
+    [offset]="offset"
+    [autoUpdate]="autoUpdate"
+  >
+    <ng-container *ngTemplateOutlet="template" />
+  </ngx-floating>
 }

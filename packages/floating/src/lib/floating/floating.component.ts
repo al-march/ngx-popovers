@@ -8,10 +8,10 @@ import {
   offset,
   OffsetOptions,
   Placement,
-  PortalComponent,
   shift,
   ShiftOptions
 } from '@ngx-popovers/core';
+import { PortalComponent } from '@ngx-popovers/portal';
 import { arrow } from '@floating-ui/dom';
 import { NGX_FLOATING_ARROW_COMPONENT, NGX_FLOATING_CONFIG } from './core/floating.injections';
 

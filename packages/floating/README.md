@@ -1,10 +1,12 @@
 # floating
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps
 
 
 > **Note**
 > I strongly recommend not using this library until its stable version is released.
+
+The Floating component implements the floating-ui library for Angular 
 
 ## Usage
 

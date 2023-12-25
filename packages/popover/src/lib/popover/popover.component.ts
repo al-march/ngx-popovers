@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, inject, Input, Output, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Derivable, FlipOptions, OffsetOptions, PortalComponent, ShiftOptions } from '@ngx-popovers/core';
+import { Derivable, FlipOptions, OffsetOptions, ShiftOptions } from '@ngx-popovers/core';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { Placement } from '@floating-ui/dom';
 import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
@@ -9,7 +9,7 @@ import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
   selector: '[ngxPopover]',
   exportAs: 'ngxPopover',
   standalone: true,
-  imports: [CommonModule, PortalComponent, FloatingComponent],
+  imports: [CommonModule, FloatingComponent],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss'
 })

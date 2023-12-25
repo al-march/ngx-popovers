@@ -8,6 +8,7 @@ This library was generated with [Nx](https://nx.dev) and [floating-ui](https://f
 
 This package is a major dependency for other packages:
 * [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
+* [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
 
 ## Usage
@@ -30,7 +31,11 @@ export class AppComponent {
 ```
 
 #### (method) computePosition
-The computePosition method is a proxy for computePosition from [floating-ui](https://floating-ui.com/docs/computePosition)
+The `computePosition` method is a proxy for `computePosition` from [floating-ui](https://floating-ui.com/docs/computePosition)
+
+#### (method) autoUpdate
+The `autoUpdate` method is a proxy for `autoUpdate` from [floating-ui](https://floating-ui.com/docs/computePosition)
+
 
 ```typescript
 floatingService = inject(FloatingService);
@@ -49,19 +54,3 @@ import {
   ShiftOptions 
 } from '@ngx-popovers/core';
 ```
-
-### Portal
-
-The `<ngx-portal/>` component displays the content on the body.
-
-```html
-<ngx-portal>
-    <p>It will be displayed as the last child of the body</p>
-</ngx-portal>
-```
-
-This component is required to display tooltips correctly without overlapping with other elements on the page.
-
-It uses here:
-* [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
-

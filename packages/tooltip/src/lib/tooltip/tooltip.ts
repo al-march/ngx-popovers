@@ -8,7 +8,7 @@ import {
   Output,
   signal
 } from '@angular/core';
-import { Derivable, FlipOptions, OffsetOptions, Placement, PortalComponent, ShiftOptions } from '@ngx-popovers/core';
+import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
 import { FloatingComponent } from '@ngx-popovers/floating';
 import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
@@ -17,7 +17,7 @@ import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.inject
 @Component({
   selector: '[ngxTooltip]',
   standalone: true,
-  imports: [PortalComponent, TooltipTemplate, FloatingComponent],
+  imports: [TooltipTemplate, FloatingComponent],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
   changeDetection: ChangeDetectionStrategy.OnPush

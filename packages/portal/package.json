@@ -1,0 +1,27 @@
+{
+  "name": "@ngx-popovers/portal",
+  "version": "0.0.12",
+  "description": "portal component displays the content on the body",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/al-march/ngx-popovers.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "components",
+    "angular",
+    "portal",
+    "ui",
+    "ux"
+  ],
+  "author": "al-march",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^17.0.0",
+    "@angular/core": "^17.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

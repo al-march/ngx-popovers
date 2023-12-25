@@ -1,6 +1,7 @@
 {
   "name": "@ngx-popovers/popover",
   "version": "0.0.11",
+  "description": "Popover component displays content next to the trigger element on mouse click",
   "keywords": [
     "components",
     "angular",

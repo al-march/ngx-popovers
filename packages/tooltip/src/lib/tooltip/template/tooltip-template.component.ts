@@ -9,13 +9,12 @@ import {
   signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortalComponent } from '@ngx-popovers/core';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({
   selector: 'ngx-tooltip-template',
   standalone: true,
-  imports: [CommonModule, PortalComponent],
+  imports: [CommonModule],
   templateUrl: './tooltip-template.component.html',
   styleUrl: './tooltip-template.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

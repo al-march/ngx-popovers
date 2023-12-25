@@ -12,9 +12,6 @@ import {
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 
-/**
- * Portal creates content into body
- */
 @Component({
   selector: 'ngx-portal',
   standalone: true,

@@ -1,6 +1,7 @@
 {
   "name": "@ngx-popovers/floating",
   "version": "0.0.11",
+  "description": "The Floating component implements the floating-ui library for Angular",
   "keywords": [
     "components",
     "angular",
@@ -19,7 +20,8 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.11"
+    "@ngx-popovers/core": "0.0.11",
+    "@ngx-popovers/portal": "0.0.12"
   },
   "sideEffects": false
 }
