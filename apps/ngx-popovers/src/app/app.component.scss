@@ -4,10 +4,8 @@
 
 .tooltips {
   padding: 40px;
-}
 
-button {
-  &[ngxTooltip] {
+  button {
     padding: 10px;
     min-height: 100px;
   }
@@ -44,4 +42,5 @@ button {
   padding: 8px;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
+  background: #FFFFFF;
 }

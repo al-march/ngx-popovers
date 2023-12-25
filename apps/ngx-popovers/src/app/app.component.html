@@ -1,20 +1,15 @@
 <div class="main">
   <div class="tooltips">
-    <button ngxTooltip="top-start" [offset]="10" [arrow]="true" placement="top-start">top-start</button>
-    <button ngxTooltip="top" [offset]="10" [arrow]="true" placement="top">top</button>
-    <button ngxTooltip="top-end" [offset]="10" [arrow]="true" placement="top-end">top-end</button>
-
-    <button ngxTooltip="bottom-start" [offset]="10" [arrow]="true" placement="bottom-start">bottom-start</button>
-    <button ngxTooltip="bottom" [offset]="10" [arrow]="true" placement="bottom">bottom</button>
-    <button ngxTooltip="bottom-end" [offset]="10" [arrow]="true" placement="bottom-end">bottom-end</button>
-
-    <button ngxTooltip="left-start" [offset]="10" [arrow]="true" placement="left-start">left-start</button>
-    <button ngxTooltip="left" [offset]="10" [arrow]="true" placement="left">left</button>
-    <button ngxTooltip="left-end" [offset]="10" [arrow]="true" placement="left-end">left-end</button>
-
-    <button ngxTooltip="right-start" [offset]="10" [arrow]="true" placement="right-start">right-start</button>
-    <button ngxTooltip="right" [offset]="10" [arrow]="true" placement="right">right</button>
-    <button ngxTooltip="right-end" [offset]="10" [arrow]="true" placement="right-end">right-end</button>
+    @for (placement of placementList;track placement) {
+      <button
+        [ngxTooltip]="placement"
+        [placement]="placement"
+        [offset]="10"
+        [arrow]="true"
+      >
+        {{placement}}
+      </button>
+    }
   </div>
 
   <br>
