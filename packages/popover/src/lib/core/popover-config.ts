@@ -7,6 +7,7 @@ export interface PopoverConfig {
   offset?: OffsetOptions;
   arrow: boolean;
   arrowPadding: number;
+  autoUpdate: boolean;
 }
 
 export class NgxPopoverConfig implements PopoverConfig {
@@ -14,6 +15,7 @@ export class NgxPopoverConfig implements PopoverConfig {
   offset: OffsetOptions = 4;
   arrow = false;
   arrowPadding = 2;
+  autoUpdate = true;
 
   flip?: FlipOptions | Derivable<FlipOptions>;
   shift?: ShiftOptions | Derivable<ShiftOptions>;

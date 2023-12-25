@@ -55,6 +55,10 @@ Adds arrow to floating
 
 If your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
+#### `@Input()` `autoUpdate`
+
+updates floating element automatically. Default `true`
+
 ## Configuration
 
 There is a configuration token `NGX_FLOATING_CONFIG`.

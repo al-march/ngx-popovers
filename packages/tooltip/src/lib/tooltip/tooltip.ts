@@ -62,6 +62,12 @@ export class NgxTooltip {
   arrowPadding = this.config.arrowPadding;
 
   /**
+   * Updates floating element automatically
+   */
+  @Input()
+  autoUpdate = this.config.autoUpdate;
+
+  /**
    * Emits when tooltip shows
    */
   @Output()

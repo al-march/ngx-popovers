@@ -63,6 +63,12 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   @Input()
   arrowPadding = this.config.arrowPadding;
 
+  /**
+   * Updates floating element automatically
+   */
+  @Input()
+  autoUpdate = this.config.autoUpdate;
+
   coords = signal({ x: 0, y: 0 });
   arrowStyles = signal<Record<string, string>>({});
 
@@ -87,41 +93,49 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
     const floating = this.floatingRef?.nativeElement;
 
     if (trigger && floating) {
-      this.cleanup = this.floatingService.autoUpdate(trigger, floating, async () => {
-        const { x, y, middlewareData, placement } = await this.floatingService.computePosition(trigger, floating, {
-          placement: this.placement,
-          middleware: [
-            flip(this.flip),
-            shift(this.shift),
-            offset(this.offset),
-            arrow({
-              element: this.arrowEl!,
-              padding: this.arrowPadding
-            })
-          ]
+      if (this.autoUpdate) {
+        this.cleanup = this.floatingService.autoUpdate(trigger, floating, async () => {
+          await this.computePosition(trigger, floating);
         });
-
-        if (middlewareData.arrow && this.arrowEl) {
-          const { x, y } = middlewareData.arrow;
-
-          const staticSide = this.getSide(placement);
-          const styles: Record<string, string> = {};
-          if (x != null) {
-            styles['left'] = `${x}px`;
-          }
-          if (y != null) {
-            styles['top'] = `${y}px`;
-          }
-          if (staticSide) {
-            styles[staticSide] = `${-this.arrowEl!.offsetWidth / 2}px`;
-          }
-
-          this.arrowStyles.set(styles);
-        }
-
-        this.coords.set({ x, y });
-      });
+      } else {
+        await this.computePosition(trigger, floating);
+      }
     }
+  }
+
+  async computePosition(trigger: HTMLElement, floating: HTMLElement) {
+    const { x, y, middlewareData, placement } = await this.floatingService.computePosition(trigger, floating, {
+      placement: this.placement,
+      middleware: [
+        flip(this.flip),
+        shift(this.shift),
+        offset(this.offset),
+        arrow({
+          element: this.arrowEl!,
+          padding: this.arrowPadding
+        })
+      ]
+    });
+
+    if (middlewareData.arrow && this.arrowEl) {
+      const { x, y } = middlewareData.arrow;
+
+      const staticSide = this.getSide(placement);
+      const styles: Record<string, string> = {};
+      if (x != null) {
+        styles['left'] = `${x}px`;
+      }
+      if (y != null) {
+        styles['top'] = `${y}px`;
+      }
+      if (staticSide) {
+        styles[staticSide] = `${-this.arrowEl!.offsetWidth / 2}px`;
+      }
+
+      this.arrowStyles.set(styles);
+    }
+
+    this.coords.set({ x, y });
   }
 
   getSide(placement: Placement) {

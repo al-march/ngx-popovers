@@ -9,6 +9,7 @@ export interface TooltipConfig {
   debounce: number;
   arrow: boolean;
   arrowPadding: number;
+  autoUpdate: boolean;
 }
 
 export class NgxTooltipConfig implements TooltipConfig {
@@ -17,6 +18,7 @@ export class NgxTooltipConfig implements TooltipConfig {
   debounce = 100;
   arrow = false;
   arrowPadding = 2;
+  autoUpdate = false;
 
   flip?: FlipOptions | Derivable<FlipOptions>;
   shift?: ShiftOptions | Derivable<ShiftOptions>;

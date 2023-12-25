@@ -4,7 +4,6 @@ import { NgxFloatingConfig } from './core/floating-config';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Provider } from '@angular/core';
-import { Placement } from '@floating-ui/dom';
 
 describe('FloatingComponent', () => {
   let component: FloatingComponent;
@@ -12,7 +11,7 @@ describe('FloatingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FloatingComponent, BrowserAnimationsModule],
+      imports: [FloatingComponent, BrowserAnimationsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FloatingComponent);
@@ -86,6 +85,14 @@ describe('FloatingComponent', () => {
 
     expect(cleanup).toHaveBeenCalled();
   });
+
+  it('should not save cleanup func if autoUpdate === false', () => {
+    fixture.componentRef.setInput('trigger', document.body);
+    fixture.componentRef.setInput('autoUpdate', false);
+    fixture.detectChanges();
+
+    expect(component.cleanup).not.toBeTruthy();
+  });
 });
 
 describe('FloatingComponent.DI', () => {
@@ -107,7 +114,7 @@ describe('FloatingComponent.DI', () => {
 
     await TestBed.configureTestingModule({
       providers: [configProvider],
-      imports: [FloatingComponent, BrowserAnimationsModule],
+      imports: [FloatingComponent, BrowserAnimationsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FloatingComponent);

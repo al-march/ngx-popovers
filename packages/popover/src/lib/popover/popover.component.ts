@@ -37,6 +37,12 @@ export class PopoverComponent {
   @Input()
   arrowPadding = this.config.arrowPadding;
 
+  /**
+   * Updates floating element automatically
+   */
+  @Input()
+  autoUpdate = this.config.autoUpdate;
+
   @Input()
   ngxValue = false;
 

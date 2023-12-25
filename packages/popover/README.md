@@ -54,11 +54,16 @@ translates the floating element along the specified axes ([docs](https://floatin
 
 #### `@Input()` `arrow`
 
-Adds arrow to floating
+adds arrow to floating
 
 #### `@Input()` `arrowPadding`
 
-If your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
+if your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
+
+
+#### `@Input()` `autoUpdate`
+
+updates floating element automatically. Default `true`
 
 #### `@Input()` `ngxValue`
 

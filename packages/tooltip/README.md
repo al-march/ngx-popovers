@@ -57,6 +57,10 @@ Adds arrow to tooltip
 
 If your tooltip element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
+#### `@Input()` `autoUpdate`
+
+updates floating element automatically. Default `false`
+
 
 ### Outputs
 
