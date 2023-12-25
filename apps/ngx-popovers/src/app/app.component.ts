@@ -6,10 +6,11 @@ import { Placement } from '@floating-ui/dom';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverComponent } from '@ngx-popovers/popover';
+import { HeaderComponent } from './template/header/header.component';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent],
+  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent, HeaderComponent],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
