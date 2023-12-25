@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/tooltip",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "The Tooltip component shows tooltips next to the trigger element",
   "keywords": [
     "components",
@@ -20,8 +20,8 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.11",
-    "@ngx-popovers/floating": "0.0.11"
+    "@ngx-popovers/core": "0.0.12",
+    "@ngx-popovers/floating": "0.0.12"
   },
   "sideEffects": false
 }
