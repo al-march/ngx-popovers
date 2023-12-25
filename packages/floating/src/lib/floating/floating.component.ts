@@ -69,6 +69,12 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   @Input()
   autoUpdate = this.config.autoUpdate;
 
+  /**
+   * HTMLElement where floating renders
+   */
+  @Input()
+  bindTo = this.config.bindTo;
+
   coords = signal({ x: 0, y: 0 });
   arrowStyles = signal<Record<string, string>>({});
 

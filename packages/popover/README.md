@@ -66,6 +66,10 @@ if your floating element has border-radius, this will prevent it from overflowin
 
 updates floating element automatically. Default `true`
 
+#### `@Input()` `bindTo`
+
+renders floating element as last child of bindTo. Default is body.
+
 #### `@Input()` `ngxValue`
 
 Show or hide state of popover

@@ -8,6 +8,8 @@ export interface FloatingConfig {
   arrow: boolean;
   arrowPadding: number;
   autoUpdate: boolean;
+
+  bindTo?: HTMLElement | string;
 }
 
 export class NgxFloatingConfig implements FloatingConfig {
@@ -19,6 +21,7 @@ export class NgxFloatingConfig implements FloatingConfig {
 
   flip?: FlipOptions | Derivable<FlipOptions>;
   shift?: ShiftOptions | Derivable<ShiftOptions>;
+  bindTo?: HTMLElement | string;
 
   constructor(
     config: Partial<FloatingConfig> = {}

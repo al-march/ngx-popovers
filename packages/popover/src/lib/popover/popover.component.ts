@@ -43,6 +43,12 @@ export class PopoverComponent {
   @Input()
   autoUpdate = this.config.autoUpdate;
 
+  /**
+   * HTMLElement where floating renders
+   */
+  @Input()
+  bindTo = this.config.bindTo;
+
   @Input()
   ngxValue = false;
 

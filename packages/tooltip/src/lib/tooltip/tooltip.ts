@@ -68,6 +68,12 @@ export class NgxTooltip {
   autoUpdate = this.config.autoUpdate;
 
   /**
+   * HTMLElement where floating renders
+   */
+  @Input()
+  bindTo = this.config.bindTo;
+
+  /**
    * Emits when tooltip shows
    */
   @Output()

@@ -8,6 +8,7 @@ export interface PopoverConfig {
   arrow: boolean;
   arrowPadding: number;
   autoUpdate: boolean;
+  bindTo?: HTMLElement | string;
 }
 
 export class NgxPopoverConfig implements PopoverConfig {
@@ -19,6 +20,7 @@ export class NgxPopoverConfig implements PopoverConfig {
 
   flip?: FlipOptions | Derivable<FlipOptions>;
   shift?: ShiftOptions | Derivable<ShiftOptions>;
+  bindTo?: HTMLElement | string;
 
   constructor(
     config: Partial<PopoverConfig> = {}

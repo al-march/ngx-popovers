@@ -10,6 +10,7 @@ export interface TooltipConfig {
   arrow: boolean;
   arrowPadding: number;
   autoUpdate: boolean;
+  bindTo?: HTMLElement | string;
 }
 
 export class NgxTooltipConfig implements TooltipConfig {
@@ -22,6 +23,7 @@ export class NgxTooltipConfig implements TooltipConfig {
 
   flip?: FlipOptions | Derivable<FlipOptions>;
   shift?: ShiftOptions | Derivable<ShiftOptions>;
+  bindTo?: HTMLElement | string;
 
   constructor(
     config: Partial<TooltipConfig> = {}

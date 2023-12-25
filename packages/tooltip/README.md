@@ -11,19 +11,16 @@ The Tooltip component shows tooltips next to the trigger element
 
 Add `ngxTooltip` to the html element to use this library.
 
-In the controller:
-
-```typescript
-import { NgxTooltip } from '@ngx-popovers/tooltip';
-```
-
-In the template:
-
 ```html
 
-<div ngxTooltip="tooltip text">
-    <p>Trigger content</p>
-</div>
+<button
+  [ngxTooltip]="placement"
+  [placement]="placement"
+  [offset]="10"
+  [arrow]="true"
+>
+  {{placement}}
+</button>
 ```
 
 ## Settings
@@ -62,6 +59,10 @@ If your tooltip element has border-radius, this will prevent it from overflowing
 #### `@Input()` `autoUpdate`
 
 updates floating element automatically. Default `false`
+
+#### `@Input()` `bindTo`
+
+renders floating element as last child of bindTo. Default is body.
 
 
 ### Outputs
