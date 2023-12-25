@@ -17,7 +17,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './portal.component.html',
-  styleUrl: './portal.component.scss',
+  styleUrl: './portal.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PortalComponent implements OnInit, OnDestroy {
