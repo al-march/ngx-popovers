@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
@@ -19,6 +19,8 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
   providers: [TooltipProvider, TooltipConfigProvider, ArrowProvider]
 })
 export class AppComponent {
+
+  sidebar = signal(true);
 
   routes = DocsRoutes;
 

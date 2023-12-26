@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './title.component.html',
-  styleUrl: './title.component.scss',
+  styleUrl: './title.component.scss'
 })
 export class TitleComponent {
   route = inject(ActivatedRoute);

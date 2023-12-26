@@ -1,15 +1,16 @@
-<main class="flex flex-col">
-  <div class="drawer lg:drawer-open h-full flex-1">
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+<main class="flex flex-col overflow-hidden">
+  <div class="drawer" [class.drawer-open]="sidebar()">
+    <input type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
       <!-- Page content here -->
-      <dm-header />
+      <dm-header
+        (toggleSidebar)="sidebar.set(!sidebar())"
+      />
 
       <router-outlet />
     </div>
     <div class="drawer-side">
-      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
+      <ul class="menu p-4 w-full sm:w-60 min-h-full bg-base-200 text-base-content">
         @for (route of routes; track route.path) {
           <li>
             <a
@@ -25,6 +26,10 @@
             <div class="divider my-1"></div>
           }
         }
+
+        <div class="flex-1"></div>
+        <div class="divider my-1"></div>
+        <button class="btn btn-sm" (click)="sidebar.set(false)">Close</button>
       </ul>
     </div>
   </div>

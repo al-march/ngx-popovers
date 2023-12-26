@@ -5,3 +5,11 @@
     @apply bg-base-300 text-accent;
   }
 }
+
+.drawer-open {
+  .drawer-side {
+    @media screen and (max-width: 500px) {
+      grid-column-end: 3;
+    }
+  }
+}
