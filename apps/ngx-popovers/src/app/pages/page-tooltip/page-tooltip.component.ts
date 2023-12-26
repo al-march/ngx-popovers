@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
 
 @Component({
-  selector: 'ngx-popovers-page-shift',
+  selector: 'ngx-popovers-page-tooltip',
   standalone: true,
   imports: [CommonModule, TitleComponent],
-  templateUrl: './page-shift.component.html',
-  styleUrl: './page-shift.component.scss'
+  templateUrl: './page-tooltip.component.html',
+  styleUrl: './page-tooltip.component.scss',
 })
-export class PageShiftComponent {
-}
+export class PageTooltipComponent {}

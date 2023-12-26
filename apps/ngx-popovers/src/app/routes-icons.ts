@@ -17,6 +17,75 @@ import { Component } from '@angular/core';
 export class GettingStartedIcon {
 }
 
+
+@Component({
+  template: `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="32"
+      height="32"
+    ><path
+      fill="currentColor"
+      d="M21.987 13A9.5 9.5 0 0113 21.987V23.5a.5.5 0 11-1 0v-1.513A9.5 9.5 0 013.013 13H1.5a.5.5 0 110-1h1.513A9.5 9.5 0 0112 3.013V1.5a.5.5 0 111 0v1.513A9.5 9.5 0 0121.987 12H23.5a.5.5 0 110 1h-1.513zM12.5 21a8.5 8.5 0 100-17 8.5 8.5 0 000 17zm0-4a4.5 4.5 0 110-9 4.5 4.5 0 010 9zm0-1a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"
+    ></path></svg>`,
+  standalone: true
+})
+export class CoreIcon {
+}
+
+@Component({
+  template: `
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      width="32"
+      height="32"
+    ><path
+      fill="currentColor"
+      d="M18.285 17.578l2.569 2.568a.5.5 0 01-.708.708l-2.568-2.57-1.662 2.493a.5.5 0 01-.884-.101l-3-8a.5.5 0 01.644-.644l8 3a.5.5 0 01.101.884l-2.492 1.662zm-1.054-.5l2.18-1.453-6.057-2.27 2.271 6.055 1.453-2.179a.502.502 0 01.153-.153zM5.5 3a.5.5 0 010 1A1.5 1.5 0 004 5.5a.5.5 0 01-1 0A2.5 2.5 0 015.5 3zm3 1a.5.5 0 010-1h2a.5.5 0 110 1h-2zm5 0a.5.5 0 110-1h2a.5.5 0 110 1h-2zm-5 17a.5.5 0 110-1h2a.5.5 0 110 1h-2zM3 8.5a.5.5 0 011 0v2a.5.5 0 11-1 0v-2zm0 5a.5.5 0 111 0v2a.5.5 0 11-1 0v-2zm0 5a.5.5 0 111 0A1.5 1.5 0 005.5 20a.5.5 0 110 1A2.5 2.5 0 013 18.5zm18-8a.5.5 0 11-1 0v-2a.5.5 0 111 0v2zm0-5a.5.5 0 11-1 0A1.5 1.5 0 0018.5 4a.5.5 0 110-1A2.5 2.5 0 0121 5.5z"
+    ></path></svg>`,
+  standalone: true
+})
+export class TooltipIcon {
+}
+
+@Component({
+  template: `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="32"
+      height="32"
+    ><path
+      fill="currentColor"
+      d="M14.293 12H6.5a.5.5 0 110-1h7.793l-2.147-2.146a.5.5 0 01.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.293 12zM4.5 3a.5.5 0 010 1A1.5 1.5 0 003 5.5a.5.5 0 01-1 0A2.5 2.5 0 014.5 3zM2 8.5a.5.5 0 011 0v2a.5.5 0 11-1 0v-2zm0 5a.5.5 0 111 0v2a.5.5 0 11-1 0v-2zm0 5a.5.5 0 111 0A1.5 1.5 0 004.5 20a.5.5 0 110 1A2.5 2.5 0 012 18.5zm8-13a.5.5 0 01-1 0A2.5 2.5 0 0111.5 3h8A2.5 2.5 0 0122 5.5v13a2.5 2.5 0 01-2.5 2.5h-8A2.5 2.5 0 019 18.5a.5.5 0 111 0 1.5 1.5 0 001.5 1.5h8a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0019.5 4h-8A1.5 1.5 0 0010 5.5zM8.5 20a.5.5 0 110 1h-2a.5.5 0 110-1h2zm0-17a.5.5 0 010 1h-2a.5.5 0 010-1h2z"
+    ></path></svg>`,
+  standalone: true
+})
+export class PortalIcon {
+}
+
+@Component({
+  template: `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="32"
+      height="32"
+    ><path
+      fill="currentColor"
+      d="M20 11.5v-4A3.5 3.5 0 0016.5 4h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h5a1.5 1.5 0 001.5-1.5v-2a3.5 3.5 0 013.5-3.5h1a1.5 1.5 0 001.5-1.5zm-.073 2.053A2.488 2.488 0 0118.5 14h-1a2.5 2.5 0 00-2.5 2.5v2c0 .422-.105.82-.29 1.169a7.509 7.509 0 005.217-6.116zM7.5 3h9A4.5 4.5 0 0121 7.5v5a8.5 8.5 0 01-8.5 8.5h-5A4.5 4.5 0 013 16.5v-9A4.5 4.5 0 017.5 3z"
+    ></path></svg>`,
+  standalone: true
+})
+export class PopoverIcon {
+}
+
 @Component({
   template: `
     <svg
