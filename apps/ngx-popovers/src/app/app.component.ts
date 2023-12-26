@@ -23,22 +23,4 @@ export class AppComponent {
   sidebar = signal(true);
 
   routes = DocsRoutes;
-
-  placement: Placement = 'left';
-
-  placementList: Placement[] = [
-    'left-start',
-    'left',
-    'left-end',
-    'bottom-start',
-    'bottom',
-    'bottom-end',
-    'right-end',
-    'right',
-    'right-start',
-    'top-end',
-    'top',
-    'top-start',
-    'left-start'
-  ];
 }

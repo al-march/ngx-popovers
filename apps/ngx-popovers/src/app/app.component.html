@@ -1,9 +1,10 @@
-<main class="flex flex-col overflow-hidden">
+<main class="flex flex-col">
   <div class="drawer" [class.drawer-open]="sidebar()">
     <input type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
       <!-- Page content here -->
       <dm-header
+        class="sticky top-0"
         (toggleSidebar)="sidebar.set(!sidebar())"
       />
 
