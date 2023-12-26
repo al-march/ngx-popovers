@@ -1,4 +1,8 @@
-<h1 class="text-4xl flex gap-2 items-center">
-  <ng-template [ngComponentOutlet]="route.snapshot['data']['icon']" />
+<h1 class="text-4xl flex gap-4 items-center">
+  <span class="text-accent">
+    <ng-template
+      [ngComponentOutlet]="route.snapshot['data']['icon']"
+    />
+  </span>
   <span>{{ route.snapshot['data']['name'] }}</span>
 </h1>

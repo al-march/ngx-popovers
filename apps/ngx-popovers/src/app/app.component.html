@@ -18,9 +18,12 @@
               routerLinkActive="active-link"
             >
               <ng-template [ngComponentOutlet]="route.data?.['icon']" />
-              <span>{{ route.data?.['name'] }}</span>
+              <span class="text-lg">{{ route.data?.['name'] }}</span>
             </a>
           </li>
+          @if (route.data?.['main']) {
+            <div class="divider my-1"></div>
+          }
         }
       </ul>
     </div>

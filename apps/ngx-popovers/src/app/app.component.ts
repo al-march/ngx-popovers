@@ -7,7 +7,7 @@ import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { HeaderComponent } from './template/header/header.component';
-import { appRoutes } from './app.routes';
+import { DocsRoutes } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
 
 @Component({
@@ -20,7 +20,7 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
 })
 export class AppComponent {
 
-  routes = appRoutes;
+  routes = DocsRoutes;
 
   placement: Placement = 'left';
 
