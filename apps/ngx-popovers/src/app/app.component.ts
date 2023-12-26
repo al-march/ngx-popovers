@@ -7,16 +7,21 @@ import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { HeaderComponent } from './template/header/header.component';
+import { appRoutes } from './app.routes';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent, HeaderComponent, FloatingArrowComponent],
+  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent, HeaderComponent, FloatingArrowComponent, NgComponentOutlet, NgClass],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [TooltipProvider, TooltipConfigProvider, ArrowProvider]
 })
 export class AppComponent {
+
+  routes = appRoutes;
+
   placement: Placement = 'left';
 
   placementList: Placement[] = [

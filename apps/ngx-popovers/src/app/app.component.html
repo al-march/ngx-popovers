@@ -1,89 +1,28 @@
-<dm-header />
+<main class="flex flex-col">
+  <div class="drawer lg:drawer-open h-full flex-1">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col">
+      <!-- Page content here -->
+      <dm-header />
 
-<div class="main">
-  <div class="tooltips">
-    @for (placement of placementList; track placement) {
-      <button
-        class="btn"
-        [ngxTooltip]="placement"
-        [placement]="placement"
-        [offset]="10"
-        [arrow]="placement !== 'bottom'"
-      >
-        {{ placement }}
-      </button>
-    }
-  </div>
-
-  <br>
-  <br>
-  <br>
-
-  <div class="flex items-center justify-center w-full">
-    <div #floatingTrigger class="p-2 bg-base-300 flex flex-col">
-      @for (button of placementList; track button) {
-        <button
-          class="btn btn-sm"
-          (click)="placement = button"
-          (mousemove)="placement = button"
-          (focus)="placement = button"
-        >
-          {{ button }}
-        </button>
-      }
+      <router-outlet />
     </div>
-  </div>
-
-  <ngx-floating
-    [trigger]="floatingTrigger"
-    [placement]="placement"
-    [offset]="10"
-    [arrowPadding]="6"
-  >
-    <div class="bg-base-300 border border-warning p-6 rounded shadow-lg">
-      <p>{{ placement }}</p>
-    </div>
-
-    <ngx-floating-arrow />
-  </ngx-floating>
-
-  <br>
-  <br>
-  <br>
-
-  <div class="flex flex-col items-center gap-2">
-    @for (placement of placementList; track placement) {
-      <button
-        #popover
-        [ngxPopover]="popoverContent"
-        [offset]="10"
-        [ngxValue]="false"
-        [placement]="placement"
-        class="btn btn-sm btn-accent"
-      >
-        Popover {{placement}}
-      </button>
-
-      <ng-template #popoverContent>
-        <div class="border border-warning bg-base-100 p-2 min-w-[200px]">
-          <div class="navbar p-1 min-h-1">
-            <p>Popover header</p>
-            <span class="flex-1"></span>
-            <button
-              class="btn btn-sm"
-              (click)="popover.close()"
+    <div class="drawer-side">
+      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
+        @for (route of routes; track route.path) {
+          <li>
+            <a
+              class="btn justify-start"
+              [routerLink]="route.path"
+              routerLinkActive="active-link"
             >
-              Close
-            </button>
-          </div>
-
-          <div class="divider"></div>
-          <div class="p-2 flex flex-col">
-            <p>I am popover!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          </div>
-        </div>
-      </ng-template>
-    }
+              <ng-template [ngComponentOutlet]="route.data?.['icon']" />
+              <span>{{ route.data?.['name'] }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
   </div>
-</div>
+</main>
