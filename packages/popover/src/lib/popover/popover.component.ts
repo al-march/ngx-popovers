@@ -1,9 +1,21 @@
-import { Component, ElementRef, EventEmitter, HostListener, inject, Input, Output, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+  signal,
+  TemplateRef
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Derivable, FlipOptions, OffsetOptions, ShiftOptions } from '@ngx-popovers/core';
 import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
 import { Placement } from '@floating-ui/dom';
 import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: '[ngxPopover]',
@@ -11,7 +23,19 @@ import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
   standalone: true,
   imports: [CommonModule, FloatingComponent, FloatingArrowComponent],
   templateUrl: './popover.component.html',
-  styleUrl: './popover.component.scss'
+  styleUrl: './popover.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate(140, style({ opacity: 1, transform: 'scale(1)' }))
+      ]),
+      transition(':leave', [
+        animate(100, style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class PopoverComponent {
   private config = inject(NGX_POPOVER_CONFIG);
@@ -61,6 +85,8 @@ export class PopoverComponent {
   @Output()
   hide = new EventEmitter();
 
+  isAnimating = signal(false);
+
   get trigger() {
     return this.el.nativeElement;
   }
@@ -81,11 +107,13 @@ export class PopoverComponent {
   }
 
   open() {
+    this.isAnimating.set(true);
     this.ngxValue = true;
     this.ngxValueChange.emit(true);
   }
 
   close() {
+    this.isAnimating.set(true);
     this.ngxValue = false;
     this.ngxValueChange.emit(false);
   }

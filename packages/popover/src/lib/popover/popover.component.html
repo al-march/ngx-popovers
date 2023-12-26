@@ -1,6 +1,6 @@
 <ng-content></ng-content>
 
-@if (template && ngxValue) {
+@if ((template && ngxValue) || isAnimating()) {
   <ngx-floating
     [trigger]="trigger"
     [placement]="placement"
@@ -10,10 +10,14 @@
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
   >
-    <ng-container *ngTemplateOutlet="template" />
+    @if (template && ngxValue) {
+      <div @fadeInOut (@fadeInOut.done)="isAnimating.set(false)">
+        <ng-container *ngTemplateOutlet="template" />
 
-    @if (arrow) {
-      <ngx-floating-arrow />
+        @if (arrow) {
+          <ngx-floating-arrow />
+        }
+      </div>
     }
   </ngx-floating>
 }
