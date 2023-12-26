@@ -51,34 +51,39 @@
   <br>
   <br>
 
-  <button
-    #popover
-    [ngxPopover]="popoverContent"
-    [offset]="10"
-    [ngxValue]="true"
-    class="btn btn-accent"
-  >
-    Popover
-  </button>
+  <div class="flex flex-col items-center gap-2">
+    @for (placement of placementList; track placement) {
+      <button
+        #popover
+        [ngxPopover]="popoverContent"
+        [offset]="10"
+        [ngxValue]="false"
+        [placement]="placement"
+        class="btn btn-sm btn-accent"
+      >
+        Popover {{placement}}
+      </button>
 
-  <ng-template #popoverContent>
-    <div class="border border-warning bg-base-100 p-2 min-w-[200px]">
-      <div class="navbar p-1 min-h-1">
-        <p>Popover header</p>
-        <span class="flex-1"></span>
-        <button
-          class="btn btn-sm"
-          (click)="popover.close()"
-        >
-          Close
-        </button>
-      </div>
+      <ng-template #popoverContent>
+        <div class="border border-warning bg-base-100 p-2 min-w-[200px]">
+          <div class="navbar p-1 min-h-1">
+            <p>Popover header</p>
+            <span class="flex-1"></span>
+            <button
+              class="btn btn-sm"
+              (click)="popover.close()"
+            >
+              Close
+            </button>
+          </div>
 
-      <div class="divider"></div>
-      <div class="p-2 flex flex-col">
-        <p>I am popover!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur.</p>
-      </div>
-    </div>
-  </ng-template>
+          <div class="divider"></div>
+          <div class="p-2 flex flex-col">
+            <p>I am popover!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+        </div>
+      </ng-template>
+    }
+  </div>
 </div>
