@@ -5,7 +5,6 @@ export interface FloatingConfig {
   flip?: FlipOptions | Derivable<FlipOptions>;
   shift?: ShiftOptions | Derivable<ShiftOptions>;
   offset?: OffsetOptions;
-  arrow: boolean;
   arrowPadding: number;
   autoUpdate: boolean;
 
@@ -15,7 +14,6 @@ export interface FloatingConfig {
 export class NgxFloatingConfig implements FloatingConfig {
   placement: Placement = 'bottom';
   offset: OffsetOptions = 4;
-  arrow = false;
   arrowPadding = 2;
   autoUpdate = true;
 

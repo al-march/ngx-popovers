@@ -1,21 +1,31 @@
 <ng-content />
 
-@if (isTooltipCreated()) {
+@if (isTooltipCreated() || isAnimating()) {
   <ngx-floating
     [trigger]="trigger"
     [placement]="placement"
     [flip]="flip"
     [shift]="shift"
     [offset]="offset"
-    [arrow]="arrow"
     [arrowPadding]="arrowPadding"
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
   >
-    <ngx-tooltip-template
-      [component]="tooltipComponent"
-      [text]="tooltipText"
-      (hovered)="setTooltipHovered($event)"
-    />
+    @if (isTooltipCreated()) {
+      <div
+        @fadeInOut
+        (@fadeInOut.done)="isAnimating.set(false)"
+      >
+        <ngx-tooltip-template
+          [component]="tooltipComponent"
+          [text]="tooltipText"
+          (hovered)="setTooltipHovered($event)"
+        />
+
+        @if (arrow) {
+          <ngx-floating-arrow />
+        }
+      </div>
+    }
   </ngx-floating>
 }

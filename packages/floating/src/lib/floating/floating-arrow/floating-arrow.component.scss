@@ -1,0 +1,8 @@
+.arrow {
+  position: absolute;
+  z-index: -1;
+
+  &.hidden {
+    opacity: 0;
+  }
+}

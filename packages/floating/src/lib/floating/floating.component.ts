@@ -13,7 +13,7 @@ import {
 } from '@ngx-popovers/core';
 import { PortalComponent } from '@ngx-popovers/portal';
 import { arrow } from '@floating-ui/dom';
-import { NGX_FLOATING_ARROW_COMPONENT, NGX_FLOATING_CONFIG } from './core/floating.injections';
+import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 
 const staticSides: Record<string, string> = {
   top: 'bottom',
@@ -25,22 +25,22 @@ const staticSides: Record<string, string> = {
 @Component({
   selector: 'ngx-floating',
   standalone: true,
-  imports: [CommonModule, PortalComponent],
-  providers: [FloatingService],
+  imports: [
+    CommonModule,
+    PortalComponent
+  ],
+  providers: [
+    FloatingService
+  ],
   templateUrl: './floating.component.html',
   styleUrl: './floating.component.scss'
 })
 export class FloatingComponent implements AfterViewInit, OnChanges {
   config = inject(NGX_FLOATING_CONFIG);
-  arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
-
   floatingService = inject(FloatingService);
 
   @ViewChild('floating')
   floatingRef?: ElementRef<HTMLElement>;
-
-  @ViewChild('arrow')
-  arrowRef?: ElementRef<HTMLElement>;
 
   @Input()
   trigger?: HTMLElement;
@@ -56,9 +56,6 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
 
   @Input()
   offset?: OffsetOptions = this.config.offset;
-
-  @Input()
-  arrow = this.config.arrow;
 
   @Input()
   arrowPadding = this.config.arrowPadding;
@@ -81,8 +78,10 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   // Uses for cleanup autoUpdate function
   cleanup?: () => void;
 
+  private _arrow?: HTMLElement;
+
   get arrowEl() {
-    return this.arrowRef?.nativeElement;
+    return this._arrow;
   }
 
   async ngAfterViewInit() {
@@ -113,9 +112,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
     const { x, y, middlewareData, placement } = await this.floatingService.computePosition(trigger, floating, {
       placement: this.placement,
       middleware: [
+        offset(this.offset),
         flip(this.flip),
         shift(this.shift),
-        offset(this.offset),
         arrow({
           element: this.arrowEl!,
           padding: this.arrowPadding
@@ -147,5 +146,12 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   getSide(placement: Placement) {
     const side = placement.split('-')[0];
     return staticSides[side];
+  }
+
+  /**
+   * Arrow sets from <floating-arrow> component
+   */
+  setArrow(arrow: HTMLElement) {
+    this._arrow = arrow;
   }
 }

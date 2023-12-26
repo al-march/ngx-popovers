@@ -14,7 +14,7 @@ export interface PopoverConfig {
 export class NgxPopoverConfig implements PopoverConfig {
   placement: Placement = 'bottom';
   offset: OffsetOptions = 4;
-  arrow = false;
+  arrow = true;
   arrowPadding = 2;
   autoUpdate = true;
 

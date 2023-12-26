@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
-import { FloatingComponent } from '@ngx-popovers/floating';
+import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
 import { Placement } from '@floating-ui/dom';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
@@ -10,7 +10,7 @@ import { HeaderComponent } from './template/header/header.component';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent, HeaderComponent],
+  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent, HeaderComponent, FloatingArrowComponent],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

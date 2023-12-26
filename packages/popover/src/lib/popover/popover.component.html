@@ -11,5 +11,9 @@
     [bindTo]="bindTo"
   >
     <ng-container *ngTemplateOutlet="template" />
+
+    @if (arrow) {
+      <ngx-floating-arrow />
+    }
   </ngx-floating>
 }

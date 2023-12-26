@@ -5,26 +5,39 @@ import {
   EventEmitter,
   inject,
   Input,
+  Optional,
   Output,
   signal
 } from '@angular/core';
 import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
-import { FloatingComponent } from '@ngx-popovers/floating';
+import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
 import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: '[ngxTooltip]',
   standalone: true,
-  imports: [TooltipTemplate, FloatingComponent],
+  imports: [TooltipTemplate, FloatingComponent, CommonModule, FloatingArrowComponent],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate(140, style({ opacity: 1, transform: 'scale(1)' }))
+      ]),
+      transition(':leave', [
+        animate(100, style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class NgxTooltip {
   config = inject(NGX_TOOLTIP_CONFIG);
-
   @Input('ngxTooltip')
   tooltipText = '';
 
@@ -88,12 +101,15 @@ export class NgxTooltip {
   isTooltipCreated = signal(false);
   isTriggerHovered = signal(false);
   isTooltipHovered = signal(false);
+  isAnimating = signal(false);
 
   get trigger() {
     return this.el.nativeElement;
   }
 
-  constructor(private el: ElementRef) {
+  constructor(
+    private el: ElementRef
+  ) {
     this.mouseMoveListener();
     this.mouseleaveListener();
   }
@@ -133,11 +149,13 @@ export class NgxTooltip {
   }
 
   show() {
+    this.isAnimating.set(true);
     this.isTooltipCreated.set(true);
     this.showEnd.emit();
   }
 
   hide() {
+    this.isAnimating.set(true);
     this.isTooltipCreated.set(false);
     this.hideEnd.emit();
   }

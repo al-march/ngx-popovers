@@ -6,18 +6,5 @@
     [style.top.px]="coords().y"
   >
     <ng-content />
-
-    @if (arrow) {
-      <div
-        #arrow
-        class="floating__arrow"
-        [class.hidden]="!arrow"
-        [style]="arrowStyles()"
-      >
-        <ng-template
-          [ngComponentOutlet]="arrowComponent"
-        />
-      </div>
-    }
   </div>
 </ngx-portal>
