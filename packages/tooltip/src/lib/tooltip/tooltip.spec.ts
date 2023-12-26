@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, Provider } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NgxTooltip } from './tooltip';
@@ -12,7 +12,7 @@ describe('Tooltip', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxTooltip, BrowserAnimationsModule]
+      imports: [NgxTooltip, NoopAnimationsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NgxTooltip);
@@ -57,7 +57,7 @@ describe('Tooltip.DI', () => {
 
     await TestBed.configureTestingModule({
       providers: [configProvider],
-      imports: [NgxTooltip, BrowserAnimationsModule]
+      imports: [NgxTooltip, NoopAnimationsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NgxTooltip);
@@ -75,7 +75,7 @@ describe('Tooltip.DOM', () => {
 
   @Component({
     template: `
-        <button [ngxTooltip]="tooltipText">Button</button>
+      <button [ngxTooltip]="tooltipText">Button</button>
     `,
     imports: [NgxTooltip],
     standalone: true
@@ -89,7 +89,7 @@ describe('Tooltip.DOM', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxTooltipTest, BrowserAnimationsModule],
+      imports: [NgxTooltipTest, NoopAnimationsModule],
       providers: [
         {
           provide: NGX_TOOLTIP_CONFIG,
@@ -114,9 +114,10 @@ describe('Tooltip.DOM', () => {
   });
 
 
-  it('should open tooltip after mouse events', async () => {
+  it('should open tooltip after mousemove', async () => {
     const mousemove = new MouseEvent('mousemove');
     button().nativeElement.dispatchEvent(mousemove);
+
     await fixture.whenStable();
     fixture.detectChanges();
 
@@ -126,15 +127,19 @@ describe('Tooltip.DOM', () => {
     let floatingEl = document.querySelector('.floating');
     expect(floatingEl).toBeInTheDocument();
     expect(floatingEl).toHaveTextContent(tooltipText);
+  });
 
-    // remove mouse from trigger
+  it('should close tooltip after mouseleave', async () => {
+    const mousemove = new MouseEvent('mousemove');
+    button().nativeElement.dispatchEvent(mousemove);
     const mouseleave = new MouseEvent('mouseleave');
     button().nativeElement.dispatchEvent(mouseleave);
+
     await fixture.whenStable();
     fixture.detectChanges();
 
     expect(tooltipInstance().isTooltipCreated()).toBeFalsy();
-    floatingEl = document.querySelector('.floating');
+    const floatingEl = document.querySelector('.floating');
     expect(floatingEl).not.toBeInTheDocument();
   });
 });

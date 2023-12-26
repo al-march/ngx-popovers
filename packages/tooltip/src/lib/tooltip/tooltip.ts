@@ -5,7 +5,6 @@ import {
   EventEmitter,
   inject,
   Input,
-  Optional,
   Output,
   signal
 } from '@angular/core';

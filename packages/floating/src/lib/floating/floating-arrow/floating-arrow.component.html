@@ -1,10 +1,12 @@
-<div
-  #arrow
-  class="arrow"
-  [class.hidden]="!arrow"
-  [style]="arrowStyles()"
->
-  <ng-template
-    [ngComponentOutlet]="arrowComponent"
-  />
-</div>
+@if (floating) {
+  <div
+    #arrow
+    class="arrow"
+    [class.hidden]="!arrow"
+    [style]="arrowStyles()"
+  >
+    <ng-template
+      [ngComponentOutlet]="arrowComponent"
+    />
+  </div>
+}

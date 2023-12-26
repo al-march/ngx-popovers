@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopoverComponent } from './popover.component';
 import { Component, Input, ViewChild } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PopoverComponent', () => {
   let component: PopoverTest;
@@ -8,7 +9,7 @@ describe('PopoverComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopoverTest]
+      imports: [PopoverTest, NoopAnimationsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PopoverTest);
@@ -34,7 +35,7 @@ describe('PopoverComponent', () => {
     expect(popover()).not.toBeInTheDocument();
   });
 
-  it('should open/close programmatically', () => {
+  it('should open/close programmatically', async () => {
     component.popover.open();
     fixture.detectChanges();
     expect(popover()).toBeInTheDocument();
@@ -42,6 +43,7 @@ describe('PopoverComponent', () => {
 
     component.popover.close();
     fixture.detectChanges();
+    await fixture.whenStable();
     expect(popover()).not.toBeInTheDocument();
     expect(component.value).toBeFalsy();
   });
@@ -91,14 +93,14 @@ describe('PopoverComponent', () => {
 @Component({
   standalone: true,
   template: `
-      <button
-              #popover
-              [ngxPopover]="content"
-              [(ngxValue)]="value"
-              (ngxValueChange)="onValueChange($event)"
-              (show)="onShow()"
-              (hide)="onHide()"
-      >
+    <button
+      #popover
+      [ngxPopover]="content"
+      [(ngxValue)]="value"
+      (ngxValueChange)="onValueChange($event)"
+      (show)="onShow()"
+      (hide)="onHide()"
+    >
           button
       </button>
       <ng-template #content>

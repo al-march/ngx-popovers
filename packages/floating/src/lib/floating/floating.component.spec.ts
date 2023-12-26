@@ -30,20 +30,7 @@ describe('FloatingComponent', () => {
     expect(component.flip).toBe(config.flip);
     expect(component.shift).toBe(config.shift);
     expect(component.offset).toBe(config.offset);
-    expect(component.arrow).toBe(config.arrow);
     expect(component.arrowPadding).toBe(config.arrowPadding);
-  });
-
-  it('should has arrow', () => {
-    const trigger = document.body;
-    fixture.componentRef.setInput('trigger', trigger);
-    fixture.componentRef.setInput('arrow', true);
-    fixture.detectChanges();
-
-    const arrow = document.querySelector('.floating__arrow');
-    const arrowBase = arrow?.querySelector('.arrow');
-    expect(arrow).toBeInTheDocument();
-    expect(arrowBase).toBeInTheDocument();
   });
 
   it('should get correct side', () => {
@@ -101,7 +88,6 @@ describe('FloatingComponent.DI', () => {
 
   const config = new NgxFloatingConfig({
     placement: 'left-start',
-    arrow: true,
     arrowPadding: 120,
     offset: 30
   });
