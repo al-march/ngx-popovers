@@ -2,38 +2,79 @@
   <page-title />
 
   <section class="py-4">
-    <h2 class="text-2xl font-bold mb-4">Floating</h2>
+    <h2 class="text-4xl mb-4 font-bold">About</h2>
+    <strong>{{ '@ngx-popovers' }}</strong> is a library, implementing
+    <a href="https://floating-ui.com/" target="_blank" class="link">floating-ui</a>.
+    <br>
+    With <strong>{{ '@ngx-popovers/core' }}</strong> you can create any dynamic component you need.
+    But you can also use already ready-made component:
 
-    <div #trigger class="flex flex-col gap-2 w-[120px] p-2 m-auto items-center bg-base-300">
-      @for (place of placementList; track place) {
-        <button
-          class="btn btn-sm w-[100px]"
-          [class.btn-accent]="place === placement()"
-          (click)="placement.set(place)"
-        >
-          {{ place }}
-        </button>
-      }
+    <ul class="p-2 pl-6 list-disc">
+      <li>{{ '@ngx-popovers/tooltip' }}</li>
+      <li>{{ '@ngx-popovers/popover' }}</li>
+    </ul>
 
-      <ngx-floating
-        ngSkipHydration
-        [trigger]="trigger"
-        [placement]="placement()"
-        [offset]="6"
-        [arrowPadding]="20"
-      >
-        <div class="card bg-base-100 border-4 border-base-200">
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Floating</h2>
-            <pre [innerText]="'<ngx-floating />'"></pre>
-            <div class="card-actions">
-              <button class="btn btn-sm btn-primary">{{ placement() }}</button>
-            </div>
-          </div>
-        </div>
+    <h3 class="text-4xl my-4 font-bold">Install</h3>
+    <p class="text-lg py-4">
+      <a [routerLink]="['/', 'core']" class="link inline-flex gap-2 items-center">
+        <core-icon class="text-primary" /> Core package
+      </a>
+    </p>
+    <div class="mockup-code max-w-[600px]">
+      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/core' }}</code></pre>
+    </div>
 
-        <ngx-floating-arrow />
-      </ngx-floating>
+    <p class="text-lg py-4">
+      <a [routerLink]="['/', 'tooltip']" class="link inline-flex gap-2 items-center">
+        <tooltip-icon class="text-primary" /> Tooltip
+      </a>
+    </p>
+    <div class="mockup-code max-w-[600px]">
+      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/tooltip' }}</code></pre>
+    </div>
+
+    <p class="text-lg py-4">
+      <a [routerLink]="['/', 'popover']" class="link inline-flex gap-2 items-center">
+        <popover-icon class="text-primary" /> Popover
+      </a>
+    </p>
+    <div class="mockup-code max-w-[600px]">
+      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/popover' }}</code></pre>
     </div>
   </section>
+
+  <!--  <section class="py-4">-->
+  <!--    <h2 class="text-2xl font-bold mb-4">Floating</h2>-->
+
+  <!--    <div #trigger class="flex flex-col gap-2 w-[120px] p-2 m-auto items-center bg-base-300">-->
+  <!--      @for (place of placementList; track place) {-->
+  <!--        <button-->
+  <!--          class="btn btn-sm w-[100px]"-->
+  <!--          [class.btn-accent]="place === placement()"-->
+  <!--          (click)="placement.set(place)"-->
+  <!--        >-->
+  <!--          {{ place }}-->
+  <!--        </button>-->
+  <!--      }-->
+
+  <!--      <ngx-floating-->
+  <!--        [trigger]="trigger"-->
+  <!--        [placement]="placement()"-->
+  <!--        [offset]="6"-->
+  <!--        [arrowPadding]="20"-->
+  <!--      >-->
+  <!--        <div class="card bg-base-100 border-4 border-base-200">-->
+  <!--          <div class="card-body items-center text-center">-->
+  <!--            <h2 class="card-title">Floating</h2>-->
+  <!--            <pre [innerText]="'<ngx-floating />'"></pre>-->
+  <!--            <div class="card-actions">-->
+  <!--              <button class="btn btn-sm btn-primary">{{ placement() }}</button>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+
+  <!--        <ngx-floating-arrow />-->
+  <!--      </ngx-floating>-->
+  <!--    </div>-->
+  <!--  </section>-->
 </div>
