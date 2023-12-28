@@ -1,16 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject, Input, OnChanges, PLATFORM_ID, signal } from '@angular/core';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import hljs from 'highlight.js/lib/core';
-import { FloatingComponent } from '@ngx-popovers/core';
 
 @Component({
   selector: 'highlight',
   standalone: true,
-  imports: [CommonModule, FloatingComponent],
+  imports: [CommonModule],
   templateUrl: './highlight.component.html',
   styleUrl: './highlight.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {ngSkipHydration: 'true'}
+  host: { ngSkipHydration: 'true' }
 })
 export class HighlightComponent implements OnChanges {
   platformId = inject(PLATFORM_ID);
