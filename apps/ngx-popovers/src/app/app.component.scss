@@ -1,8 +1,8 @@
 .active-link {
-  @apply bg-base-300 text-accent;
+  @apply bg-base-300 text-primary;
 
   &:focus {
-    @apply bg-base-300 text-accent;
+    @apply bg-base-300 text-primary;
   }
 }
 

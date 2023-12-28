@@ -4,7 +4,7 @@
     <div class="drawer-content flex flex-col">
       <!-- Page content here -->
       <dm-header
-        class="sticky top-0 pt-2"
+        class="sticky top-0 z-10"
         (toggleSidebar)="sidebar.set(!sidebar())"
       />
 
@@ -31,10 +31,29 @@
               class="btn justify-start"
               [routerLink]="route.path"
               routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{exact: true}"
             >
               <ng-template [ngComponentOutlet]="route.data?.['icon']" />
               <span class="text-lg">{{ route.data?.['name'] }}</span>
             </a>
+
+            <ul>
+              @for (child of route?.children; track child.path) {
+                @if (child.path) {
+                  <li>
+                    <a
+                      class="btn justify-start"
+                      [routerLink]="[route.path, child.path]"
+                      routerLinkActive="active-link"
+                      [routerLinkActiveOptions]="{exact: true}"
+                    >
+                      <ng-template [ngComponentOutlet]="child.data?.['icon']" />
+                      <span class="text-lg">{{ child.data?.['name'] }}</span>
+                    </a>
+                  </li>
+                }
+              }
+            </ul>
           </li>
         }
 

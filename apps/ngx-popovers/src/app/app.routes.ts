@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import {
   CoreIcon,
-  FlipIcon,
+  FlipIcon, FloatingIcon,
   GettingStartedIcon,
   OffsetIcon,
   PopoverIcon,
@@ -27,17 +27,31 @@ export const ComponentsRoutes: Route[] = [
       name: 'Core',
       icon: CoreIcon
     },
-    loadComponent: () => import('./pages/page-core/page-core.component')
-      .then(c => c.PageCoreComponent)
-  },
-  {
-    path: 'portal',
-    data: {
-      name: 'Portal',
-      icon: PortalIcon
-    },
-    loadComponent: () => import('./pages/page-portal/page-portal.component')
-      .then(c => c.PagePortalComponent)
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/page-core/page-core.component')
+          .then(c => c.PageCoreComponent),
+      },
+      {
+        path: 'floating',
+        data: {
+          name: 'Floating',
+          icon: FloatingIcon
+        },
+        loadComponent: () => import('./pages/page-core/page-floating/page-floating.component')
+          .then(c => c.PageFloatingComponent)
+      },
+      {
+        path: 'portal',
+        data: {
+          name: 'Portal',
+          icon: PortalIcon
+        },
+        loadComponent: () => import('./pages/page-core/page-portal/page-portal.component')
+          .then(c => c.PagePortalComponent)
+      }
+    ]
   },
   {
     path: 'tooltip',

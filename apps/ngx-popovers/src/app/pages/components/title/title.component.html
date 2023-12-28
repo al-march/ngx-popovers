@@ -1,8 +1,10 @@
 <h1 class="text-4xl flex gap-4 items-center">
-  <span class="text-accent">
+  <span class="text-primary">
     <ng-template
       [ngComponentOutlet]="route.snapshot['data']['icon']"
     />
   </span>
   <span>{{ route.snapshot['data']['name'] }}</span>
 </h1>
+
+<div class="divider"></div>
