@@ -7,7 +7,7 @@ describe('PageShiftComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageShiftComponent],
+      imports: [PageShiftComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageShiftComponent);

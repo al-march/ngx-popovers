@@ -1,16 +1,17 @@
 # popover
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
+for [Angular](https://angular.dev/) apps
 
 Popover component displays content next to the trigger element on mouse click
 
 > **Note**
 > I strongly recommend not using this library until its stable version is released.
 
-
 ## Usage
 
-See more information about the properties in the official documentation [floating-ui](https://floating-ui.com/docs/middleware)
+See more information about the properties in the official
+documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
 ```html
 
@@ -59,8 +60,8 @@ adds arrow to floating
 
 #### `@Input()` `arrowPadding`
 
-if your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
-
+if your floating element has border-radius, this will prevent it from overflowing the
+corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
 #### `@Input()` `autoUpdate`
 
@@ -102,6 +103,8 @@ export const PopoverConfigProvider: Provider = {
 ```
 
 ## Sources
+
 Another packages from this library:
+
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)

@@ -8,6 +8,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
     provideRouter(appRoutes),
-    provideAnimationsAsync(),
-  ],
+    provideAnimationsAsync()
+  ]
 };

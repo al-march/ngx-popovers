@@ -7,6 +7,7 @@ import { TitleComponent } from '../../components/title/title.component';
   standalone: true,
   imports: [CommonModule, TitleComponent],
   templateUrl: './page-floating.component.html',
-  styleUrl: './page-floating.component.scss',
+  styleUrl: './page-floating.component.scss'
 })
-export class PageFloatingComponent {}
+export class PageFloatingComponent {
+}

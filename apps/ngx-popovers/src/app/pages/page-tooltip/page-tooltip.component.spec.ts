@@ -7,7 +7,7 @@ describe('PageTooltipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageTooltipComponent],
+      imports: [PageTooltipComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageTooltipComponent);

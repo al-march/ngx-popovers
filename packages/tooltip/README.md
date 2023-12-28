@@ -1,6 +1,7 @@
 # Tooltip
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
+for [Angular](https://angular.dev/) apps
 
 > **Note**
 > I strongly recommend not using this library until its stable version is released.
@@ -53,7 +54,8 @@ Adds arrow to tooltip
 
 #### `@Input()` `arrowPadding`
 
-If your tooltip element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
+If your tooltip element has border-radius, this will prevent it from overflowing the
+corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
 #### `@Input()` `autoUpdate`
 

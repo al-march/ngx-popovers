@@ -1,7 +1,8 @@
 import { Route } from '@angular/router';
 import {
   CoreIcon,
-  FlipIcon, FloatingIcon,
+  FlipIcon,
+  FloatingIcon,
   GettingStartedIcon,
   OffsetIcon,
   PopoverIcon,
@@ -31,7 +32,7 @@ export const ComponentsRoutes: Route[] = [
       {
         path: '',
         loadComponent: () => import('./pages/page-core/page-core.component')
-          .then(c => c.PageCoreComponent),
+          .then(c => c.PageCoreComponent)
       },
       {
         path: 'floating',

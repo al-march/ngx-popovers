@@ -1,6 +1,7 @@
 # core
 
-This library was generated with [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps.
+This library was generated with [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/)
+for [Angular](https://angular.dev/) apps.
 
 > **Note**
 >
@@ -26,11 +27,13 @@ export class AppComponent {
 ```
 
 #### (method) computePosition
-The `computePosition` method is a proxy for `computePosition` from [floating-ui](https://floating-ui.com/docs/computePosition)
+
+The `computePosition` method is a proxy for `computePosition`
+from [floating-ui](https://floating-ui.com/docs/computePosition)
 
 #### (method) autoUpdate
-The `autoUpdate` method is a proxy for `autoUpdate` from [floating-ui](https://floating-ui.com/docs/computePosition)
 
+The `autoUpdate` method is a proxy for `autoUpdate` from [floating-ui](https://floating-ui.com/docs/computePosition)
 
 ```typescript
 floatingService = inject(FloatingService);
@@ -38,7 +41,7 @@ floatingService = inject(FloatingService);
 this.floatingService.computePosition(trigger, floating);
 ```
 
-You also can import all types and  methods of floating-ui from this package
+You also can import all types and methods of floating-ui from this package
 
 ```typescript
 import { 
@@ -68,7 +71,8 @@ This component is required to display tooltips correctly without overlapping wit
 
 # floating
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
+for [Angular](https://angular.dev/) apps
 
 
 > **Note**
@@ -78,7 +82,8 @@ The Floating component implements the floating-ui library for Angular
 
 ## Usage
 
-See more information about the properties in the official documentation [floating-ui](https://floating-ui.com/docs/middleware)
+See more information about the properties in the official
+documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
 ```html
 
@@ -123,7 +128,8 @@ Adds arrow to floating
 
 #### `@Input()` `arrowPadding`
 
-If your floating element has border-radius, this will prevent it from overflowing the corners. ([more](https://floating-ui.com/docs/arrow#padding))
+If your floating element has border-radius, this will prevent it from overflowing the
+corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
 #### `@Input()` `autoUpdate`
 
@@ -190,6 +196,8 @@ Any module:
 ```
 
 ## Sources
+
 This package is a major dependency for other packages:
+
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)

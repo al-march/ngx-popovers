@@ -69,7 +69,7 @@ describe('PortalComponent', () => {
     PortalComponent
   ],
   template: `
-      <ngx-portal [bindTo]="bindTo"><div [id]="testId">{{ testId }}</div></ngx-portal>
+    <ngx-portal [bindTo]="bindTo"><div [id]="testId">{{ testId }}</div></ngx-portal>
   `
 })
 class PortalComponentTest {

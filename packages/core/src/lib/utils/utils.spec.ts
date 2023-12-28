@@ -10,7 +10,7 @@ describe('utils', () => {
       do() {}
     }
 
-    class cl2 extends cl1{
+    class cl2 extends cl1 {
       key2 = 2;
     }
 
@@ -33,6 +33,6 @@ describe('utils', () => {
       const obj2 = new cl2();
       expect(Keys(obj2)).toHaveLength(2);
       expect(Keys(obj2)).toEqual(['key1', 'key2']);
-    })
+    });
   });
 });

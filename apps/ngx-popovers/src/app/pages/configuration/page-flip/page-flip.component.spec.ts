@@ -7,7 +7,7 @@ describe('PageFlipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageFlipComponent],
+      imports: [PageFlipComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageFlipComponent);

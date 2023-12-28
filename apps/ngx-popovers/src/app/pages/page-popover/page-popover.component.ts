@@ -7,6 +7,7 @@ import { TitleComponent } from '../components/title/title.component';
   standalone: true,
   imports: [CommonModule, TitleComponent],
   templateUrl: './page-popover.component.html',
-  styleUrl: './page-popover.component.scss',
+  styleUrl: './page-popover.component.scss'
 })
-export class PagePopoverComponent {}
+export class PagePopoverComponent {
+}

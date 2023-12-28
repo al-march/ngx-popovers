@@ -7,7 +7,7 @@ describe('FloatingArrowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FloatingArrowComponent],
+      imports: [FloatingArrowComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FloatingArrowComponent);

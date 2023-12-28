@@ -7,7 +7,7 @@ describe('PagePopoverComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PagePopoverComponent],
+      imports: [PagePopoverComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PagePopoverComponent);

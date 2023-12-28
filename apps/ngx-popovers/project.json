@@ -8,19 +8,25 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/ngx-popovers",
         "index": "apps/ngx-popovers/src/index.html",
         "browser": "apps/ngx-popovers/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/ngx-popovers/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/ngx-popovers/src/favicon.ico",
           "apps/ngx-popovers/src/assets"
         ],
-        "styles": ["apps/ngx-popovers/src/styles.scss"],
+        "styles": [
+          "apps/ngx-popovers/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/ngx-popovers/src/main.server.ts",
         "prerender": true,
@@ -72,11 +78,15 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/ngx-popovers/jest.config.ts"
       }

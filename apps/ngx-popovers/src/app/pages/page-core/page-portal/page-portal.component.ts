@@ -7,6 +7,7 @@ import { TitleComponent } from '../../components/title/title.component';
   standalone: true,
   imports: [CommonModule, TitleComponent],
   templateUrl: './page-portal.component.html',
-  styleUrl: './page-portal.component.scss',
+  styleUrl: './page-portal.component.scss'
 })
-export class PagePortalComponent {}
+export class PagePortalComponent {
+}

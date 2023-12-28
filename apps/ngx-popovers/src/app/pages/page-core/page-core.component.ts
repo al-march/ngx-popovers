@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, TitleComponent, CoreIcon, RouterLink],
   templateUrl: './page-core.component.html',
-  styleUrl: './page-core.component.scss',
+  styleUrl: './page-core.component.scss'
 })
-export class PageCoreComponent {}
+export class PageCoreComponent {
+}

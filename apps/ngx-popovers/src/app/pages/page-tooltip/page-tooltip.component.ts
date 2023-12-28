@@ -7,6 +7,7 @@ import { TitleComponent } from '../components/title/title.component';
   standalone: true,
   imports: [CommonModule, TitleComponent],
   templateUrl: './page-tooltip.component.html',
-  styleUrl: './page-tooltip.component.scss',
+  styleUrl: './page-tooltip.component.scss'
 })
-export class PageTooltipComponent {}
+export class PageTooltipComponent {
+}

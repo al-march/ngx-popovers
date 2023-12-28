@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import {
+  arrow,
   Derivable,
   flip,
   FlipOptions,
@@ -18,8 +19,7 @@ import {
   OffsetOptions,
   Placement,
   shift,
-  ShiftOptions,
-  arrow
+  ShiftOptions
 } from '@floating-ui/dom';
 import { PortalComponent } from '../portal/portal.component';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';

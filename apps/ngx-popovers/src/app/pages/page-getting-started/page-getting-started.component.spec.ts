@@ -7,7 +7,7 @@ describe('PageGettingStartedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageGettingStartedComponent],
+      imports: [PageGettingStartedComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageGettingStartedComponent);

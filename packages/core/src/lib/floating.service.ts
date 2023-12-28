@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { computePosition, autoUpdate } from './type';
+import { autoUpdate, computePosition } from './type';
 
 @Injectable()
 export class FloatingService {

@@ -5,6 +5,6 @@ import { defineConfig } from 'cypress';
 export default defineConfig({
   e2e: {
     ...nxE2EPreset(__filename, { cypressDir: 'src' }),
-    baseUrl: 'http://localhost:4200',
-  },
+    baseUrl: 'http://localhost:4200'
+  }
 });

@@ -7,7 +7,7 @@ describe('PagePortalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PagePortalComponent],
+      imports: [PagePortalComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PagePortalComponent);

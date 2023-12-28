@@ -11,14 +11,22 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NgxTooltip, FloatingComponent, PopoverComponent, HeaderComponent, FloatingArrowComponent, NgComponentOutlet, NgClass],
+  imports: [
+    RouterModule,
+    NgxTooltip,
+    FloatingComponent,
+    PopoverComponent,
+    HeaderComponent,
+    FloatingArrowComponent,
+    NgComponentOutlet,
+    NgClass
+  ],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [TooltipProvider, TooltipConfigProvider, ArrowProvider]
 })
 export class AppComponent {
-
   sidebar = signal(true);
 
   gettingStartedRoute = GettingStartedRoute;

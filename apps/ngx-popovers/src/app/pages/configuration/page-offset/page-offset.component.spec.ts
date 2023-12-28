@@ -7,7 +7,7 @@ describe('PageOffsetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageOffsetComponent],
+      imports: [PageOffsetComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageOffsetComponent);

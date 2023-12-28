@@ -7,7 +7,7 @@ describe('PageFloatingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageFloatingComponent],
+      imports: [PageFloatingComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageFloatingComponent);

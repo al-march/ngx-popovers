@@ -13,7 +13,7 @@ import { NGX_FLOATING_ARROW_COMPONENT } from '../core/floating.injections';
 })
 export class FloatingArrowComponent implements AfterViewInit {
   arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
-  floating = inject(FloatingComponent, {optional: true});
+  floating = inject(FloatingComponent, { optional: true });
 
   @ViewChild('arrow')
   arrowRef?: ElementRef<HTMLElement>;
