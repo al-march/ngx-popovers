@@ -8,6 +8,7 @@
       @for (place of placementList; track place) {
         <button
           class="btn btn-sm w-[100px]"
+          [class.btn-accent]="place === placement()"
           (click)="placement.set(place)"
         >
           {{ place }}

@@ -27,7 +27,6 @@ export class PageGettingStartedComponent {
     'right-start',
     'top-end',
     'top',
-    'top-start',
-    'left-start'
+    'top-start'
   ];
 }
