@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,4 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TitleComponent {
   route = inject(ActivatedRoute);
+
+  @Input()
+  description = '';
 }

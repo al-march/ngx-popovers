@@ -1,3 +1,25 @@
 <div class="page">
-  <page-title />
+  <page-title description="The Floating component implements the floating-ui library for Angular." />
+
+  <section class="py-4">
+    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+
+    <p class="text-xl">Default usage:</p>
+    <div class="my-4">
+      <highlight lang="html" [code]="example" />
+    </div>
+
+    <p>The floating component uses <a class="link" [routerLink]="['/', 'core', 'portal']">Portal</a> inside.</p>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+
+    <p>There is a configuration token <code>NGX_FLOATING_CONFIG</code>.</p>
+    <p>Please, use the <code>NgxFloatingConfig</code> class to change the default floating properties.</p>
+
+    <div class="my-4">
+      <highlight lang="typescript" [code]="configExample" />
+    </div>
+  </section>
 </div>
