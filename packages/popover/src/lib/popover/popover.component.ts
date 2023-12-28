@@ -11,9 +11,15 @@ import {
   TemplateRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Derivable, FlipOptions, OffsetOptions, ShiftOptions } from '@ngx-popovers/core';
-import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
-import { Placement } from '@floating-ui/dom';
+import {
+  Derivable,
+  FlipOptions,
+  FloatingArrowComponent,
+  FloatingComponent,
+  OffsetOptions,
+  Placement,
+  ShiftOptions
+} from '@ngx-popovers/core';
 import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
 import { animate, style, transition, trigger } from '@angular/animations';
 

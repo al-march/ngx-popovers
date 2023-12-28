@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
-import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
+import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/core';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { HeaderComponent } from './template/header/header.component';
-import { appRoutes, ComponentsRoutes, ConfigurationRoutes, GettingStartedRoute } from './app.routes';
+import { ComponentsRoutes, ConfigurationRoutes, GettingStartedRoute } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
 
 @Component({

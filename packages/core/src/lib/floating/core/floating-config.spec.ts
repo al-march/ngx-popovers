@@ -1,5 +1,5 @@
 import { NgxFloatingConfig } from './floating-config';
-import { Keys } from '@ngx-popovers/core';
+import { Keys } from '../../utils/utils';
 
 describe('FloatingConfig', () => {
   it('should create an instance', () => {

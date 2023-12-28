@@ -8,8 +8,15 @@ import {
   Output,
   signal
 } from '@angular/core';
-import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
-import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
+import {
+  Derivable,
+  FlipOptions,
+  FloatingArrowComponent,
+  FloatingComponent,
+  OffsetOptions,
+  Placement,
+  ShiftOptions
+} from '@ngx-popovers/core';
 import { debounceTime, filter, fromEvent, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';

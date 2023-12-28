@@ -1,5 +1,4 @@
-import { Placement } from '@floating-ui/dom';
-import { Derivable, FlipOptions, OffsetOptions, ShiftOptions } from '@ngx-popovers/core';
+import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
 
 export interface TooltipConfig {
   placement: Placement;

@@ -4,16 +4,16 @@ import {
   Derivable,
   flip,
   FlipOptions,
-  FloatingService,
   offset,
   OffsetOptions,
   Placement,
   shift,
-  ShiftOptions
-} from '@ngx-popovers/core';
-import { PortalComponent } from '@ngx-popovers/portal';
-import { arrow } from '@floating-ui/dom';
+  ShiftOptions,
+  arrow
+} from '@floating-ui/dom';
+import { PortalComponent } from '../portal/portal.component';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
+import { FloatingService } from '../floating.service';
 
 const staticSides: Record<string, string> = {
   top: 'bottom',

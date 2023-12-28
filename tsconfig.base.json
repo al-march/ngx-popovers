@@ -16,9 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ngx-popovers/core": ["packages/core/src/index.ts"],
-      "@ngx-popovers/floating": ["packages/floating/src/index.ts"],
       "@ngx-popovers/popover": ["packages/popover/src/index.ts"],
-      "@ngx-popovers/portal": ["packages/portal/src/index.ts"],
       "@ngx-popovers/tooltip": ["packages/tooltip/src/index.ts"]
     }
   },

@@ -1,5 +1,5 @@
 import { Component, Provider } from '@angular/core';
-import { FloatingArrowBase, NGX_FLOATING_ARROW_COMPONENT } from '@ngx-popovers/floating';
+import { FloatingArrowBase, NGX_FLOATING_ARROW_COMPONENT } from '@ngx-popovers/core';
 
 @Component({
   standalone: true,

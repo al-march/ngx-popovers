@@ -20,8 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.12",
-    "@ngx-popovers/floating": "0.0.12"
+    "@ngx-popovers/core": "0.0.12"
   },
   "sideEffects": false
 }

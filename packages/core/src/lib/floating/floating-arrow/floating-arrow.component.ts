@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FloatingComponent, NGX_FLOATING_ARROW_COMPONENT } from '@ngx-popovers/floating';
+import { FloatingComponent } from '../floating.component';
+import { NGX_FLOATING_ARROW_COMPONENT } from '../core/floating.injections';
 
 @Component({
   selector: 'ngx-floating-arrow',

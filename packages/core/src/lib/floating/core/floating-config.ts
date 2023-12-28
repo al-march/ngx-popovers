@@ -1,4 +1,4 @@
-import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
+import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '../../type';
 
 export interface FloatingConfig {
   placement: Placement;

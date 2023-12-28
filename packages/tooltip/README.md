@@ -27,15 +27,15 @@ Add `ngxTooltip` to the html element to use this library.
 
 ### Inputs
 
-#### `@Input()` `placement` 
+#### `@Input()` `placement`
 
 controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
-#### `@Input()` `flip` 
+#### `@Input()` `flip`
 
 changes the placement of the floating element to keep it in view ([docs](https://floating-ui.com/docs/flip))
 
-#### `@Input()` `shift` 
+#### `@Input()` `shift`
 
 shifts the floating element to keep it in view ([docs](https://floating-ui.com/docs/shift))
 
@@ -43,10 +43,9 @@ shifts the floating element to keep it in view ([docs](https://floating-ui.com/d
 
 translates the floating element along the specified axes ([docs](https://floating-ui.com/docs/offset))
 
-#### `@Input()` `debounce` 
+#### `@Input()` `debounce`
 
 time delay before the tooltip is displayed
-
 
 #### `@Input()` `arrow`
 
@@ -64,7 +63,6 @@ updates floating element automatically. Default `false`
 
 renders floating element as last child of bindTo. Default is body.
 
-
 ### Outputs
 
 #### `@Output()` `showEnd`
@@ -77,8 +75,8 @@ Emits when tooltip hide ends
 
 ## Configuration
 
-There is a configuration token `NGX_TOOLTIP_CONFIG`. 
-Please, use the `NgxTooltipConfig` class to change the  default tooltip properties.
+There is a configuration token `NGX_TOOLTIP_CONFIG`.
+Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
 
 ```typescript
 export const TooltipConfigProvider: Provider = {
@@ -128,8 +126,8 @@ export const TooltipProvider: Provider = {
 ```
 
 ## Sources
+
 Another packages from this library:
+
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
-* [portal](https://www.npmjs.com/package/@ngx-popovers/portal)
-* [floating](https://www.npmjs.com/package/@ngx-popovers/floating)
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)

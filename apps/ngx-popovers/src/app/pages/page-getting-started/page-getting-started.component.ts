@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
 import { Placement } from '@floating-ui/dom';
-import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/floating';
+import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/core';
 
 @Component({
   selector: 'ngx-popovers-page-getting-started',
