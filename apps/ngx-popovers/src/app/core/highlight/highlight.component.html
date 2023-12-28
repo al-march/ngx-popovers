@@ -1,0 +1,14 @@
+<div class="mockup-code">
+  <code #code>
+    <pre
+      [innerHTML]="markup()"
+    >
+    </pre>
+  </code>
+
+  <ngx-floating [trigger]="code" [autoUpdate]="false" [offset]="10" placement="top-end">
+    <div class="pr-4">
+      <button class="btn btn-xs">Copy</button>
+    </div>
+  </ngx-floating>
+</div>
