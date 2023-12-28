@@ -1,5 +1,15 @@
-import { AfterViewInit, Component, ElementRef, inject, Input, OnChanges, signal, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  Input,
+  OnChanges,
+  PLATFORM_ID,
+  signal,
+  ViewChild
+} from '@angular/core';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import {
   Derivable,
   flip,
@@ -38,6 +48,11 @@ const staticSides: Record<string, string> = {
 export class FloatingComponent implements AfterViewInit, OnChanges {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
+
+  platformId = inject(PLATFORM_ID);
+  // Do not run floating-ui inside Window.
+  // We need to render dynamic content only when the Window is allowed
+  isServer = isPlatformServer(this.platformId);
 
   @ViewChild('floating')
   floatingRef?: ElementRef<HTMLElement>;
@@ -93,6 +108,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   }
 
   async bind() {
+    if (this.isServer) {
+      return;
+    }
     this.cleanup?.();
     const trigger = this.trigger;
     const floating = this.floatingRef?.nativeElement;

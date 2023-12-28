@@ -1,10 +1,12 @@
-<ngx-portal [bindTo]="bindTo">
-  <div
-    #floating
-    class="floating"
-    [style.left.px]="coords().x"
-    [style.top.px]="coords().y"
-  >
-    <ng-content />
-  </div>
-</ngx-portal>
+@if (!isServer) {
+  <ngx-portal [bindTo]="bindTo">
+    <div
+      #floating
+      class="floating"
+      [style.left.px]="coords().x"
+      [style.top.px]="coords().y"
+    >
+      <ng-content />
+    </div>
+  </ngx-portal>
+}

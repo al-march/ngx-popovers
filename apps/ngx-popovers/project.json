@@ -21,7 +21,12 @@
           "apps/ngx-popovers/src/assets"
         ],
         "styles": ["apps/ngx-popovers/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "server": "apps/ngx-popovers/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/ngx-popovers/server.ts"
+        }
       },
       "configurations": {
         "production": {

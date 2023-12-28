@@ -15,7 +15,7 @@ export class ThemeService {
     rendererFactory: RendererFactory2
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
-    const theme = this.doc.documentElement.dataset['theme'];
+    const theme = this.doc.documentElement.dataset?.['theme'];
     if (theme) {
       if (theme === 'dark' || theme === 'light') {
         this.theme.set(theme);
@@ -24,7 +24,6 @@ export class ThemeService {
 
     effect(() => {
       const theme = this.theme();
-      // console.log('theme', theme);
       switch (theme) {
         case 'dark':
           this.dark();
@@ -40,15 +39,13 @@ export class ThemeService {
     this.theme() === 'dark'
       ? this.theme.set('light')
       : this.theme.set('dark');
-
-    console.log('toggle', this.theme());
   }
 
   light() {
-    this.doc.documentElement.dataset['theme'] = 'light';
+    this.renderer.setAttribute(this.doc.documentElement, 'data-theme', 'light');
   }
 
   dark() {
-    this.doc.documentElement.dataset['theme'] = 'dark';
+    this.renderer.setAttribute(this.doc.documentElement, 'data-theme', 'dark');
   }
 }
