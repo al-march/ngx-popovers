@@ -13,14 +13,31 @@
       </a>
       .
     </p>
-    <p class="py-4">Install</p>
     <p class="text-lg py-4">
       <a [routerLink]="['/', 'core']" class="link inline-flex gap-2 items-center">
         <core-icon class="text-primary" /> Core package
       </a>
     </p>
-    <div class="mockup-code max-w-[600px]">
-      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/core' }}</code></pre>
-    </div>
+
+    <highlight lang="bash" [code]="'npm i @ngx-popovers/core'" />
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Components</h2>
+
+    <a [routerLink]="['/', 'core', 'portal']" class="link inline-flex gap-2 items-center">
+      <portal-icon class="text-primary" /> Portal
+    </a>
+
+    <p>The Portal component displays the content on the body by default or another DOM element.</p>
+
+    <br>
+
+    <a [routerLink]="['/', 'core', 'floating']" class="link inline-flex gap-2 items-center">
+      <floating-icon class="text-primary" /> Floating
+    </a>
+
+    <p>The Floating component implements the floating-ui library for Angular.</p>
+
   </section>
 </div>
