@@ -17,6 +17,7 @@ const example = `
   [offset]="10"
   [flip]="{mainAxis: false}"
   [shift]="{mainAxis: true}"
+  bindTo=".body"
 >
   <div class="floating">
     <p>Floating content</p>
@@ -29,7 +30,8 @@ export const FloatingConfigProvider: Provider = {
   provide: NGX_FLOATING_CONFIG,
   useValue: new NgxFloatingConfig({
     placement: 'top-end',
-    arrow: true
+    offset: 10,
+    autoUpdate: false
   })
 };
 `.trim();
@@ -37,7 +39,14 @@ export const FloatingConfigProvider: Provider = {
 @Component({
   selector: 'ngx-popovers-page-floating',
   standalone: true,
-  imports: [CommonModule, TitleComponent, HighlightComponent, RouterLink, FloatingArrowComponent, FloatingComponent],
+  imports: [
+    CommonModule,
+    TitleComponent,
+    HighlightComponent,
+    RouterLink,
+    FloatingArrowComponent,
+    FloatingComponent
+  ],
   templateUrl: './page-floating.component.html',
   styleUrl: './page-floating.component.scss'
 })

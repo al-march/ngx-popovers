@@ -1,18 +1,25 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
+import { PortalComponent } from '@ngx-popovers/core';
 
+const portalUsageHtml = `
+import { PortalComponent } from '@ngx-popovers/core';
 
-const portalUsageHtml =
-  `
-<ngx-portal>
-  <p>It will be displayed as the last child of the body</p>
-</ngx-portal>
+@Component({
+  selector: 'ngx-portal-example',
+  standalone: true,
+  imports: [PortalComponent],
+  template: \`
+    <ngx-portal>
+      <p>It will be displayed as the last child of the body</p>
+    </ngx-portal>
+  \`,
+})
 `.trim();
 
-const portalUsageWithBindHtml =
-  `
+const portalUsageWithBindHtml = `
 <div #element>
   <p>Element</p>
 </div>
@@ -25,15 +32,24 @@ const portalUsageWithBindHtml =
 @Component({
   selector: 'ngx-popovers-page-portal',
   standalone: true,
-  imports: [CommonModule, TitleComponent, HighlightComponent],
+  imports: [CommonModule, TitleComponent, HighlightComponent, PortalComponent],
   templateUrl: './page-portal.component.html',
   styleUrl: './page-portal.component.scss'
 })
-export class PagePortalComponent {
+export class PagePortalComponent implements AfterViewInit {
   portalUsageHtml = portalUsageHtml;
   portalUsageWithBindHtml = portalUsageWithBindHtml;
 
-  constructor() {
-  }
+  sections = [
+    'sect1',
+    'sect2',
+    'sect3',
+    'sect4'
+  ] as const;
+  section = signal('');
+  selector = computed(() => this.section() ? `#${this.section()} div` : '');
 
+  ngAfterViewInit() {
+    this.section.set(this.sections[0]);
+  }
 }

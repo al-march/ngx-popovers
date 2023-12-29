@@ -5,14 +5,49 @@
     <h2 class="text-4xl mb-4 font-bold">Usage</h2>
 
     <p class="text-xl">Default usage:</p>
+
     <div class="my-4">
-      <highlight lang="html" [code]="portalUsageHtml" />
+      <highlight lang="typescript" [code]="portalUsageHtml" />
     </div>
 
     <p class="text-xl">Usage with bindTo</p>
 
     <div class="my-4">
       <highlight lang="html" [code]="portalUsageWithBindHtml" />
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+
+    <p>
+      You can display portal content into any DOM element.
+      Select any container for demonstration
+    </p>
+
+    <br>
+    <pre>bindTo: {{ selector() }}</pre>
+
+    <div class="flex gap-2 py-4">
+      @for (sect of sections; track sect) {
+        <section
+          [id]="sect"
+          class="flex-1 h-[120px] border-2 border-dashed border-primary rounded flex flex-col overflow-hidden"
+        >
+          <button class="btn btn-sm" (click)="section.set(sect)">{{ sect }}</button>
+          <div class="flex-1 flex items-center justify-center"></div>
+        </section>
+      }
+
+      <br>
+
+      @if (section()) {
+        <ngx-portal
+          [bindTo]="selector()"
+        >
+          <div class="p-4 bg-primary">Portal!</div>
+        </ngx-portal>
+      }
     </div>
   </section>
 </div>

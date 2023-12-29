@@ -2,17 +2,19 @@ import {
   ChangeDetectionStrategy,
   Component,
   EmbeddedViewRef,
+  inject,
   Inject,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   Renderer2,
   TemplateRef,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT, isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'ngx-portal',
@@ -23,6 +25,11 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PortalComponent implements OnInit, OnChanges, OnDestroy {
+  platformId = inject(PLATFORM_ID);
+  // Do not run floating-ui inside Window.
+  // We need to render dynamic content only when the Window is allowed
+  isServer = isPlatformServer(this.platformId);
+
   @ViewChild(TemplateRef, { static: true })
   portalContent?: TemplateRef<HTMLElement>;
 
@@ -37,7 +44,7 @@ export class PortalComponent implements OnInit, OnChanges, OnDestroy {
       return this.bindTo;
     }
     if (typeof this.bindTo === 'string') {
-      return this.parentBySelector(this.bindTo) ?? this.document.body;
+      return this.parentBySelector(this.bindTo);
     }
     return this.document.body;
   }
@@ -65,13 +72,16 @@ export class PortalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   bind() {
-    if (this.portalContent) {
+    if (this.isServer) {
+      return;
+    }
+    if (this.portalContent && this.parent) {
       this.view = this.viewContainerRef.createEmbeddedView(this.portalContent);
       this.panelRef = this.view.rootNodes[0];
       if (this.panelRef) {
         this.renderer.appendChild(this.parent, this.panelRef);
       } else {
-        console.error('cannot render component into body');
+        console.error(`cannot render component into ${this.parent}`);
       }
     }
   }
