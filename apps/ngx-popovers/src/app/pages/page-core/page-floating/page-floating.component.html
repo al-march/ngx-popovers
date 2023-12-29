@@ -13,6 +13,47 @@
 
     <div class="divider"></div>
 
+    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+
+    <section
+      #wrapper
+      class="border-2 border-dashed border-primary rounded min-h-[400px] max-w-[800px] m-auto flex items-center justify-center relative overflow-hidden"
+    >
+      <div #trigger class="flex flex-col gap-2 w-[120px] p-2 m-auto items-center bg-base-300">
+        @for (place of placementList; track place) {
+          <button
+            class="btn btn-sm w-[100px]"
+            [class.btn-accent]="place === placement()"
+            (click)="placement.set(place)"
+          >
+            {{ place }}
+          </button>
+        }
+
+        <ngx-floating
+          [trigger]="trigger"
+          [bindTo]="wrapper"
+          [placement]="placement()"
+          [offset]="6"
+          [arrowPadding]="20"
+          [flip]="{fallbackStrategy: 'initialPlacement'}"
+        >
+          <div class="card bg-base-100 border-4 border-base-200">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title">Floating</h2>
+              <pre [innerText]="'<ngx-floating />'"></pre>
+              <div class="card-actions">
+                <button class="btn btn-sm btn-primary">{{ placement() }}</button>
+              </div>
+            </div>
+          </div>
+          <ngx-floating-arrow />
+        </ngx-floating>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
 
     <p>There is a configuration token <code>NGX_FLOATING_CONFIG</code>.</p>

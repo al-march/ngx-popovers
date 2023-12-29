@@ -1,6 +1,6 @@
 <main class="flex flex-col">
-  <div class="drawer" [class.drawer-open]="sidebar()">
-    <input type="checkbox" class="drawer-toggle" />
+  <div class="drawer lg:drawer-open">
+    <input type="checkbox" class="drawer-toggle" [checked]="sidebar()" />
     <div class="drawer-content flex flex-col">
       <!-- Page content here -->
       <dm-header
@@ -76,8 +76,10 @@
         }
 
         <div class="flex-1"></div>
-        <div class="divider my-1"></div>
-        <button class="btn btn-sm" (click)="sidebar.set(false)">Close</button>
+        <div class="lg:hidden w-full">
+          <div class="divider my-1"></div>
+          <button class="btn btn-sm w-full" (click)="sidebar.set(false)">Close</button>
+        </div>
       </ul>
     </div>
   </div>

@@ -14,21 +14,4 @@ import { RouterLink } from '@angular/router';
   styleUrl: './page-getting-started.component.scss'
 })
 export class PageGettingStartedComponent {
-  placement = signal<Placement>('left');
-  floating = signal(false);
-
-  placementList: Placement[] = [
-    'left-start',
-    'left',
-    'left-end',
-    'bottom-start',
-    'bottom',
-    'bottom-end',
-    'right-end',
-    'right',
-    'right-start',
-    'top-end',
-    'top',
-    'top-start'
-  ];
 }

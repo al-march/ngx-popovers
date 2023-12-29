@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
+import { Placement } from '@floating-ui/dom';
+import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/core';
 
 const example = `
 <div #trigger>
@@ -35,11 +37,21 @@ export const FloatingConfigProvider: Provider = {
 @Component({
   selector: 'ngx-popovers-page-floating',
   standalone: true,
-  imports: [CommonModule, TitleComponent, HighlightComponent, RouterLink],
+  imports: [CommonModule, TitleComponent, HighlightComponent, RouterLink, FloatingArrowComponent, FloatingComponent],
   templateUrl: './page-floating.component.html',
   styleUrl: './page-floating.component.scss'
 })
 export class PageFloatingComponent {
   example = example;
   configExample = configExample;
+
+  placement = signal<Placement>('left');
+  floating = signal(false);
+
+  placementList: Placement[] = [
+    'left',
+    'bottom',
+    'right',
+    'top'
+  ];
 }
