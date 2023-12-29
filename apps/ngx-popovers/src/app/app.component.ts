@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/core';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
@@ -8,6 +8,7 @@ import { PopoverComponent } from '@ngx-popovers/popover';
 import { HeaderComponent } from './template/header/header.component';
 import { ComponentsRoutes, ConfigurationRoutes, GettingStartedRoute } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
+import { filter, tap } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -26,10 +27,18 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
   styleUrl: './app.component.scss',
   providers: [TooltipProvider, TooltipConfigProvider, ArrowProvider]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   sidebar = signal(true);
+  router = inject(Router);
 
   gettingStartedRoute = GettingStartedRoute;
   configurationRoutes = ConfigurationRoutes;
   componentsRoutes = ComponentsRoutes;
+
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      tap(() => this.sidebar.set(false))
+    ).subscribe();
+  }
 }
