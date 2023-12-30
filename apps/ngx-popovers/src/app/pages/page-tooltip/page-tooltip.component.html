@@ -1,3 +1,130 @@
 <div class="page">
   <page-title />
+
+  <section class="py-4">
+    <h2 class="text-4xl mb-4 font-bold">About</h2>
+    <p>
+      The Tooltip component shows tooltips next to the trigger element.
+      It can be rendered into any component you want with <code class="code">bindTo</code> input
+    </p>
+    <br>
+
+    <highlight lang="bash" [code]="'npm i @ngx-popovers/tooltip'" />
+
+    <br>
+
+    <p>This component created with:</p>
+    <p class="text-lg py-4">
+      <a [routerLink]="['/', 'core']" class="link inline-flex gap-2 items-center">
+        <core-icon class="text-primary" /> Core
+      </a>
+    </p>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+    <p>Default usage:</p>
+
+    <div class="my-4">
+      <highlight lang="html" [code]="usageExample" />
+    </div>
+
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+
+    <p>
+      There is a configuration token <code class="code">NGX_TOOLTIP_CONFIG</code>.
+      <br>
+      Please, use the <code class="code">NgxTooltipConfig</code> class
+      to change the default tooltip properties.
+    </p>
+
+    <div class="my-4">
+      <highlight lang="typescript" [code]="configExample" />
+    </div>
+
+    <p>
+      You can use your own component to visualize tooltips.
+      <br>
+      There is an injection token <code class="code">NGX_TOOLTIP_COMPONENT</code>
+      that replaces the default component.
+    </p>
+
+    <div class="my-4">
+      <highlight lang="typescript" [code]="configComponentExample" />
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+
+    <section class="flex gap-2 items-center p-4 mb-4">
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text">Tooltip placement</span>
+        </div>
+        <select
+          class="select select-bordered"
+          name="placement"
+          [(ngModel)]="placement"
+        >
+          @for (option of placementList; track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text">Debounce</span>
+          <span class="label-text-alt">(min is 20)</span>
+        </div>
+        <input
+          type="number"
+          placeholder="debounce"
+          class="input input-bordered w-full max-w-xs"
+          [(ngModel)]="debounce"
+        />
+      </label>
+
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text">Offset</span>
+        </div>
+        <input
+          type="number"
+          placeholder="offset"
+          class="input input-bordered w-full max-w-xs"
+          [(ngModel)]="offset"
+        />
+      </label>
+    </section>
+
+    <section class="flex gap-2 items-center p-4 mb-4">
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <input type="checkbox" [(ngModel)]="arrow" class="checkbox" />
+          <span class="label-text pl-2">With arrow</span>
+        </label>
+      </div>
+    </section>
+
+    <section
+      class="border-2 border-dashed border-primary rounded min-h-[400px] max-w-[800px] m-auto flex items-center justify-center relative overflow-hidden"
+    >
+      <div class="w-32 h-32 border-2 border-dashed border-secondary rounded flex">
+        <div
+          class="flex-1"
+          [ngxTooltip]="'I tooltip'"
+          [offset]="offset"
+          [placement]="placement"
+          [debounce]="debounce"
+          [arrow]="arrow"
+        ></div>
+      </div>
+    </section>
+
+  </section>
 </div>

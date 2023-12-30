@@ -5,6 +5,7 @@ import {
   EventEmitter,
   inject,
   Input,
+  OnChanges,
   Output,
   signal
 } from '@angular/core';
@@ -17,7 +18,7 @@ import {
   Placement,
   ShiftOptions
 } from '@ngx-popovers/core';
-import { debounceTime, filter, fromEvent, tap } from 'rxjs';
+import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
 import { animate, style, transition, trigger } from '@angular/animations';
@@ -42,7 +43,7 @@ import { CommonModule } from '@angular/common';
     ])
   ]
 })
-export class NgxTooltip {
+export class NgxTooltip implements OnChanges {
   config = inject(NGX_TOOLTIP_CONFIG);
   @Input('ngxTooltip')
   tooltipText = '';
@@ -116,15 +117,23 @@ export class NgxTooltip {
   constructor(
     private el: ElementRef
   ) {
+  }
+
+  ngOnChanges() {
     this.mouseMoveListener();
     this.mouseleaveListener();
   }
 
+  private moveSubscriber$?: Subscription;
+
   mouseMoveListener() {
-    fromEvent(this.trigger, 'mousemove').pipe(
+    this.moveSubscriber$?.unsubscribe();
+
+    const debounce = this.fixDebounce(this.debounce);
+    this.moveSubscriber$ = fromEvent(this.trigger, 'mousemove').pipe(
       tap(() => this.isTriggerHovered.set(true)),
       filter(() => !this.isTooltipCreated()),
-      debounceTime(this.debounce),
+      debounceTime(debounce),
       filter(() => this.isTriggerHovered())
     ).subscribe(() => {
       this.onMouseMove();
@@ -139,11 +148,16 @@ export class NgxTooltip {
     this.show();
   }
 
+  private leaveSubscriber$?: Subscription;
+
   mouseleaveListener() {
-    fromEvent(this.trigger, 'mouseleave').pipe(
+    this.leaveSubscriber$?.unsubscribe();
+
+    const debounce = this.fixDebounce(this.debounce);
+    this.leaveSubscriber$ = fromEvent(this.trigger, 'mouseleave').pipe(
       tap(() => this.isTriggerHovered.set(false)),
       filter(() => this.isTooltipCreated()),
-      debounceTime(this.debounce),
+      debounceTime(debounce),
       filter(() => !this.isTooltipHovered())
     ).subscribe(() => {
       this.onMouseLeave();
@@ -171,5 +185,21 @@ export class NgxTooltip {
       this.hide();
     }
     this.isTooltipHovered.set($event);
+  }
+
+  /**
+   * Minimum time of debounce time
+   */
+  private debounceMinTime = 20;
+
+  private fixDebounce(time: unknown) {
+    if (typeof time === 'number') {
+      if (time >= this.debounceMinTime) {
+        return time;
+      } else {
+        return this.debounceMinTime;
+      }
+    }
+    return this.debounceMinTime;
   }
 }
