@@ -1,30 +1,19 @@
-import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
+import { FloatingConfig, NgxFloatingConfig } from '@ngx-popovers/core';
 
-export interface PopoverConfig {
-  placement: Placement;
-  flip?: FlipOptions | Derivable<FlipOptions>;
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
-  offset?: OffsetOptions;
+export interface PopoverConfig extends FloatingConfig {
   arrow: boolean;
   arrowPadding: number;
-  autoUpdate: boolean;
-  bindTo?: HTMLElement | string;
 }
 
-export class NgxPopoverConfig implements PopoverConfig {
-  placement: Placement = 'bottom';
-  offset: OffsetOptions = 4;
+export class NgxPopoverConfig extends NgxFloatingConfig implements PopoverConfig {
   arrow = true;
   arrowPadding = 2;
-  autoUpdate = true;
-
-  flip?: FlipOptions | Derivable<FlipOptions>;
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
-  bindTo?: HTMLElement | string;
+  override autoUpdate = true;
 
   constructor(
     config: Partial<PopoverConfig> = {}
   ) {
+    super();
     Object.assign(this, config);
   }
 }

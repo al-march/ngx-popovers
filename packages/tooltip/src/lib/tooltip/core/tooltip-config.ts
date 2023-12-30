@@ -1,32 +1,25 @@
-import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '@ngx-popovers/core';
+import { flip, FloatingConfig, MiddlewareList, NgxFloatingConfig, offset } from '@ngx-popovers/core';
 
-export interface TooltipConfig {
-  placement: Placement;
-  flip?: FlipOptions | Derivable<FlipOptions>;
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
-  offset?: OffsetOptions;
+export interface TooltipConfig extends FloatingConfig {
   debounce: number;
   arrow: boolean;
   arrowPadding: number;
-  autoUpdate: boolean;
-  bindTo?: HTMLElement | string;
 }
 
-export class NgxTooltipConfig implements TooltipConfig {
-  placement: Placement = 'bottom';
-  offset: OffsetOptions = 4;
+export class NgxTooltipConfig extends NgxFloatingConfig implements TooltipConfig {
   debounce = 100;
   arrow = false;
   arrowPadding = 2;
-  autoUpdate = false;
 
-  flip?: FlipOptions | Derivable<FlipOptions>;
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
-  bindTo?: HTMLElement | string;
+  override middleware: MiddlewareList = [
+    offset(8),
+    flip()
+  ];
 
   constructor(
     config: Partial<TooltipConfig> = {}
   ) {
+    super();
     Object.assign(this, config);
   }
 }

@@ -1,5 +1,4 @@
 import { NgxTooltipConfig } from './tooltip-config';
-import { Keys } from '@ngx-popovers/core';
 
 describe('TooltipConfig', () => {
   it('should create an instance', () => {
@@ -14,20 +13,16 @@ describe('TooltipConfig', () => {
   });
 
   it('should rewrite fields', () => {
-    const config = new NgxTooltipConfig();
-    const debounce = config.debounce;
-
-    const config2 = new NgxTooltipConfig({
-      debounce: debounce + 100
+    const config = new NgxTooltipConfig({
+      debounce: 1000,
+      placement: 'left',
+      bindTo: '.body',
+      autoUpdate: false,
     });
 
-    expect(config2.debounce).toBe(debounce + 100);
-
-    // Check if all other fields are the same
-    Keys(config).forEach((key) => {
-      if (key !== 'debounce') {
-        expect(config[key]).toBe(config2[key]);
-      }
-    });
+    expect(config.debounce).toBe(1000);
+    expect(config.placement).toBe('left');
+    expect(config.bindTo).toBe('.body');
+    expect(config.autoUpdate).toBe(false);
   });
 });

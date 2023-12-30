@@ -26,12 +26,8 @@ describe('Tooltip', () => {
 
   it('should set default options', () => {
     const config = new NgxTooltipConfig();
-    expect(component.config).toEqual(config);
     expect(component.placement).toBe(config.placement);
     expect(component.debounce).toBe(config.debounce);
-    expect(component.flip).toBe(config.flip);
-    expect(component.shift).toBe(config.shift);
-    expect(component.offset).toBe(config.offset);
     expect(component.arrow).toBe(config.arrow);
     expect(component.arrowPadding).toBe(config.arrowPadding);
   });
@@ -46,7 +42,6 @@ describe('Tooltip.DI', () => {
     debounce: 1000,
     arrow: true,
     arrowPadding: 120,
-    offset: 30
   });
 
   beforeEach(async () => {

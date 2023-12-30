@@ -41,9 +41,7 @@
           [trigger]="trigger"
           [bindTo]="wrapper"
           [placement]="placement()"
-          [offset]="6"
-          [arrowPadding]="20"
-          [flip]="{fallbackStrategy: 'initialPlacement'}"
+          [middleware]="middleware"
         >
           <div class="card bg-base-100 border-4 border-base-200">
             <div class="card-body items-center text-center">
@@ -54,7 +52,7 @@
               </div>
             </div>
           </div>
-          <ngx-floating-arrow />
+          <ngx-floating-arrow [padding]="20" />
         </ngx-floating>
       </div>
     </section>

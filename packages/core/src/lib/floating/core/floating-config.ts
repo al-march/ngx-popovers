@@ -1,25 +1,19 @@
-import { Derivable, FlipOptions, OffsetOptions, Placement, ShiftOptions } from '../../type';
+import { MiddlewareList, offset, Placement } from '../../type';
 
 export interface FloatingConfig {
   placement: Placement;
-  flip?: FlipOptions | Derivable<FlipOptions>;
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
-  offset?: OffsetOptions;
-  arrowPadding: number;
   autoUpdate: boolean;
-
+  middleware: MiddlewareList;
   bindTo?: HTMLElement | string;
 }
 
 export class NgxFloatingConfig implements FloatingConfig {
   placement: Placement = 'bottom';
-  offset: OffsetOptions = 4;
-  arrowPadding = 2;
   autoUpdate = true;
-
-  flip?: FlipOptions | Derivable<FlipOptions>;
-  shift?: ShiftOptions | Derivable<ShiftOptions>;
   bindTo?: HTMLElement | string;
+  middleware: MiddlewareList = [
+    offset(4)
+  ];
 
   constructor(
     config: Partial<FloatingConfig> = {}

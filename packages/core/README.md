@@ -94,9 +94,7 @@ documentation [floating-ui](https://floating-ui.com/docs/middleware)
 <ngx-floating
   [trigger]="trigger"
   [placement]="'bottom'"
-  [offset]="10"
-  [flip]="{mainAxis: false}"
-  [shift]="{mainAxis: true}"
+  [middleware]="middleware"
 >
   <div class="floating">
     <p>Floating content</p>
@@ -110,33 +108,20 @@ documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
 controls the position of the floating relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
-#### `@Input()` `flip`
-
-changes the placement of the floating element to keep it in view ([docs](https://floating-ui.com/docs/flip))
-
-#### `@Input()` `shift`
-
-shifts the floating element to keep it in view ([docs](https://floating-ui.com/docs/shift))
-
-#### `@Input()` `offset`
-
-translates the floating element along the specified axes ([docs](https://floating-ui.com/docs/offset))
+#### `@Input()` `middleware`
+list of `middleware` from floating-ui
 
 #### `@Input()` `arrow`
-
 Adds arrow to floating
 
 #### `@Input()` `arrowPadding`
-
 If your floating element has border-radius, this will prevent it from overflowing the
 corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
 #### `@Input()` `autoUpdate`
-
 updates floating element automatically. Default `true`
 
 #### `@Input()` `bindTo`
-
 renders floating element as last child of bindTo. Default is body.
 
 ## Configuration

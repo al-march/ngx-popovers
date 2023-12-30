@@ -25,12 +25,9 @@ describe('FloatingComponent', () => {
 
   it('should set default options', () => {
     const config = new NgxFloatingConfig();
-    expect(component.config).toEqual(config);
     expect(component.placement).toBe(config.placement);
-    expect(component.flip).toBe(config.flip);
-    expect(component.shift).toBe(config.shift);
-    expect(component.offset).toBe(config.offset);
-    expect(component.arrowPadding).toBe(config.arrowPadding);
+    expect(component.autoUpdate).toBe(config.autoUpdate);
+    expect(component.bindTo).toBe(config.bindTo);
   });
 
   it('should get correct side', () => {
@@ -88,8 +85,8 @@ describe('FloatingComponent.DI', () => {
 
   const config = new NgxFloatingConfig({
     placement: 'left-start',
-    arrowPadding: 120,
-    offset: 30
+    autoUpdate: false,
+    bindTo: '.body',
   });
 
   beforeEach(async () => {

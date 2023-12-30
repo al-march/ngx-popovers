@@ -79,7 +79,6 @@ export class PageTooltipComponent {
   placement: Placement = 'top';
   debounce = 120;
   arrow = true;
-  offset = 12;
 
   readonly placementList: Placement[] = [
     'left',

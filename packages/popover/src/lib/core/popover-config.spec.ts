@@ -1,5 +1,4 @@
 import { NgxPopoverConfig } from './popover-config';
-import { Keys } from '@ngx-popovers/core';
 
 describe('PopoverConfig', () => {
   it('should create an instance', () => {
@@ -14,20 +13,18 @@ describe('PopoverConfig', () => {
   });
 
   it('should rewrite fields', () => {
-    const config = new NgxPopoverConfig();
-    const arrowPadding = config.arrowPadding;
-
-    const config2 = new NgxPopoverConfig({
-      arrowPadding: arrowPadding + 100
+    const config = new NgxPopoverConfig({
+      placement: 'left',
+      bindTo: '.body',
+      autoUpdate: false,
+      arrow: true,
+      arrowPadding: 12
     });
 
-    expect(config2.arrowPadding).toBe(arrowPadding + 100);
-
-    // Check if all other fields are the same
-    Keys(config).forEach((key) => {
-      if (key !== 'arrowPadding') {
-        expect(config[key]).toBe(config2[key]);
-      }
-    });
+    expect(config.placement).toBe('left');
+    expect(config.bindTo).toBe('.body');
+    expect(config.autoUpdate).toBe(false);
+    expect(config.arrow).toBe(true);
+    expect(config.arrowPadding).toBe(12);
   });
 });

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
-import { Placement } from '@floating-ui/dom';
-import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/core';
+import { FloatingArrowComponent, FloatingComponent, Middleware, offset, Placement } from '@ngx-popovers/core';
+import { flip } from '@floating-ui/dom';
 
 const example = `
 <div #trigger>
@@ -14,9 +14,7 @@ const example = `
 <ngx-floating
   [trigger]="trigger"
   [placement]="'bottom'"
-  [offset]="10"
-  [flip]="{mainAxis: false}"
-  [shift]="{mainAxis: true}"
+  [middleware]="middleware"
   bindTo=".body"
 >
   <div class="floating">
@@ -53,6 +51,13 @@ export const FloatingConfigProvider: Provider = {
 export class PageFloatingComponent {
   example = example;
   configExample = configExample;
+
+  middleware: Middleware[] = [
+    offset(10),
+    flip({
+      fallbackStrategy: 'initialPlacement'
+    })
+  ];
 
   placement = signal<Placement>('left');
   floating = signal(false);

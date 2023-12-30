@@ -1,5 +1,4 @@
 import { NgxFloatingConfig } from './floating-config';
-import { Keys } from '../../utils/utils';
 
 describe('FloatingConfig', () => {
   it('should create an instance', () => {
@@ -14,20 +13,14 @@ describe('FloatingConfig', () => {
   });
 
   it('should rewrite fields', () => {
-    const config = new NgxFloatingConfig();
-    const arrowPadding = config.arrowPadding;
-
-    const config2 = new NgxFloatingConfig({
-      arrowPadding: arrowPadding + 100
+    const config = new NgxFloatingConfig({
+      placement: 'left',
+      bindTo: '.body',
+      autoUpdate: false,
     });
 
-    expect(config2.arrowPadding).toBe(arrowPadding + 100);
-
-    // Check if all other fields are the same
-    Keys(config).forEach((key) => {
-      if (key !== 'arrowPadding') {
-        expect(config[key]).toBe(config2[key]);
-      }
-    });
+    expect(config.placement).toBe('left');
+    expect(config.bindTo).toBe('.body');
+    expect(config.autoUpdate).toBe(false);
   });
 });

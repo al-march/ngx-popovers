@@ -10,20 +10,11 @@ import {
   ViewChild
 } from '@angular/core';
 import { CommonModule, isPlatformServer } from '@angular/common';
-import {
-  arrow,
-  Derivable,
-  flip,
-  FlipOptions,
-  offset,
-  OffsetOptions,
-  Placement,
-  shift,
-  ShiftOptions
-} from '@floating-ui/dom';
-import { PortalComponent } from '../portal/portal.component';
+import { arrow, Middleware, Placement } from '../type';
+import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
+import { FloatingArrowComponent } from './floating-arrow/floating-arrow.component';
 
 const staticSides: Record<string, string> = {
   top: 'bottom',
@@ -61,25 +52,26 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   trigger?: HTMLElement;
 
   @Input()
-  placement = this.config.placement;
-
-  @Input()
-  flip?: FlipOptions | Derivable<FlipOptions> = this.config.flip;
-
-  @Input()
-  shift?: ShiftOptions | Derivable<ShiftOptions> = this.config.shift;
-
-  @Input()
-  offset?: OffsetOptions = this.config.offset;
-
-  @Input()
-  arrowPadding = this.config.arrowPadding;
+  placement: Placement = this.config.placement;
 
   /**
    * Updates floating element automatically
    */
   @Input()
   autoUpdate = this.config.autoUpdate;
+
+  /**
+   * Arrow component for arrow middleware.
+   * It sets by <ngx-floating-arrow />
+   */
+  @Input()
+  arrow?: FloatingArrowComponent;
+
+  /**
+   * List of floating-ui middleware
+   */
+  @Input()
+  middleware: Array<Middleware | null | undefined | false> = this.config.middleware;
 
   /**
    * HTMLElement where floating renders
@@ -93,10 +85,18 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   // Uses for cleanup autoUpdate function
   cleanup?: () => void;
 
-  private _arrow?: HTMLElement;
-
   get arrowEl() {
-    return this._arrow;
+    return this.arrow?.arrowRef?.nativeElement;
+  }
+
+  get arrowMiddleware() {
+    if (this.arrow) {
+      return arrow({
+        element: this.arrow.arrowRef!.nativeElement,
+        padding: this.arrow.padding
+      });
+    }
+    return null;
   }
 
   async ngAfterViewInit() {
@@ -129,15 +129,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   async computePosition(trigger: HTMLElement, floating: HTMLElement) {
     const { x, y, middlewareData, placement } = await this.floatingService.computePosition(trigger, floating, {
       placement: this.placement,
-      middleware: [
-        offset(this.offset),
-        flip(this.flip),
-        shift(this.shift),
-        arrow({
-          element: this.arrowEl!,
-          padding: this.arrowPadding
-        })
-      ]
+      middleware: [...this.middleware, this.arrowMiddleware]
     });
 
     if (middlewareData.arrow && this.arrowEl) {
@@ -169,7 +161,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   /**
    * Arrow sets from <floating-arrow> component
    */
-  setArrow(arrow: HTMLElement) {
-    this._arrow = arrow;
+  setArrow(arrow: FloatingArrowComponent) {
+    this.arrow = arrow;
+    return this.bind();
   }
 }

@@ -29,50 +29,33 @@ Add `ngxTooltip` to the html element to use this library.
 ### Inputs
 
 #### `@Input()` `placement`
-
 controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
-#### `@Input()` `flip`
-
-changes the placement of the floating element to keep it in view ([docs](https://floating-ui.com/docs/flip))
-
-#### `@Input()` `shift`
-
-shifts the floating element to keep it in view ([docs](https://floating-ui.com/docs/shift))
-
-#### `@Input()` `offset`
-
-translates the floating element along the specified axes ([docs](https://floating-ui.com/docs/offset))
+#### `@Input()` `middleware`
+list of `middleware` from floating-ui
 
 #### `@Input()` `debounce`
-
 time delay before the tooltip is displayed
 
 #### `@Input()` `arrow`
-
-Adds arrow to tooltip
+adds arrow to tooltip
 
 #### `@Input()` `arrowPadding`
-
-If your tooltip element has border-radius, this will prevent it from overflowing the
+if your tooltip element has border-radius, this will prevent it from overflowing the
 corners. ([more](https://floating-ui.com/docs/arrow#padding))
 
 #### `@Input()` `autoUpdate`
-
 updates floating element automatically. Default `false`
 
 #### `@Input()` `bindTo`
-
 renders floating element as last child of bindTo. Default is body.
 
 ### Outputs
 
 #### `@Output()` `showEnd`
-
 Emits when tooltip show ends
 
 #### `@Output()` `hideEnd`
-
 Emits when tooltip hide ends
 
 ## Configuration

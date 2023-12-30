@@ -9,15 +9,7 @@ import {
   Output,
   signal
 } from '@angular/core';
-import {
-  Derivable,
-  FlipOptions,
-  FloatingArrowComponent,
-  FloatingComponent,
-  OffsetOptions,
-  Placement,
-  ShiftOptions
-} from '@ngx-popovers/core';
+import { FloatingArrowComponent, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
@@ -55,13 +47,7 @@ export class NgxTooltip implements OnChanges {
   placement: Placement = this.config.placement;
 
   @Input()
-  flip?: FlipOptions | Derivable<FlipOptions> = this.config.flip;
-
-  @Input()
-  shift?: ShiftOptions | Derivable<ShiftOptions> = this.config.shift;
-
-  @Input()
-  offset?: OffsetOptions = this.config.offset;
+  middleware: MiddlewareList = this.config.middleware;
 
   /**
    * Time delay before the tooltip is displayed

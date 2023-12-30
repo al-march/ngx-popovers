@@ -4,10 +4,7 @@
   <ngx-floating
     [trigger]="trigger"
     [placement]="placement"
-    [flip]="flip"
-    [shift]="shift"
-    [offset]="offset"
-    [arrowPadding]="arrowPadding"
+    [middleware]="middleware"
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
   >
@@ -23,7 +20,7 @@
         />
 
         @if (arrow) {
-          <ngx-floating-arrow />
+          <ngx-floating-arrow [padding]="arrowPadding" />
         }
       </div>
     }

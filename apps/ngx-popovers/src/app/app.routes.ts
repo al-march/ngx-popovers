@@ -1,15 +1,5 @@
 import { Route } from '@angular/router';
-import {
-  CoreIcon,
-  FlipIcon,
-  FloatingIcon,
-  GettingStartedIcon,
-  OffsetIcon,
-  PopoverIcon,
-  PortalIcon,
-  ShiftIcon,
-  TooltipIcon
-} from './routes-icons';
+import { CoreIcon, FloatingIcon, GettingStartedIcon, PopoverIcon, PortalIcon, TooltipIcon } from './routes-icons';
 
 export const GettingStartedRoute: Route = {
   path: 'getting-started',
@@ -75,33 +65,33 @@ export const ComponentsRoutes: Route[] = [
 ];
 
 export const ConfigurationRoutes: Route[] = [
-  {
-    path: 'offset',
-    data: {
-      name: 'Offset',
-      icon: OffsetIcon
-    },
-    loadComponent: () => import('./pages/configuration/page-offset/page-offset.component')
-      .then(c => c.PageOffsetComponent)
-  },
-  {
-    path: 'shift',
-    data: {
-      name: 'Shift',
-      icon: ShiftIcon
-    },
-    loadComponent: () => import('./pages/configuration/page-shift/page-shift.component')
-      .then(c => c.PageShiftComponent)
-  },
-  {
-    path: 'flip',
-    data: {
-      name: 'Flip',
-      icon: FlipIcon
-    },
-    loadComponent: () => import('./pages/configuration/page-flip/page-flip.component')
-      .then(c => c.PageFlipComponent)
-  }
+  // {
+  //   path: 'offset',
+  //   data: {
+  //     name: 'Offset',
+  //     icon: OffsetIcon
+  //   },
+  //   loadComponent: () => import('./pages/configuration/page-offset/page-offset.component')
+  //     .then(c => c.PageOffsetComponent)
+  // },
+  // {
+  //   path: 'shift',
+  //   data: {
+  //     name: 'Shift',
+  //     icon: ShiftIcon
+  //   },
+  //   loadComponent: () => import('./pages/configuration/page-shift/page-shift.component')
+  //     .then(c => c.PageShiftComponent)
+  // },
+  // {
+  //   path: 'flip',
+  //   data: {
+  //     name: 'Flip',
+  //     icon: FlipIcon
+  //   },
+  //   loadComponent: () => import('./pages/configuration/page-flip/page-flip.component')
+  //     .then(c => c.PageFlipComponent)
+  // }
 ];
 
 export const appRoutes: Route[] = [

@@ -88,18 +88,6 @@
           [(ngModel)]="debounce"
         />
       </label>
-
-      <label class="form-control w-full max-w-xs">
-        <div class="label">
-          <span class="label-text">Offset</span>
-        </div>
-        <input
-          type="number"
-          placeholder="offset"
-          class="input input-bordered w-full max-w-xs"
-          [(ngModel)]="offset"
-        />
-      </label>
     </section>
 
     <section class="flex gap-2 items-center p-4 mb-4">
@@ -118,7 +106,6 @@
         <div
           class="flex-1"
           [ngxTooltip]="'I tooltip'"
-          [offset]="offset"
           [placement]="placement"
           [debounce]="debounce"
           [arrow]="arrow"
