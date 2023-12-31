@@ -8,6 +8,8 @@ for [Angular](https://angular.dev/) apps
 
 The Tooltip component shows tooltips next to the trigger element
 
+[Demo](https://ngx-popovers.vercel.app)
+
 ## Usage
 
 Add `ngxTooltip` to the html element to use this library.

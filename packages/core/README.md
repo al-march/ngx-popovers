@@ -7,6 +7,8 @@ for [Angular](https://angular.dev/) apps.
 >
 > I strongly recommend not using this library until its stable version is released.
 
+[Demo](https://ngx-popovers.vercel.app)
+
 ## Usage
 
 ### FloatingService
