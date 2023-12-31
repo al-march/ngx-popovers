@@ -6,7 +6,7 @@
     "start": "nx serve ngx-popovers",
     "test:all": "nx test core && nx test tooltip && nx test popover",
     "build:all": "nx build core && nx build tooltip && nx build popover",
-    "build:demo": "nx build ngx-popovers"
+    "build:demo": "nx build ngx-popovers --prerender false"
   },
   "private": true,
   "dependencies": {
