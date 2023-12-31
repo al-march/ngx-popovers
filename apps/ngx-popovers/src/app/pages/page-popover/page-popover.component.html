@@ -1,3 +1,88 @@
 <div class="page">
   <page-title />
+
+  <section class="py-4">
+    <h2 class="text-4xl mb-4 font-bold">About</h2>
+    <p>
+      Popover component displays content next to the trigger element on mouse click
+      It can be rendered into any component you want with <code class="code">bindTo</code> input
+    </p>
+    <br>
+
+    <highlight lang="bash" [code]="'npm i @ngx-popovers/popover'" />
+
+    <br>
+
+    <p>This component created with:</p>
+    <p class="text-lg py-4">
+      <a [routerLink]="['/', 'core']" class="link inline-flex gap-2 items-center">
+        <core-icon class="text-primary" /> Core
+      </a>
+    </p>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+    <p>Default usage:</p>
+
+    <div class="my-4">
+      <highlight lang="html" [code]="usageExample" />
+    </div>
+
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+
+    <p>
+      There is a configuration token <code class="code">NGX_POPOVER_CONFIG</code>.
+      <br>
+      Please, use the <code class="code">NgxPopoverConfig</code> class
+      to change the default tooltip properties.
+    </p>
+
+    <div class="my-4">
+      <highlight lang="typescript" [code]="configExample" />
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+
+
+    <section
+      #exampleWrapper
+      class="border-2 border-dashed border-primary rounded min-h-[400px] max-w-[800px] m-auto flex flex-col items-center justify-center relative overflow-hidden"
+    >
+      @for (place of placementList; track place) {
+        <button
+          class="btn btn-sm w-[100px]"
+
+          #popover
+          [ngxPopover]="popoverContent"
+          [placement]="place"
+          [bindTo]="exampleWrapper"
+        >
+          {{ place }}
+        </button>
+
+        <ng-template #popoverContent>
+          <div class="card bg-base-100 border-4 border-base-200">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title">Floating</h2>
+              <pre [innerText]="'<ngx-floating />'"></pre>
+              <div class="card-actions">
+                <button
+                  class="btn btn-sm btn-primary"
+                  (click)="popover.close()"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      }
+    </section>
+  </section>
 </div>

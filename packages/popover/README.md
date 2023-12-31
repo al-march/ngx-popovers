@@ -83,7 +83,7 @@ Please, use the `NgxPopoverConfig` class to change the default floating properti
 
 ```typescript
 export const PopoverConfigProvider: Provider = {
-  provide: NGX_FLOATING_CONFIG,
+  provide: NGX_POPOVER_CONFIG,
   useValue: new NgxPopoverConfig({
     placement: 'top-end',
     arrow: true
