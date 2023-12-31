@@ -9,7 +9,14 @@
   </div>
 
   <div class="absolute right-0 top-2 pr-4">
-    <button class="btn btn-xs">Copy</button>
+    <button
+      (click)="copy()"
+      class="btn btn-xs"
+      [class.btn-success]="copyStatus().status === statuses.SUCCESS"
+      [class.btn-error]="copyStatus().status === statuses.ERROR"
+    >
+      {{ copyStatus().text }}
+    </button>
   </div>
 </div>
 
