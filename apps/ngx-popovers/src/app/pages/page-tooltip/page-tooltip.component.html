@@ -93,6 +93,13 @@
     <section class="flex gap-2 items-center p-4 mb-4">
       <div class="form-control">
         <label class="label cursor-pointer">
+          <input type="checkbox" [(ngModel)]="value" class="checkbox" />
+          <span class="label-text pl-2">Show</span>
+        </label>
+      </div>
+
+      <div class="form-control">
+        <label class="label cursor-pointer">
           <input type="checkbox" [(ngModel)]="arrow" class="checkbox" />
           <span class="label-text pl-2">With arrow</span>
         </label>
@@ -104,11 +111,13 @@
     >
       <div class="w-32 h-32 border-2 border-dashed border-secondary rounded flex">
         <div
+          tabindex="0"
           class="flex-1"
           [ngxTooltip]="'I tooltip'"
           [placement]="placement"
           [debounce]="debounce"
           [arrow]="arrow"
+          [(ngxValue)]="value"
         ></div>
       </div>
     </section>

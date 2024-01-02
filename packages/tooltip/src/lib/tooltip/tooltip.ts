@@ -49,6 +49,25 @@ export class NgxTooltip implements OnChanges {
   @Input()
   middleware: MiddlewareList = this.config.middleware;
 
+  private _ngxValue = false;
+
+  @Input()
+  set ngxValue(value: boolean) {
+    this._ngxValue = value;
+    if (value) {
+      this.onShow();
+    } else {
+      this.onHide();
+    }
+  }
+
+  get ngxValue() {
+    return this._ngxValue;
+  }
+
+  @Output()
+  ngxValueChange = new EventEmitter<boolean>();
+
   /**
    * Time delay before the tooltip is displayed
    */
@@ -100,14 +119,24 @@ export class NgxTooltip implements OnChanges {
     return this.el.nativeElement;
   }
 
+  get fixedDebounce() {
+    return this.fixDebounce(this.debounce);
+  }
+
   constructor(
     private el: ElementRef
   ) {
   }
 
   ngOnChanges() {
+    this.initListeners();
+  }
+
+  initListeners() {
     this.mouseMoveListener();
     this.mouseleaveListener();
+    this.focusListener();
+    this.blurListener();
   }
 
   private moveSubscriber$?: Subscription;
@@ -115,23 +144,27 @@ export class NgxTooltip implements OnChanges {
   mouseMoveListener() {
     this.moveSubscriber$?.unsubscribe();
 
-    const debounce = this.fixDebounce(this.debounce);
     this.moveSubscriber$ = fromEvent(this.trigger, 'mousemove').pipe(
       tap(() => this.isTriggerHovered.set(true)),
       filter(() => !this.isTooltipCreated()),
-      debounceTime(debounce),
+      debounceTime(this.fixedDebounce),
       filter(() => this.isTriggerHovered())
     ).subscribe(() => {
-      this.onMouseMove();
+      this.ngxValue = true;
     });
   }
 
-  onMouseMove() {
-    if (this.isTooltipCreated()) {
-      return;
-    }
+  private focusListener$?: Subscription;
 
-    this.show();
+  focusListener() {
+    this.focusListener$?.unsubscribe();
+
+    this.focusListener$ = fromEvent(this.trigger, 'focus').pipe(
+      filter(() => !this.isTooltipCreated()),
+      debounceTime(this.fixedDebounce)
+    ).subscribe(() => {
+      this.ngxValue = true;
+    });
   }
 
   private leaveSubscriber$?: Subscription;
@@ -139,18 +172,43 @@ export class NgxTooltip implements OnChanges {
   mouseleaveListener() {
     this.leaveSubscriber$?.unsubscribe();
 
-    const debounce = this.fixDebounce(this.debounce);
     this.leaveSubscriber$ = fromEvent(this.trigger, 'mouseleave').pipe(
       tap(() => this.isTriggerHovered.set(false)),
       filter(() => this.isTooltipCreated()),
-      debounceTime(debounce),
+      debounceTime(this.fixedDebounce),
       filter(() => !this.isTooltipHovered())
     ).subscribe(() => {
-      this.onMouseLeave();
+      this.ngxValue = false;
     });
   }
 
-  onMouseLeave() {
+  private blurListener$?: Subscription;
+
+  blurListener() {
+    this.blurListener$?.unsubscribe();
+
+    this.blurListener$ = fromEvent(this.trigger, 'blur').pipe(
+      filter(() => this.isTooltipCreated()),
+      debounceTime(this.fixedDebounce)
+    ).subscribe(() => {
+      this.ngxValue = false;
+    });
+  }
+
+
+  onShow() {
+    if (this.isTooltipCreated()) {
+      return;
+    }
+
+    this.show();
+  }
+
+  onHide() {
+    if (!this.isTooltipCreated()) {
+      return;
+    }
+
     this.hide();
   }
 
@@ -158,12 +216,14 @@ export class NgxTooltip implements OnChanges {
     this.isAnimating.set(true);
     this.isTooltipCreated.set(true);
     this.showEnd.emit();
+    this.ngxValueChange.emit(true);
   }
 
   hide() {
     this.isAnimating.set(true);
     this.isTooltipCreated.set(false);
     this.hideEnd.emit();
+    this.ngxValueChange.emit(false);
   }
 
   setTooltipHovered($event: boolean) {
