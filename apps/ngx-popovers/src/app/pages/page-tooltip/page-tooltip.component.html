@@ -107,6 +107,7 @@
     </section>
 
     <section
+      #demoWrapper
       class="border-2 border-dashed border-primary rounded min-h-[400px] max-w-[800px] m-auto flex items-center justify-center relative overflow-hidden"
     >
       <div class="w-32 h-32 border-2 border-dashed border-secondary rounded flex">
@@ -118,6 +119,7 @@
           [debounce]="debounce"
           [arrow]="arrow"
           [(ngxValue)]="value"
+          [bindTo]="demoWrapper"
         ></div>
       </div>
     </section>
