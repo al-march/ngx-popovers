@@ -4,14 +4,14 @@ import { FloatingArrowBase, NGX_FLOATING_ARROW_COMPONENT } from '@ngx-popovers/c
 @Component({
   standalone: true,
   template: `
-      <div
-        style="
-          width: 6px;
-          height: 6px;
-          transform: rotate(45deg);
-        "
-        class="bg-warning"
-      ></div>
+    <div
+      style="
+        width: 8px;
+        height: 8px;
+        transform: rotate(45deg);
+      "
+      class="bg-primary"
+    ></div>
   `
 })
 export class CustomArrow extends FloatingArrowBase {
