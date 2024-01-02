@@ -2,16 +2,20 @@ import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../core/theme.service';
 import { ActivationStart, Router } from '@angular/router';
+import { CoreService } from '../../core/core.service';
+import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 @Component({
   selector: 'dm-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgxTooltip],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  core = inject(CoreService);
   router = inject(Router);
+
   paths = signal<string[]>([]);
 
   @Output()
@@ -49,6 +53,6 @@ export class HeaderComponent {
 
   navigateToPath($index: number) {
     const paths = this.paths().slice(0, $index);
-    return this.router.navigate(['/', ...paths])
+    return this.router.navigate(['/', ...paths]);
   }
 }
