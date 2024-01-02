@@ -30,6 +30,9 @@ Add `ngxTooltip` to the html element to use this library.
 
 ### Inputs
 
+#### `@Input()` `ngxValue`
+open/close tooltip 
+
 #### `@Input()` `placement`
 controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
