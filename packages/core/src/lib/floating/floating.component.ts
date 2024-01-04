@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   Component,
   ElementRef,
   inject,
@@ -48,7 +49,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   @ViewChild('floating')
   floatingRef?: ElementRef<HTMLElement>;
 
-  @Input()
+  @Input({ required: true })
   trigger?: HTMLElement;
 
   @Input()
@@ -57,7 +58,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   /**
    * Updates floating element automatically
    */
-  @Input()
+  @Input({ transform: booleanAttribute })
   autoUpdate = this.config.autoUpdate;
 
   /**

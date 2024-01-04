@@ -5,6 +5,7 @@ import {
   ElementRef,
   inject,
   Input,
+  numberAttribute,
   OnChanges,
   ViewChild
 } from '@angular/core';
@@ -27,7 +28,7 @@ export class FloatingArrowComponent implements AfterViewInit, OnChanges {
   @ViewChild('arrow')
   arrowRef?: ElementRef<HTMLElement>;
 
-  @Input()
+  @Input({ transform: numberAttribute })
   padding = 0;
 
   get arrowStyles() {

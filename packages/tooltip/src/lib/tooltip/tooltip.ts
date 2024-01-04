@@ -1,10 +1,12 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
   inject,
   Input,
+  numberAttribute,
   OnChanges,
   Output,
   signal
@@ -71,25 +73,25 @@ export class NgxTooltip implements OnChanges {
   /**
    * Time delay before the tooltip is displayed
    */
-  @Input()
+  @Input({ transform: numberAttribute })
   debounce = this.config.debounce;
 
   /**
    * Show arrow or not
    */
-  @Input()
+  @Input({ transform: booleanAttribute })
   arrow = this.config.arrow;
 
   /**
    * Show arrow or not
    */
-  @Input()
+  @Input({ transform: numberAttribute })
   arrowPadding = this.config.arrowPadding;
 
   /**
    * Updates floating element automatically
    */
-  @Input()
+  @Input({ transform: booleanAttribute })
   autoUpdate = this.config.autoUpdate;
 
   /**

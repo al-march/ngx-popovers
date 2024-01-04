@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -6,6 +7,7 @@ import {
   HostListener,
   inject,
   Input,
+  numberAttribute,
   Output,
   signal,
   TemplateRef
@@ -47,16 +49,16 @@ export class PopoverComponent {
   @Input()
   middleware: MiddlewareList = this.config.middleware;
 
-  @Input()
+  @Input({ transform: booleanAttribute })
   arrow = this.config.arrow;
 
-  @Input()
+  @Input({ transform: numberAttribute })
   arrowPadding = this.config.arrowPadding;
 
   /**
    * Updates floating element automatically
    */
-  @Input()
+  @Input({ transform: booleanAttribute })
   autoUpdate = this.config.autoUpdate;
 
   /**
@@ -65,7 +67,7 @@ export class PopoverComponent {
   @Input()
   bindTo = this.config.bindTo;
 
-  @Input()
+  @Input({ transform: booleanAttribute })
   ngxValue = false;
 
   @Output()
