@@ -6,7 +6,7 @@ import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { HeaderComponent } from './template/header/header.component';
-import { ComponentsRoutes, ConfigurationRoutes, GettingStartedRoute } from './app.routes';
+import { ComponentsRoutes, GettingStartedRoute } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
 import { filter, tap } from 'rxjs';
 
@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
   router = inject(Router);
 
   gettingStartedRoute = GettingStartedRoute;
-  configurationRoutes = ConfigurationRoutes;
   componentsRoutes = ComponentsRoutes;
 
   ngOnInit() {

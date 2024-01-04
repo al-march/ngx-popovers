@@ -3,6 +3,7 @@ import { CoreIcon, FloatingIcon, GettingStartedIcon, PopoverIcon, PortalIcon, To
 
 export const GettingStartedRoute: Route = {
   path: 'getting-started',
+  title: 'Getting started',
   data: {
     name: 'Getting Started',
     icon: GettingStartedIcon,
@@ -21,11 +22,13 @@ export const ComponentsRoutes: Route[] = [
     children: [
       {
         path: '',
+        title: 'Core package',
         loadComponent: () => import('./pages/page-core/page-core.component')
           .then(c => c.PageCoreComponent)
       },
       {
         path: 'floating',
+        title: 'Floating component',
         data: {
           name: 'Floating',
           icon: FloatingIcon
@@ -35,6 +38,7 @@ export const ComponentsRoutes: Route[] = [
       },
       {
         path: 'portal',
+        title: 'Portal component',
         data: {
           name: 'Portal',
           icon: PortalIcon
@@ -46,6 +50,7 @@ export const ComponentsRoutes: Route[] = [
   },
   {
     path: 'tooltip',
+    title: 'Tooltip component',
     data: {
       name: 'Tooltip',
       icon: TooltipIcon
@@ -55,6 +60,7 @@ export const ComponentsRoutes: Route[] = [
   },
   {
     path: 'popover',
+    title: 'Popover component',
     data: {
       name: 'Popover',
       icon: PopoverIcon
@@ -64,36 +70,6 @@ export const ComponentsRoutes: Route[] = [
   }
 ];
 
-export const ConfigurationRoutes: Route[] = [
-  // {
-  //   path: 'offset',
-  //   data: {
-  //     name: 'Offset',
-  //     icon: OffsetIcon
-  //   },
-  //   loadComponent: () => import('./pages/configuration/page-offset/page-offset.component')
-  //     .then(c => c.PageOffsetComponent)
-  // },
-  // {
-  //   path: 'shift',
-  //   data: {
-  //     name: 'Shift',
-  //     icon: ShiftIcon
-  //   },
-  //   loadComponent: () => import('./pages/configuration/page-shift/page-shift.component')
-  //     .then(c => c.PageShiftComponent)
-  // },
-  // {
-  //   path: 'flip',
-  //   data: {
-  //     name: 'Flip',
-  //     icon: FlipIcon
-  //   },
-  //   loadComponent: () => import('./pages/configuration/page-flip/page-flip.component')
-  //     .then(c => c.PageFlipComponent)
-  // }
-];
-
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -101,6 +77,5 @@ export const appRoutes: Route[] = [
     pathMatch: 'full'
   },
   GettingStartedRoute,
-  ...ConfigurationRoutes,
   ...ComponentsRoutes
 ];

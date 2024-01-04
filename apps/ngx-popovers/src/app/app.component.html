@@ -62,19 +62,6 @@
 
         <div class="divider my-1"></div>
 
-        @for (route of configurationRoutes; track route.path) {
-          <li>
-            <a
-              class="btn justify-start"
-              [routerLink]="route.path"
-              routerLinkActive="active-link"
-            >
-              <ng-template [ngComponentOutlet]="route.data?.['icon']" />
-              <span class="text-lg">{{ route.data?.['name'] }}</span>
-            </a>
-          </li>
-        }
-
         <div class="flex-1"></div>
         <div class="lg:hidden w-full">
           <div class="divider my-1"></div>
