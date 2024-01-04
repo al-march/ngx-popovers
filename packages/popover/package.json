@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/popover",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Popover component displays content next to the trigger element on mouse click",
   "keywords": [
     "components",
@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.16"
+    "@ngx-popovers/core": "0.0.17"
   },
   "dependencies": {
     "tslib": "^2.3.0"
