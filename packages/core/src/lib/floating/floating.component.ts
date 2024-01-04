@@ -1,11 +1,13 @@
 import {
   AfterViewInit,
   booleanAttribute,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   inject,
   Input,
   OnChanges,
+  OnDestroy,
   PLATFORM_ID,
   signal,
   ViewChild
@@ -37,9 +39,10 @@ const staticSides: Record<string, string> = {
   templateUrl: './floating.component.html',
   styleUrl: './floating.component.scss'
 })
-export class FloatingComponent implements AfterViewInit, OnChanges {
+export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
+  cdRef = inject(ChangeDetectorRef);
 
   platformId = inject(PLATFORM_ID);
   // Do not run floating-ui inside Window.
@@ -80,7 +83,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   @Input()
   bindTo = this.config.bindTo;
 
-  coords = signal({ x: 0, y: 0 });
+  coords = { x: 0, y: 0 };
   arrowStyles = signal<Record<string, string>>({});
 
   // Uses for cleanup autoUpdate function
@@ -91,7 +94,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
   }
 
   get arrowMiddleware() {
-    if (this.arrow) {
+    if (this.arrow?.arrowRef) {
       return arrow({
         element: this.arrow.arrowRef!.nativeElement,
         padding: this.arrow.padding
@@ -100,12 +103,16 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
     return null;
   }
 
-  async ngAfterViewInit() {
-    await this.bind();
+  ngAfterViewInit() {
+    this.bind();
   }
 
-  async ngOnChanges() {
-    await this.bind();
+  ngOnChanges() {
+    this.bind();
+  }
+
+  ngOnDestroy() {
+    this.cleanup?.();
   }
 
   async bind() {
@@ -151,7 +158,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges {
       this.arrowStyles.set(styles);
     }
 
-    this.coords.set({ x, y });
+    this.coords = { x, y };
+    this.cdRef.detectChanges();
   }
 
   getSide(placement: Placement) {

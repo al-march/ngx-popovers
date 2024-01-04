@@ -1,4 +1,5 @@
 import { MiddlewareList, offset, Placement } from '../../type';
+import { flip } from '@floating-ui/dom';
 
 export interface FloatingConfig {
   placement: Placement;
@@ -12,7 +13,8 @@ export class NgxFloatingConfig implements FloatingConfig {
   autoUpdate = true;
   bindTo?: HTMLElement | string;
   middleware: MiddlewareList = [
-    offset(4)
+    offset(4),
+    flip(),
   ];
 
   constructor(
