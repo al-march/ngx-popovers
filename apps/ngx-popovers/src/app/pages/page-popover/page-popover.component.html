@@ -47,22 +47,20 @@
 
     <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+    <h2 class="text-4xl mb-4 font-bold">Examples</h2>
+    <p>Default usage example:</p>
 
-
-    <section
-      #exampleWrapper
-      class="border-2 border-dashed border-primary rounded min-h-[400px] max-w-[800px] m-auto flex flex-col items-center justify-center relative overflow-hidden"
-    >
-      @for (place of placementList; track place) {
-        <button
-          class="btn btn-sm w-[100px]"
-
-          #popover
-          [ngxPopover]="popoverContent"
-          [placement]="place"
-          [bindTo]="exampleWrapper"
-        >
+    <br>
+    <ngx-example class="min-h-[400px] max-w-[800px]">
+      <div #exampleWrapper class="flex-1 flex flex-col items-center justify-center">
+        @for (place of placementList; track place) {
+          <button
+            class="btn btn-sm w-[100px]"
+            #popover
+            [ngxPopover]="popoverContent"
+            [placement]="place"
+            [bindTo]="exampleWrapper"
+          >
           {{ place }}
         </button>
 
@@ -82,7 +80,113 @@
             </div>
           </div>
         </ng-template>
-      }
-    </section>
+        }
+      </div>
+    </ngx-example>
+
+    <br>
+    <p>Menu example:</p>
+    <br>
+    <ngx-example class="max-w-[800px]">
+      <div class="flex-1 p-4 flex flex-col gap-2">
+        <p>Collapsible submenu</p>
+
+        <button
+          class="btn"
+          [ngxPopover]="menuExample"
+          #menuExampleTrigger="ngxPopover"
+        >
+          Menu
+        </button>
+
+        <ng-template #menuExample>
+          <ul class="menu bg-base-200 w-56 rounded-box">
+            <li (click)="menuExampleTrigger.close()"><a>Item 1</a></li>
+            <li>
+              <details open>
+                <summary>Parent</summary>
+                <ul>
+                  <li (click)="menuExampleTrigger.close()"><a>Submenu 1</a></li>
+                  <li (click)="menuExampleTrigger.close()"><a>Submenu 2</a></li>
+                  <li>
+                    <details open>
+                      <summary>Parent</summary>
+                      <ul>
+                        <li (click)="menuExampleTrigger.close()"><a>Submenu 1</a></li>
+                        <li (click)="menuExampleTrigger.close()"><a>Submenu 2</a></li>
+                      </ul>
+                    </details>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li (click)="menuExampleTrigger.close()"><a>Item 3</a></li>
+          </ul>
+        </ng-template>
+
+        <p>Menu with icon only with tooltip</p>
+
+        <button
+          class="btn"
+          [ngxPopover]="iconMenuExample"
+          #iconMenuPopover="ngxPopover"
+        >
+          Menu
+        </button>
+
+        <ng-template #iconMenuExample>
+          <ul (click)="iconMenuPopover.close()" class="menu bg-base-200 rounded-box">
+            <li>
+              <a class="tooltip tooltip-right" ngxTooltip="Home" placement="right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                /></svg>
+              </a>
+            </li>
+            <li>
+              <a class="tooltip tooltip-right" ngxTooltip="Details" placement="right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                /></svg>
+              </a>
+            </li>
+            <li>
+              <a class="tooltip tooltip-right" ngxTooltip="Stats" placement="right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                /></svg>
+              </a>
+            </li>
+          </ul>
+        </ng-template>
+      </div>
+    </ngx-example>
   </section>
 </div>

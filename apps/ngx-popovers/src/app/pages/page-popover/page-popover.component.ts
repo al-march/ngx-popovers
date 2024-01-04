@@ -7,6 +7,8 @@ import { HighlightComponent } from '../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
 import { Placement } from '@ngx-popovers/core';
 import { PopoverComponent } from '@ngx-popovers/popover';
+import { ExampleComponent } from '../../template/example/example.component';
+import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 const usageExample = `
 <button
@@ -52,7 +54,9 @@ export const PopoverConfigProvider: Provider = {
     FormsModule,
     HighlightComponent,
     RouterLink,
-    PopoverComponent
+    PopoverComponent,
+    ExampleComponent,
+    NgxTooltip
   ],
   templateUrl: './page-popover.component.html',
   styleUrl: './page-popover.component.scss'
