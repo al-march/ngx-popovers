@@ -86,7 +86,7 @@ describe('FloatingComponent.DI', () => {
   const config = new NgxFloatingConfig({
     placement: 'left-start',
     autoUpdate: false,
-    bindTo: '.body',
+    bindTo: document.body,
   });
 
   beforeEach(async () => {
