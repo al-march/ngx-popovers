@@ -1,9 +1,9 @@
-@if (floating) {
+@if (floating && arrowStyles$) {
   <div
     #arrow
     class="arrow"
     [class.hidden]="!arrow"
-    [style]="arrowStyles()"
+    [style]="arrowStyles$ | async"
   >
     <ng-template
       [ngComponentOutlet]="arrowComponent"

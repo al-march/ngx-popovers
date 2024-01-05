@@ -12,6 +12,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FloatingComponent } from '../floating.component';
 import { NGX_FLOATING_ARROW_COMPONENT } from '../core/floating.injections';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'ngx-floating-arrow',
@@ -23,7 +24,7 @@ import { NGX_FLOATING_ARROW_COMPONENT } from '../core/floating.injections';
 })
 export class FloatingArrowComponent implements AfterViewInit, OnChanges {
   arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
-  floating = inject(FloatingComponent, { optional: true });
+  floating = inject(FloatingComponent);
 
   @ViewChild('arrow')
   arrowRef?: ElementRef<HTMLElement>;
@@ -31,15 +32,13 @@ export class FloatingArrowComponent implements AfterViewInit, OnChanges {
   @Input({ transform: numberAttribute })
   padding = 0;
 
-  get arrowStyles() {
-    return this.floating!.arrowStyles;
-  }
+  arrowStyles$ = toObservable(this.floating.arrowStyles);
 
   ngOnChanges() {
-    this.floating?.setArrow(this);
+    this.floating.setArrow(this);
   }
 
   ngAfterViewInit() {
-    this.floating?.setArrow(this);
+    this.floating.setArrow(this);
   }
 }

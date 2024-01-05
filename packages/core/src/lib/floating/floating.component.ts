@@ -156,6 +156,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
       }
 
       this.arrowStyles.set(styles);
+      this.cdRef.detectChanges();
     }
 
     this.coords = { x, y };
