@@ -29,22 +29,6 @@
       <highlight lang="html" [code]="usageExample" />
     </div>
 
-
-    <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
-
-    <p>
-      There is a configuration token <code class="code">NGX_POPOVER_CONFIG</code>.
-      <br>
-      Please, use the <code class="code">NgxPopoverConfig</code> class
-      to change the default tooltip properties.
-    </p>
-
-    <div class="my-4">
-      <highlight lang="typescript" [code]="configExample" />
-    </div>
-
     <div class="divider"></div>
 
     <h2 class="text-4xl mb-4 font-bold">Examples</h2>
@@ -130,6 +114,7 @@
           class="btn"
           [ngxPopover]="iconMenuExample"
           #iconMenuPopover="ngxPopover"
+          [arrow]="false"
         >
           Menu
         </button>
@@ -137,7 +122,12 @@
         <ng-template #iconMenuExample>
           <ul (click)="iconMenuPopover.close()" class="menu bg-base-200 rounded-box">
             <li>
-              <a class="tooltip tooltip-right" ngxTooltip="Home" placement="right">
+              <a
+                class="tooltip tooltip-right"
+                ngxTooltip="Home"
+                placement="right"
+                arrow
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -153,7 +143,12 @@
               </a>
             </li>
             <li>
-              <a class="tooltip tooltip-right" ngxTooltip="Details" placement="right">
+              <a
+                class="tooltip tooltip-right"
+                ngxTooltip="Details"
+                placement="right"
+                arrow
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -169,7 +164,12 @@
               </a>
             </li>
             <li>
-              <a class="tooltip tooltip-right" ngxTooltip="Stats" placement="right">
+              <a
+                class="tooltip tooltip-right"
+                ngxTooltip="Stats"
+                placement="right"
+                arrow
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -188,5 +188,21 @@
         </ng-template>
       </div>
     </ngx-example>
+
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+
+    <p>
+      There is a configuration token <code class="code">NGX_POPOVER_CONFIG</code>.
+      <br>
+      Please, use the <code class="code">NgxPopoverConfig</code> class
+      to change the default tooltip properties.
+    </p>
+
+    <div class="my-4">
+      <highlight lang="typescript" [code]="configExample" />
+    </div>
   </section>
 </div>

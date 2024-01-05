@@ -10,12 +10,11 @@ import { FormsModule } from '@angular/forms';
 
 const usageExample = `
 <button
-  [ngxTooltip]="placement"
-  [placement]="placement"
-  [offset]="10"
-  [arrow]="true"
+  ngxTooltip="Tooltip text"
+  placement="top-start"
+  arrow
 >
-  {{placement}}
+  Button with tooltip
 </button>
 `.trim();
 
@@ -28,7 +27,13 @@ export const TooltipConfigProvider: Provider = {
   provide: NGX_TOOLTIP_CONFIG,
   useValue: new NgxTooltipConfig({
     debounce: 50,
-    placement: 'top-end'
+    placement: 'top-end',
+    /* Middleware list from floating-ui */
+    middleware: [
+      flip(),
+      shift(),
+      offset(8),
+    ]
   })
 };
 `.trim();
@@ -40,8 +45,8 @@ import { NGX_TOOLTIP_COMPONENT, TooltipBase } from '@ngx-popovers/tooltip';
 @Component({
   standalone: true,
   template: \`
-    <div class="p-2 rounded bg-base-200 border border-warning shadow-xl">
-      <span><b>text:</b> {{ text }}</span>
+    <div class="p-2 rounded bg-base-300 border border-base-content drop-shadow-2xl">
+      <span>{{ text }}</span>
     </div>
   \`
 })

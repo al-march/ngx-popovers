@@ -28,8 +28,12 @@ export const FloatingConfigProvider: Provider = {
   provide: NGX_FLOATING_CONFIG,
   useValue: new NgxFloatingConfig({
     placement: 'top-end',
-    offset: 10,
-    autoUpdate: false
+    autoUpdate: false,
+    middleware: [
+      flip(),
+      shift(),
+      offset(8),
+    ]
   })
 };
 `.trim();

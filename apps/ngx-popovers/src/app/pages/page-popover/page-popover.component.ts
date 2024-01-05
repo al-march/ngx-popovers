@@ -39,7 +39,13 @@ export const PopoverConfigProvider: Provider = {
   provide: NGX_POPOVER_CONFIG,
   useValue: new NgxPopoverConfig({
     placement: 'top-end',
-    arrow: true
+    arrow: true,
+    /* Middleware list from floating-ui */
+    middleware: [
+      flip(),
+      shift(),
+      offset(8),
+    ]
   })
 };
 `;
