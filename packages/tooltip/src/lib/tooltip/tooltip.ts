@@ -1,6 +1,7 @@
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -21,7 +22,12 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: '[ngxTooltip]',
   standalone: true,
-  imports: [TooltipTemplate, FloatingComponent, CommonModule, FloatingArrowComponent],
+  imports: [
+    TooltipTemplate,
+    FloatingComponent,
+    CommonModule,
+    FloatingArrowComponent
+  ],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,6 +45,8 @@ import { CommonModule } from '@angular/common';
 })
 export class NgxTooltip implements OnChanges {
   config = inject(NGX_TOOLTIP_CONFIG);
+  cdRef = inject(ChangeDetectorRef);
+
   @Input('ngxTooltip')
   tooltipText = '';
 
@@ -153,6 +161,7 @@ export class NgxTooltip implements OnChanges {
       filter(() => this.isTriggerHovered())
     ).subscribe(() => {
       this.ngxValue = true;
+      this.cdRef.detectChanges();
     });
   }
 
@@ -181,6 +190,7 @@ export class NgxTooltip implements OnChanges {
       filter(() => !this.isTooltipHovered())
     ).subscribe(() => {
       this.ngxValue = false;
+      this.cdRef.detectChanges();
     });
   }
 
@@ -235,19 +245,10 @@ export class NgxTooltip implements OnChanges {
     this.isTooltipHovered.set($event);
   }
 
-  /**
-   * Minimum time of debounce time
-   */
-  private debounceMinTime = 20;
-
   private fixDebounce(time: unknown) {
     if (typeof time === 'number') {
-      if (time >= this.debounceMinTime) {
-        return time;
-      } else {
-        return this.debounceMinTime;
-      }
+      return time >= 0 ? time : 0;
     }
-    return this.debounceMinTime;
+    return 0;
   }
 }
