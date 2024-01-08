@@ -90,6 +90,25 @@ export class PortalIcon {
 export class FloatingIcon {
 }
 
+
+@Component({
+  template: `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="32"
+      height="32"
+    ><path
+      fill="currentColor"
+      d="M8.854 19.854a.5.5 0 01-.831-.205l-5-16a.5.5 0 01.626-.626l16 5a.5.5 0 01.205.83L16.207 12.5l4.647 4.646a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0L12.5 16.207l-3.646 3.647zM4.262 4.262l4.469 14.3 3.415-3.416a.5.5 0 01.708 0l4.646 4.647 2.293-2.293-4.647-4.646a.5.5 0 010-.708l3.416-3.415-14.3-4.469z"
+    ></path></svg>`,
+  selector: 'click-outside-icon',
+  standalone: true
+})
+export class ClickOutsideIcon {
+}
+
 @Component({
   template: `
     <svg

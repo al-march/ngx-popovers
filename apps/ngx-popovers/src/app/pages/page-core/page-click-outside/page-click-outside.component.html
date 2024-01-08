@@ -1,0 +1,86 @@
+<div class="page">
+  <page-title
+    description="The click outside directive handles clicks inside and outside HTMLElement. This directive is used by the ngx-floating component"
+  />
+
+  <section class="py-4">
+    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+
+    <p class="text-xl">Default usage:</p>
+
+    <div class="my-4">
+      <highlight lang="typescript" [code]="defaultUsage" />
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+
+    <p>Try to click!</p>
+
+
+    <ngx-example class="max-w-[500px] min-h-[400px] relative">
+      <div #example class="flex-1 relative">
+        <div
+          class="absolute top-10 left-10 right-10 bottom-10 border border-dashed border-accent"
+          ngxClickOutside
+          (inside)="onClickInside($event)"
+          (outside)="onClickOutside($event)"
+        >
+          <p class="text-sm p-1">The click outside directive here</p>
+          <div class="absolute top-10 left-10 right-10 bottom-10 border border-dashed border-error"></div>
+        </div>
+      </div>
+    </ngx-example>
+
+    @if (clickLogs().length && showLogs()) {
+      <ngx-floating
+        [trigger]="example"
+        [middleware]="middlewares"
+        placement="bottom"
+      >
+        <div
+          @fadeInOut
+          #logList
+          class="p-4 max-w-[370px] bg-base-200 rounded shadow-lg max-h-[300px] overflow-hidden overflow-y-auto w-full scroll-smooth"
+        >
+          <header class="flex-1 flex justify-end sticky top-0 z-10">
+            <button
+              (click)="$event.stopPropagation(); showLogs.set(false)"
+              class="btn btn-xs btn-error"
+            >
+              Close
+            </button>
+          </header>
+          @for (log of clickLogs(); track log) {
+            <div
+              class="chat chat-start max-w-full"
+              [class.chat-start]="log.inside"
+              [class.chat-end]="!log.inside"
+              @fadeInOut
+            >
+              @if (log.inside) {
+                <div class="chat-header">
+                  inside
+                </div>
+              } @else {
+                <div class="chat-header">
+                  outside
+                </div>
+              }
+              <div
+                class="chat-bubble w-full"
+                [class.chat-bubble-info]="log.inside"
+                [class.chat-bubble-warning]="!log.inside"
+              >
+                <span>You have just clicked on:</span>
+                <p class="truncate code text-sm p-1 text-neutral-content">{{ log.name }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </ngx-floating>
+    }
+
+  </section>
+</div>

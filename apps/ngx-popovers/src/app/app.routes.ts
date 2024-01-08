@@ -1,5 +1,13 @@
 import { Route } from '@angular/router';
-import { CoreIcon, FloatingIcon, GettingStartedIcon, PopoverIcon, PortalIcon, TooltipIcon } from './routes-icons';
+import {
+  ClickOutsideIcon,
+  CoreIcon,
+  FloatingIcon,
+  GettingStartedIcon,
+  PopoverIcon,
+  PortalIcon,
+  TooltipIcon
+} from './routes-icons';
 
 export const GettingStartedRoute: Route = {
   path: 'getting-started',
@@ -45,6 +53,16 @@ export const ComponentsRoutes: Route[] = [
         },
         loadComponent: () => import('./pages/page-core/page-portal/page-portal.component')
           .then(c => c.PagePortalComponent)
+      },
+      {
+        path: 'click-outside',
+        title: 'Click outside directive',
+        data: {
+          name: 'Click outside',
+          icon: ClickOutsideIcon
+        },
+        loadComponent: () => import('./pages/page-core/page-click-outside/page-click-outside.component')
+          .then(c => c.PageClickOutsideComponent)
       }
     ]
   },
