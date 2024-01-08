@@ -78,6 +78,9 @@ export class PopoverComponent {
   disabled = false;
 
   @Input({ transform: booleanAttribute })
+  animationDisabled = false;
+
+  @Input({ transform: booleanAttribute })
   ngxValue = false;
 
   @Output()

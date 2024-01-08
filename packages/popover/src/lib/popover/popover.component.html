@@ -16,6 +16,7 @@
         @fadeInOut
         (@fadeInOut.start)="onAnimationStart($event)"
         (@fadeInOut.done)="onAnimationDone($event)"
+        [@.disabled]="animationDisabled"
       >
         <ng-container *ngTemplateOutlet="template" />
 
