@@ -3,6 +3,8 @@
 This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
 for [Angular](https://angular.dev/) apps
 
+<img src="https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/popover/assets/preview.png" alt="md3tail theme">
+
 Popover component displays content next to the trigger element on mouse click
 
 > **Note**
@@ -21,6 +23,11 @@ documentation [floating-ui](https://floating-ui.com/docs/middleware)
   #popover
   [ngxPopover]="popoverContent"
   [ngxValue]="true"
+  [disabled]="false"
+  [animationDisabled]="false"
+  [closeOnClickedOutside]="false"
+  bindTo=".body"
+  arrow
 >
   Popover
 </button>
@@ -60,6 +67,14 @@ updates floating element automatically. Default `true`
 
 renders floating element as last child of bindTo. Default is body.
 
+#### `@Input()` `disabled`
+
+disables open/close on the trigger clicks
+
+#### `@Input()` `animationDisabled`
+
+disables show/hide animations
+
 #### `@Input()` `ngxValue`
 
 Show or hide state of popover
@@ -70,11 +85,11 @@ the ngxValue changes emitter
 
 #### `@Output()` `show`
 
-emits when popover shows
+emits when the popover shows
 
 #### `@Output()` `hide`
 
-emits when popover hides
+emits when the popover hides
 
 ## Configuration
 
@@ -82,11 +97,21 @@ There is a configuration token `NGX_POPOVER_CONFIG`.
 Please, use the `NgxPopoverConfig` class to change the default floating properties.
 
 ```typescript
+import { Provider, flip, shift, offset } from '@angular/core';
+import { NGX_POPOVER_CONFIG, NgxPopoverConfig } from '@ngx-popovers/popover';
+
 export const PopoverConfigProvider: Provider = {
   provide: NGX_POPOVER_CONFIG,
   useValue: new NgxPopoverConfig({
     placement: 'top-end',
-    arrow: true
+    arrow: true,
+    closeOnClickedOutside: true,
+    /* Middleware list from floating-ui */
+    middleware: [
+      flip(),
+      shift(),
+      offset(8),
+    ]
   })
 };
 ```

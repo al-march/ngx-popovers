@@ -16,6 +16,7 @@ const usageExample = `
   [ngxPopover]="popoverContent"
   [ngxValue]="true"
   [disabled]="false"
+  [animationDisabled]="false"
 >
   Popover
 </button>
@@ -33,7 +34,7 @@ const usageExample = `
 `.trim();
 
 const configExample = `
-import { Provider } from '@angular/core';
+import { Provider, flip, shift, offset } from '@angular/core';
 import { NGX_POPOVER_CONFIG, NgxPopoverConfig } from '@ngx-popovers/popover';
 
 export const PopoverConfigProvider: Provider = {

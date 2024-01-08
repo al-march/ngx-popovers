@@ -19,8 +19,7 @@ Add `ngxTooltip` to the html element to use this library.
 <button
   [ngxTooltip]="placement"
   [placement]="placement"
-  [offset]="10"
-  [arrow]="true"
+  arrow
 >
   {{placement}}
 </button>
