@@ -201,7 +201,8 @@ export class NgxTooltip implements OnChanges {
 
     this.blurListener$ = fromEvent(this.trigger, 'blur').pipe(
       filter(() => this.isTooltipCreated()),
-      debounceTime(this.fixedDebounce)
+      debounceTime(this.fixedDebounce),
+      filter(() => !this.isTooltipHovered())
     ).subscribe(() => {
       this.ngxValue = false;
     });
@@ -250,5 +251,15 @@ export class NgxTooltip implements OnChanges {
       return time >= 0 ? time : 0;
     }
     return 0;
+  }
+
+  /**
+   * Check if user clicked outside the trigger and the tooltip element.
+   * Close tooltip if user clicks outside (actually for touch devices)
+   */
+  onClickedOutside(element: Element) {
+    if (element !== this.trigger) {
+      this.ngxValue = false;
+    }
   }
 }
