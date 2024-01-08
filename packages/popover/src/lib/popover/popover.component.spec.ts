@@ -60,6 +60,17 @@ describe('PopoverComponent', () => {
     expect(popover()).not.toBeInTheDocument();
   });
 
+  it('should not open when disabled', () => {
+    fixture.componentRef.setInput('disabled', true);
+    fixture.detectChanges();
+
+    const btn = fixture.nativeElement.querySelector('button');
+    btn.click();
+
+    fixture.detectChanges();
+    expect(popover()).not.toBeInTheDocument();
+  })
+
   it('should emit value changes', () => {
     const valueChange = jest.spyOn(component, 'onValueChange');
     component.popover.open();
@@ -123,6 +134,7 @@ describe('PopoverComponent', () => {
       #popover
       [ngxPopover]="content"
       [(ngxValue)]="value"
+      [disabled]="disabled"
       (ngxValueChange)="onValueChange($event)"
       (show)="onShow()"
       (hide)="onHide()"
@@ -147,6 +159,9 @@ class PopoverTest {
 
   @Input()
   value = false;
+
+  @Input()
+  disabled = false;
 
   onValueChange($event: any) {}
 

@@ -15,7 +15,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FloatingArrowComponent, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: '[ngxPopover]',
@@ -71,8 +71,11 @@ export class PopoverComponent {
    * If true then the popover will close after a user
    * clicks outside the floating element
    */
-  @Input()
+  @Input({ transform: booleanAttribute })
   closeOnClickedOutside = this.config.closeOnClickedOutside;
+
+  @Input({ transform: booleanAttribute })
+  disabled = false;
 
   @Input({ transform: booleanAttribute })
   ngxValue = false;
@@ -92,6 +95,12 @@ export class PopoverComponent {
   @Output()
   clickedInside = new EventEmitter<Element>();
 
+  @Output()
+  animationStart = new EventEmitter<AnimationEvent>();
+
+  @Output()
+  animationDone = new EventEmitter<AnimationEvent>();
+
   isAnimating = signal(false);
 
   get trigger() {
@@ -104,12 +113,14 @@ export class PopoverComponent {
 
   @HostListener('click', ['$event'])
   onClick() {
-    if (this.ngxValue) {
-      this.close();
-      this.hide.emit();
-    } else {
-      this.open();
-      this.show.emit();
+    if (!this.disabled) {
+      if (this.ngxValue) {
+        this.close();
+        this.hide.emit();
+      } else {
+        this.open();
+        this.show.emit();
+      }
     }
   }
 
@@ -135,5 +146,15 @@ export class PopoverComponent {
     if (this.closeOnClickedOutside) {
       this.close();
     }
+  }
+
+  onAnimationStart($event: AnimationEvent) {
+    this.isAnimating.set(true);
+    this.animationStart.emit($event);
+  }
+
+  onAnimationDone($event: AnimationEvent) {
+    this.isAnimating.set(false);
+    this.animationDone.emit($event);
   }
 }

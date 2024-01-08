@@ -14,7 +14,8 @@
     @if (template && ngxValue) {
       <div
         @fadeInOut
-        (@fadeInOut.done)="isAnimating.set(false)"
+        (@fadeInOut.start)="onAnimationStart($event)"
+        (@fadeInOut.done)="onAnimationDone($event)"
       >
         <ng-container *ngTemplateOutlet="template" />
 

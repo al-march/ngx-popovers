@@ -15,6 +15,7 @@ const usageExample = `
   #popover
   [ngxPopover]="popoverContent"
   [ngxValue]="true"
+  [disabled]="false"
 >
   Popover
 </button>
