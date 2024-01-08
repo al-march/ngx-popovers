@@ -40,6 +40,7 @@ export const PopoverConfigProvider: Provider = {
   useValue: new NgxPopoverConfig({
     placement: 'top-end',
     arrow: true,
+    closeOnClickedOutside: true,
     /* Middleware list from floating-ui */
     middleware: [
       flip(),

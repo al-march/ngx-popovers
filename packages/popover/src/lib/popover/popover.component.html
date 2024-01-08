@@ -7,9 +7,15 @@
     [middleware]="middleware"
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
+
+    (clickedInside)="onClickedInside($event)"
+    (clickedOutside)="onClickedOutside($event)"
   >
     @if (template && ngxValue) {
-      <div @fadeInOut (@fadeInOut.done)="isAnimating.set(false)">
+      <div
+        @fadeInOut
+        (@fadeInOut.done)="isAnimating.set(false)"
+      >
         <ng-container *ngTemplateOutlet="template" />
 
         @if (arrow) {

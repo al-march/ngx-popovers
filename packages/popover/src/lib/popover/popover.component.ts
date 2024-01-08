@@ -67,6 +67,13 @@ export class PopoverComponent {
   @Input()
   bindTo = this.config.bindTo;
 
+  /**
+   * If true then the popover will close after a user
+   * clicks outside the floating element
+   */
+  @Input()
+  closeOnClickedOutside = this.config.closeOnClickedOutside;
+
   @Input({ transform: booleanAttribute })
   ngxValue = false;
 
@@ -78,6 +85,12 @@ export class PopoverComponent {
 
   @Output()
   hide = new EventEmitter();
+
+  @Output()
+  clickedOutside = new EventEmitter<Element>();
+
+  @Output()
+  clickedInside = new EventEmitter<Element>();
 
   isAnimating = signal(false);
 
@@ -110,5 +123,17 @@ export class PopoverComponent {
     this.isAnimating.set(true);
     this.ngxValue = false;
     this.ngxValueChange.emit(false);
+  }
+
+  onClickedInside(element: Element) {
+    this.clickedInside.emit(element);
+  }
+
+  onClickedOutside(element: Element) {
+    this.clickedOutside.emit(element);
+    /* Close the popover when user clicks outside */
+    if (this.closeOnClickedOutside) {
+      this.close();
+    }
   }
 }

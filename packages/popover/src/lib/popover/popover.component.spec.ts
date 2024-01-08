@@ -17,7 +17,7 @@ describe('PopoverComponent', () => {
     fixture.detectChanges();
   });
 
-  const popover = () => document.querySelector('#test-popover-content');
+  const popover = () => document.querySelector('#test-popover-content') as HTMLElement;
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -88,6 +88,32 @@ describe('PopoverComponent', () => {
 
     expect(hide).toHaveBeenCalled();
   });
+
+  it('should emit click inside', () => {
+    fixture.componentRef.setInput('value', true);
+    fixture.detectChanges();
+
+    const inside = jest.spyOn(component, 'onInsideClicked');
+    popover().click();
+    expect(inside).toHaveBeenCalled();
+    expect(inside).toHaveBeenCalledWith(popover());
+  });
+
+  it('should emit click outside', () => {
+    fixture.componentRef.setInput('value', true);
+    fixture.detectChanges();
+
+    const outside = jest.spyOn(component, 'onOutsideClicked');
+    document.body.click();
+    expect(outside).toHaveBeenCalled();
+    expect(outside).toHaveBeenCalledWith(document.body);
+  });
+
+  it('should not emit click outside when closed', () => {
+    const outside = jest.spyOn(component, 'onOutsideClicked');
+    document.body.click();
+    expect(outside).not.toHaveBeenCalled();
+  });
 });
 
 @Component({
@@ -100,14 +126,16 @@ describe('PopoverComponent', () => {
       (ngxValueChange)="onValueChange($event)"
       (show)="onShow()"
       (hide)="onHide()"
+      (clickedOutside)="onOutsideClicked($event)"
+      (clickedInside)="onInsideClicked($event)"
     >
-          button
-      </button>
-      <ng-template #content>
-          <div id="test-popover-content">
-              <p>popover content</p>
-          </div>
-      </ng-template>
+      button
+    </button>
+    <ng-template #content>
+        <div id="test-popover-content">
+            <p>popover content</p>
+        </div>
+    </ng-template>
   `,
   imports: [
     PopoverComponent
@@ -120,16 +148,13 @@ class PopoverTest {
   @Input()
   value = false;
 
+  onValueChange($event: any) {}
 
-  onValueChange($event: any) {
+  onShow() {}
 
-  }
+  onHide() {}
 
-  onShow() {
+  onInsideClicked($event: Element) {}
 
-  }
-
-  onHide() {
-
-  }
+  onOutsideClicked($event: Element) {}
 }
