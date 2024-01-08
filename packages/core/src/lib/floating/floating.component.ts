@@ -4,10 +4,12 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   inject,
   Input,
   OnChanges,
   OnDestroy,
+  Output,
   PLATFORM_ID,
   signal,
   ViewChild
@@ -18,6 +20,7 @@ import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
 import { FloatingArrowComponent } from './floating-arrow/floating-arrow.component';
+import { ClickOutsideDirective } from '../click-outside';
 
 const staticSides: Record<string, string> = {
   top: 'bottom',
@@ -31,7 +34,8 @@ const staticSides: Record<string, string> = {
   standalone: true,
   imports: [
     CommonModule,
-    PortalComponent
+    PortalComponent,
+    ClickOutsideDirective
   ],
   providers: [
     FloatingService
@@ -82,6 +86,18 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
    */
   @Input()
   bindTo = this.config.bindTo;
+
+  /**
+   * Emits when user clicks outside the floating element
+   */
+  @Output()
+  clickedOutside = new EventEmitter<Element>();
+
+  /**
+   * Emits when user clicks inside the floating element
+   */
+  @Output()
+  clickedInside = new EventEmitter<Element>();
 
   coords = { x: 0, y: 0 };
   arrowStyles = signal<Record<string, string>>({});
@@ -161,6 +177,26 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     this.coords = { x, y };
     this.cdRef.detectChanges();
+  }
+
+  /* Check if user clicked outside the floating element*/
+  onClickOutside(target: EventTarget) {
+    if (target instanceof Element) {
+      /* Ignore the trigger element */
+      if (target !== this.trigger) {
+        this.clickedOutside.emit(target);
+      }
+    }
+  }
+
+  /* Check if user clicked inside the floating element*/
+  onClickInside(target: EventTarget) {
+    if (target instanceof Element) {
+      /* Ignore the trigger element */
+      if (target !== this.trigger) {
+        this.clickedInside.emit(target);
+      }
+    }
   }
 
   getSide(placement: Placement) {

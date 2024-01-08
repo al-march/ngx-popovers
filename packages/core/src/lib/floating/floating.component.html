@@ -5,6 +5,10 @@
       class="floating"
       [style.left.px]="coords.x"
       [style.top.px]="coords.y"
+
+      ngxClickOutside
+      (outside)="onClickOutside($event)"
+      (inside)="onClickInside($event)"
     >
       <ng-content />
     </div>

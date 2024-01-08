@@ -19,6 +19,8 @@ describe('FloatingComponent', () => {
     fixture.detectChanges();
   });
 
+  const floating = () => document.querySelector('.floating') as HTMLElement;
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -77,6 +79,20 @@ describe('FloatingComponent', () => {
 
     expect(component.cleanup).not.toBeTruthy();
   });
+
+  it('should emit when click inside', () => {
+    const inside = jest.spyOn(component.clickedInside, 'emit');
+    floating().click();
+    expect(inside).toHaveBeenCalled();
+    expect(inside).toHaveBeenCalledWith(floating());
+  });
+
+  it('should emit when click outside', () => {
+    const outside = jest.spyOn(component.clickedOutside, 'emit');
+    document.body.click();
+    expect(outside).toHaveBeenCalled();
+    expect(outside).toHaveBeenCalledWith(document.body);
+  })
 });
 
 describe('FloatingComponent.DI', () => {
@@ -86,7 +102,7 @@ describe('FloatingComponent.DI', () => {
   const config = new NgxFloatingConfig({
     placement: 'left-start',
     autoUpdate: false,
-    bindTo: document.body,
+    bindTo: document.body
   });
 
   beforeEach(async () => {
