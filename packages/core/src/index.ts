@@ -5,3 +5,5 @@ export * from './lib/type';
 // Components
 export * from './lib/portal';
 export * from './lib/floating';
+// Directives
+export * from './lib/click-outside';
