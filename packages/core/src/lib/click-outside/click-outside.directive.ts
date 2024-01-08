@@ -1,4 +1,5 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { isContainElement } from '../utils/utils';
 
 @Directive({
   selector: '[ngxClickOutside]',
@@ -23,8 +24,7 @@ export class ClickOutsideDirective {
   onClick(event: PointerEvent) {
     const target = event.target;
     if (target) {
-      const isContains = this.el.nativeElement.contains(target);
-      if (isContains) {
+      if (isContainElement(this.el.nativeElement, target)) {
         this.inside.emit(target);
       } else {
         this.outside.emit(target);

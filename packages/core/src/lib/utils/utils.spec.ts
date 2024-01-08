@@ -1,4 +1,4 @@
-import { Keys } from './utils';
+import { isContainElement, Keys } from './utils';
 
 describe('utils', () => {
 
@@ -35,4 +35,23 @@ describe('utils', () => {
       expect(Keys(obj2)).toEqual(['key1', 'key2']);
     });
   });
+
+  describe('isContainElement', () => {
+    it('should contains', () => {
+      const parent = document.createElement('div');
+      const child = document.createElement('div');
+      parent.appendChild(child);
+      document.body.appendChild(parent);
+
+      expect(isContainElement(parent, child)).toBeTruthy();
+      expect(isContainElement(parent, parent)).toBeTruthy();
+      expect(isContainElement(child, child)).toBeTruthy();
+
+      expect(isContainElement(document.body, parent)).toBeTruthy();
+      expect(isContainElement(document.body, child)).toBeTruthy();
+
+      expect(isContainElement(parent, document.body)).toBeFalsy();
+      expect(isContainElement(child, document.body)).toBeFalsy();
+    });
+  })
 });
