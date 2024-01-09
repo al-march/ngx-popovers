@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/tooltip",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "The Tooltip component based on Angular 17+ and Floating-ui shows tooltips next to the trigger element",
   "keywords": [
     "components",
@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.0.20"
+    "@ngx-popovers/core": "0.0.21"
   },
   "sideEffects": false
 }
