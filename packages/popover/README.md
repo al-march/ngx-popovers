@@ -8,6 +8,7 @@ for [Angular](https://angular.dev/) apps
 Popover component displays content next to the trigger element on mouse click
 
 > **Note**
+> 
 > I strongly recommend not using this library until its stable version is released.
 
 [Demo](https://ngx-popovers.vercel.app)
@@ -91,14 +92,38 @@ emits when the popover shows
 
 emits when the popover hides
 
+#### `@Output()` `clickedOutside($event: Element)`
+
+emits when user clicks outside the floating element. 
+`$event` - element which was clicked
+
+#### `@Output()` `clickedInside($event: Element)`
+
+emits when user clicks inside the floating element. 
+`$event` - element which was clicked
+
+#### `@Output()` `animationStart`
+
+emits when animation starts
+
+
+#### `@Output()` `animationDone`
+
+emits when animation ends
+
 ## Configuration
 
 There is a configuration token `NGX_POPOVER_CONFIG`.
 Please, use the `NgxPopoverConfig` class to change the default floating properties.
 
 ```typescript
-import { Provider, flip, shift, offset } from '@angular/core';
+import { Provider } from '@angular/core';
 import { NGX_POPOVER_CONFIG, NgxPopoverConfig } from '@ngx-popovers/popover';
+/**
+ * You have to install @ngx-popovers/core to import middleware.
+ * Version of @ngx-popovers/core is the same as @ngx-popovers/popover
+ */
+import { flip, offset, shift } from '@ngx-popovers/core';
 
 export const PopoverConfigProvider: Provider = {
   provide: NGX_POPOVER_CONFIG,
@@ -110,11 +135,15 @@ export const PopoverConfigProvider: Provider = {
     middleware: [
       flip(),
       shift(),
-      offset(8),
+      offset(8)
     ]
   })
 };
 ```
+
+## Arrow component
+
+See the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
 
 ## Sources
 

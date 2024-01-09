@@ -9,6 +9,7 @@ import { Placement } from '@ngx-popovers/core';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { ExampleComponent } from '../../template/example/example.component';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
+import { WarningComponent } from '../../shared/warning/warning.component';
 
 const usageExample = `
 <button
@@ -34,8 +35,13 @@ const usageExample = `
 `.trim();
 
 const configExample = `
-import { Provider, flip, shift, offset } from '@angular/core';
+import { Provider } from '@angular/core';
 import { NGX_POPOVER_CONFIG, NgxPopoverConfig } from '@ngx-popovers/popover';
+/**
+ * You have to install core to import middleware.
+ * Version of core is the same as @ngx-popovers/popover
+ */
+import { flip, offset, shift } from '@ngx-popovers/core';
 
 export const PopoverConfigProvider: Provider = {
   provide: NGX_POPOVER_CONFIG,
@@ -51,7 +57,7 @@ export const PopoverConfigProvider: Provider = {
     ]
   })
 };
-`;
+`.trim();
 
 @Component({
   selector: 'ngx-popovers-page-popover',
@@ -65,7 +71,8 @@ export const PopoverConfigProvider: Provider = {
     RouterLink,
     PopoverComponent,
     ExampleComponent,
-    NgxTooltip
+    NgxTooltip,
+    WarningComponent
   ],
   templateUrl: './page-popover.component.html',
   styleUrl: './page-popover.component.scss'

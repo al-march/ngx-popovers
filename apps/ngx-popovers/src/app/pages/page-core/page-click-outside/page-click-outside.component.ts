@@ -5,7 +5,7 @@ import { HighlightComponent } from '../../../core/highlight/highlight.component'
 import { ExampleComponent } from '../../../template/example/example.component';
 import { ClickOutsideDirective, flip, FloatingArrowComponent, FloatingComponent, offset } from '@ngx-popovers/core';
 import { PopoverComponent } from '@ngx-popovers/popover';
-import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 class LogItem {
   name = '';
@@ -74,7 +74,7 @@ export class ClickOutsideExample {
       transition(':leave', [
         animate(100, style({ opacity: 0 }))
       ])
-    ]),
+    ])
   ]
 })
 export class PageClickOutsideComponent {
@@ -114,7 +114,7 @@ export class PageClickOutsideComponent {
       if (list) {
         list.scrollTop = list.scrollHeight;
       }
-    })
+    });
   }
 
   addLog(element: HTMLElement, inside: boolean) {

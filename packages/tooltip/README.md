@@ -4,11 +4,12 @@ This library was generated with [Nx](https://nx.dev) using [floating-ui](https:/
 for [Angular](https://angular.dev/) apps
 
 > **Note**
+> 
 > I strongly recommend not using this library until its stable version is released.
 
 The Tooltip component shows tooltips next to the trigger element
 
-[Demo](https://ngx-popovers.vercel.app)
+> See [Demo](https://ngx-popovers.vercel.app/tooltip)
 
 ## Usage
 
@@ -68,11 +69,25 @@ There is a configuration token `NGX_TOOLTIP_CONFIG`.
 Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
 
 ```typescript
+import { Provider } from '@angular/core';
+import { NGX_TOOLTIP_CONFIG, NgxTooltipConfig } from '@ngx-popovers/tooltip';
+/**
+ * You have to install @ngx-popovers/core to import middleware.
+ * Version of @ngx-popovers/core is the same as @ngx-popovers/tooltip
+ */
+import { flip, offset, shift } from '@ngx-popovers/core';
+
 export const TooltipConfigProvider: Provider = {
   provide: NGX_TOOLTIP_CONFIG,
   useValue: new NgxTooltipConfig({
     debounce: 50,
-    placement: 'top-end'
+    placement: 'top-end',
+    /* Middleware list from floating-ui */
+    middleware: [
+      flip(),
+      shift(),
+      offset(8)
+    ]
   })
 };
 ```
@@ -113,6 +128,10 @@ export const TooltipProvider: Provider = {
   useValue: CustomTooltip
 };
 ```
+
+## Arrow component
+
+See the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
 
 ## Sources
 

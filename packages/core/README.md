@@ -59,7 +59,9 @@ import {
 
 This library was generated with [Nx](https://nx.dev) for [Angular](https://angular.dev/) apps.
 
-### Portal
+> See [Demo](https://ngx-popovers.vercel.app/core/portal)
+
+## Usage
 
 The `<ngx-portal/>` component displays the content on the body.
 
@@ -71,14 +73,46 @@ The `<ngx-portal/>` component displays the content on the body.
 
 This component is required to display tooltips correctly without overlapping with other elements on the page.
 
+# ClickOutside directive
+
+The click outside directive handles clicks inside and outside HTMLElement. This directive is used by the ngx-floating component
+
+> See [Demo](https://ngx-popovers.vercel.app/core/click-outside)
+
+## Usage
+
+```typescript
+import { ClickOutsideDirective } from '@ngx-popovers/core';
+
+@Component({
+  selector: 'ngx-click-outside-example',
+  standalone: true,
+  imports: [ClickOutsideDirective],
+  template: `
+    <div
+      ngxClickOutside
+      (inside)="onInsideClicked($event)"
+      (outside)="onOutsideClicked($event)"
+    ></div>
+  `
+})
+export class ClickOutsideExample {
+  onInsideClicked(el: EventTarget) {
+    console.log('Inside click!', el);
+  }
+
+  onOutsideClicked(el: EventTarget) {
+    console.log('Outside click!', el);
+  }
+}
+```
+
 # floating
 
 This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
 for [Angular](https://angular.dev/) apps
 
-
-> **Note**
-> I strongly recommend not using this library until its stable version is released.
+> See [Demo](https://ngx-popovers.vercel.app/core/floating)
 
 The Floating component implements the floating-ui library for Angular
 

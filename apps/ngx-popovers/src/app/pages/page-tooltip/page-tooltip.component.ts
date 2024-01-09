@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { Placement } from '@floating-ui/dom';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FormsModule } from '@angular/forms';
+import { WarningComponent } from '../../shared/warning/warning.component';
 
 const usageExample = `
 <button
@@ -21,8 +22,12 @@ const usageExample = `
 const configExample = `
 import { Provider } from '@angular/core';
 import { NGX_TOOLTIP_CONFIG, NgxTooltipConfig } from '@ngx-popovers/tooltip';
+/**
+ * You have to install core to import middleware.
+ * Version of the core is the same as the tooltip package.
+ */
+import { flip, offset, shift } from '@ngx-popovers/core';
 
-/* Configure default @Input properties */
 export const TooltipConfigProvider: Provider = {
   provide: NGX_TOOLTIP_CONFIG,
   useValue: new NgxTooltipConfig({
@@ -32,7 +37,7 @@ export const TooltipConfigProvider: Provider = {
     middleware: [
       flip(),
       shift(),
-      offset(8),
+      offset(8)
     ]
   })
 };
@@ -70,7 +75,8 @@ export const TooltipProvider: Provider = {
     RouterLink,
     NgxTooltip,
     FormsModule,
-    CoreIcon
+    CoreIcon,
+    WarningComponent
   ],
   templateUrl: './page-tooltip.component.html',
   styleUrl: './page-tooltip.component.scss'
