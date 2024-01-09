@@ -1,6 +1,7 @@
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -39,6 +40,7 @@ import { animate, AnimationEvent, style, transition, trigger } from '@angular/an
 })
 export class PopoverComponent {
   private config = inject(NGX_POPOVER_CONFIG);
+  private cdRef = inject(ChangeDetectorRef);
 
   @Input('ngxPopover')
   template?: TemplateRef<any>;
@@ -148,6 +150,7 @@ export class PopoverComponent {
     /* Close the popover when user clicks outside */
     if (this.closeOnClickedOutside) {
       this.close();
+      this.cdRef.detectChanges();
     }
   }
 
