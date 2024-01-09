@@ -9,6 +9,7 @@ import { HeaderComponent } from './template/header/header.component';
 import { ComponentsRoutes, GettingStartedRoute } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
 import { filter, tap } from 'rxjs';
+import { FooterComponent } from './template/footer/footer.component';
 
 @Component({
   standalone: true,
@@ -20,7 +21,8 @@ import { filter, tap } from 'rxjs';
     HeaderComponent,
     FloatingArrowComponent,
     NgComponentOutlet,
-    NgClass
+    NgClass,
+    FooterComponent
   ],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
