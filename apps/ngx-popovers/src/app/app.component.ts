@@ -10,6 +10,7 @@ import { ComponentsRoutes, GettingStartedRoute } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
 import { filter, tap } from 'rxjs';
 import { FooterComponent } from './template/footer/footer.component';
+import { PopoverProvider } from './core/custom-popover';
 
 @Component({
   standalone: true,
@@ -27,7 +28,12 @@ import { FooterComponent } from './template/footer/footer.component';
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [TooltipProvider, TooltipConfigProvider, ArrowProvider]
+  providers: [
+    TooltipProvider,
+    TooltipConfigProvider,
+    PopoverProvider,
+    ArrowProvider
+  ]
 })
 export class AppComponent implements OnInit {
   sidebar = signal(true);
