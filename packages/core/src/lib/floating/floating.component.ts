@@ -12,13 +12,13 @@ import {
   ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
 import { arrow, ComputePositionReturn, Middleware, Placement } from '../type';
 import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
 import { Arrow } from '../arrow';
 import { ClickOutsideDirective } from '../click-outside';
-import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
 import { PlatformService } from '../platform.service';
 
 
@@ -89,6 +89,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Output()
   clickedInside = new EventEmitter<Element>();
 
+  @Output()
+  computePositionReturn = new EventEmitter<ComputePositionReturn>();
+
   private _computePosition$ = new BehaviorSubject<ComputePositionReturn | undefined>(undefined);
   public computePosition$ = this._computePosition$.asObservable();
 
@@ -141,6 +144,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
         await this.computePosition(trigger, floating);
       }
     }
+
     return;
   }
 
@@ -151,6 +155,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     });
 
     this._computePosition$.next(computePositionReturn);
+    this.computePositionReturn.emit(computePositionReturn);
   }
 
   /* Check if user clicked outside the floating element*/

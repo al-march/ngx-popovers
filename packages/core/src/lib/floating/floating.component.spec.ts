@@ -32,13 +32,6 @@ describe('FloatingComponent', () => {
     expect(component.bindTo).toBe(config.bindTo);
   });
 
-  it('should get correct side', () => {
-    expect(component.getSide('top-end')).toBe('bottom');
-    expect(component.getSide('left-start')).toBe('right');
-    expect(component.getSide('bottom')).toBe('top');
-    expect(component.getSide('right-end')).toBe('left');
-  });
-
   it('should call bind when placement changes', () => {
     const bind = jest.spyOn(component, 'bind');
 
@@ -92,6 +85,25 @@ describe('FloatingComponent', () => {
     document.body.click();
     expect(outside).toHaveBeenCalled();
     expect(outside).toHaveBeenCalledWith(document.body);
+  });
+
+  it('should create observable with computePositions', async () => {
+    const compute = jest.spyOn(component.computePositionReturn, 'emit');
+    fixture.componentRef.setInput('trigger', document.body);
+    fixture.componentRef.setInput('autoUpdate', false);
+    fixture.detectChanges();
+
+    component.computePosition$.subscribe(data => {
+      if (data) {
+        expect(data).toBeTruthy();
+      } else {
+        expect(data).not.toBeTruthy();
+      }
+    });
+
+    await component.bind();
+    await new Promise(r => setTimeout(r));
+    expect(compute).toHaveBeenCalled();
   })
 });
 

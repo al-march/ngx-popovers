@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Arrow } from './arrow';
 import { FloatingComponent } from '@ngx-popovers/core';
-import { signal } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 const FloatingMock = {
-  arrowStyles: signal({}),
+  computePosition$: new BehaviorSubject<any>(undefined),
   setArrow: (arrow: Arrow) => {}
 };
 
@@ -32,7 +32,7 @@ describe('FloatingArrowComponent', () => {
 
   it('should set arrow to floating ngAfterViewInit', async () => {
     const setArrow = jest.spyOn(FloatingMock, 'setArrow');
-    component.ngAfterViewInit();
+    await component.ngAfterViewInit();
     fixture.detectChanges();
     expect(setArrow).toHaveBeenCalled();
   });
@@ -44,14 +44,25 @@ describe('FloatingArrowComponent', () => {
     expect(setArrow).toHaveBeenCalled();
   });
 
-  it('should set styles', () => {
-    const left = '10px';
-    const top = '10px';
-    FloatingMock.arrowStyles.set({ left, top });
+  it('should set styles', async () => {
+    const x = 10;
+    const y = 10;
+
+    FloatingMock.computePosition$.next({
+      middlewareData: { arrow: { x, y } },
+      placement: 'left'
+    });
     fixture.detectChanges();
 
     const arrow = component.arrowRef!.nativeElement;
-    expect(arrow.style.left).toBe(left);
-    expect(arrow.style.top).toBe(top);
+    expect(arrow.style.left).toBe(x + 'px');
+    expect(arrow.style.top).toBe(y + 'px');
+  });
+
+  it('should get the correct side', () => {
+    expect(component.getSide('top-end')).toBe('bottom');
+    expect(component.getSide('left-start')).toBe('right');
+    expect(component.getSide('bottom')).toBe('top');
+    expect(component.getSide('right-end')).toBe('left');
   });
 });
