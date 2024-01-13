@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
@@ -34,7 +34,8 @@ const portalUsageWithBindHtml = `
   standalone: true,
   imports: [CommonModule, TitleComponent, HighlightComponent, PortalComponent],
   templateUrl: './page-portal.component.html',
-  styleUrl: './page-portal.component.scss'
+  styleUrl: './page-portal.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PagePortalComponent implements AfterViewInit {
   portalUsageHtml = portalUsageHtml;

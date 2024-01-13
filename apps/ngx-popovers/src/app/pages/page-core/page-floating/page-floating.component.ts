@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
@@ -50,7 +50,8 @@ export const FloatingConfigProvider: Provider = {
     FloatingComponent
   ],
   templateUrl: './page-floating.component.html',
-  styleUrl: './page-floating.component.scss'
+  styleUrl: './page-floating.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageFloatingComponent {
   example = example;
