@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import {
+  ArrowIcon,
   ClickOutsideIcon,
   CoreIcon,
   FloatingIcon,
@@ -53,6 +54,16 @@ export const ComponentsRoutes: Route[] = [
         },
         loadComponent: () => import('./pages/page-core/page-portal/page-portal.component')
           .then(c => c.PagePortalComponent)
+      },
+      {
+        path: 'arrow',
+        title: 'Arrow component',
+        data: {
+          name: 'Arrow',
+          icon: ArrowIcon
+        },
+        loadComponent: () => import('./pages/page-core/page-arrow/page-arrow.component')
+          .then(c => c.PageArrowComponent)
       },
       {
         path: 'click-outside',

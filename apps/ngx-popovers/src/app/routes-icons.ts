@@ -130,6 +130,27 @@ export class PopoverIcon {
 @Component({
   template: `
     <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="32"
+      height="32"
+    >
+      <path
+        fill="currentColor"
+        d="M6 4.67v14.66a.65.65 0 001.015.538l10.656-7.23a.77.77 0 000-1.275L7.015 4.133A.65.65 0 006 4.67zm-1 0a1.65 1.65 0 012.576-1.365l10.656 7.23a1.77 1.77 0 010 2.93l-10.656 7.23A1.65 1.65 0 015 19.33V4.67z"
+      ></path>
+    </svg>
+  `,
+  selector: 'arrow-icon',
+  standalone: true
+})
+export class ArrowIcon {
+}
+
+@Component({
+  template: `
+    <svg
       fill="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
