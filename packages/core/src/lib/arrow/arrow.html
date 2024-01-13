@@ -3,7 +3,7 @@
     #arrow
     class="ngx-arrow"
     [class.hidden]="!arrow"
-    [style]="arrowStyles$ | async"
+    [style]="styles$ | async"
   >
     <ng-template
       [ngComponentOutlet]="arrowComponent"

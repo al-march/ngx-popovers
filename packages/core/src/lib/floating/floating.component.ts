@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   booleanAttribute,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -11,23 +10,17 @@ import {
   OnDestroy,
   Output,
   PLATFORM_ID,
-  signal,
   ViewChild
 } from '@angular/core';
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { arrow, Middleware, Placement } from '../type';
+import { arrow, ComputePositionReturn, Middleware, Placement } from '../type';
 import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
-import { Arrow } from '../arrow/arrow';
+import { Arrow } from '../arrow';
 import { ClickOutsideDirective } from '../click-outside';
+import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
 
-const staticSides: Record<string, string> = {
-  top: 'bottom',
-  right: 'left',
-  bottom: 'top',
-  left: 'right'
-};
 
 @Component({
   selector: 'ngx-floating',
@@ -46,10 +39,8 @@ const staticSides: Record<string, string> = {
 export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
-  cdRef = inject(ChangeDetectorRef);
 
   platformId = inject(PLATFORM_ID);
-  // Do not run floating-ui inside Window.
   // We need to render dynamic content only when the Window is allowed
   isServer = isPlatformServer(this.platformId);
 
@@ -99,15 +90,17 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Output()
   clickedInside = new EventEmitter<Element>();
 
-  coords = { x: 0, y: 0 };
-  arrowStyles = signal<Record<string, string>>({});
+  private _computePosition$ = new BehaviorSubject<ComputePositionReturn | undefined>(undefined);
+  public computePosition$ = this._computePosition$.asObservable();
 
-  // Uses for cleanup autoUpdate function
+  coords$ = this.computePosition$.pipe(
+    filter(Boolean),
+    map(({ x, y }) => ({ x, y })),
+    shareReplay()
+  );
+
+  /* Uses for cleanup autoUpdate function */
   cleanup?: () => void;
-
-  get arrowEl() {
-    return this.arrow?.arrowRef?.nativeElement;
-  }
 
   get arrowMiddleware() {
     if (this.arrow?.arrowRef) {
@@ -120,11 +113,11 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.bind();
+    return this.bind();
   }
 
   ngOnChanges() {
-    this.bind();
+    return this.bind();
   }
 
   ngOnDestroy() {
@@ -135,6 +128,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (this.isServer) {
       return;
     }
+
     this.cleanup?.();
     const trigger = this.trigger;
     const floating = this.floatingRef?.nativeElement;
@@ -148,35 +142,16 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
         await this.computePosition(trigger, floating);
       }
     }
+    return;
   }
 
   async computePosition(trigger: HTMLElement, floating: HTMLElement) {
-    const { x, y, middlewareData, placement } = await this.floatingService.computePosition(trigger, floating, {
+    const computePositionReturn = await this.floatingService.computePosition(trigger, floating, {
       placement: this.placement,
       middleware: [...this.middleware, this.arrowMiddleware]
     });
 
-    if (middlewareData.arrow && this.arrowEl) {
-      const { x, y } = middlewareData.arrow;
-
-      const staticSide = this.getSide(placement);
-      const styles: Record<string, string> = {};
-      if (x != null) {
-        styles['left'] = `${x}px`;
-      }
-      if (y != null) {
-        styles['top'] = `${y}px`;
-      }
-      if (staticSide) {
-        styles[staticSide] = `${-this.arrowEl!.offsetWidth / 2}px`;
-      }
-
-      this.arrowStyles.set(styles);
-      this.cdRef.detectChanges();
-    }
-
-    this.coords = { x, y };
-    this.cdRef.detectChanges();
+    this._computePosition$.next(computePositionReturn);
   }
 
   /* Check if user clicked outside the floating element*/
@@ -199,13 +174,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  getSide(placement: Placement) {
-    const side = placement.split('-')[0];
-    return staticSides[side];
-  }
-
   /**
-   * Arrow sets from <floating-arrow> component
+   * Arrow sets from <ngx-arrow/> component
    */
   setArrow(arrow: Arrow) {
     this.arrow = arrow;

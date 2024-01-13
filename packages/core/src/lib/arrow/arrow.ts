@@ -11,10 +11,18 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FloatingComponent } from '../floating/floating.component';
+import { FloatingComponent } from '../floating';
 import { NGX_ARROW_COMPONENT } from './core/arrow.injections';
-import { toObservable } from '@angular/core/rxjs-interop';
 import { ArrowBase } from './core/arrow-base';
+import { ComputePositionReturn, Placement } from '../type';
+import { filter, map } from 'rxjs';
+
+const staticSides: Record<string, string> = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right'
+};
 
 @Component({
   selector: 'ngx-arrow',
@@ -35,17 +43,50 @@ export class Arrow implements AfterViewInit, OnChanges {
   @Input({ transform: numberAttribute })
   padding = 0;
 
-  arrowStyles$ = toObservable(this.floating.arrowStyles);
+  styles$ = this.floating.computePosition$.pipe(
+    filter(Boolean),
+    map(data => {
+      return this.computePosition(data);
+    })
+  );
 
   ngOnChanges() {
-    this.updateState();
+    return this.updateState();
   }
 
   ngAfterViewInit() {
-    this.updateState();
+    return this.updateState();
   }
 
   async updateState() {
     await this.floating.setArrow(this);
+  }
+
+  computePosition({ middlewareData, placement }: ComputePositionReturn) {
+    const arrowElement = this.arrowRef?.nativeElement;
+
+    if (middlewareData.arrow && arrowElement) {
+      const { x, y } = middlewareData.arrow;
+
+      const staticSide = this.getSide(placement);
+      const styles: Record<string, string> = {};
+      if (x != null) {
+        styles['left'] = `${x}px`;
+      }
+      if (y != null) {
+        styles['top'] = `${y}px`;
+      }
+      if (staticSide) {
+        styles[staticSide] = `${-arrowElement.offsetWidth / 2}px`;
+      }
+
+      return styles;
+    }
+    return {};
+  }
+
+  getSide(placement: Placement) {
+    const side = placement.split('-')[0];
+    return staticSides[side];
   }
 }
