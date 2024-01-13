@@ -7,19 +7,22 @@ import {
   Input,
   numberAttribute,
   OnChanges,
-  ViewChild
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FloatingComponent } from '../floating/floating.component';
 import { NGX_ARROW_COMPONENT } from './core/arrow.injections';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { ArrowBase } from './core/arrow-base';
 
 @Component({
   selector: 'ngx-arrow',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ArrowBase],
   templateUrl: './arrow.html',
   styleUrl: './arrow.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Arrow implements AfterViewInit, OnChanges {
@@ -35,10 +38,14 @@ export class Arrow implements AfterViewInit, OnChanges {
   arrowStyles$ = toObservable(this.floating.arrowStyles);
 
   ngOnChanges() {
-    this.floating.setArrow(this);
+    this.updateState();
   }
 
   ngAfterViewInit() {
-    this.floating.setArrow(this);
+    this.updateState();
+  }
+
+  async updateState() {
+    await this.floating.setArrow(this);
   }
 }

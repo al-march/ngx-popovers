@@ -6,8 +6,8 @@ import { ArrowBase, NGX_ARROW_COMPONENT } from '@ngx-popovers/core';
   template: `
     <div
       style="
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
         transform: rotate(45deg);
       "
       class="bg-primary"
