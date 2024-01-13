@@ -8,27 +8,28 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  PLATFORM_ID,
   Renderer2,
   TemplateRef,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { CommonModule, DOCUMENT, isPlatformServer } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { PlatformService } from '../platform.service';
 
 @Component({
   selector: 'ngx-portal',
   standalone: true,
   imports: [CommonModule],
+  providers: [
+    PlatformService
+  ],
   templateUrl: './portal.component.html',
   styleUrl: './portal.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PortalComponent implements OnInit, OnChanges, OnDestroy {
-  platformId = inject(PLATFORM_ID);
-  // Do not run floating-ui inside Window.
-  // We need to render dynamic content only when the Window is allowed
-  isServer = isPlatformServer(this.platformId);
+
+  isServer = inject(PlatformService).isServer();
 
   @ViewChild(TemplateRef, { static: true })
   portalContent?: TemplateRef<HTMLElement>;

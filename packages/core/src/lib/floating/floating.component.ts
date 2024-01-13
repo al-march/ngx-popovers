@@ -9,10 +9,9 @@ import {
   OnChanges,
   OnDestroy,
   Output,
-  PLATFORM_ID,
   ViewChild
 } from '@angular/core';
-import { CommonModule, isPlatformServer } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { arrow, ComputePositionReturn, Middleware, Placement } from '../type';
 import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
@@ -20,6 +19,7 @@ import { FloatingService } from '../floating.service';
 import { Arrow } from '../arrow';
 import { ClickOutsideDirective } from '../click-outside';
 import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
+import { PlatformService } from '../platform.service';
 
 
 @Component({
@@ -31,7 +31,8 @@ import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
     ClickOutsideDirective
   ],
   providers: [
-    FloatingService
+    FloatingService,
+    PlatformService
   ],
   templateUrl: './floating.component.html',
   styleUrl: './floating.component.scss'
@@ -40,9 +41,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
 
-  platformId = inject(PLATFORM_ID);
-  // We need to render dynamic content only when the Window is allowed
-  isServer = isPlatformServer(this.platformId);
+  isServer = inject(PlatformService).isServer();
 
   @ViewChild('floating')
   floatingRef?: ElementRef<HTMLElement>;
