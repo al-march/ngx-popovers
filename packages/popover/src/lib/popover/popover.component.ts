@@ -14,7 +14,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FloatingArrowComponent, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
 
@@ -22,7 +22,7 @@ import { animate, AnimationEvent, style, transition, trigger } from '@angular/an
   selector: '[ngxPopover]',
   exportAs: 'ngxPopover',
   standalone: true,
-  imports: [CommonModule, FloatingComponent, FloatingArrowComponent],
+  imports: [CommonModule, FloatingComponent, Arrow],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

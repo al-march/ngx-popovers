@@ -199,7 +199,7 @@ export class CustomArrow extends FloatingArrowBase {
 }
 
 export const ArrowProvider: Provider = {
-  provide: NGX_FLOATING_ARROW_COMPONENT,
+  provide: NGX_ARROW_COMPONENT,
   useValue: CustomArrow
 };
 ```

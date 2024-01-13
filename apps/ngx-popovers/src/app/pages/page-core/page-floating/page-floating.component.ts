@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
-import { FloatingArrowComponent, FloatingComponent, Middleware, offset, Placement } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, Middleware, offset, Placement } from '@ngx-popovers/core';
 import { flip } from '@floating-ui/dom';
 
 const example = `
@@ -46,7 +46,7 @@ export const FloatingConfigProvider: Provider = {
     TitleComponent,
     HighlightComponent,
     RouterLink,
-    FloatingArrowComponent,
+    Arrow,
     FloatingComponent
   ],
   templateUrl: './page-floating.component.html',

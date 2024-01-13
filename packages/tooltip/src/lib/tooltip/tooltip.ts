@@ -12,7 +12,7 @@ import {
   Output,
   signal
 } from '@angular/core';
-import { FloatingArrowComponent, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
     TooltipTemplate,
     FloatingComponent,
     CommonModule,
-    FloatingArrowComponent
+    Arrow
   ],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',

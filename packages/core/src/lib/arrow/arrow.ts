@@ -10,20 +10,20 @@ import {
   ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FloatingComponent } from '../floating.component';
-import { NGX_FLOATING_ARROW_COMPONENT } from '../core/floating.injections';
+import { FloatingComponent } from '../floating/floating.component';
+import { NGX_ARROW_COMPONENT } from './core/arrow.injections';
 import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'ngx-floating-arrow',
+  selector: 'ngx-arrow',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './floating-arrow.component.html',
-  styleUrl: './floating-arrow.component.scss',
+  templateUrl: './arrow.html',
+  styleUrl: './arrow.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FloatingArrowComponent implements AfterViewInit, OnChanges {
-  arrowComponent = inject(NGX_FLOATING_ARROW_COMPONENT);
+export class Arrow implements AfterViewInit, OnChanges {
+  arrowComponent = inject(NGX_ARROW_COMPONENT);
   floating = inject(FloatingComponent);
 
   @ViewChild('arrow')

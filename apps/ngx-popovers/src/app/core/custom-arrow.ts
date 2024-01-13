@@ -1,5 +1,5 @@
 import { Component, Provider } from '@angular/core';
-import { FloatingArrowBase, NGX_FLOATING_ARROW_COMPONENT } from '@ngx-popovers/core';
+import { ArrowBase, NGX_ARROW_COMPONENT } from '@ngx-popovers/core';
 
 @Component({
   standalone: true,
@@ -14,10 +14,10 @@ import { FloatingArrowBase, NGX_FLOATING_ARROW_COMPONENT } from '@ngx-popovers/c
     ></div>
   `
 })
-export class CustomArrow extends FloatingArrowBase {
+export class CustomArrow extends ArrowBase {
 }
 
 export const ArrowProvider: Provider = {
-  provide: NGX_FLOATING_ARROW_COMPONENT,
+  provide: NGX_ARROW_COMPONENT,
   useValue: CustomArrow
 };

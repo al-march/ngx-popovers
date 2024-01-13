@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
-import { FloatingArrowComponent, FloatingComponent } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent } from '@ngx-popovers/core';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverComponent } from '@ngx-popovers/popover';
@@ -19,7 +19,7 @@ import { FooterComponent } from './template/footer/footer.component';
     FloatingComponent,
     PopoverComponent,
     HeaderComponent,
-    FloatingArrowComponent,
+    Arrow,
     NgComponentOutlet,
     NgClass,
     FooterComponent

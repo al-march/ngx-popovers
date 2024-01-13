@@ -19,7 +19,7 @@ import { arrow, Middleware, Placement } from '../type';
 import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
-import { FloatingArrowComponent } from './floating-arrow/floating-arrow.component';
+import { Arrow } from '../arrow/arrow';
 import { ClickOutsideDirective } from '../click-outside';
 
 const staticSides: Record<string, string> = {
@@ -73,7 +73,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
    * It sets by <ngx-floating-arrow />
    */
   @Input()
-  arrow?: FloatingArrowComponent;
+  arrow?: Arrow;
 
   /**
    * List of floating-ui middleware
@@ -207,7 +207,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   /**
    * Arrow sets from <floating-arrow> component
    */
-  setArrow(arrow: FloatingArrowComponent) {
+  setArrow(arrow: Arrow) {
     this.arrow = arrow;
     return this.bind();
   }

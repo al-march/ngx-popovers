@@ -1,27 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FloatingArrowComponent } from './floating-arrow.component';
+import { Arrow } from './arrow';
 import { FloatingComponent } from '@ngx-popovers/core';
 import { signal } from '@angular/core';
 
 const FloatingMock = {
   arrowStyles: signal({}),
-  setArrow: (arrow: FloatingArrowComponent) => {}
+  setArrow: (arrow: Arrow) => {}
 };
 
 describe('FloatingArrowComponent', () => {
-  let component: FloatingArrowComponent;
-  let fixture: ComponentFixture<FloatingArrowComponent>;
+  let component: Arrow;
+  let fixture: ComponentFixture<Arrow>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FloatingArrowComponent],
+      imports: [Arrow],
       providers: [{
         provide: FloatingComponent,
         useValue: FloatingMock
       }]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FloatingArrowComponent);
+    fixture = TestBed.createComponent(Arrow);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

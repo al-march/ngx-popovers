@@ -5,5 +5,6 @@ export * from './lib/type';
 // Components
 export * from './lib/portal';
 export * from './lib/floating';
+export * from './lib/arrow';
 // Directives
 export * from './lib/click-outside';

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="arrow"></div>
   `,
-  styleUrl: './floating-arrow-base.scss'
+  styleUrl: './arrow-base.scss'
 })
-export class FloatingArrowBase {
+export class ArrowBase {
 }

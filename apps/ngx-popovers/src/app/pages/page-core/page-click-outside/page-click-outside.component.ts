@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
 import { HighlightComponent } from '../../../core/highlight/highlight.component';
 import { ExampleComponent } from '../../../template/example/example.component';
-import { ClickOutsideDirective, flip, FloatingArrowComponent, FloatingComponent, offset } from '@ngx-popovers/core';
+import { ClickOutsideDirective, flip, Arrow, FloatingComponent, offset } from '@ngx-popovers/core';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -61,7 +61,7 @@ export class ClickOutsideExample {
     ClickOutsideDirective,
     PopoverComponent,
     FloatingComponent,
-    FloatingArrowComponent
+    Arrow
   ],
   templateUrl: './page-click-outside.component.html',
   styleUrl: './page-click-outside.component.scss',
