@@ -11,7 +11,7 @@ Popover component displays content next to the trigger element on mouse click
 > 
 > I strongly recommend not using this library until its stable version is released.
 
-[Demo](https://ngx-popovers.vercel.app)
+> See [Demo](https://ngx-popovers.vercel.app/popover)
 
 ## Usage
 

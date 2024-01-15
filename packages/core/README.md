@@ -7,9 +7,7 @@ for [Angular](https://angular.dev/) apps.
 >
 > I strongly recommend not using this library until its stable version is released.
 
-[Demo](https://ngx-popovers.vercel.app)
-
-## Usage
+> See [Demo](https://ngx-popovers.vercel.app)
 
 ### FloatingService
 
@@ -46,14 +44,15 @@ this.floatingService.computePosition(trigger, floating);
 You also can import all types and methods of floating-ui from this package
 
 ```typescript
-import { 
-  Derivable, 
-  FlipOptions, 
-  OffsetOptions, 
-  Placement, 
-  ShiftOptions 
+import {
+  Derivable,
+  FlipOptions,
+  OffsetOptions,
+  Placement,
+  ShiftOptions
 } from '@ngx-popovers/core';
 ```
+---
 
 # portal
 
@@ -66,16 +65,33 @@ This library was generated with [Nx](https://nx.dev) for [Angular](https://angul
 The `<ngx-portal/>` component displays the content on the body.
 
 ```html
+
 <ngx-portal>
     <p>It will be displayed as the last child of the body</p>
 </ngx-portal>
 ```
 
-This component is required to display tooltips correctly without overlapping with other elements on the page.
+You also can display the portal content on an element you want:
+
+```html
+
+<div #portalWillBeInsideMe>
+  <p>Portal content will be rendered after this tag</p>
+  <!-- Here -->
+</div>
+
+<ngx-portal [bindTo]="portalWillBeInsideMe">
+    <p>It will be displayed as the last child of the div</p>
+</ngx-portal>
+```
+
+This component is required to display tooltips correctly
+without overlapping with other elements on the page.
 
 # ClickOutside directive
 
-The click outside directive handles clicks inside and outside HTMLElement. This directive is used by the ngx-floating component
+The click outside directive handles clicks inside and outside HTMLElement.
+This directive is used by the ngx-floating component
 
 > See [Demo](https://ngx-popovers.vercel.app/core/click-outside)
 
@@ -106,6 +122,7 @@ export class ClickOutsideExample {
   }
 }
 ```
+---
 
 # floating
 
@@ -138,20 +155,39 @@ documentation [floating-ui](https://floating-ui.com/docs/middleware)
 </ngx-floating>
 ```
 
-### Inputs
+### API
 
 #### `@Input()` `placement`
 
 controls the position of the floating relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
 
 #### `@Input()` `middleware`
+
 list of `middleware` from floating-ui
 
 #### `@Input()` `autoUpdate`
+
 updates floating element automatically. Default `true`
 
 #### `@Input()` `bindTo`
+
 renders floating element as last child of bindTo. Default is body.
+
+#### `@Output()` `clickedOutside($event: Element)`
+
+emits when user clicks outside the floating element.
+`$event` - element which was clicked
+
+#### `@Output()` `clickedInside($event: Element)`
+
+emits when user clicks inside the floating element.
+`$event` - element which was clicked
+
+#### `@Output()` `computePositionReturn($event: ComputePositionReturn)`
+
+emits every time when the floating component calls `computePosition`.
+
+`$event` - floating-ui `computePosition` event
 
 ## Configuration
 
@@ -167,6 +203,8 @@ export const FloatingConfigProvider: Provider = {
   })
 };
 ```
+
+---
 
 ## Arrow
 
@@ -184,6 +222,8 @@ The arrow component adds arrow to the floating component.
   <ngx-arrow padding="10" />
 </ngx-floating>
 ```
+
+> See [Demo](https://ngx-popovers.vercel.app/core/arrow)
 
 You can provide your own component for arrow visualization
 
