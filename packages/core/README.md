@@ -147,13 +147,6 @@ controls the position of the floating relative to the trigger ([docs](https://fl
 #### `@Input()` `middleware`
 list of `middleware` from floating-ui
 
-#### `@Input()` `arrow`
-Adds arrow to floating
-
-#### `@Input()` `arrowPadding`
-If your floating element has border-radius, this will prevent it from overflowing the
-corners. ([more](https://floating-ui.com/docs/arrow#padding))
-
 #### `@Input()` `autoUpdate`
 updates floating element automatically. Default `true`
 
@@ -175,7 +168,22 @@ export const FloatingConfigProvider: Provider = {
 };
 ```
 
-## Arrow custom component
+## Arrow
+
+The arrow component adds arrow to the floating component.
+
+```html
+
+<div #trigger>Trigger</div>
+
+<ngx-floating
+  [trigger]="trigger"
+>
+  <p>Floating content</p>
+  
+  <ngx-arrow padding="10" />
+</ngx-floating>
+```
 
 You can provide your own component for arrow visualization
 
