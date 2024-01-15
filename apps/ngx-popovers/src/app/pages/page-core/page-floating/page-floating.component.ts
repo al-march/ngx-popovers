@@ -20,6 +20,8 @@ const example = `
   <div class="floating">
     <p>Floating content</p>
   </div>
+
+  <ngx-arrow padding="12" />
 </ngx-floating>
 `.trim();
 

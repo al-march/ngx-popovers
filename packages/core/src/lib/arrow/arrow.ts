@@ -13,7 +13,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { FloatingComponent } from '../floating';
 import { NGX_ARROW_COMPONENT } from './core/arrow.injections';
-import { ArrowBase } from './core/arrow-base';
 import { ComputePositionReturn, Placement } from '../type';
 import { filter, map } from 'rxjs';
 
@@ -27,7 +26,7 @@ const staticSides: Record<string, string> = {
 @Component({
   selector: 'ngx-arrow',
   standalone: true,
-  imports: [CommonModule, ArrowBase],
+  imports: [CommonModule],
   templateUrl: './arrow.html',
   styleUrl: './arrow.scss',
   encapsulation: ViewEncapsulation.None,
