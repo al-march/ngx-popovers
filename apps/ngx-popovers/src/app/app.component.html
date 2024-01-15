@@ -43,7 +43,7 @@
               <span class="text-lg">{{ route.data?.['name'] }}</span>
             </a>
 
-            <ul>
+            <ul class="py-1">
               @for (child of route?.children; track child.path) {
                 @if (child.path) {
                   <li>
