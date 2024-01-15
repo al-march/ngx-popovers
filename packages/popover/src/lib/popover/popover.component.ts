@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
+import { ComputePosition } from '../types';
 
 @Component({
   selector: '[ngxPopover]',
@@ -106,6 +107,9 @@ export class PopoverComponent {
   @Output()
   animationDone = new EventEmitter<AnimationEvent>();
 
+  @Output()
+  computePosition = new EventEmitter<ComputePosition>();
+
   isAnimating = signal(false);
 
   get trigger() {
@@ -162,5 +166,9 @@ export class PopoverComponent {
   onAnimationDone($event: AnimationEvent) {
     this.isAnimating.set(false);
     this.animationDone.emit($event);
+  }
+
+  onComputePosition($event: ComputePosition) {
+    this.computePosition.emit($event);
   }
 }

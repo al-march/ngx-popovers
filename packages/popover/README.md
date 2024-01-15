@@ -111,6 +111,12 @@ emits when animation starts
 
 emits when animation ends
 
+#### `@Output()` `computePosition($event: ComputePosition)`
+
+emits every time when the floating component calls `computePosition`.
+
+`$event` - floating-ui `computePosition` event
+
 ## Configuration
 
 There is a configuration token `NGX_POPOVER_CONFIG`.
