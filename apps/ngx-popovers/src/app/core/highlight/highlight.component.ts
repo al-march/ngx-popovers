@@ -1,14 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  Input,
-  OnChanges,
-  PLATFORM_ID,
-  signal
-} from '@angular/core';
-import { CommonModule, isPlatformServer } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, Input, OnChanges, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
 import hljs from 'highlight.js/lib/core';
 
@@ -33,10 +24,6 @@ type CopyButton = {
   host: { ngSkipHydration: 'true' }
 })
 export class HighlightComponent implements OnChanges {
-  platformId = inject(PLATFORM_ID);
-  // Do not run floating-ui inside Window.
-  // We need to render dynamic content only when the Window is allowed
-  isServer = isPlatformServer(this.platformId);
 
   @Input()
   code = '';
@@ -66,14 +53,12 @@ export class HighlightComponent implements OnChanges {
   ) {}
 
   ngOnChanges() {
-    if (!this.isServer) {
-      const highlightedCode = hljs.highlight(
-        this.code,
-        { language: this.lang }
-      ).value;
+    const highlightedCode = hljs.highlight(
+      this.code,
+      { language: this.lang }
+    ).value;
 
-      this.markup.set(highlightedCode);
-    }
+    this.markup.set(highlightedCode);
   }
 
   copy() {
