@@ -81,6 +81,8 @@ export class PagePopoverComponent {
   usageExample = usageExample;
   configExample = configExample;
 
+  popoverValue = true;
+
   placement = signal<Placement>('left');
 
   placementList: Placement[] = [

@@ -9,8 +9,10 @@ import {
   inject,
   Input,
   numberAttribute,
+  OnChanges,
   Output,
   signal,
+  SimpleChanges,
   TemplateRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -39,7 +41,7 @@ import { ComputePosition } from '../types';
     ])
   ]
 })
-export class PopoverComponent {
+export class PopoverComponent implements OnChanges {
   private config = inject(NGX_POPOVER_CONFIG);
   private cdRef = inject(ChangeDetectorRef);
 
@@ -119,6 +121,17 @@ export class PopoverComponent {
   constructor(
     private el: ElementRef
   ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    const currentValue = changes['ngxValue']?.currentValue;
+
+    if (currentValue === true) {
+      this.open();
+    }
+    if (currentValue === false) {
+      this.close();
+    }
+  }
 
   @HostListener('click', ['$event'])
   onClick() {

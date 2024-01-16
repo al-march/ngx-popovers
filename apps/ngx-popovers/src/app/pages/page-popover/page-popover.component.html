@@ -27,13 +27,13 @@
         class="btn btn-accent"
         #popover
         [ngxPopover]="popoverContent"
-        [ngxValue]="true"
+        [(ngxValue)]="popoverValue"
         [disabled]="false"
         [animationDisabled]="false"
-        [closeOnClickedOutside]="true"
+        [closeOnClickedOutside]="false"
         arrow
       >
-        Popover
+        Click me!
       </button>
 
       <ng-template #popoverContent>

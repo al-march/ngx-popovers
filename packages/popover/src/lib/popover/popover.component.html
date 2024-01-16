@@ -8,8 +8,8 @@
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
 
-    (clickedInside)="onClickedInside($event)"
-    (clickedOutside)="onClickedOutside($event)"
+    (clickedInside)="ngxValue && onClickedInside($event)"
+    (clickedOutside)="ngxValue && onClickedOutside($event)"
     (computePositionReturn)="onComputePosition($event)"
   >
     @if (template && ngxValue) {

@@ -48,7 +48,7 @@ describe('PopoverComponent', () => {
     expect(component.value).toBeFalsy();
   });
 
-  it('should toggle by click', () => {
+  it('should toggle by click', async () => {
     const btn = fixture.nativeElement.querySelector('button');
     btn.click();
     fixture.detectChanges();
@@ -57,6 +57,7 @@ describe('PopoverComponent', () => {
 
     btn.click();
     fixture.detectChanges();
+    await new Promise(r => setTimeout(r));
     expect(popover()).not.toBeInTheDocument();
   });
 
