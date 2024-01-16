@@ -36,7 +36,7 @@ import { PopoverProvider } from './core/custom-popover';
   ]
 })
 export class AppComponent implements OnInit {
-  sidebar = signal(true);
+  sidebar = signal(false);
   router = inject(Router);
 
   gettingStartedRoute = GettingStartedRoute;
