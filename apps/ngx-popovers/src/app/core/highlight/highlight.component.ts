@@ -62,21 +62,19 @@ export class HighlightComponent implements OnChanges {
   }
 
   copy() {
-    const status = this.clipboard.copy(this.code);
-    this.setCopyStatus(status);
+    const success = this.clipboard.copy(this.code);
+    if (success) {
+      this.setCopyStatus(CopyStatus.SUCCESS);
+    } else {
+      this.setCopyStatus(CopyStatus.ERROR);
+    }
   }
 
-  setCopyStatus(success: boolean) {
-    if (success) {
-      this.copying.set(CopyStatus.SUCCESS);
-      setTimeout(() => {
-        this.copying.set(CopyStatus.WAIT);
-      }, 1500);
-    } else {
-      this.copying.set(CopyStatus.ERROR);
-      setTimeout(() => {
-        this.copying.set(CopyStatus.WAIT);
-      }, 1500);
-    }
+  setCopyStatus(status: CopyStatus) {
+    this.copying.set(status);
+
+    setTimeout(() => {
+      this.copying.set(CopyStatus.WAIT);
+    }, 1500);
   }
 }
