@@ -36,16 +36,6 @@ export const ComponentsRoutes: Route[] = [
           .then(c => c.PageCoreComponent)
       },
       {
-        path: 'floating',
-        title: 'Floating component',
-        data: {
-          name: 'Floating',
-          icon: FloatingIcon
-        },
-        loadComponent: () => import('./pages/page-core/page-floating/page-floating.component')
-          .then(c => c.PageFloatingComponent)
-      },
-      {
         path: 'portal',
         title: 'Portal component',
         data: {
@@ -54,6 +44,16 @@ export const ComponentsRoutes: Route[] = [
         },
         loadComponent: () => import('./pages/page-core/page-portal/page-portal.component')
           .then(c => c.PagePortalComponent)
+      },
+      {
+        path: 'floating',
+        title: 'Floating component',
+        data: {
+          name: 'Floating',
+          icon: FloatingIcon
+        },
+        loadComponent: () => import('./pages/page-core/page-floating/page-floating.component')
+          .then(c => c.PageFloatingComponent)
       },
       {
         path: 'arrow',
