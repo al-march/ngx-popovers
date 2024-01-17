@@ -10,20 +10,26 @@
     </button>
   </div>
   <div class="flex-1">
-    <pre [innerText]="'@ngx/popovers'"></pre>
-    <div class="flex items-center gap-2 pl-2">
-      @for (path of paths(); track path) {
-        @if (!$last) {
-          <i>/</i>
-          <a
-            (click)="navigateToPath($index + 1)"
-            class="link"
-          >
-            {{ path }}
-          </a>
-        }
-      }
-    </div>
+    <a
+      class="btn btn-sm p-1 btn-ghost"
+      routerLink="/"
+    >
+      <pre [innerText]="'@ngx/popovers'"></pre>
+    </a>
+
+    @for (path of paths(); track path) {
+      <span>|</span>
+      <a
+        class="btn btn-sm p-1 btn-ghost"
+        routerLinkActive
+        #activeLink="routerLinkActive"
+        [routerLink]="paths() | slice:0:$index + 1"
+        [routerLinkActiveOptions]="{exact: true}"
+        [class.text-primary]="activeLink.isActive"
+      >
+        {{ path }}
+      </a>
+    }
   </div>
   <div class="flex gap-2 items-center">
 

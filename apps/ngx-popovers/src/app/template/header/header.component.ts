@@ -1,14 +1,14 @@
 import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../core/theme.service';
-import { ActivationStart, Router } from '@angular/router';
+import { ActivationStart, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CoreService } from '../../core/core.service';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 @Component({
   selector: 'dm-header',
   standalone: true,
-  imports: [CommonModule, NgxTooltip],
+  imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -49,10 +49,5 @@ export class HeaderComponent {
 
   toggleTheme() {
     this.themeService.toggle();
-  }
-
-  navigateToPath($index: number) {
-    const paths = this.paths().slice(0, $index);
-    return this.router.navigate(['/', ...paths]);
   }
 }
