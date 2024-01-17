@@ -4,6 +4,8 @@ import { ThemeService } from '../../core/theme.service';
 import { ActivationStart, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CoreService } from '../../core/core.service';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'dm-header',
@@ -18,11 +20,16 @@ export class HeaderComponent {
 
   paths = signal<string[]>([]);
 
+  smallScreen$ = this.breakpointObserver
+    .observe([Breakpoints.XSmall])
+    .pipe(map(data => data.matches));
+
   @Output()
   toggleSidebar = new EventEmitter();
 
   constructor(
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    public breakpointObserver: BreakpointObserver
   ) {
     this.parsePaths();
   }

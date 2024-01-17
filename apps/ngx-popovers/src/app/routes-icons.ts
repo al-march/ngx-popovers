@@ -1,15 +1,16 @@
-import { Component, Directive, Input } from '@angular/core';
+import { Component, Directive, Input, numberAttribute } from '@angular/core';
 
 @Directive()
 class IconComponentBase {
-  @Input()
+  @Input({transform: numberAttribute})
   width = 32;
 
-  @Input()
+  @Input({transform: numberAttribute})
   height = 32;
 }
 
 @Component({
+  selector: 'getting-started-icon',
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
