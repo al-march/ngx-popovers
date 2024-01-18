@@ -1,5 +1,5 @@
 # NgxPopovers
-
+ 
 It is a library that provides reusable components for displaying interactive content, based on [Angular](https://angular.dev/) and [floating-ui](https://floating-ui.com)
 
 > **Note**
