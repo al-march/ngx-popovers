@@ -6,8 +6,8 @@
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
 
-    (clickedInside)="value && onClickedInside($event)"
-    (clickedOutside)="value && onClickedOutside($event)"
+    (clickedInside)="onClickedInside($event)"
+    (clickedOutside)="onClickedOutside($event)"
     (computePositionReturn)="onComputePosition($event)"
   >
     @if (value) {

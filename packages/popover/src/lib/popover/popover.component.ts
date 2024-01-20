@@ -35,7 +35,7 @@ import { animate, AnimationEvent, style, transition, trigger } from '@angular/an
         animate(140, style({ opacity: 1, transform: 'scale(1)' }))
       ]),
       transition(':leave', [
-        animate(100, style({ opacity: 0 }))
+        animate(110, style({ opacity: 0 }))
       ])
     ])
   ]

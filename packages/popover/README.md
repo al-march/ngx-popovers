@@ -44,7 +44,7 @@ documentation [floating-ui](https://floating-ui.com/docs/middleware)
   <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   </p>
-  <button (click)="popover.close()">
+  <button ngx-popover-close>
     Close
   </button>
 </ngx-popover>
@@ -78,6 +78,15 @@ Example usage:
 </ngx-popover>
 ```
 
+### ngx-popover-close
+
+The `NgxPopoverClose` directive closes popover
+when handles a click to an element.
+
+```typescript
+import { PopoverCloseDirective } from '@ngx-popovers/popover';
+```
+
 ### API
 
 Input parameters
@@ -104,6 +113,7 @@ Output parameters
 | `animationStart`  | emits when animation starts                                           | `EventEmitter<AnimationEvent>`  |
 | `animationDone`   | emits when animation ends                                             | `EventEmitter<AnimationEvent>`  |
 | `computePosition` | emits every time when the floating component calls `computePosition`. | `EventEmitter<ComputePosition>` |
+
 
 ## Configuration
 
