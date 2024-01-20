@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { NgxTooltip } from './tooltip';
 import { NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
 import { NgxTooltipConfig } from './core/tooltip-config';
+import { awaitTime } from '@ngx-popovers/core';
 
 describe('Tooltip', () => {
   let component: NgxTooltip;
@@ -51,8 +52,8 @@ describe('Tooltip', () => {
   it('should emit computePosition', async () => {
     const compute = jest.spyOn(component.computePosition, 'emit');
     fixture.componentRef.setInput('ngxValue', true);
-    fixture.detectChanges()
-    await new Promise(r => setTimeout(r))
+    fixture.detectChanges();
+    await awaitTime();
     expect(compute).toHaveBeenCalled();
   });
 });

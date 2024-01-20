@@ -9,3 +9,7 @@ export const isContainElement = <T extends Node>(current: T | null, target: T | 
     return false;
   }
 };
+
+export const awaitTime = (time = 0) => {
+  return new Promise(r => setTimeout(r, time));
+}

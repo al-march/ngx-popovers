@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopoverComponent } from './popover.component';
 import { Component, Input, ViewChild } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { awaitTime } from '@ngx-popovers/core';
 
 describe('PopoverComponent', () => {
   let component: PopoverTest;
@@ -57,7 +58,7 @@ describe('PopoverComponent', () => {
 
     btn.click();
     fixture.detectChanges();
-    await new Promise(r => setTimeout(r));
+    await awaitTime();
     expect(popover()).not.toBeInTheDocument();
   });
 

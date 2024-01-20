@@ -4,6 +4,7 @@ import { NgxFloatingConfig } from './core/floating-config';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Provider } from '@angular/core';
+import { awaitTime } from '@ngx-popovers/core';
 
 describe('FloatingComponent', () => {
   let component: FloatingComponent;
@@ -102,9 +103,9 @@ describe('FloatingComponent', () => {
     });
 
     await component.bind();
-    await new Promise(r => setTimeout(r));
+    await awaitTime();
     expect(compute).toHaveBeenCalled();
-  })
+  });
 });
 
 describe('FloatingComponent.DI', () => {
