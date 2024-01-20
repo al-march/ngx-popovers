@@ -5,7 +5,7 @@ import { CoreIcon } from '../../routes-icons';
 import { FormsModule } from '@angular/forms';
 import { HighlightComponent } from '../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
-import { Placement } from '@ngx-popovers/core';
+import { Arrow, Placement } from '@ngx-popovers/core';
 import { PopoverComponent } from '@ngx-popovers/popover';
 import { ExampleComponent } from '../../template/example/example.component';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
@@ -72,7 +72,8 @@ export const PopoverConfigProvider: Provider = {
     PopoverComponent,
     ExampleComponent,
     NgxTooltip,
-    WarningComponent
+    WarningComponent,
+    Arrow
   ],
   templateUrl: './page-popover.component.html',
   styleUrl: './page-popover.component.scss'

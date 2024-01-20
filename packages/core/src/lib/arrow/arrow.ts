@@ -1,12 +1,13 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   inject,
   Input,
   numberAttribute,
   OnChanges,
+  OnDestroy,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
@@ -14,7 +15,9 @@ import { CommonModule } from '@angular/common';
 import { FloatingComponent } from '../floating';
 import { NGX_ARROW_COMPONENT } from './core/arrow.injections';
 import { ComputePositionReturn, Placement } from '../type';
-import { filter, map } from 'rxjs';
+import { filter, map, Observable, of, Subscription } from 'rxjs';
+
+type ArrowStyles = Record<string, string>;
 
 const staticSides: Record<string, string> = {
   top: 'bottom',
@@ -32,36 +35,80 @@ const staticSides: Record<string, string> = {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Arrow implements AfterViewInit, OnChanges {
+export class Arrow implements OnChanges, OnDestroy {
   arrowComponent = inject(NGX_ARROW_COMPONENT);
-  floating = inject(FloatingComponent);
+  cdRef = inject(ChangeDetectorRef);
 
   @ViewChild('arrow')
   arrowRef?: ElementRef<HTMLElement>;
 
+  @Input()
+  floating = inject(FloatingComponent, { optional: true });
+
   @Input({ transform: numberAttribute })
   padding = 0;
 
-  styles$ = this.floating.computePosition$.pipe(
-    filter(Boolean),
-    map(data => {
-      return this.computePosition(data);
-    })
-  );
+  styles: ArrowStyles = {};
 
-  ngOnChanges() {
-    return this.updateState();
+  private subscription?: Subscription;
+
+  async ngOnChanges() {
+    await this.updateState();
   }
 
-  ngAfterViewInit() {
-    return this.updateState();
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 
   async updateState() {
-    await this.floating.setArrow(this);
+    if (this.floating) {
+      await this.floating.setArrow(this);
+    }
+    this.observe();
   }
 
-  computePosition({ middlewareData, placement }: ComputePositionReturn) {
+  /*
+  * Observe changes from computePosition of the floating.
+  * Convert the ComputePosition data to the Arrow's styles
+  */
+  private observe() {
+    this.subscription?.unsubscribe();
+    this.subscription = this.computeStyles$()
+      .subscribe(styles => {
+        this.styles = styles;
+        this.cdRef.markForCheck();
+      });
+  }
+
+  private computeStyles$(): Observable<ArrowStyles> {
+    return this.floating?.computePosition$.pipe(
+      filter(Boolean),
+      map(data => {
+        return this.computePosition(data);
+      })
+    ) ?? of({});
+  }
+
+  getSide(placement: Placement) {
+    const side = placement.split('-')[0];
+    return staticSides[side];
+  }
+
+  /**
+   * Set the floating element programmatically.
+   * Need for setting the Floating if DI is not allowed.
+   */
+  setFloating(floating: FloatingComponent) {
+    this.floating = floating;
+    this.cdRef.detectChanges();
+    return this.updateState();
+  }
+
+  /**
+   * computePosition converts data from ComputePositionReturn
+   * to Arrow's styles object Record<string, string>
+   */
+  private computePosition({ middlewareData, placement }: ComputePositionReturn): ArrowStyles {
     const arrowElement = this.arrowRef?.nativeElement;
 
     if (middlewareData.arrow && arrowElement) {
@@ -82,10 +129,5 @@ export class Arrow implements AfterViewInit, OnChanges {
       return styles;
     }
     return {};
-  }
-
-  getSide(placement: Placement) {
-    const side = placement.split('-')[0];
-    return staticSides[side];
   }
 }

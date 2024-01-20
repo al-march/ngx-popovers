@@ -1,29 +1,23 @@
-<ng-content></ng-content>
-
-@if ((template && ngxValue) || isAnimating()) {
+@if (value || isAnimating()) {
   <ngx-floating
-    [trigger]="trigger"
+    [trigger]="anchor"
     [placement]="placement"
     [middleware]="middleware"
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
 
-    (clickedInside)="ngxValue && onClickedInside($event)"
-    (clickedOutside)="ngxValue && onClickedOutside($event)"
+    (clickedInside)="value && onClickedInside($event)"
+    (clickedOutside)="value && onClickedOutside($event)"
     (computePositionReturn)="onComputePosition($event)"
   >
-    @if (template && ngxValue) {
+    @if (value) {
       <div
         @fadeInOut
         (@fadeInOut.start)="onAnimationStart($event)"
         (@fadeInOut.done)="onAnimationDone($event)"
         [@.disabled]="animationDisabled"
       >
-        <ng-container *ngTemplateOutlet="template" />
-
-        @if (arrow) {
-          <ngx-arrow [padding]="arrowPadding" />
-        }
+        <ng-content />
       </div>
     }
   </ngx-floating>

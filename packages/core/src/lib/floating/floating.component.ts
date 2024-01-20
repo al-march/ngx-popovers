@@ -93,7 +93,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   computePositionReturn = new EventEmitter<ComputePositionReturn>();
 
   private _computePosition$ = new BehaviorSubject<ComputePositionReturn | undefined>(undefined);
-  public computePosition$ = this._computePosition$.asObservable();
+  public computePosition$ = this._computePosition$
+    .asObservable()
+    .pipe(shareReplay());
 
   coords$ = this.computePosition$.pipe(
     filter(Boolean),
@@ -103,16 +105,6 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   /* Uses for cleanup autoUpdate function */
   cleanup?: () => void;
-
-  get arrowMiddleware() {
-    if (this.arrow?.arrowRef) {
-      return arrow({
-        element: this.arrow.arrowRef!.nativeElement,
-        padding: this.arrow.padding
-      });
-    }
-    return null;
-  }
 
   ngAfterViewInit() {
     return this.bind();
@@ -151,7 +143,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   async computePosition(trigger: HTMLElement, floating: HTMLElement) {
     const computePositionReturn = await this.floatingService.computePosition(trigger, floating, {
       placement: this.placement,
-      middleware: [...this.middleware, this.arrowMiddleware]
+      middleware: [...this.middleware, this.getArrowMiddleware()]
     });
 
     this._computePosition$.next(computePositionReturn);
@@ -184,5 +176,15 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   setArrow(arrow: Arrow) {
     this.arrow = arrow;
     return this.bind();
+  }
+
+  getArrowMiddleware() {
+    if (this.arrow?.arrowRef) {
+      return arrow({
+        element: this.arrow.arrowRef!.nativeElement,
+        padding: this.arrow.padding
+      });
+    }
+    return null;
   }
 }

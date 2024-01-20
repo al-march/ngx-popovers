@@ -3,31 +3,30 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef,
+  ContentChild,
   EventEmitter,
   HostListener,
   inject,
   Input,
-  numberAttribute,
   OnChanges,
   Output,
   signal,
   SimpleChanges,
-  TemplateRef
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ComputePosition, NGX_POPOVER_CONFIG } from '@ngx-popovers/popover';
 import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
-import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
-import { ComputePosition } from '../types';
 
 @Component({
-  selector: '[ngxPopover]',
-  exportAs: 'ngxPopover',
+  selector: 'ngx-popover',
   standalone: true,
-  imports: [CommonModule, FloatingComponent, Arrow],
+  imports: [CommonModule, Arrow, FloatingComponent],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fadeInOut', [
@@ -45,20 +44,25 @@ export class PopoverComponent implements OnChanges {
   private config = inject(NGX_POPOVER_CONFIG);
   private cdRef = inject(ChangeDetectorRef);
 
-  @Input('ngxPopover')
-  template?: TemplateRef<any>;
+  @ContentChild(Arrow)
+  arrow?: Arrow;
+
+  /* Set the Floating to the arrow */
+  @ViewChild(FloatingComponent)
+  set floatingComponent(component: FloatingComponent) {
+    if (this.arrow) {
+      this.arrow.setFloating(component);
+    }
+  }
+
+  @Input({ required: true })
+  anchor?: HTMLElement;
 
   @Input()
   placement: Placement = this.config.placement;
 
   @Input()
   middleware: MiddlewareList = this.config.middleware;
-
-  @Input({ transform: booleanAttribute })
-  arrow = this.config.arrow;
-
-  @Input({ transform: numberAttribute })
-  arrowPadding = this.config.arrowPadding;
 
   /**
    * Updates floating element automatically
@@ -86,10 +90,10 @@ export class PopoverComponent implements OnChanges {
   animationDisabled = false;
 
   @Input({ transform: booleanAttribute })
-  ngxValue = false;
+  value = false;
 
   @Output()
-  ngxValueChange = new EventEmitter();
+  valueChange = new EventEmitter<boolean>();
 
   @Output()
   show = new EventEmitter();
@@ -114,16 +118,8 @@ export class PopoverComponent implements OnChanges {
 
   isAnimating = signal(false);
 
-  get trigger() {
-    return this.el.nativeElement;
-  }
-
-  constructor(
-    private el: ElementRef
-  ) {}
-
   ngOnChanges(changes: SimpleChanges) {
-    const currentValue = changes['ngxValue']?.currentValue;
+    const currentValue = changes['value']?.currentValue;
 
     if (currentValue === true) {
       this.open();
@@ -136,7 +132,7 @@ export class PopoverComponent implements OnChanges {
   @HostListener('click', ['$event'])
   onClick() {
     if (!this.disabled) {
-      if (this.ngxValue) {
+      if (this.value) {
         this.close();
         this.hide.emit();
       } else {
@@ -146,16 +142,24 @@ export class PopoverComponent implements OnChanges {
     }
   }
 
+  toggle() {
+    if (this.value) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
   open() {
     this.isAnimating.set(true);
-    this.ngxValue = true;
-    this.ngxValueChange.emit(true);
+    this.value = true;
+    this.valueChange.emit(true);
   }
 
   close() {
     this.isAnimating.set(true);
-    this.ngxValue = false;
-    this.ngxValueChange.emit(false);
+    this.value = false;
+    this.valueChange.emit(false);
   }
 
   onClickedInside(element: Element) {
