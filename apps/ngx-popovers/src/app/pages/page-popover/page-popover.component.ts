@@ -12,26 +12,21 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { WarningComponent } from '../../shared/warning/warning.component';
 
 const usageExample = `
-<button
-  #popover
-  [ngxPopover]="popoverContent"
-  [ngxValue]="true"
-  [disabled]="false"
-  [animationDisabled]="false"
->
+<button #anchor (click)="popover.toggle()">
   Popover
 </button>
 
-<ng-template #popoverContent>
+<ngx-popover
+ #popover
+ [anchor]="anchor"
+>
   <div class="popover">
     <p>I am popover!</p>
-    <button
-      (click)="popover.close()"
-    >
+    <button (click)="popover.close()">
       Close
     </button>
   </div>
-</ng-template>
+</ngx-popover>
 `.trim();
 
 const configExample = `
