@@ -5,117 +5,105 @@ for [Angular](https://angular.dev/) apps
 
 <img src="https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/popover/assets/preview.png" alt="md3tail theme">
 
-Popover component displays content next to the trigger element on mouse click
+> See [Demo](https://ngx-popovers.vercel.app/popover)
 
 > **Note**
-> 
+>
 > I strongly recommend not using this library until its stable version is released.
 
-> See [Demo](https://ngx-popovers.vercel.app/popover)
+The popover is a very easy to use component, and it has a simple API.
+Just install and use.
+
+> You have to install the [core](https://www.npmjs.com/package/@ngx-popovers/core) package for the all abilities.
+>
+> The core and the popover packages have the same versions.
+
+Use the command below
+
+```bash
+npm i @ngx-popovers/core
+```
+
+Popover component displays content next to the trigger element on mouse click
 
 ## Usage
 
 See more information about the properties in the official
 documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
-```html
+```angular2html
 
-<button
-  #popover
-  [ngxPopover]="popoverContent"
-  [ngxValue]="true"
-  [disabled]="false"
-  [animationDisabled]="false"
-  [closeOnClickedOutside]="false"
-  bindTo=".body"
-  arrow
->
-  Popover
+<button #anchor (click)="popover.toggle()">
+  Toggle Popover
 </button>
 
-<ng-template #popoverContent>
-  <div class="popover">
-    <p>I am popover!</p>
-    <button
-      (click)="popover.close()"
-    >
-      Close
-    </button>
+<ngx-popover
+  #popover
+  [anchor]="anchor"
+>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  </p>
+  <button (click)="popover.close()">
+    Close
+  </button>
+</ngx-popover>
+```
+
+### With arrow
+
+You should install the [core package](https://www.npmjs.com/package/@ngx-popovers/core) to import the Arrow component.
+
+```typescript
+import { Arrow, Placement } from '@ngx-popovers/core';
+```
+
+Example usage:
+
+```angular2html
+
+<button #anchor (click)="popover.toggle()">
+  Toggle Popover
+</button>
+
+<ngx-popover
+  #popover
+  [anchor]="anchor"
+>
+  <div class="example-class">
+    <p>Popover content</p>
   </div>
-</ng-template>
+
+  <ngx-arrow padding="12" />
+</ngx-popover>
 ```
 
 ### API
 
-#### `@Input()` `placement`
-controls the position of the floating relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
+Input parameters
 
-#### `@Input()` `middleware`
-list of `middleware` from floating-ui
+| Input               | Description                                     | Type                    | Default             |
+|---------------------|-------------------------------------------------|-------------------------|---------------------|
+| `placement`         | the popover position                            | `Placement`             | `'bottom'`          |
+| `middleware`        | list of floating-ui middlewares without `arrow` | `MiddlewareList`        | `offset(4), flip()` |
+| `bindTo`            | render popover into element                     | `string \| HTMLElement` | `'.body'`           |
+| `autoUpdate`        | auto update the position of the Popover         | `boolean`               | `true`              |
+| `disabled`          | disables open/close on the trigger clicks       | `boolean`               | `false`             |
+| `animationDisabled` | disables show/hide animations                   | `boolean`               | `false`             |
+| `value`             | show or hide state of popover                   | `boolean`               | `false`             |
 
-#### `@Input()` `arrow`
-adds arrow to floating
+Output parameters
 
-#### `@Input()` `arrowPadding`
-if your floating element has border-radius, this will prevent it from overflowing the
-corners. ([more](https://floating-ui.com/docs/arrow#padding))
-
-#### `@Input()` `autoUpdate`
-
-updates floating element automatically. Default `true`
-
-#### `@Input()` `bindTo`
-
-renders floating element as last child of bindTo. Default is body.
-
-#### `@Input()` `disabled`
-
-disables open/close on the trigger clicks
-
-#### `@Input()` `animationDisabled`
-
-disables show/hide animations
-
-#### `@Input()` `ngxValue`
-
-Show or hide state of popover
-
-#### `@Output()` `ngxValueChange`
-
-the ngxValue changes emitter
-
-#### `@Output()` `show`
-
-emits when the popover shows
-
-#### `@Output()` `hide`
-
-emits when the popover hides
-
-#### `@Output()` `clickedOutside($event: Element)`
-
-emits when user clicks outside the floating element. 
-`$event` - element which was clicked
-
-#### `@Output()` `clickedInside($event: Element)`
-
-emits when user clicks inside the floating element. 
-`$event` - element which was clicked
-
-#### `@Output()` `animationStart`
-
-emits when animation starts
-
-
-#### `@Output()` `animationDone`
-
-emits when animation ends
-
-#### `@Output()` `computePosition($event: ComputePosition)`
-
-emits every time when the floating component calls `computePosition`.
-
-`$event` - floating-ui `computePosition` event
+| Output            | Description                                                           | Type                            |
+|-------------------|-----------------------------------------------------------------------|---------------------------------|
+| `valueChange`     | the `value` changes emitter                                           | `EventEmitter<boolean>`         |
+| `show`            | emits when the popover shows                                          | `EventEmitter`                  |
+| `hide`            | emits when the popover hides                                          | `EventEmitter`                  |
+| `clickedOutside`  | emits when user clicks outside the floating element                   | `EventEmitter<Element>`         |
+| `clickedInside`   | emits when user clicks inside the floating element.                   | `EventEmitter<Element>`         |
+| `animationStart`  | emits when animation starts                                           | `EventEmitter<AnimationEvent>`  |
+| `animationDone`   | emits when animation ends                                             | `EventEmitter<AnimationEvent>`  |
+| `computePosition` | emits every time when the floating component calls `computePosition`. | `EventEmitter<ComputePosition>` |
 
 ## Configuration
 
@@ -145,6 +133,20 @@ export const PopoverConfigProvider: Provider = {
     ]
   })
 };
+```
+
+And then just add your new provider to any module:
+
+```typescript
+@Component({
+  selector: 'example-app-module',
+  standalone: true,
+  imports: [],
+  providers: [
+    PopoverConfigProvider
+  ],
+  template: ``,
+})
 ```
 
 ## Arrow component
