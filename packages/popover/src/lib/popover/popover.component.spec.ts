@@ -3,6 +3,7 @@ import { PopoverComponent } from './popover.component';
 import { Component, Input, ViewChild } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { awaitTime } from '@ngx-popovers/core';
+import { ComputePosition } from '@ngx-popovers/popover';
 
 describe('PopoverComponent', () => {
   let component: PopoverTest;
@@ -71,7 +72,7 @@ describe('PopoverComponent', () => {
 
     fixture.detectChanges();
     expect(popover()).not.toBeInTheDocument();
-  })
+  });
 
   it('should emit value changes', () => {
     const valueChange = jest.spyOn(component, 'onValueChange');
@@ -127,6 +128,14 @@ describe('PopoverComponent', () => {
     document.body.click();
     expect(outside).not.toHaveBeenCalled();
   });
+
+  it('should emit computePosition', async () => {
+    const compute = jest.spyOn(component, 'onComputePosition');
+    fixture.componentRef.setInput('value', true);
+    fixture.detectChanges();
+    await awaitTime();
+    expect(compute).toHaveBeenCalled();
+  });
 });
 
 @Component({
@@ -142,6 +151,7 @@ describe('PopoverComponent', () => {
       (hide)="onHide()"
       (clickedOutside)="onOutsideClicked($event)"
       (clickedInside)="onInsideClicked($event)"
+      (computePosition)="onComputePosition($event)"
     >
       button
     </button>
@@ -174,4 +184,6 @@ class PopoverTest {
   onInsideClicked($event: Element) {}
 
   onOutsideClicked($event: Element) {}
+
+  onComputePosition($event: ComputePosition) {}
 }
