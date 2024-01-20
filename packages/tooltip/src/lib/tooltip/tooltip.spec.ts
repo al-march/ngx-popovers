@@ -47,6 +47,14 @@ describe('Tooltip', () => {
 
     expect(floating()).not.toBeInTheDocument();
   });
+
+  it('should emit computePosition', async () => {
+    const compute = jest.spyOn(component.computePosition, 'emit');
+    fixture.componentRef.setInput('ngxValue', true);
+    fixture.detectChanges()
+    await new Promise(r => setTimeout(r))
+    expect(compute).toHaveBeenCalled();
+  });
 });
 
 describe('Tooltip.DI', () => {

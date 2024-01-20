@@ -18,6 +18,7 @@ import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
+import { ComputePosition } from './types';
 
 @Component({
   selector: '[ngxTooltip]',
@@ -119,6 +120,9 @@ export class NgxTooltip implements OnChanges {
    */
   @Output()
   hideEnd = new EventEmitter();
+
+  @Output()
+  computePosition = new EventEmitter<ComputePosition>();
 
   isTooltipCreated = signal(false);
   isTriggerHovered = signal(false);
@@ -261,5 +265,9 @@ export class NgxTooltip implements OnChanges {
     if (element !== this.trigger) {
       this.ngxValue = false;
     }
+  }
+
+  onPositionReturn($event: ComputePosition) {
+    this.computePosition.emit($event);
   }
 }

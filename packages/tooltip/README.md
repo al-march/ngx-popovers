@@ -63,6 +63,13 @@ Emits when tooltip show ends
 #### `@Output()` `hideEnd`
 Emits when tooltip hide ends
 
+#### `@Output()` `computePosition($event: ComputePosition)`
+
+emits every time when the floating component calls `computePosition`.
+
+`$event` - floating-ui `computePosition` event
+
+
 ## Configuration
 
 There is a configuration token `NGX_TOOLTIP_CONFIG`.

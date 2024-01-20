@@ -9,6 +9,7 @@
     [bindTo]="bindTo"
 
     (clickedOutside)="onClickedOutside($event)"
+    (computePositionReturn)="onPositionReturn($event)"
   >
     @if (isTooltipCreated()) {
       <div
