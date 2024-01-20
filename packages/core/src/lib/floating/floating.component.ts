@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   booleanAttribute,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -40,7 +41,7 @@ import { PlatformService } from '../platform.service';
 export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
-
+  cdRef = inject(ChangeDetectorRef);
   isServer = inject(PlatformService).isServer();
 
   @ViewChild('floating')
@@ -99,8 +100,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   coords$ = this.computePosition$.pipe(
     filter(Boolean),
-    map(({ x, y }) => ({ x, y })),
-    shareReplay()
+    map(({ x, y }) => ({ x, y }))
   );
 
   /* Uses for cleanup autoUpdate function */
@@ -140,6 +140,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     return;
   }
 
+
   async computePosition(trigger: HTMLElement, floating: HTMLElement) {
     const computePositionReturn = await this.floatingService.computePosition(trigger, floating, {
       placement: this.placement,
@@ -148,6 +149,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     this._computePosition$.next(computePositionReturn);
     this.computePositionReturn.emit(computePositionReturn);
+    this.cdRef.detectChanges();
   }
 
   /* Check if user clicked outside the floating element*/

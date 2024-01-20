@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComputePosition, NGX_POPOVER_CONFIG } from '@ngx-popovers/popover';
-import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, MiddlewareList, Placement, PlatformService } from '@ngx-popovers/core';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -151,12 +151,18 @@ export class PopoverComponent implements OnChanges {
   }
 
   open() {
+    if (this.isAnimating()) {
+      return;
+    }
     this.isAnimating.set(true);
     this.value = true;
     this.valueChange.emit(true);
   }
 
   close() {
+    if (this.isAnimating()) {
+      return;
+    }
     this.isAnimating.set(true);
     this.value = false;
     this.valueChange.emit(false);
