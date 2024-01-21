@@ -4,7 +4,6 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { Arrow, FloatingComponent } from '@ngx-popovers/core';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 import { ArrowProvider } from './core/custom-arrow';
-import { PopoverComponent } from '@ngx-popovers/popover';
 import { HeaderComponent } from './template/header/header.component';
 import { ComponentsRoutes, GettingStartedRoute } from './app.routes';
 import { NgClass, NgComponentOutlet } from '@angular/common';
@@ -18,7 +17,6 @@ import { PopoverProvider } from './core/custom-popover';
     RouterModule,
     NgxTooltip,
     FloatingComponent,
-    PopoverComponent,
     HeaderComponent,
     Arrow,
     NgComponentOutlet,

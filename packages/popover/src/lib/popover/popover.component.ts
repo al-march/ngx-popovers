@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChild,
+  ElementRef,
   EventEmitter,
   HostListener,
   inject,
@@ -16,9 +17,10 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ComputePosition, NGX_POPOVER_CONFIG } from '@ngx-popovers/popover';
-import { Arrow, FloatingComponent, MiddlewareList, Placement, PlatformService } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
+import { ComputePosition, NGX_POPOVER_CONFIG } from '@ngx-popovers/popover';
+import { PopoverTemplate } from '../directives/popover-template.directive';
 
 @Component({
   selector: 'ngx-popover',
@@ -43,6 +45,10 @@ import { animate, AnimationEvent, style, transition, trigger } from '@angular/an
 export class PopoverComponent implements OnChanges {
   private config = inject(NGX_POPOVER_CONFIG);
   private cdRef = inject(ChangeDetectorRef);
+  private el = inject(ElementRef);
+
+  @ContentChild(PopoverTemplate)
+  template?: PopoverTemplate;
 
   @ContentChild(Arrow)
   arrow?: Arrow;
@@ -55,8 +61,8 @@ export class PopoverComponent implements OnChanges {
     }
   }
 
-  @Input({ required: true })
-  anchor?: HTMLElement;
+  @Input()
+  anchor: HTMLElement = this.el.nativeElement;
 
   @Input()
   placement: Placement = this.config.placement;
@@ -130,23 +136,21 @@ export class PopoverComponent implements OnChanges {
   }
 
   @HostListener('click', ['$event'])
-  onClick() {
-    if (!this.disabled) {
-      if (this.value) {
-        this.close();
-        this.hide.emit();
-      } else {
-        this.open();
-        this.show.emit();
+  onClick(event: MouseEvent) {
+    if (isElement(event.target)) {
+      if (this.anchor.contains(event.target)) {
+        this.toggle();
       }
     }
   }
 
   toggle() {
-    if (this.value) {
-      this.close();
-    } else {
-      this.open();
+    if (!this.disabled) {
+      if (this.value) {
+        this.close();
+      } else {
+        this.open();
+      }
     }
   }
 
@@ -157,6 +161,7 @@ export class PopoverComponent implements OnChanges {
     this.isAnimating.set(true);
     this.value = true;
     this.valueChange.emit(true);
+    this.show.emit();
   }
 
   close() {
@@ -166,6 +171,7 @@ export class PopoverComponent implements OnChanges {
     this.isAnimating.set(true);
     this.value = false;
     this.valueChange.emit(false);
+    this.hide.emit();
   }
 
   onClickedInside(element: Element) {
@@ -194,4 +200,8 @@ export class PopoverComponent implements OnChanges {
   onComputePosition($event: ComputePosition) {
     this.computePosition.emit($event);
   }
+}
+
+function isElement(element: unknown): element is Element {
+  return element instanceof Element;
 }

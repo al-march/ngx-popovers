@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { HighlightComponent } from '../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
 import { Arrow, Placement } from '@ngx-popovers/core';
-import { PopoverCloseDirective, PopoverComponent } from '@ngx-popovers/popover';
 import { ExampleComponent } from '../../template/example/example.component';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { WarningComponent } from '../../shared/warning/warning.component';
+import { PopoverModule } from '@ngx-popovers/popover';
 
 const usageExample = `
 <button #anchor (click)="popover.toggle()">
@@ -64,12 +64,11 @@ export const PopoverConfigProvider: Provider = {
     FormsModule,
     HighlightComponent,
     RouterLink,
-    PopoverComponent,
     ExampleComponent,
     NgxTooltip,
     WarningComponent,
     Arrow,
-    PopoverCloseDirective
+    PopoverModule
   ],
   templateUrl: './page-popover.component.html',
   styleUrl: './page-popover.component.scss'

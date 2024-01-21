@@ -23,257 +23,252 @@
     <div class="divider"></div>
 
     <ngx-example class="min-h-[200px] max-w-[800px] flex items-center justify-center">
-      <button
-        class="btn btn-accent"
-        #anchor
-        (click)="popover.toggle()"
-      >
-        Click me!
-      </button>
 
       <ngx-popover
-        #popover
-        [anchor]="anchor"
-        [(value)]="popoverValue"
         [disabled]="false"
+        [(value)]="popoverValue"
         [animationDisabled]="false"
         [closeOnClickedOutside]="false"
       >
-        <div class="card bg-base-100 border-4 border-base-300 shadow-xl">
-          <div class="card-body p-4 items-center text-center">
-            <h2 class="card-title">I am Popover!</h2>
-            <p class="divider my-0"></p>
-            <p>
-              <b class="text-info">Dynamic</b>,
-              <b class="text-warning">Reusable</b>,
-              <b class="text-accent">Universal</b>
-            </p>
-            <p>
-              Just install and use it <br> with all the advantages of
-              <a class="link" target="_blank" href="https://floating-ui.com/">floating-ui</a>
-            </p>
+        <button class="btn btn-accent">
+          Click me!
+        </button>
 
-            <div class="card-actions">
-              <button
-                class="btn btn-sm btn-primary"
-                ngx-popover-close
-              >
-                Close
-              </button>
+        <ng-template ngx-popover-template>
+          <div class="card bg-base-100 border-4 border-base-300 shadow-xl">
+            <div class="card-body p-4 items-center text-center">
+              <h2 class="card-title">I am Popover!</h2>
+              <p class="divider my-0"></p>
+              <p>
+                <b class="text-info">Dynamic</b>,
+                <b class="text-warning">Reusable</b>,
+                <b class="text-accent">Universal</b>
+              </p>
+              <p>
+                Just install and use it <br> with all the advantages of
+                <a
+                  class="link"
+                  target="_blank"
+                  href="https://floating-ui.com/"
+                  ngxTooltip="The best library for Popovers!"
+                  arrow
+                >
+                  floating-ui
+                </a>
+              </p>
+
+              <div class="card-actions">
+                <button
+                  class="btn btn-sm btn-primary"
+                  ngx-popover-close
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </ng-template>
 
         <ngx-arrow />
 
       </ngx-popover>
     </ngx-example>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
-    <p>Default usage:</p>
+      <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+      <p>Default usage:</p>
 
-    <div class="my-4">
-      <highlight lang="html" [code]="usageExample" />
-    </div>
+      <div class="my-4">
+        <highlight lang="html" [code]="usageExample" />
+      </div>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Examples</h2>
-    <p class="py-6">With different placements:</p>
+      <h2 class="text-4xl mb-4 font-bold">Examples</h2>
+      <p class="py-6">With different placements:</p>
 
-    <ngx-example class="min-h-[400px] max-w-[800px]">
-      <div #exampleWrapper class="flex-1 flex flex-col items-center justify-center">
-        @for (place of placementList; track place) {
-          <button
-            class="btn btn-sm w-[100px]"
-            #anchor
-            (click)="popover.toggle()"
-          >
-            {{ place }}
-          </button>
+      <ngx-example class="min-h-[400px] max-w-[800px]">
+        <div #exampleWrapper class="flex-1 flex flex-col items-center justify-center">
+          @for (place of placementList; track place) {
+            <ngx-popover
+              [bindTo]="exampleWrapper"
+              [placement]="place"
+            >
+              <button class="btn btn-sm w-[100px]">
+                {{ place }}
+              </button>
 
-          <ngx-popover
-            #popover
-            [bindTo]="exampleWrapper"
-            [anchor]="anchor"
-            [placement]="place"
-          >
-            <div class="card bg-base-100 border-4 border-base-200">
-              <div class="card-body items-center text-center">
-                <h2 class="card-title">Popover</h2>
-                <pre [innerText]="'<ngx-popover />'"></pre>
-                <div class="card-actions">
-                  <button
-                    class="btn btn-sm btn-primary"
-                    ngx-popover-close
-                  >
-                    Close
-                  </button>
+              <ngx-arrow />
+
+              <ng-template ngx-popover-template>
+                <div class="card bg-base-100 border-4 border-base-200">
+                  <div class="card-body items-center text-center">
+                    <h2 class="card-title">Popover</h2>
+                    <pre [innerText]="'<ngx-popover />'"></pre>
+                    <div class="card-actions">
+                      <button
+                        class="btn btn-sm btn-primary"
+                        ngx-popover-close
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </ng-template>
+            </ngx-popover>
+          }
+        </div>
+      </ngx-example>
+
+      <br>
+      <p>Menu example:</p>
+      <br>
+      <ngx-example class="max-w-[800px]">
+        <div class="flex-1 p-4 flex flex-col gap-2">
+          <p>Collapsible submenu</p>
+
+          <ngx-popover>
+            <div class="w-full flex justify-center">
+              <button class="btn btn-primary" ngx-popover-anchor>
+               Menu
+             </button>
             </div>
 
-            <ngx-arrow />
+            <ng-template ngx-popover-template>
+              <ul class="menu bg-base-200 w-56 rounded-box">
+                <li ngx-popover-close><a>Item 1</a></li>
+                <li>
+                  <details open>
+                    <summary>Parent</summary>
+                    <ul>
+                      <li ngx-popover-close><a>Submenu 1</a></li>
+                      <li ngx-popover-close><a>Submenu 2</a></li>
+                      <li>
+                        <details open>
+                          <summary>Parent</summary>
+                          <ul>
+                            <li ngx-popover-close><a>Submenu 1</a></li>
+                            <li ngx-popover-close><a>Submenu 2</a></li>
+                          </ul>
+                        </details>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+                <li ngx-popover-close><a>Item 3</a></li>
+              </ul>
+            </ng-template>
           </ngx-popover>
-        }
-      </div>
-    </ngx-example>
+        </div>
+      </ngx-example>
 
-    <br>
-    <p>Menu example:</p>
-    <br>
-    <ngx-example class="max-w-[800px]">
-      <div class="flex-1 p-4 flex flex-col gap-2">
-        <p>Collapsible submenu</p>
+      <ngx-example class="max-w-[800px]">
+        <div class="flex-1 p-4 flex flex-col gap-2">
+        <p>Menu with icon only with tooltip</p>
 
-        <button
-          class="btn"
-          #menuExampleAnchor
-          (click)="menuExamplePopover.toggle()"
-        >
-          Menu
-        </button>
+          <ngx-popover>
+            <div class="w-full flex justify-center">
+              <button class="btn btn-primary" ngx-popover-anchor>
+               Menu
+             </button>
+            </div>
 
-        <ngx-popover
-          #menuExamplePopover
-          [anchor]="menuExampleAnchor"
-        >
-          <ul class="menu bg-base-200 w-56 rounded-box">
-            <li ngx-popover-close><a>Item 1</a></li>
-            <li>
-              <details open>
-                <summary>Parent</summary>
-                <ul>
-                  <li ngx-popover-close><a>Submenu 1</a></li>
-                  <li ngx-popover-close><a>Submenu 2</a></li>
-                  <li>
-                    <details open>
-                      <summary>Parent</summary>
-                      <ul>
-                        <li ngx-popover-close><a>Submenu 1</a></li>
-                        <li ngx-popover-close><a>Submenu 2</a></li>
-                      </ul>
-                    </details>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li ngx-popover-close><a>Item 3</a></li>
-          </ul>
-        </ngx-popover>
-      </div>
-    </ngx-example>
+            <ng-template ngx-popover-template>
+              <ul ngx-popover-close class="menu bg-base-200 rounded-box">
+                <li>
+                  <a
+                    ngxTooltip="Home"
+                    placement="right"
+                    debounce="0"
+                    arrow
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    /></svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    ngxTooltip="Details"
+                    placement="right"
+                    debounce="0"
+                    arrow
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    /></svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    ngxTooltip="Stats"
+                    placement="right"
+                    debounce="0"
+                    arrow
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    /></svg>
+                  </a>
+                </li>
+              </ul>
+            </ng-template>
+          </ngx-popover>
+        </div>
+      </ngx-example>
 
-    <ngx-example class="max-w-[800px]">
-      <div class="flex-1 p-4 flex flex-col gap-2">
-      <p>Menu with icon only with tooltip</p>
+      <div class="divider"></div>
 
-        <button
-          class="btn"
-          #iconMenuAnchor
-          (click)="iconMenuPopover.toggle()"
-        >
-          Menu
-        </button>
+      <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
 
-        <ngx-popover
-          #iconMenuPopover
-          [anchor]="iconMenuAnchor"
-        >
-          <ul ngx-popover-close class="menu bg-base-200 rounded-box">
-            <li>
-              <a
-                ngxTooltip="Home"
-                placement="right"
-                debounce="0"
-                arrow
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                /></svg>
-              </a>
-            </li>
-            <li>
-              <a
-                ngxTooltip="Details"
-                placement="right"
-                debounce="0"
-                arrow
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                /></svg>
-              </a>
-            </li>
-            <li>
-              <a
-                ngxTooltip="Stats"
-                placement="right"
-                debounce="0"
-                arrow
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                /></svg>
-              </a>
-            </li>
-          </ul>
-        </ngx-popover>
-      </div>
-    </ngx-example>
+      <p>
+        There is a configuration token <code class="code">NGX_POPOVER_CONFIG</code>.
+        <br>
+        Please, use the <code class="code">NgxPopoverConfig</code> class
+        to change the default tooltip properties.
+      </p>
 
-    <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
-
-    <p>
-      There is a configuration token <code class="code">NGX_POPOVER_CONFIG</code>.
       <br>
-      Please, use the <code class="code">NgxPopoverConfig</code> class
-      to change the default tooltip properties.
-    </p>
 
-    <br>
+      <dm-warning>
+        <span>
+          Install the
+          <a routerLink="/core" class="link">core</a>
+          package to use a middleware
+        </span>
+      </dm-warning>
 
-    <dm-warning>
-      <span>
-        Install the
-        <a routerLink="/core" class="link">core</a>
-        package to use a middleware
-      </span>
-    </dm-warning>
-
-    <div class="my-4">
-      <highlight lang="typescript" [code]="configExample" />
-    </div>
+      <div class="my-4">
+        <highlight lang="typescript" [code]="configExample" />
+      </div>
   </section>
 </div>

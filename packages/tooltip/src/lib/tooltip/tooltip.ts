@@ -12,7 +12,7 @@ import {
   Output,
   signal
 } from '@angular/core';
-import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, MiddlewareList, Placement, PlatformService } from '@ngx-popovers/core';
 import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
 import { TooltipTemplate } from './template/tooltip-template.component';
 import { NGX_TOOLTIP_COMPONENT, NGX_TOOLTIP_CONFIG } from './core/tooltip.injections';
@@ -29,6 +29,7 @@ import { ComputePosition } from './types';
     CommonModule,
     Arrow
   ],
+  providers: [PlatformService],
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -130,7 +131,7 @@ export class NgxTooltip implements OnChanges {
   isAnimating = signal(false);
 
   get trigger() {
-    return this.el.nativeElement;
+    return this.el.nativeElement as HTMLElement;
   }
 
   get fixedDebounce() {
@@ -140,6 +141,14 @@ export class NgxTooltip implements OnChanges {
   constructor(
     private el: ElementRef
   ) {
+  }
+
+  ngOnInit() {
+    console.log('tooltip created');
+  }
+
+  ngOnDestroy() {
+    console.log('tooltip destroyed');
   }
 
   ngOnChanges() {

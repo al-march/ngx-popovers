@@ -1,3 +1,10 @@
+<!--
+  By default, this content will be
+  the anchor and trigger
+  of the Popover
+-->
+<ng-content />
+
 @if (value || isAnimating()) {
   <ngx-floating
     [trigger]="anchor"
@@ -17,8 +24,14 @@
         (@fadeInOut.done)="onAnimationDone($event)"
         [@.disabled]="animationDisabled"
       >
-        <ng-content />
+        <ng-container
+          [ngTemplateOutlet]="template?.templateRef || empty"
+        />
+
+        <ng-content select="ngx-arrow" />
       </div>
     }
   </ngx-floating>
 }
+
+<ng-template #empty />
