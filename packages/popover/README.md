@@ -31,50 +31,60 @@ Popover component displays content next to the trigger element on mouse click
 See more information about the properties in the official
 documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
+First, import the popover module:
+
+```typescript
+import { PopoverModule } from '@ngx-popovers/popover';
+```
+
+This module has all necessary components.
+Then you can use the Popover in your templates.
+
 ```angular2html
 
-<button #anchor (click)="popover.toggle()">
-  Toggle Popover
-</button>
-
-<ngx-popover
-  #popover
-  [anchor]="anchor"
->
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </p>
-  <button ngx-popover-close>
-    Close
+<ngx-popover>
+  <button>
+    Toggle Popover
   </button>
+
+  <!-- 
+    Angular doesn't destroy elements in <ng-content />, so
+    the PopoverTemplate component uses for conditional content projection.
+    
+    https://angular.io/guide/content-projection#conditional-content-projection
+  -->
+  <ng-template ngx-popover-template>
+    <div class="example-class">
+      <p>
+        Lorem ipsum dolor sit amet.
+      </p>
+    </div>
+  </ng-template>
 </ngx-popover>
 ```
 
-### With arrow
+### Arrow
 
 You should install the [core package](https://www.npmjs.com/package/@ngx-popovers/core) to import the Arrow component.
 
 ```typescript
-import { Arrow, Placement } from '@ngx-popovers/core';
+import { Arrow } from '@ngx-popovers/core';
 ```
 
 Example usage:
 
 ```angular2html
 
-<button #anchor (click)="popover.toggle()">
-  Toggle Popover
-</button>
+<ngx-popover>
+  <button>
+    Toggle Popover
+  </button>
 
-<ngx-popover
-  #popover
-  [anchor]="anchor"
->
-  <div class="example-class">
-    <p>Popover content</p>
-  </div>
-
-  <ngx-arrow padding="12" />
+  <ng-template ngx-popover-template>
+    <div class="example-class">...</div>
+  </ng-template>
+  
+  <ngx-arrow padding="8" />
 </ngx-popover>
 ```
 
@@ -83,8 +93,48 @@ Example usage:
 The `NgxPopoverClose` directive closes popover
 when handles a click to an element.
 
-```typescript
-import { PopoverCloseDirective } from '@ngx-popovers/popover';
+```angular2html
+
+<ngx-popover>
+  <button>
+    Toggle Popover
+  </button>
+
+  <ng-template ngx-popover-template>
+    <div class="example-class">
+      ...
+      <button ngx-popover-close>Close</button>
+    </div>
+  </ng-template>
+</ngx-popover>
+```
+
+### ngx-popover-anchor
+
+You can have a several components inside the `<ngx-popover />`.
+By default, the popover handles the all user's clicks, but it can be changed.
+
+The ngxPopoverAnchor directive can be useful
+if you want to change the trigger inside `<ngx-popover />`
+
+```angular2html
+
+<ngx-popover>
+  <p>
+    The clicks on this paragraph
+    will not triggered the popover 
+  </p>
+  
+  <button ngx-popover-anchor>
+    Anchor
+  </button>
+
+  <ng-template ngx-popover-template>
+    <div class="example-class">
+      ...
+    </div>
+  </ng-template>
+</ngx-popover>
 ```
 
 ### API
@@ -113,7 +163,6 @@ Output parameters
 | `animationStart`  | emits when animation starts                                           | `EventEmitter<AnimationEvent>`  |
 | `animationDone`   | emits when animation ends                                             | `EventEmitter<AnimationEvent>`  |
 | `computePosition` | emits every time when the floating component calls `computePosition`. | `EventEmitter<ComputePosition>` |
-
 
 ## Configuration
 

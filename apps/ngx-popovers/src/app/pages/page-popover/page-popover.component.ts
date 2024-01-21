@@ -12,20 +12,25 @@ import { WarningComponent } from '../../shared/warning/warning.component';
 import { PopoverModule } from '@ngx-popovers/popover';
 
 const usageExample = `
-<button #anchor (click)="popover.toggle()">
-  Popover
-</button>
+<ngx-popover>
+  <button>
+    Popover
+  </button>
 
-<ngx-popover
- #popover
- [anchor]="anchor"
->
-  <div class="popover">
-    <p>I am popover!</p>
-    <button (click)="popover.close()">
-      Close
-    </button>
-  </div>
+  <ng-template ngx-popover-template>
+    <div class="popover">
+      <p>I am popover!</p>
+      <button (click)="popover.close()">
+        Close
+      </button>
+    </div>
+  </ng-template>
+  
+  <!-- 
+    You have to install the @ngx-popovers/core package
+    to use the Arrow component inside the popover
+  -->
+  <ngx-arrow />
 </ngx-popover>
 `.trim();
 
