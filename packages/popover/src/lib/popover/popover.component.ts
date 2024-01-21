@@ -155,9 +155,6 @@ export class PopoverComponent implements OnChanges {
   }
 
   open() {
-    if (this.isAnimating()) {
-      return;
-    }
     this.isAnimating.set(true);
     this.value = true;
     this.valueChange.emit(true);
