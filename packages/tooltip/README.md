@@ -4,7 +4,7 @@ This library was generated with [Nx](https://nx.dev) using [floating-ui](https:/
 for [Angular](https://angular.dev/) apps
 
 > **Note**
-> 
+>
 > I strongly recommend not using this library until its stable version is released.
 
 The Tooltip component shows tooltips next to the trigger element
@@ -15,65 +15,61 @@ The Tooltip component shows tooltips next to the trigger element
 
 Add `ngxTooltip` to the html element to use this library.
 
-```html
+```angular2html
 
 <button
-  [ngxTooltip]="placement"
-  [placement]="placement"
-  arrow
+  ngxTooltip="Tooltip message"
+  placement="top-end"
 >
-  {{placement}}
+  Hover me!
 </button>
 ```
 
-## Settings
+### Arrow
 
-### Inputs
+You can show the tooltip with an arrow:
 
-#### `@Input()` `ngxValue`
-open/close tooltip 
+```angular2html
 
-#### `@Input()` `placement`
-controls the position of the tooltip relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
+<button
+  ngxTooltip="Tooltip message"
+  placement="top-end"
+  arrow
+  arrowPadding="8"
+>
+  Hover me!
+</button>
+```
 
-#### `@Input()` `middleware`
-list of `middleware` from floating-ui
+### API
 
-#### `@Input()` `debounce`
-time delay before the tooltip is displayed
+Input parameters
 
-#### `@Input()` `arrow`
-adds arrow to tooltip
+| Input          | Description                                                                                   | Type                    | Default             |
+|----------------|-----------------------------------------------------------------------------------------------|-------------------------|---------------------|
+| `placement`    | the component position according anchor                                                       | `Placement`             | `'bottom'`          |
+| `middleware`   | list of floating-ui middlewares without `arrow`                                               | `MiddlewareList`        | `offset(4), flip()` |
+| `debounce`     | time delay before the component is displayed                                                  | `number`                | `100`               |
+| `arrow`        | adds arrow to tooltip                                                                         | `boolean`               | `false`             |
+| `arrowPadding` | if your tooltip element has border-radius, this will prevent it from overflowing the corners. | `number`                | `2`                 |
+| `bindTo`       | render the component into element                                                             | `string \| HTMLElement` | `'.body'`           |
+| `autoUpdate`   | auto update the position                                                                      | `boolean`               | `false`             |
+| `ngxValue`     | open/close tooltip                                                                            | `boolean`               | `false`             |
 
-#### `@Input()` `arrowPadding`
-if your tooltip element has border-radius, this will prevent it from overflowing the
-corners. ([more](https://floating-ui.com/docs/arrow#padding))
+Output parameters
 
-#### `@Input()` `autoUpdate`
-updates floating element automatically. Default `false`
-
-#### `@Input()` `bindTo`
-renders floating element as last child of bindTo. Default is body.
-
-### Outputs
-
-#### `@Output()` `showEnd`
-Emits when tooltip show ends
-
-#### `@Output()` `hideEnd`
-Emits when tooltip hide ends
-
-#### `@Output()` `computePosition($event: ComputePosition)`
-
-emits every time when the floating component calls `computePosition`.
-
-`$event` - floating-ui `computePosition` event
-
+| Output            | Description                                                           | Type                            |
+|-------------------|-----------------------------------------------------------------------|---------------------------------|
+| `ngxValueChange`  | the `ngxValue` changes emitter                                        | `EventEmitter<boolean>`         |
+| `showEnd`         | emits when the component shows                                        | `EventEmitter`                  |
+| `hideEnd`         | emits when the component hides                                        | `EventEmitter`                  |
+| `computePosition` | emits every time when the floating component calls `computePosition`. | `EventEmitter<ComputePosition>` |
 
 ## Configuration
 
 There is a configuration token `NGX_TOOLTIP_CONFIG`.
 Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
+
 
 ```typescript
 import { Provider } from '@angular/core';
