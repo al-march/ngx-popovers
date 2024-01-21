@@ -19,7 +19,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { Arrow, FloatingComponent, MiddlewareList, Placement } from '@ngx-popovers/core';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
-import { ComputePosition, NGX_POPOVER_CONFIG } from '@ngx-popovers/popover';
+import { ComputePosition } from '../types';
+import { NGX_POPOVER_CONFIG } from '../core/popover.injections';
 import { PopoverTemplate } from '../directives/popover-template.directive';
 
 @Component({

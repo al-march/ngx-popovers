@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
-import { PopoverModule } from '@ngx-popovers/popover';
+import { PopoverModule } from '../popover.module';
 import { PopoverComponent } from '../popover/popover.component';
 import { By } from '@angular/platform-browser';
 import { awaitTime } from '@ngx-popovers/core';
