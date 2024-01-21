@@ -143,14 +143,6 @@ export class NgxTooltip implements OnChanges {
   ) {
   }
 
-  ngOnInit() {
-    console.log('tooltip created');
-  }
-
-  ngOnDestroy() {
-    console.log('tooltip destroyed');
-  }
-
   ngOnChanges() {
     this.initListeners();
   }
