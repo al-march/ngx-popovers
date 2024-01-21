@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -35,7 +36,7 @@ const staticSides: Record<string, string> = {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Arrow implements OnChanges, OnDestroy {
+export class Arrow implements OnChanges, AfterViewInit, OnDestroy {
   arrowComponent = inject(NGX_ARROW_COMPONENT);
   cdRef = inject(ChangeDetectorRef);
 
@@ -53,6 +54,10 @@ export class Arrow implements OnChanges, OnDestroy {
   private subscription?: Subscription;
 
   async ngOnChanges() {
+    await this.updateState();
+  }
+
+  async ngAfterViewInit() {
     await this.updateState();
   }
 

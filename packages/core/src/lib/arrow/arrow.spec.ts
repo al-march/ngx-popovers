@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Arrow } from './arrow';
 import { FloatingComponent } from '@ngx-popovers/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 const FloatingMock = {
-  computePosition$: new BehaviorSubject<any>(undefined),
+  computePosition$: new Subject<any>(),
   setArrow: (arrow: Arrow) => {}
 };
 
@@ -44,7 +44,7 @@ describe('FloatingArrowComponent', () => {
     expect(setArrow).toHaveBeenCalled();
   });
 
-  it('should set styles', async () => {
+  it('should set styles', () => {
     const x = 10;
     const y = 10;
 
