@@ -8,13 +8,16 @@
     [autoUpdate]="autoUpdate"
     [bindTo]="bindTo"
 
+    (clickedInside)="onClickedInside($event)"
     (clickedOutside)="onClickedOutside($event)"
     (computePositionReturn)="onPositionReturn($event)"
   >
     @if (isTooltipCreated()) {
       <div
         @fadeInOut
-        (@fadeInOut.done)="isAnimating.set(false)"
+        (@fadeInOut.start)="onAnimationStart($event)"
+        (@fadeInOut.done)="onAnimationDone($event)"
+        [@.disabled]="animationDisabled"
       >
         <ngx-tooltip-template
           [component]="tooltipComponent"

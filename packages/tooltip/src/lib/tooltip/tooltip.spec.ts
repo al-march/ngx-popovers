@@ -191,5 +191,41 @@ describe('Tooltip.DOM', () => {
     const floatingEl = document.querySelector('.floating');
     expect(floatingEl).not.toBeInTheDocument();
   });
+
+  it('should emit animation events', async () => {
+    const start = jest.spyOn(tooltipInstance().animationStart, 'emit');
+    const done = jest.spyOn(tooltipInstance().animationDone, 'emit');
+
+    tooltipInstance().ngxValue = true;
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(start).toHaveBeenCalled();
+
+    tooltipInstance().ngxValue = false;
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(done).toHaveBeenCalled();
+  });
+
+  it('should disable tooltip', async () => {
+    tooltipInstance().tooltipDisabled = true;
+    fixture.detectChanges();
+
+    const focus = new FocusEvent('focus');
+    const mousemove = new MouseEvent('mousemove');
+
+    button().nativeElement.dispatchEvent(focus);
+    button().nativeElement.dispatchEvent(mousemove);
+
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const floatingEl = document.querySelector('.floating');
+
+    expect(tooltipInstance().isTooltipCreated()).toBeFalsy();
+    expect(floatingEl).not.toBeInTheDocument();
+  });
 });
 
