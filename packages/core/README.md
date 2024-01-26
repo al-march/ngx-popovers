@@ -26,14 +26,10 @@ export class AppComponent {
 }
 ```
 
-#### (method) computePosition
-
-The `computePosition` method is a proxy for `computePosition`
-from [floating-ui](https://floating-ui.com/docs/computePosition)
-
-#### (method) autoUpdate
-
-The `autoUpdate` method is a proxy for `autoUpdate` from [floating-ui](https://floating-ui.com/docs/computePosition)
+| Method            | Description                                                                   | Type                    |
+|-------------------|-------------------------------------------------------------------------------|-------------------------|
+| `computePosition` | The `computePosition` method is a proxy for `computePosition`from floating-ui | `ComputePositionReturn` |
+| `autoUpdate`      | The `autoUpdate` method is a proxy for `autoUpdate` from floating-ui          | `cleanup function`      |
 
 ```typescript
 floatingService = inject(FloatingService);
@@ -52,6 +48,7 @@ import {
   ShiftOptions
 } from '@ngx-popovers/core';
 ```
+
 ---
 
 # portal
@@ -122,6 +119,7 @@ export class ClickOutsideExample {
   }
 }
 ```
+
 ---
 
 # floating
@@ -157,37 +155,23 @@ documentation [floating-ui](https://floating-ui.com/docs/middleware)
 
 ### API
 
-#### `@Input()` `placement`
+Inputs
 
-controls the position of the floating relative to the trigger ([docs](https://floating-ui.com/docs/tutorial#placements))
+| Method       | Description                                                   | Type                      | Default             |
+|--------------|---------------------------------------------------------------|---------------------------|---------------------|
+| `placement`  | controls the position of the floating relative to the trigger | `Placement`               | `bottom`            |
+| `middleware` | list of `middleware` from floating-ui                         | `MiddlewareList`          | `offset(4), flip()` |
+| `autoUpdate` | updates floating element automatically                        | `boolean`                 | `true`              |
+| `bindTo`     | urenders floating element as last child of bindTo             | `string` \| `HTMLElement` | `.body`             |
 
-#### `@Input()` `middleware`
+Outputs
 
-list of `middleware` from floating-ui
+| Method                  | Description                                                          | Type                    |
+|-------------------------|----------------------------------------------------------------------|-------------------------|
+| `clickedOutside`        | emits when user clicks outside the floating element                  | `Element`               |
+| `clickedInside`         | emits when user clicks inside the floating element                   | `Element`               |
+| `computePositionReturn` | emits every time when the floating component calls `computePosition` | `ComputePositionReturn` |
 
-#### `@Input()` `autoUpdate`
-
-updates floating element automatically. Default `true`
-
-#### `@Input()` `bindTo`
-
-renders floating element as last child of bindTo. Default is body.
-
-#### `@Output()` `clickedOutside($event: Element)`
-
-emits when user clicks outside the floating element.
-`$event` - element which was clicked
-
-#### `@Output()` `clickedInside($event: Element)`
-
-emits when user clicks inside the floating element.
-`$event` - element which was clicked
-
-#### `@Output()` `computePositionReturn($event: ComputePositionReturn)`
-
-emits every time when the floating component calls `computePosition`.
-
-`$event` - floating-ui `computePosition` event
 
 ## Configuration
 
