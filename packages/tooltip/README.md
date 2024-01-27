@@ -48,6 +48,7 @@ Input parameters
 | Input          | Description                                                                                   | Type                    | Default             |
 |----------------|-----------------------------------------------------------------------------------------------|-------------------------|---------------------|
 | `placement`    | the component position according anchor                                                       | `Placement`             | `'bottom'`          |
+| `template`     | the custom template of a tooltip                                                              | `TemplateRef<any>`      | `undefined`         |
 | `middleware`   | list of floating-ui middlewares without `arrow`                                               | `MiddlewareList`        | `offset(4), flip()` |
 | `debounce`     | time delay before the component is displayed                                                  | `number`                | `100`               |
 | `arrow`        | adds arrow to tooltip                                                                         | `boolean`               | `false`             |
@@ -69,7 +70,6 @@ Output parameters
 
 There is a configuration token `NGX_TOOLTIP_CONFIG`.
 Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
-
 
 ```typescript
 import { Provider } from '@angular/core';
