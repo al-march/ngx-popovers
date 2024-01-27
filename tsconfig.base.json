@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ngx-popovers/core": ["packages/core/src/index.ts"],
+      "@ngx-popovers/dialog": ["packages/dialog/src/index.ts"],
       "@ngx-popovers/popover": ["packages/popover/src/index.ts"],
       "@ngx-popovers/tooltip": ["packages/tooltip/src/index.ts"]
     }
