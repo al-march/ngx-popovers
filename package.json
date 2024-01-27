@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve ngx-popovers",
-    "test:all": "nx test core && nx test tooltip && nx test popover",
-    "build:all": "nx build core && nx build tooltip && nx build popover",
+    "test:all": "nx test core && nx test tooltip && nx test popover && nx test dialog",
+    "build:all": "nx build core && nx build tooltip && nx build popover && nx build dialog",
     "build:demo": "nx build ngx-popovers"
   },
   "private": true,
