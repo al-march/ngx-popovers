@@ -8,6 +8,7 @@ import { Placement } from '@floating-ui/dom';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FormsModule } from '@angular/forms';
 import { WarningComponent } from '../../shared/warning/warning.component';
+import { ExampleComponent } from '../../template/example/example.component';
 
 const usageExample = `
 <button
@@ -65,6 +66,23 @@ export const TooltipProvider: Provider = {
 };
 `.trim();
 
+const templateExample = `
+<button
+  class="btn"
+  ngxTooltip
+  [template]="tooltipTemplate"
+>
+  Hover me
+</button>
+
+<ng-template #tooltipTemplate>
+  <div class="bg-base-300 p-4 rounded">
+    <p>Tooltip's Template</p>
+    <button class="btn btn-xs btn-accent">Action</button>
+  </div>
+</ng-template>
+`.trim();
+
 @Component({
   selector: 'ngx-popovers-page-tooltip',
   standalone: true,
@@ -76,7 +94,8 @@ export const TooltipProvider: Provider = {
     NgxTooltip,
     FormsModule,
     CoreIcon,
-    WarningComponent
+    WarningComponent,
+    ExampleComponent
   ],
   templateUrl: './page-tooltip.component.html',
   styleUrl: './page-tooltip.component.scss'
@@ -86,6 +105,7 @@ export class PageTooltipComponent {
   usageExample = usageExample;
   configExample = configExample;
   configComponentExample = configComponentExample;
+  templateExample = templateExample;
 
   placement: Placement = 'top';
   debounce = 120;

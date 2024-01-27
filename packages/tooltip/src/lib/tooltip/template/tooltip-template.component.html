@@ -1,4 +1,10 @@
-<ng-template
-  [ngComponentOutlet]="component"
-  [ngComponentOutletInputs]="{text: text}"
-/>
+@if (template) {
+  <ng-template
+    [ngTemplateOutlet]="template"
+  />
+} @else {
+  <ng-template
+    [ngComponentOutlet]="component"
+    [ngComponentOutletInputs]="{text: text}"
+  />
+}

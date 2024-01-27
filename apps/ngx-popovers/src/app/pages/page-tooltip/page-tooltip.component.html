@@ -116,23 +116,50 @@
       </div>
     </section>
 
-    <section
-      #demoWrapper
-      class="border-2 border-dashed border-primary rounded min-h-[400px] max-w-[800px] m-auto flex items-center justify-center relative overflow-hidden"
-    >
-      <div class="w-32 h-32 border-2 border-dashed border-secondary rounded flex">
-        <div
-          tabindex="0"
-          class="flex-1"
-          [ngxTooltip]="'I tooltip'"
-          [placement]="placement"
-          [debounce]="debounce"
-          [arrow]="arrow"
-          [(ngxValue)]="value"
-          [bindTo]="demoWrapper"
-        ></div>
+    <ngx-example class="min-h-[400px] max-w-[800px] flex items-center justify-center">
+      <div #demoWrapper>
+        <div class="w-32 h-32 border-2 border-dashed border-secondary rounded flex">
+          <div
+            tabindex="0"
+            class="flex-1"
+            [ngxTooltip]="'I tooltip'"
+            [placement]="placement"
+            [debounce]="debounce"
+            [arrow]="arrow"
+            [(ngxValue)]="value"
+            [bindTo]="demoWrapper"
+          ></div>
+        </div>
       </div>
-    </section>
+    </ngx-example>
 
+    <div class="divider"></div>
+
+    <h2 class="text-4xl mb-4 font-bold">With template</h2>
+
+    <p>The tooltip has an Input template</p>
+
+    <div class="my-4">
+      <highlight lang="html" [code]="templateExample" />
+    </div>
+
+    <ngx-example
+      class="p-4 items-center"
+    >
+      <button
+        class="btn"
+        ngxTooltip
+        [template]="tooltipTemplate"
+      >
+        Hover me
+      </button>
+
+      <ng-template #tooltipTemplate>
+        <div class="bg-base-300 p-4 rounded">
+          <p>Tooltip's Template</p>
+          <button class="btn btn-xs btn-accent">Action</button>
+        </div>
+      </ng-template>
+    </ngx-example>
   </section>
 </div>

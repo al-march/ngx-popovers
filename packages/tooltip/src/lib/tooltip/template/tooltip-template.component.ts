@@ -6,7 +6,7 @@ import {
   inject,
   Input,
   Output,
-  signal
+  signal, TemplateRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
@@ -25,6 +25,9 @@ export class TooltipTemplate {
 
   @Input()
   component = inject(NGX_TOOLTIP_COMPONENT);
+
+  @Input()
+  template?: TemplateRef<void>;
 
   @Output()
   hovered = new EventEmitter<boolean>();

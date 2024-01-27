@@ -20,6 +20,7 @@
         [@.disabled]="animationDisabled"
       >
         <ngx-tooltip-template
+          [template]="template"
           [component]="tooltipComponent"
           [text]="tooltipText"
           (hovered)="setTooltipHovered($event)"

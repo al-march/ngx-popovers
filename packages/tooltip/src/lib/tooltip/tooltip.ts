@@ -10,7 +10,7 @@ import {
   numberAttribute,
   OnChanges,
   Output,
-  signal
+  signal, TemplateRef
 } from '@angular/core';
 import { Arrow, FloatingComponent, MiddlewareList, Placement, PlatformService } from '@ngx-popovers/core';
 import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
@@ -54,6 +54,9 @@ export class NgxTooltip implements OnChanges {
 
   @Input()
   tooltipComponent = inject(NGX_TOOLTIP_COMPONENT);
+
+  @Input()
+  template?: TemplateRef<void>;
 
   @Input()
   placement: Placement = this.config.placement;
