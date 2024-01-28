@@ -204,7 +204,7 @@ export class OffsetIcon extends IconComponentBase {
   `,
   standalone: true
 })
-export class ShiftIcon extends IconComponentBase {
+export class DialogIcon extends IconComponentBase {
 }
 
 

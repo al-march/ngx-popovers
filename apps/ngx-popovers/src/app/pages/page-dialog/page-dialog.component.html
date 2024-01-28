@@ -1,0 +1,48 @@
+<div class="page">
+  <page-title />
+
+  <section class="py-4">
+    <h2 class="text-4xl mb-4 font-bold">About</h2>
+
+    <p>Dialog is used to show a content when you click a button.</p>
+
+    <div class="my-4">
+      <highlight lang="bash" [code]="'npm i @ngx-popovers/dialog'" />
+    </div>
+
+    <h2 class="text-2xl mb-4 font-bold">Default example</h2>
+
+    <p>
+      Below you can see the easiest way to add a dialog to your page.
+      This dialog will be rendered as the last child of the body.
+    </p>
+
+    <div class="my-4">
+      <highlight lang="html" [code]="defaultExample" />
+    </div>
+
+    <ngx-example class="py-10 max-w-[800px] items-center">
+      <ngx-dialog [(value)]="open">
+        <button class="btn btn-accent" ngx-dialog-trigger>Toggle</button>
+
+        <div class="modal-box">
+          <p class="text-2xl">Hello! I am Dialog</p>
+          <div class="divider"></div>
+          <p>
+            Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit.
+          </p>
+
+          <div class="py-4"></div>
+
+          <button
+            class="btn btn-sm btn-error ml-auto"
+            ngx-dialog-close
+          >
+            Close
+          </button>
+        </div>
+      </ngx-dialog>
+    </ngx-example>
+  </section>
+</div>

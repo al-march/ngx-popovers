@@ -3,6 +3,7 @@ import {
   ArrowIcon,
   ClickOutsideIcon,
   CoreIcon,
+  DialogIcon,
   FloatingIcon,
   GettingStartedIcon,
   PopoverIcon,
@@ -96,6 +97,16 @@ export const ComponentsRoutes: Route[] = [
     },
     loadComponent: () => import('./pages/page-popover/page-popover.component')
       .then(c => c.PagePopoverComponent)
+  },
+  {
+    path: 'dialog',
+    title: 'Dialog component',
+    data: {
+      name: 'Dialog',
+      icon: DialogIcon
+    },
+    loadComponent: () => import('./pages/page-dialog/page-dialog.component')
+      .then(c => c.PageDialogComponent)
   }
 ];
 
