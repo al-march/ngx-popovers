@@ -1,1 +1,16 @@
-<p>dialog works!</p>
+<ng-content select="[ngx-dialog-trigger]" />
+
+@if (value) {
+  <ngx-portal>
+    <div class="ngx-dialog-container">
+      <div
+        class="ngx-dialog-backdrop"
+        (click)="close()"
+      ></div>
+
+      <div class="ngx-dialog-content">
+         <ng-content />
+      </div>
+    </div>
+  </ngx-portal>
+}

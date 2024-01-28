@@ -18,7 +18,9 @@ export class ClickOutsideDirective {
 
   constructor(
     private el: ElementRef
-  ) {}
+  ) {
+    console.log('i created!', this.el);
+  }
 
   @HostListener('document:click', ['$event'])
   onClick(event: PointerEvent) {
