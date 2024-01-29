@@ -42,6 +42,12 @@ export class DialogComponent implements AfterViewInit {
   @Input()
   animationDisabled = false;
 
+  @Input()
+  contentClass = '';
+
+  @Input()
+  backdropClass = '';
+
   @Output()
   valueChange = new EventEmitter<boolean>();
 

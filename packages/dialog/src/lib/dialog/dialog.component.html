@@ -5,12 +5,14 @@
     <div class="ngx-dialog-container">
       <div
         class="ngx-dialog-backdrop"
+        [ngClass]="backdropClass"
         (click)="close()"
       ></div>
 
       @if (value) {
         <div
           class="ngx-dialog-content"
+          [ngClass]="contentClass"
           @contentAnimation
           (@contentAnimation.start)="onAnimationStart($event)"
           (@contentAnimation.done)="onAnimationDone($event)"
