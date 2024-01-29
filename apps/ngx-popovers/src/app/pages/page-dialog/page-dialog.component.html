@@ -17,11 +17,7 @@
       This dialog will be rendered as the last child of the body.
     </p>
 
-    <div class="my-4">
-      <highlight lang="html" [code]="defaultExample" />
-    </div>
-
-    <ngx-example class="py-10 max-w-[800px] items-center">
+    <ngx-example class="py-10 my-4 max-w-[800px] items-center">
       <ngx-dialog [(value)]="open">
         <button class="btn btn-accent" ngx-dialog-trigger>Toggle</button>
 
@@ -44,5 +40,9 @@
         </div>
       </ngx-dialog>
     </ngx-example>
+
+    <div class="my-4">
+      <highlight lang="html" [code]="defaultExample" />
+    </div>
   </section>
 </div>
