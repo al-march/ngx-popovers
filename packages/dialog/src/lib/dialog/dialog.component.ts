@@ -1,14 +1,18 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  ContentChild,
   EventEmitter,
+  inject,
   Input,
   Output,
   signal,
   ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
+import { DialogTemplate } from '../directives';
 
 @Component({
   selector: 'ngx-dialog',
@@ -35,6 +39,10 @@ import { animate, AnimationEvent, style, transition, trigger } from '@angular/an
   ]
 })
 export class DialogComponent implements AfterViewInit {
+  private readonly ref = inject(ChangeDetectorRef);
+
+  @ContentChild(DialogTemplate)
+  templateRef?: DialogTemplate;
 
   @Input()
   value = false;
@@ -60,6 +68,14 @@ export class DialogComponent implements AfterViewInit {
   isAnimating = signal(false);
 
   ngAfterViewInit() {
+    if (!this.templateRef) {
+      throw new Error([
+        'There is no a template for the <ngx-dialog />.',
+        'Please, add <ng-template ngx-dialog-template /> inside',
+        'the <ngx-dialog /> component.',
+        '\n\n See docs: https://ngx-popovers.vercel.app/dialog for more information \n'
+      ].join(' '));
+    }
   }
 
   open() {
@@ -74,6 +90,7 @@ export class DialogComponent implements AfterViewInit {
     this.isAnimating.set(true);
     this.value = value;
     this.valueChange.emit(value);
+    this.ref.markForCheck();
   }
 
   onAnimationStart(event: AnimationEvent) {

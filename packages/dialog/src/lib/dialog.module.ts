@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
-import { DialogComponent } from './dialog';
-import { DialogCloseDirective, DialogTriggerDirective } from './directives';
-import { PortalComponent } from '@ngx-popovers/core';
 import { NgClass } from '@angular/common';
+import { PortalComponent } from '@ngx-popovers/core';
+import { DialogComponent, DialogContentComponent } from './dialog';
+import { DialogCloseDirective, DialogTemplate, DialogTriggerDirective } from './directives';
 
 @NgModule({
   declarations: [
     DialogComponent,
     DialogCloseDirective,
-    DialogTriggerDirective
+    DialogTriggerDirective,
+    DialogTemplate
   ],
   imports: [
     PortalComponent,
-    NgClass
+    NgClass,
+    DialogContentComponent
   ],
   exports: [
     DialogComponent,
     DialogCloseDirective,
-    DialogTriggerDirective
+    DialogTriggerDirective,
+    DialogTemplate
   ]
 })
 export class NgxDialog {

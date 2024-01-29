@@ -18,26 +18,52 @@
     </p>
 
     <ngx-example class="py-10 my-4 max-w-[800px] items-center">
-      <ngx-dialog [(value)]="open">
+      <ngx-dialog [(value)]="open" contentClass="first">
         <button class="btn btn-accent" ngx-dialog-trigger>Toggle</button>
 
-        <div class="modal-box">
-          <p class="text-2xl">Hello! I am Dialog</p>
-          <div class="divider"></div>
-          <p>
-            Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit.
-          </p>
+        <ng-template ngx-dialog-template>
+          <div class="modal-box">
+            <p class="text-2xl">Hello! I am Dialog</p>
+            <div class="divider"></div>
+            <p>
+              Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit.
+            </p>
 
-          <div class="py-4"></div>
+            <div class="py-4"></div>
 
-          <button
-            class="btn btn-sm btn-error ml-auto"
-            ngx-dialog-close
-          >
-            Close
-          </button>
-        </div>
+            <button
+              class="btn btn-sm btn-error ml-auto"
+              ngx-dialog-close
+            >
+              Close
+            </button>
+
+            <ngx-dialog contentClass="second">
+              <button class="btn btn-accent" ngx-dialog-trigger>Another</button>
+
+              <ng-template ngx-dialog-template>
+                <div class="modal-box">
+                  <p class="text-2xl">Hello! I the second Dialog</p>
+                  <div class="divider"></div>
+                  <p>
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                  </p>
+
+                  <div class="py-4"></div>
+
+                  <button
+                    class="btn btn-sm btn-warning ml-auto"
+                    ngx-dialog-close
+                  >
+                    Close
+                  </button>
+                </div>
+              </ng-template>
+            </ngx-dialog>
+          </div>
+        </ng-template>
       </ngx-dialog>
     </ngx-example>
 

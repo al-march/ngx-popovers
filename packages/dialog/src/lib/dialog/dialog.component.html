@@ -1,6 +1,6 @@
 <ng-content select="[ngx-dialog-trigger]" />
 
-@if (value || isAnimating()) {
+@if (templateRef && (value || isAnimating())) {
   <ngx-portal>
     <div class="ngx-dialog-container">
       <div
@@ -18,6 +18,12 @@
           (@contentAnimation.done)="onAnimationDone($event)"
           [@.disabled]="animationDisabled"
         >
+          <ngx-dialog-content
+            style="outline: none"
+            tabindex="0"
+            [template]="templateRef!.templateRef"
+            (close)="close()"
+          />
           <ng-content />
         </div>
       }
