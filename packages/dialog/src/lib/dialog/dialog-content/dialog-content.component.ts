@@ -18,11 +18,14 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './dialog-content.component.html',
   styleUrl: './dialog-content.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    'tabindex': '0'
+  }
 })
 export class DialogContentComponent implements AfterViewInit, OnDestroy {
-  private readonly el = inject(ElementRef);
-  private readonly doc = inject(DOCUMENT);
+  readonly el = inject(ElementRef);
+  readonly doc = inject(DOCUMENT);
 
   @Input({ required: true })
   template!: TemplateRef<unknown>;
@@ -34,7 +37,7 @@ export class DialogContentComponent implements AfterViewInit, OnDestroy {
    * prevActiveEl is a focused element in the document
    * before the dialog content is init.
    */
-  private prevActiveEl: Element | null = null;
+  prevActiveEl: Element | null = null;
 
   @HostListener('keydown.esc', ['$event'])
   onEscPressed() {
