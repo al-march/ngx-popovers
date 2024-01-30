@@ -56,8 +56,17 @@ export class DialogComponent implements AfterViewInit {
   @Input()
   backdropClass = '';
 
+  @Input()
+  closeOnBackdropClick = true;
+
   @Output()
   valueChange = new EventEmitter<boolean>();
+
+  @Output()
+  show = new EventEmitter();
+
+  @Output()
+  hide = new EventEmitter();
 
   @Output()
   animationStart = new EventEmitter<AnimationEvent>();
@@ -90,6 +99,13 @@ export class DialogComponent implements AfterViewInit {
     this.isAnimating.set(true);
     this.value = value;
     this.valueChange.emit(value);
+
+    if (value) {
+      this.show.emit();
+    } else {
+      this.hide.emit();
+    }
+
     this.ref.markForCheck();
   }
 

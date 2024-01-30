@@ -6,26 +6,33 @@ import { HighlightComponent } from '../../core/highlight/highlight.component';
 import { NgxDialog } from '@ngx-popovers/dialog';
 
 const defaultExample = `
-<ngx-dialog [(value)]="open">
-  <button class="btn btn-accent" ngx-dialog-trigger>Toggle</button>
+<ngx-dialog>
+  <button 
+    class="btn btn-accent" 
+    ngx-dialog-trigger
+  >
+    Toggle
+  </button>
 
-  <div class="modal-box">
-    <p class="text-2xl">Hello! I am Dialog</p>
-    <div class="divider"></div>
-    <p>
-      Lorem ipsum dolor sit amet,
-      consectetur adipisicing elit.
-    </p>
+  <ng-template ngx-dialog-template>
+    <div class="modal-box">
+      <p class="text-2xl">Hello! I am Dialog</p>
+      <div class="divider"></div>
+      <p>
+        Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit.
+      </p>
 
-    <div class="py-4"></div>
+      <div class="py-4"></div>
 
-    <button
-      class="btn btn-sm btn-error ml-auto"
-      ngx-dialog-close
-    >
-      Close
-    </button>
-  </div>
+      <button
+        class="btn btn-sm btn-error ml-auto"
+        ngx-dialog-close
+      >
+        Close
+      </button>
+    </div>
+  </ng-template>
 </ngx-dialog>
 `.trim();
 

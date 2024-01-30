@@ -6,7 +6,7 @@
       <div
         class="ngx-dialog-backdrop"
         [ngClass]="backdropClass"
-        (click)="close()"
+        (click)="closeOnBackdropClick && close()"
       ></div>
 
       @if (value) {
