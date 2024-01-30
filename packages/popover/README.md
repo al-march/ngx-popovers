@@ -40,7 +40,7 @@ import { PopoverModule } from '@ngx-popovers/popover';
 This module has all necessary components.
 Then you can use the Popover in your templates.
 
-```angular2html
+```html angular2html
 
 <ngx-popover>
   <button>
@@ -49,7 +49,7 @@ Then you can use the Popover in your templates.
 
   <!-- 
     Angular doesn't destroy elements in <ng-content />, so
-    the PopoverTemplate component uses for conditional content projection.
+    the PopoverTemplate directive uses for conditional content projection.
     
     https://angular.io/guide/content-projection#conditional-content-projection
   -->
@@ -73,7 +73,7 @@ import { Arrow } from '@ngx-popovers/core';
 
 Example usage:
 
-```angular2html
+```html angular2html
 
 <ngx-popover>
   <button>
@@ -93,7 +93,7 @@ Example usage:
 The `NgxPopoverClose` directive closes popover
 when handles a click to an element.
 
-```angular2html
+```html angular2html
 
 <ngx-popover>
   <button>
@@ -117,7 +117,7 @@ By default, the popover handles the all user's clicks, but it can be changed.
 The ngxPopoverAnchor directive can be useful
 if you want to change the trigger inside `<ngx-popover />`
 
-```angular2html
+```html angular2html
 
 <ngx-popover>
   <p>
