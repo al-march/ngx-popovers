@@ -6,3 +6,26 @@
   }
 }
 
+.icon {
+  justify-self: end;
+  display: block;
+  margin-top: -0.5rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  transform: rotate(45deg);
+  transition-property: transform, margin-top;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  content: "";
+  transform-origin: 75% 75%;
+  box-shadow: 2px 2px;
+  pointer-events: none;
+
+  &.top {
+    transform: rotate(-135deg);
+  }
+
+  &.bottom {
+    transform: rotate(45deg);
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { ActivatedRouteSnapshot, ActivationEnd, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { Arrow, FloatingComponent } from '@ngx-popovers/core';
 import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
@@ -10,6 +10,7 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
 import { filter, tap } from 'rxjs';
 import { FooterComponent } from './template/footer/footer.component';
 import { PopoverProvider } from './core/custom-popover';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -21,7 +22,8 @@ import { PopoverProvider } from './core/custom-popover';
     Arrow,
     NgComponentOutlet,
     NgClass,
-    FooterComponent
+    FooterComponent,
+    FormsModule
   ],
   selector: 'ngx-popovers-root',
   templateUrl: './app.component.html',
@@ -36,14 +38,28 @@ import { PopoverProvider } from './core/custom-popover';
 export class AppComponent implements OnInit {
   sidebar = signal(false);
   router = inject(Router);
+  routesExpanded: Record<string, boolean> = {};
 
   gettingStartedRoute = GettingStartedRoute;
   componentsRoutes = ComponentsRoutes;
 
   ngOnInit() {
     this.router.events.pipe(
+      tap((event) => {
+        if (event instanceof ActivationEnd) {
+          this.expandAll(event.snapshot);
+        }
+      }),
       filter(event => event instanceof NavigationEnd),
       tap(() => this.sidebar.set(false))
     ).subscribe();
   }
+
+  expandAll = (snapshot: ActivatedRouteSnapshot | null) => {
+    if (snapshot) {
+      const router = snapshot.data['name'] ?? '';
+      this.routesExpanded = { ...this.routesExpanded, [router]: true };
+      this.expandAll(snapshot.parent);
+    }
+  };
 }
