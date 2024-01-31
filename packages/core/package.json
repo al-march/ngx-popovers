@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/core",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A core package for the floating elements based on Angular and Floating-ui",
   "repository": {
     "type": "git",
