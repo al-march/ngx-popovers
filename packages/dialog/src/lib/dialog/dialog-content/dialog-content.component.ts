@@ -11,6 +11,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { PreventScrollingDirective } from './prevent-scrolling.directive';
 
 @Component({
   selector: 'ngx-dialog-content',
@@ -18,6 +19,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './dialog-content.component.html',
   styleUrl: './dialog-content.component.scss',
+  hostDirectives: [PreventScrollingDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'tabindex': '0'
