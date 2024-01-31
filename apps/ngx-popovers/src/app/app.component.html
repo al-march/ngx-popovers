@@ -15,8 +15,8 @@
       <dm-footer />
     </div>
     <div class="drawer-side z-10">
-    <label for="drawer-trigger" aria-label="close sidebar" class="drawer-overlay"></label>
-      <ul class="menu p-4 min-h-full bg-base-200 text-base-content">
+      <label for="drawer-trigger" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="menu w-[240px] p-4 min-h-full bg-base-200 text-base-content">
         <li>
           <a
             class="btn justify-start"
@@ -31,35 +31,63 @@
         <div class="divider my-1"></div>
 
         <p class="menu-title">Packages</p>
+
         @for (route of componentsRoutes; track route.path) {
           <li>
-            <a
-              class="btn justify-start"
-              [routerLink]="route.path"
-              routerLinkActive="active-link"
-              [routerLinkActiveOptions]="{exact: true}"
-            >
-              <ng-template [ngComponentOutlet]="route.data?.['icon']" />
-              <span class="text-lg">{{ route.data?.['name'] }}</span>
-            </a>
+            <div class="flex items-center p-0 m-0">
+              <a
+                class="btn btn-ghost flex-1 justify-start"
+                [routerLink]="route.path"
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{exact: true}"
+              >
+                <ng-template [ngComponentOutlet]="route.data?.['icon']" />
+                <span class="text-lg">{{ route.data?.['name'] }}</span>
+              </a>
 
-            <ul class="py-1">
-              @for (child of route?.children; track child.path) {
-                @if (child.path) {
-                  <li>
-                    <a
-                      class="btn justify-start"
-                      [routerLink]="[route.path, child.path]"
-                      routerLinkActive="active-link"
-                      [routerLinkActiveOptions]="{exact: true}"
-                    >
-                      <ng-template [ngComponentOutlet]="child.data?.['icon']" />
-                      <span class="text-lg">{{ child.data?.['name'] }}</span>
-                    </a>
-                  </li>
-                }
+              @if (route?.children) {
+                <label class="btn btn-square btn-ghost">
+                  <input
+                    type="checkbox"
+                    class="hidden"
+                    [(ngModel)]="routesExpanded[route.data!['name']]"
+                  />
+                  <span
+                    class="icon top"
+                    [class.top]="routesExpanded[route.data!['name']]"
+                    [class.bottom]="!routesExpanded[route.data!['name']]"
+                  ></span>
+                </label>
               }
-            </ul>
+            </div>
+
+            @if (route?.children) {
+              <ul
+                #submenu
+                class="py-1 overflow-hidden transition-all"
+                [style.height.px]="
+                  routesExpanded[route.data!['name']]
+                    ? submenu.scrollHeight
+                    : 0
+                "
+              >
+                @for (child of route.children; track child.path) {
+                  @if (child.path) {
+                    <li>
+                      <a
+                        class="btn justify-start"
+                        [routerLink]="[route.path, child.path]"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}"
+                      >
+                        <ng-template [ngComponentOutlet]="child.data?.['icon']" />
+                        <span class="text-lg">{{ child.data?.['name'] }}</span>
+                      </a>
+                    </li>
+                  }
+                }
+              </ul>
+            }
           </li>
         }
 
@@ -68,7 +96,12 @@
         <div class="flex-1"></div>
         <div class="lg:hidden w-full">
           <div class="divider my-1"></div>
-          <button class="btn btn-sm w-full" (click)="sidebar.set(false)">Close</button>
+          <button
+            class="btn btn-sm w-full"
+            (click)="sidebar.set(false)"
+          >
+            Close
+          </button>
         </div>
       </ul>
     </div>
