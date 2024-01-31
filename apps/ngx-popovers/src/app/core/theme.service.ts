@@ -18,7 +18,7 @@ export class ThemeService {
     const theme = this.doc.documentElement.dataset?.['theme'];
     if (theme) {
       if (theme === 'dark' || theme === 'light') {
-        this.theme.set('light');
+        this.theme.set(theme);
       }
     }
 
