@@ -5,7 +5,9 @@
     <h2 class="text-4xl mb-4 font-bold">About</h2>
     <strong>{{ '@ngx-popovers' }}</strong> is a library, implementing
     <a href="https://floating-ui.com/" target="_blank" class="link">floating-ui</a>.
+
     <br>
+
     With <strong>{{ '@ngx-popovers/core' }}</strong> you can create any dynamic component you need.
     But you can also use already ready-made component:
 
@@ -20,8 +22,8 @@
         <core-icon class="text-primary" /> Core package
       </a>
     </p>
-    <div class="mockup-code max-w-[600px]">
-      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/core' }}</code></pre>
+    <div class="max-w-[600px]">
+      <highlight lang="bash" [code]="'npm i @ngx-popovers/core'" />
     </div>
 
     <p class="text-lg py-4">
@@ -29,8 +31,8 @@
         <tooltip-icon class="text-primary" /> Tooltip
       </a>
     </p>
-    <div class="mockup-code max-w-[600px]">
-      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/tooltip' }}</code></pre>
+    <div class="max-w-[600px]">
+      <highlight lang="bash" [code]="'npm i @ngx-popovers/tooltip'" />
     </div>
 
     <p class="text-lg py-4">
@@ -38,8 +40,17 @@
         <popover-icon class="text-primary" /> Popover
       </a>
     </p>
-    <div class="mockup-code max-w-[600px]">
-      <pre data-prefix="$"><code>npm i {{ '@ngx-popovers/popover' }}</code></pre>
+    <div class="max-w-[600px]">
+      <highlight lang="bash" [code]="'npm i @ngx-popovers/popover'" />
+    </div>
+
+    <p class="text-lg py-4">
+      <a [routerLink]="['/', 'dialog']" class="link inline-flex gap-2 items-center">
+        <dialog-icon class="text-primary" /> Dialog
+      </a>
+    </p>
+    <div class="max-w-[600px]">
+      <highlight lang="bash" [code]="'npm i @ngx-popovers/dialog'" />
     </div>
   </section>
 </div>
