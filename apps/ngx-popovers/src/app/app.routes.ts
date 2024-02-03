@@ -41,6 +41,7 @@ export const ComponentsRoutes: Route[] = [
         title: 'Portal component',
         data: {
           name: 'Portal',
+          description: 'The Portal component displays the content on the body by default or another DOM element.',
           icon: PortalIcon
         },
         loadComponent: () => import('./pages/page-core/page-portal/page-portal.component')
@@ -51,6 +52,7 @@ export const ComponentsRoutes: Route[] = [
         title: 'Floating component',
         data: {
           name: 'Floating',
+          description: 'The Floating component implements the floating-ui library for Angular.',
           icon: FloatingIcon
         },
         loadComponent: () => import('./pages/page-core/page-floating/page-floating.component')
@@ -61,6 +63,7 @@ export const ComponentsRoutes: Route[] = [
         title: 'Arrow component',
         data: {
           name: 'Arrow',
+          description: 'The arrow component should be used into the floating component.',
           icon: ArrowIcon
         },
         loadComponent: () => import('./pages/page-core/page-arrow/page-arrow.component')
@@ -71,6 +74,7 @@ export const ComponentsRoutes: Route[] = [
         title: 'Click outside directive',
         data: {
           name: 'Click outside',
+          description: 'The click outside directive handles clicks inside and outside HTMLElement. This directive is used by the ngx-floating component.',
           icon: ClickOutsideIcon
         },
         loadComponent: () => import('./pages/page-core/page-click-outside/page-click-outside.component')

@@ -4,6 +4,7 @@ import { TitleComponent } from '../components/title/title.component';
 import { ArrowIcon, ClickOutsideIcon, CoreIcon, FloatingIcon, PortalIcon } from '../../routes-icons';
 import { RouterLink } from '@angular/router';
 import { HighlightComponent } from '../../core/highlight/highlight.component';
+import { ComponentsRoutes } from '../../app.routes';
 
 @Component({
   selector: 'ngx-popovers-page-core',
@@ -15,4 +16,13 @@ import { HighlightComponent } from '../../core/highlight/highlight.component';
   host: { 'ngSkipHydration': 'true' }
 })
 export class PageCoreComponent {
+  subcomponents = this.getComponents();
+
+  getComponents() {
+    const core = ComponentsRoutes.find(route => route.path === 'core');
+    if (core) {
+      return core.children?.filter(item => !!item.path) ?? [];
+    }
+    return [];
+  }
 }

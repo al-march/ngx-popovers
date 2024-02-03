@@ -25,35 +25,35 @@
 
     <h2 class="text-4xl mb-4 font-bold">Components</h2>
 
-    <a [routerLink]="['/', 'core', 'portal']" class="link inline-flex gap-2 items-center">
-      <portal-icon class="text-primary" /> Portal
-    </a>
+    <div class="grid md:grid-cols-2 gap-4 py-4">
+      @for (component of subcomponents; track component.path) {
+        <div class="flex flex-col gap-2">
+          <a
+            [routerLink]="['/', 'core', component.path]"
+            class="link inline-flex gap-2 items-center pb-2"
+          >
+            <span class="text-primary">
+              <ng-template
+                [ngComponentOutlet]="component.data?.['icon'] ?? null"
+              />
+            </span>
+            <span>
+              {{ component.title }}
+            </span>
+          </a>
 
-    <p>The Portal component displays the content on the body by default or another DOM element.</p>
+          <p>{{ component.data?.['description'] }}</p>
 
-    <br>
+          <span class="flex-1"></span>
+          <div class="divider"></div>
+        </div>
+      }
+    </div>
 
-    <a [routerLink]="['/', 'core', 'floating']" class="link inline-flex gap-2 items-center">
-      <floating-icon class="text-primary" /> Floating
-    </a>
-
-    <p>The Floating component implements the floating-ui library for Angular.</p>
-
-    <br>
-
-    <a [routerLink]="['/', 'core', 'click-outside']" class="link inline-flex gap-2 items-center">
-      <click-outside-icon class="text-primary" /> Click outside
-    </a>
-
-    <p>The click outside directive handles clicks inside and outside HTMLElement. This directive is used by the ngx-floating component.</p>
-
-    <br>
-
-    <a [routerLink]="['/', 'core', 'arrow']" class="link inline-flex gap-2 items-center">
-      <arrow-icon class="text-primary" /> Arrow
-    </a>
-
-    <p>The arrow component should be used into the floating component.</p>
-
+    <p>
+      This package using by other components of this library.
+      You can create any floating element you want with this core package.
+      Head over to the pages below to check out demos of some ready-to-use child libraries
+    </p>
   </section>
 </div>
