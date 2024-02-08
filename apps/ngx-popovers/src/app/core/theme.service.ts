@@ -75,6 +75,10 @@ export class ThemeService {
   }
 
   getSystemTheme() {
+    if (!this.doc.defaultView?.matchMedia) {
+      return 'dark';
+    }
+
     const isLight = this.doc.defaultView
       ?.matchMedia?.('(prefers-color-scheme: light)')
       .matches;
