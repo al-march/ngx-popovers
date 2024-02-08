@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../core/theme.service';
 import { ActivationStart, Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -6,17 +6,18 @@ import { CoreService } from '../../core/core.service';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'dm-header',
   standalone: true,
-  imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive],
+  imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive, FaIconComponent, FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  core = inject(CoreService);
-  router = inject(Router);
 
   paths = signal<string[]>([]);
 
@@ -27,7 +28,12 @@ export class HeaderComponent {
   @Output()
   toggleSidebar = new EventEmitter();
 
+  readonly faMoon = faMoon;
+  readonly faSun = faSun;
+
   constructor(
+    public core: CoreService,
+    public router: Router,
     public themeService: ThemeService,
     public breakpointObserver: BreakpointObserver
   ) {
