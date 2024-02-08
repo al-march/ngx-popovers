@@ -6,12 +6,12 @@ This is a library that provides reusable components for displaying interactive c
 > 
 > I strongly recommend not using this library until its stable version is released.
 
-### Demo
+## Demo
 
 Link to the demo [site](https://ngx-popovers.vercel.app)
 
 
-### Packages
+## Packages
 
 There are already published packages that are available from npm:
 
