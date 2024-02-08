@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
 import { DialogTemplate } from '../directives';
+import { NGX_DIALOG_CONFIG } from '../core';
 
 @Component({
   selector: 'ngx-dialog',
@@ -39,6 +40,7 @@ import { DialogTemplate } from '../directives';
   ]
 })
 export class DialogComponent implements AfterViewInit {
+  private readonly config = inject(NGX_DIALOG_CONFIG);
   private readonly ref = inject(ChangeDetectorRef);
 
   @ContentChild(DialogTemplate)
@@ -48,16 +50,16 @@ export class DialogComponent implements AfterViewInit {
   value = false;
 
   @Input()
-  animationDisabled = false;
+  animationDisabled = this.config.animationDisabled;
 
   @Input()
-  contentClass = '';
+  contentClass = this.config.contentClass;
 
   @Input()
-  backdropClass = '';
+  backdropClass = this.config.backdropClass;
 
   @Input()
-  closeOnBackdropClick = true;
+  closeOnBackdropClick = this.config.closeOnBackdropClick;
 
   @Output()
   valueChange = new EventEmitter<boolean>();
