@@ -40,7 +40,7 @@
     "@angular/compiler-cli": "17.0.8",
     "@angular/language-service": "17.1.1",
     "@nx/cypress": "17.2.8",
-    "@nx/eslint": "17.2.8",
+    "@nx/eslint": "18.0.1",
     "@nx/eslint-plugin": "17.2.8",
     "@nx/jest": "17.2.8",
     "@nx/js": "17.2.8",
