@@ -37,6 +37,19 @@
   </div>
   <div class="flex gap-2 items-center">
 
+    <label class="swap swap-rotate btn btn-sm btn-ghost btn-circle">
+
+      <!-- this hidden checkbox controls the state -->
+      <input
+        type="checkbox"
+        [ngModel]="themeService.theme() === 'light'"
+        (ngModelChange)="toggleTheme()"
+      />
+
+      <fa-icon class="swap-on" [icon]="faMoon" />
+      <fa-icon class="swap-off" [icon]="faSun" />
+    </label>
+
     <a
       [href]="core.npmLink"
       target="_blank"
