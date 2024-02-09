@@ -134,6 +134,26 @@ Output parameters
 | `animationStart` | emits when animation starts  | `EventEmitter<AnimationEvent>` |
 | `animationDone`  | emits when animation ends    | `EventEmitter<AnimationEvent>` |
 
+### Configuration
+
+There is a configuration token `NGX_DIALOG_CONFIG`.
+Please, use the `NgxDialogConfig` class to change the default floating properties.
+
+```typescript
+import { Provider } from '@angular/core';
+import { NGX_DIALOG_CONFIG, NgxDialogConfig } from '@ngx-popovers/dialog';
+
+export const DialogConfigProvider: Provider = {
+  provide: NGX_DIALOG_CONFIG,
+  useValue: new NgxDialogConfig({
+    backdropClass: 'backdrop',
+    contentClass: 'content',
+    closeOnBackdropClick: false,
+    animationDisabled: false
+  })
+};
+```
+
 ## Sources
 
 Another packages from this library:
