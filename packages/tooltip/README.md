@@ -15,7 +15,7 @@ The Tooltip component shows tooltips next to the trigger element
 
 Add `ngxTooltip` to the html element to use this library.
 
-```angular2html
+```html angular2html
 
 <button
   ngxTooltip="Tooltip message"
@@ -29,7 +29,7 @@ Add `ngxTooltip` to the html element to use this library.
 
 You can show the tooltip with an arrow:
 
-```angular2html
+```html angular2html
 
 <button
   ngxTooltip="Tooltip message"
@@ -142,3 +142,4 @@ Another packages from this library:
 
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
+* [dialog](https://www.npmjs.com/package/@ngx-popovers/dialog)
