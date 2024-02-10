@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/dialog",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "The simplest Dialog component based on Angular 17+",
   "keywords": [
     "components",
@@ -19,7 +19,7 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "@ngx-popovers/core": "0.1.4"
+    "@ngx-popovers/core": "0.1.5"
   },
   "dependencies": {
     "tslib": "^2.3.0"
