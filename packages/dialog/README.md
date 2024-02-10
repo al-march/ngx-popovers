@@ -3,6 +3,8 @@
 This library was generated with [Nx](https://nx.dev)
 using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps
 
+<img src="https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/dialog/assets/preview.png" alt="dialog preview">
+
 > See [Demo](https://ngx-popovers.vercel.app/dialog)
 
 > **Note**
