@@ -45,7 +45,7 @@
     "@nx/eslint": "18.0.1",
     "@nx/eslint-plugin": "17.2.8",
     "@nx/jest": "17.2.8",
-    "@nx/js": "17.2.8",
+    "@nx/js": "18.0.8",
     "@nx/web": "17.2.8",
     "@nx/workspace": "17.2.8",
     "@schematics/angular": "~17.0.0",
