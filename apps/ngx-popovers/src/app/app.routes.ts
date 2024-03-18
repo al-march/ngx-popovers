@@ -117,9 +117,25 @@ export const ComponentsRoutes: Route[] = [
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: 'getting-started',
-    pathMatch: 'full'
+    loadComponent: () => import('./pages/landing/landing.component')
+      .then(c => c.LandingComponent)
   },
-  GettingStartedRoute,
-  ...ComponentsRoutes
+  {
+    path: 'docs',
+    loadComponent: () => import('./pages/documentation/documentation-template.component')
+      .then(c => c.DocumentationTemplateComponent),
+    children: [
+      {
+        path: '',
+        redirectTo: 'getting-started',
+        pathMatch: 'full'
+      },
+      GettingStartedRoute,
+      ...ComponentsRoutes
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
