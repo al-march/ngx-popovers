@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
-import { HighlightComponent } from '../../../core/highlight/highlight.component';
-import { ExampleComponent } from '../../../template/example/example.component';
+import { HighlightComponent } from '../../../../core/highlight/highlight.component';
+import { ExampleComponent } from '../../../../template/example/example.component';
 import { Arrow, ClickOutsideDirective, flip, FloatingComponent, offset } from '@ngx-popovers/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 

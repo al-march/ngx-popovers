@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
-import { HighlightComponent } from '../../../core/highlight/highlight.component';
+import { HighlightComponent } from '../../../../core/highlight/highlight.component';
 import { PortalComponent } from '@ngx-popovers/core';
 
 const portalUsageHtml = `

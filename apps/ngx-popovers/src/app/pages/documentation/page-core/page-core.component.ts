@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
-import { ArrowIcon, ClickOutsideIcon, CoreIcon, FloatingIcon, PortalIcon } from '../../routes-icons';
+import { ArrowIcon, ClickOutsideIcon, CoreIcon, FloatingIcon, PortalIcon } from '../../../routes-icons';
 import { RouterLink } from '@angular/router';
-import { HighlightComponent } from '../../core/highlight/highlight.component';
-import { ComponentsRoutes } from '../../app.routes';
+import { HighlightComponent } from '../../../core/highlight/highlight.component';
+import { ComponentsRoutes } from '../../../app.routes';
 
 @Component({
   selector: 'ngx-popovers-page-core',

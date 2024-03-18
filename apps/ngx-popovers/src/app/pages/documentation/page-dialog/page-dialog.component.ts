@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
-import { ExampleComponent } from '../../template/example/example.component';
-import { HighlightComponent } from '../../core/highlight/highlight.component';
+import { ExampleComponent } from '../../../template/example/example.component';
+import { HighlightComponent } from '../../../core/highlight/highlight.component';
 import { NgxDialog } from '@ngx-popovers/dialog';
 
 const defaultExample = `

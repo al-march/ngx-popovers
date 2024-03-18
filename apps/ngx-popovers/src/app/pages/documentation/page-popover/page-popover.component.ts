@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
-import { CoreIcon } from '../../routes-icons';
+import { CoreIcon } from '../../../routes-icons';
 import { FormsModule } from '@angular/forms';
-import { HighlightComponent } from '../../core/highlight/highlight.component';
+import { HighlightComponent } from '../../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
 import { Arrow, Placement } from '@ngx-popovers/core';
-import { ExampleComponent } from '../../template/example/example.component';
+import { ExampleComponent } from '../../../template/example/example.component';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
-import { WarningComponent } from '../../shared/warning/warning.component';
+import { WarningComponent } from '../../../shared/warning/warning.component';
 import { PopoverModule } from '@ngx-popovers/popover';
 
 const usageExample = `

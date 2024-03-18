@@ -19,7 +19,7 @@ export const GettingStartedRoute: Route = {
     icon: GettingStartedIcon,
     main: true
   },
-  loadComponent: () => import('./pages/page-getting-started/page-getting-started.component')
+  loadComponent: () => import('./pages/documentation/page-getting-started/page-getting-started.component')
     .then(c => c.PageGettingStartedComponent)
 };
 export const ComponentsRoutes: Route[] = [
@@ -33,7 +33,7 @@ export const ComponentsRoutes: Route[] = [
       {
         path: '',
         title: 'Core package',
-        loadComponent: () => import('./pages/page-core/page-core.component')
+        loadComponent: () => import('./pages/documentation/page-core/page-core.component')
           .then(c => c.PageCoreComponent)
       },
       {
@@ -44,7 +44,7 @@ export const ComponentsRoutes: Route[] = [
           description: 'The Portal component displays the content on the body by default or another DOM element.',
           icon: PortalIcon
         },
-        loadComponent: () => import('./pages/page-core/page-portal/page-portal.component')
+        loadComponent: () => import('./pages/documentation/page-core/page-portal/page-portal.component')
           .then(c => c.PagePortalComponent)
       },
       {
@@ -55,7 +55,7 @@ export const ComponentsRoutes: Route[] = [
           description: 'The Floating component implements the floating-ui library for Angular.',
           icon: FloatingIcon
         },
-        loadComponent: () => import('./pages/page-core/page-floating/page-floating.component')
+        loadComponent: () => import('./pages/documentation/page-core/page-floating/page-floating.component')
           .then(c => c.PageFloatingComponent)
       },
       {
@@ -66,7 +66,7 @@ export const ComponentsRoutes: Route[] = [
           description: 'The arrow component should be used into the floating component.',
           icon: ArrowIcon
         },
-        loadComponent: () => import('./pages/page-core/page-arrow/page-arrow.component')
+        loadComponent: () => import('./pages/documentation/page-core/page-arrow/page-arrow.component')
           .then(c => c.PageArrowComponent)
       },
       {
@@ -77,7 +77,7 @@ export const ComponentsRoutes: Route[] = [
           description: 'The click outside directive handles clicks inside and outside HTMLElement. This directive is used by the ngx-floating component.',
           icon: ClickOutsideIcon
         },
-        loadComponent: () => import('./pages/page-core/page-click-outside/page-click-outside.component')
+        loadComponent: () => import('./pages/documentation/page-core/page-click-outside/page-click-outside.component')
           .then(c => c.PageClickOutsideComponent)
       }
     ]
@@ -89,7 +89,7 @@ export const ComponentsRoutes: Route[] = [
       name: 'Tooltip',
       icon: TooltipIcon
     },
-    loadComponent: () => import('./pages/page-tooltip/page-tooltip.component')
+    loadComponent: () => import('./pages/documentation/page-tooltip/page-tooltip.component')
       .then(c => c.PageTooltipComponent)
   },
   {
@@ -99,7 +99,7 @@ export const ComponentsRoutes: Route[] = [
       name: 'Popover',
       icon: PopoverIcon
     },
-    loadComponent: () => import('./pages/page-popover/page-popover.component')
+    loadComponent: () => import('./pages/documentation/page-popover/page-popover.component')
       .then(c => c.PagePopoverComponent)
   },
   {
@@ -109,7 +109,7 @@ export const ComponentsRoutes: Route[] = [
       name: 'Dialog',
       icon: DialogIcon
     },
-    loadComponent: () => import('./pages/page-dialog/page-dialog.component')
+    loadComponent: () => import('./pages/documentation/page-dialog/page-dialog.component')
       .then(c => c.PageDialogComponent)
   }
 ];

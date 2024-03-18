@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../../components/title/title.component';
-import { HighlightComponent } from '../../../core/highlight/highlight.component';
+import { HighlightComponent } from '../../../../core/highlight/highlight.component';
 import { RouterLink } from '@angular/router';
 import { Arrow, FloatingComponent, Middleware, offset, Placement } from '@ngx-popovers/core';
 import { flip } from '@floating-ui/dom';
