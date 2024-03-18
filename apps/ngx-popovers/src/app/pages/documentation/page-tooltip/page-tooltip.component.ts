@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
-import { CoreIcon } from '../../../routes-icons';
-import { HighlightComponent } from '../../../core/highlight/highlight.component';
+import { HighlightComponent } from '@demo/core/highlight';
 import { RouterLink } from '@angular/router';
 import { Placement } from '@floating-ui/dom';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { FormsModule } from '@angular/forms';
-import { WarningComponent } from '../../../shared/warning/warning.component';
-import { ExampleComponent } from '../../../template/example/example.component';
+import { WarningComponent } from '@demo/shared/warning';
+import { ExampleComponent } from '@demo/template/example';
+import { CoreIcon } from '@demo/app-routes-icons';
 
 const usageExample = `
 <button

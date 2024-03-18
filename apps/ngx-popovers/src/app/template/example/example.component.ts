@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './example.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'border-2 border-dashed border-primary rounded m-auto flex flex-col relative overflow-hidden',
+    'class': 'border-2 border-dashed border-primary rounded m-auto flex flex-col relative overflow-hidden'
   }
 })
 export class ExampleComponent {

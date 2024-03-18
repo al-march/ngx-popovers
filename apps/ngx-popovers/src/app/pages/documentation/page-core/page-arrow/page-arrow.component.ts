@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TitleComponent } from '../../components/title/title.component';
-import { HighlightComponent } from '../../../../core/highlight/highlight.component';
+import { HighlightComponent } from '@demo/core/highlight';
 
 const defaultUsage = `
 <div #trigger>trigger</div>
