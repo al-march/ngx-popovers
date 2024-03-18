@@ -29,8 +29,8 @@
 
   <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
     <div class="landing-heading">
-      <h1>{{title}}</h1>
-      <p>{{description}}</p>
+      <h1>{{ title }}</h1>
+      <p>{{ description }}</p>
 
       <div class="mt-8 landing-docs-button">
         <a routerLink="/docs" class="btn btn-lg glass btn-ghost">Documents</a>
@@ -39,6 +39,6 @@
   </div>
 
   @for (block of blocksCount; track $index) {
-    <div #block class="block"></div>
+    <div class="block"></div>
   }
 </div>
