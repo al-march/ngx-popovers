@@ -7,11 +7,6 @@ using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/
 
 > See [Demo](https://ngx-popovers.vercel.app/dialog)
 
-> **Note**
->
-> I strongly recommend not using this library until its stable version is released.
->
-
 Use the command below
 
 ```bash
@@ -158,7 +153,7 @@ export const DialogConfigProvider: Provider = {
 
 ## Sources
 
-Another packages from this library:
+Another npm packages from this library:
 
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)

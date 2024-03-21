@@ -3,10 +3,6 @@
 This library was generated with [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/)
 for [Angular](https://angular.dev/) apps.
 
-> **Note**
->
-> I strongly recommend not using this library until its stable version is released.
-
 > See [Demo](https://ngx-popovers.vercel.app)
 
 ### FloatingService
@@ -250,7 +246,8 @@ Any module:
 
 ## Sources
 
-This package is a major dependency for other packages:
+This package is a major dependency for other npm packages:
 
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
+* [dialog](https://www.npmjs.com/package/@ngx-popovers/dialog)
