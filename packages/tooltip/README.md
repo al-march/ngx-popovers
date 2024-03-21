@@ -3,10 +3,6 @@
 This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
 for [Angular](https://angular.dev/) apps
 
-> **Note**
->
-> I strongly recommend not using this library until its stable version is released.
-
 The Tooltip component shows tooltips next to the trigger element
 
 > See [Demo](https://ngx-popovers.vercel.app/tooltip)
@@ -138,7 +134,7 @@ See the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
 
 ## Sources
 
-Another packages from this library:
+Another npm packages from this library:
 
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)

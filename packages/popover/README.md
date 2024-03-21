@@ -7,10 +7,6 @@ for [Angular](https://angular.dev/) apps
 
 > See [Demo](https://ngx-popovers.vercel.app/popover)
 
-> **Note**
->
-> I strongly recommend not using this library until its stable version is released.
-
 The popover is a very easy to use component, and it has a simple API.
 Just install and use.
 
@@ -214,7 +210,8 @@ See the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
 
 ## Sources
 
-Another packages from this library:
+Another npm packages from this library:
 
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
+* [dialog](https://www.npmjs.com/package/@ngx-popovers/dialog)
