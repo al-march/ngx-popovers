@@ -1,13 +1,17 @@
 # core
 
 This library was generated with [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/)
-for [Angular](https://angular.dev/) apps.
+for [Angular](https://angular.dev/) applications.
 
-> See [Demo](https://ngx-popovers.vercel.app)
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app) provided.
 
 ### FloatingService
 
-Before using you should add this service to providers list
+Before use, ensure this service is added to the providers list.
+
+You can import the FloatingService from '@ngx-popovers/core'.
+
+Example usage:
 
 ```typescript
 import { FloatingService } from '@ngx-popovers/core';
@@ -33,7 +37,7 @@ floatingService = inject(FloatingService);
 this.floatingService.computePosition(trigger, floating);
 ```
 
-You also can import all types and methods of floating-ui from this package
+You can also import all types and methods from floating-ui from this package:
 
 ```typescript
 import {
@@ -49,22 +53,13 @@ import {
 
 # portal
 
-This library was generated with [Nx](https://nx.dev) for [Angular](https://angular.dev/) apps.
-
-> See [Demo](https://ngx-popovers.vercel.app/core/portal)
+>  To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/portal) provided.
 
 ## Usage
 
-The `<ngx-portal/>` component displays the content on the body.
+The `<ngx-portal/>` component displays content on the body.
 
-```html
-
-<ngx-portal>
-    <p>It will be displayed as the last child of the body</p>
-</ngx-portal>
-```
-
-You also can display the portal content on an element you want:
+You can also display portal content within an element of your choice:
 
 ```html
 
@@ -78,15 +73,13 @@ You also can display the portal content on an element you want:
 </ngx-portal>
 ```
 
-This component is required to display tooltips correctly
-without overlapping with other elements on the page.
+This component is essential for displaying tooltips correctly without overlapping with other elements on the page.
 
 # ClickOutside directive
 
-The click outside directive handles clicks inside and outside HTMLElement.
-This directive is used by the ngx-floating component
+The click outside directive manages clicks inside and outside HTMLElements. This directive is used by the ngx-floating component.
 
-> See [Demo](https://ngx-popovers.vercel.app/core/click-outside)
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/click-outside) provided.
 
 ## Usage
 
@@ -120,17 +113,15 @@ export class ClickOutsideExample {
 
 # floating
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
-for [Angular](https://angular.dev/) apps
-
-> See [Demo](https://ngx-popovers.vercel.app/core/floating)
-
 The Floating component implements the floating-ui library for Angular
+
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/floating) provided.
 
 ## Usage
 
-See more information about the properties in the official
-documentation [floating-ui](https://floating-ui.com/docs/middleware)
+
+For more information about the properties, refer to the official
+documentation for [floating-ui](https://floating-ui.com/docs/middleware).
 
 ```html
 
@@ -172,7 +163,7 @@ Outputs
 ## Configuration
 
 There is a configuration token `NGX_FLOATING_CONFIG`.
-Please, use the `NgxFloatingConfig` class to change the default floating properties.
+Please use the `NgxFloatingConfig` class to change the default floating properties.
 
 ```typescript
 export const FloatingConfigProvider: Provider = {
@@ -188,7 +179,7 @@ export const FloatingConfigProvider: Provider = {
 
 ## Arrow
 
-The arrow component adds arrow to the floating component.
+The arrow component adds an arrow to the floating component.
 
 ```html
 
@@ -203,11 +194,9 @@ The arrow component adds arrow to the floating component.
 </ngx-floating>
 ```
 
-> See [Demo](https://ngx-popovers.vercel.app/core/arrow)
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/arrow) provided.
 
-You can provide your own component for arrow visualization
-
-A custom arrow component:
+You can provide your own component for arrow visualization:
 
 ```typescript
 @Component({
