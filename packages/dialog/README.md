@@ -1,13 +1,12 @@
-# dialog
+# Dialog
 
-This library was generated with [Nx](https://nx.dev)
-using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps
+This library was created using [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps.
 
-<img src="https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/dialog/assets/preview.png" alt="dialog preview">
+![Dialog Preview](https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/dialog/assets/preview.png)
 
-> See [Demo](https://ngx-popovers.vercel.app/dialog)
+> Check out the [Demo](https://ngx-popovers.vercel.app/dialog)
 
-Use the command below
+To use, install the package using the following command:
 
 ```bash
 npm i @ngx-popovers/dialog
@@ -15,10 +14,9 @@ npm i @ngx-popovers/dialog
 
 ## Usage
 
-The dialog is a very simple component with ready-made elements.
+The dialog component provides a simple way to display dialog elements.
 
-```html angular2html
-
+```html
 <ngx-dialog>
   <button ngx-dialog-trigger>
     Toggle
@@ -42,16 +40,14 @@ The dialog is a very simple component with ready-made elements.
 
 ### ngx-dialog-trigger
 
-You can have a several components inside the `<ngx-dialog />`.
+You can include multiple components inside the `<ngx-dialog />`.
 
-The `ngxDialogTrigger` directive can be useful
-if you want to set the trigger inside `<ngx-dialog />` as default.
+The `ngxDialogTrigger` directive can be used to set the trigger button inside `<ngx-dialog />` as default.
 
-```html angular2html
-
+```html
 <ngx-dialog>
   <!-- 
-    the dialog opens when 
+    The dialog opens when 
     the button[ngx-dialog-trigger] is clicked 
   -->
   <button ngx-dialog-trigger>
@@ -68,14 +64,13 @@ if you want to set the trigger inside `<ngx-dialog />` as default.
 
 ### ngx-dialog-template
 
-The `NgxDialogTemplate` directive helps to find a template for the dialog.
+The `NgxDialogTemplate` directive helps locate the template for the dialog.
 
-```html angular2html
-
+```html
 <ngx-dialog [value]="true">
   <!-- 
     Angular doesn't destroy elements in <ng-content />, so
-    the DialogTemplate directive uses for conditional content projection.
+    the DialogTemplate directive is used for conditional content projection.
     
     https://angular.io/guide/content-projection#conditional-content-projection
   -->
@@ -89,21 +84,19 @@ The `NgxDialogTemplate` directive helps to find a template for the dialog.
 
 ### ngx-dialog-close
 
-The `NgxDialogClose` directive closes dialog
-when handles a click to an element.
+The `NgxDialogClose` directive closes the dialog when a click event is detected on the specified element.
 
-```html angular2html
-
+```html
 <ngx-dialog [value]="true">
   <ng-template ngx-dialog-template>
     <div class="dialog-box">
       <p>Dialog content</p>
 
       <!-- 
-        the dialog will close when 
-        button[ngx-dialog-close] clicked 
+        The dialog will close when 
+        button[ngx-dialog-close] is clicked 
       -->
-      <button ngx-dialog-close>close</button>
+      <button ngx-dialog-close>Close</button>
     </div>
   </ng-template>
 </ngx-dialog>
@@ -111,30 +104,30 @@ when handles a click to an element.
 
 ### API
 
-Input parameters
+Input Parameters
 
 | Input                  | Description                            | Type      | Default |
 |------------------------|----------------------------------------|-----------|---------|
-| `closeOnBackdropClick` | close when clicking on backdrop        | `boolean` | `true`  |
-| `backdropClass`        | the class for a backdrop element       | `string`  | `''`    |
-| `contentClass`         | the class for a dialog wrapper element | `string`  | `''`    |
-| `animationDisabled`    | disables show/hide animations          | `boolean` | `false` |
-| `value`                | show or hide dialog                    | `boolean` | `false` |
+| `closeOnBackdropClick` | Close dialog when clicking backdrop    | `boolean` | `true`  |
+| `backdropClass`        | Class for the backdrop element         | `string`  | `''`    |
+| `contentClass`         | Class for the dialog wrapper element   | `string`  | `''`    |
+| `animationDisabled`    | Disable show/hide animations           | `boolean` | `false` |
+| `value`                | Show or hide dialog                    | `boolean` | `false` |
 
-Output parameters
+Output Parameters
 
-| Output           | Description                  | Type                           |
-|------------------|------------------------------|--------------------------------|
-| `valueChange`    | the `value` changes emitter  | `EventEmitter<boolean>`        |
-| `show`           | emits when the popover shows | `EventEmitter`                 |
-| `hide`           | emits when the popover hides | `EventEmitter`                 |
-| `animationStart` | emits when animation starts  | `EventEmitter<AnimationEvent>` |
-| `animationDone`  | emits when animation ends    | `EventEmitter<AnimationEvent>` |
+| Output           | Description                    | Type                           |
+|------------------|--------------------------------|--------------------------------|
+| `valueChange`    | Emits when `value` changes     | `EventEmitter<boolean>`        |
+| `show`           | Emits when the popover shows   | `EventEmitter`                 |
+| `hide`           | Emits when the popover hides   | `EventEmitter`                 |
+| `animationStart` | Emits when animation starts    | `EventEmitter<AnimationEvent>` |
+| `animationDone`  | Emits when animation ends      | `EventEmitter<AnimationEvent>` |
 
 ### Configuration
 
 There is a configuration token `NGX_DIALOG_CONFIG`.
-Please, use the `NgxDialogConfig` class to change the default floating properties.
+Use the `NgxDialogConfig` class to change default properties.
 
 ```typescript
 import { Provider } from '@angular/core';
@@ -153,7 +146,7 @@ export const DialogConfigProvider: Provider = {
 
 ## Sources
 
-Another npm packages from this library:
+Other npm packages from this library:
 
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [tooltip](https://www.npmjs.com/package/@ngx-popovers/tooltip)
