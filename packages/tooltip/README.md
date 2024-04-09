@@ -1,18 +1,16 @@
 # Tooltip
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
-for [Angular](https://angular.dev/) apps
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps.
 
-The Tooltip component shows tooltips next to the trigger element
+The Tooltip component displays tooltips next to the trigger element.
 
-> See [Demo](https://ngx-popovers.vercel.app/tooltip)
+> Check out the [Demo](https://ngx-popovers.vercel.app/tooltip)
 
 ## Usage
 
-Add `ngxTooltip` to the html element to use this library.
+To use this library, add `ngxTooltip` to the HTML element.
 
-```html angular2html
-
+```html
 <button
   ngxTooltip="Tooltip message"
   placement="top-end"
@@ -26,7 +24,6 @@ Add `ngxTooltip` to the html element to use this library.
 You can show the tooltip with an arrow:
 
 ```html angular2html
-
 <button
   ngxTooltip="Tooltip message"
   placement="top-end"
@@ -39,33 +36,32 @@ You can show the tooltip with an arrow:
 
 ### API
 
-Input parameters
+Input Parameters
 
-| Input          | Description                                                                                   | Type                    | Default             |
-|----------------|-----------------------------------------------------------------------------------------------|-------------------------|---------------------|
-| `placement`    | the component position according anchor                                                       | `Placement`             | `'bottom'`          |
-| `template`     | the custom template of a tooltip                                                              | `TemplateRef<any>`      | `undefined`         |
-| `middleware`   | list of floating-ui middlewares without `arrow`                                               | `MiddlewareList`        | `offset(4), flip()` |
-| `debounce`     | time delay before the component is displayed                                                  | `number`                | `100`               |
-| `arrow`        | adds arrow to tooltip                                                                         | `boolean`               | `false`             |
-| `arrowPadding` | if your tooltip element has border-radius, this will prevent it from overflowing the corners. | `number`                | `2`                 |
-| `bindTo`       | render the component into element                                                             | `string \| HTMLElement` | `'.body'`           |
-| `autoUpdate`   | auto update the position                                                                      | `boolean`               | `false`             |
-| `ngxValue`     | open/close tooltip                                                                            | `boolean`               | `false`             |
+| Input          | Description                                                              | Type                    | Default             |
+|----------------|--------------------------------------------------------------------------|-------------------------|---------------------|
+| `placement`    | Position of the component according to the anchor                        | `Placement`             | `'bottom'`          |
+| `template`     | Custom template for the tooltip                                          | `TemplateRef<any>`      | `undefined`         |
+| `middleware`   | List of floating-ui middlewares without `arrow`                          | `MiddlewareList`        | `offset(4), flip()` |
+| `debounce`     | Time delay before the component is displayed                             | `number`                | `100`               |
+| `arrow`        | Adds an arrow to the tooltip                                             | `boolean`               | `false`             |
+| `arrowPadding` | Prevents overflow of the tooltip element corners if it has border-radius | `number`                | `2`                 |
+| `bindTo`       | Render the component into an element                                     | `string \| HTMLElement` | `'.body'`           |
+| `autoUpdate`   | Automatically updates the position                                       | `boolean`               | `false`             |
+| `ngxValue`     | State of the tooltip (open/close)                                        | `boolean`               | `false`             |
 
-Output parameters
+Output Parameters
 
-| Output            | Description                                                           | Type                            |
-|-------------------|-----------------------------------------------------------------------|---------------------------------|
-| `ngxValueChange`  | the `ngxValue` changes emitter                                        | `EventEmitter<boolean>`         |
-| `showEnd`         | emits when the component shows                                        | `EventEmitter`                  |
-| `hideEnd`         | emits when the component hides                                        | `EventEmitter`                  |
-| `computePosition` | emits every time when the floating component calls `computePosition`. | `EventEmitter<ComputePosition>` |
+| Output            | Description                                 | Type                            |
+|-------------------|---------------------------------------------|---------------------------------|
+| `ngxValueChange`  | Emitter for changes in `ngxValue`           | `EventEmitter<boolean>`         |
+| `showEnd`         | Emitter for when the component is shown     | `EventEmitter`                  |
+| `hideEnd`         | Emitter for when the component is hidden    | `EventEmitter`                  |
+| `computePosition` | Emitter for every call of `computePosition` | `EventEmitter<ComputePosition>` |
 
 ## Configuration
 
-There is a configuration token `NGX_TOOLTIP_CONFIG`.
-Please, use the `NgxTooltipConfig` class to change the default tooltip properties.
+Use the `NGX_TOOLTIP_CONFIG` token to change default properties with the `NgxTooltipConfig` class.
 
 ```typescript
 import { Provider } from '@angular/core';
@@ -91,13 +87,13 @@ export const TooltipConfigProvider: Provider = {
 };
 ```
 
-## Custom view
+## Custom View
 
 You can use your own component to visualize tooltips.
 
-There is an injection token `NGX_TOOLTIP_COMPONENT` that replaces the default component
+There is an injection token `NGX_TOOLTIP_COMPONENT` that replaces the default component.
 
-example:
+Example:
 
 ```typescript
 @Component({
@@ -128,13 +124,13 @@ export const TooltipProvider: Provider = {
 };
 ```
 
-## Arrow component
+## Arrow Component
 
-See the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
+Refer to the [core](https://www.npmjs.com/package/@ngx-popovers/core) package.
 
 ## Sources
 
-Another npm packages from this library:
+Other npm packages from this library:
 
 * [core](https://www.npmjs.com/package/@ngx-popovers/core)
 * [popover](https://www.npmjs.com/package/@ngx-popovers/popover)
