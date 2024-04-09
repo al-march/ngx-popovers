@@ -1,31 +1,28 @@
-# popover
+# Popover
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
-for [Angular](https://angular.dev/) apps
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps.
 
-<img src="https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/popover/assets/preview.png" alt="md3tail theme">
+![Popover preview](https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/popover/assets/preview.png)
 
 > See [Demo](https://ngx-popovers.vercel.app/popover)
 
-The popover is a very easy to use component, and it has a simple API.
-Just install and use.
+The popover is a simple-to-use component with a straightforward API. Just install and use.
 
-> You have to install the [core](https://www.npmjs.com/package/@ngx-popovers/core) package for the all abilities.
+> Note: You need to install the [core](https://www.npmjs.com/package/@ngx-popovers/core) package for all functionalities.
 >
-> The core and the popover packages have the same versions.
+> Both the core and popover packages have the same versions.
 
-Use the command below
+To install, use the following command:
 
 ```bash
 npm i @ngx-popovers/core
 ```
 
-Popover component displays content next to the trigger element on mouse click
+The Popover component displays content next to the trigger element on mouse click.
 
 ## Usage
 
-See more information about the properties in the official
-documentation [floating-ui](https://floating-ui.com/docs/middleware)
+Refer to the official documentation at [floating-ui](https://floating-ui.com/docs/middleware) for more information about the properties.
 
 First, import the popover module:
 
@@ -33,11 +30,9 @@ First, import the popover module:
 import { PopoverModule } from '@ngx-popovers/popover';
 ```
 
-This module has all necessary components.
-Then you can use the Popover in your templates.
+This module contains all the necessary components. Then, you can use the Popover in your templates.
 
-```html angular2html
-
+```html
 <ngx-popover>
   <button>
     Toggle Popover
@@ -45,7 +40,7 @@ Then you can use the Popover in your templates.
 
   <!-- 
     Angular doesn't destroy elements in <ng-content />, so
-    the PopoverTemplate directive uses for conditional content projection.
+    the PopoverTemplate directive is used for conditional content projection.
     
     https://angular.io/guide/content-projection#conditional-content-projection
   -->
@@ -61,7 +56,7 @@ Then you can use the Popover in your templates.
 
 ### Arrow
 
-You should install the [core package](https://www.npmjs.com/package/@ngx-popovers/core) to import the Arrow component.
+To use the Arrow component, you should install the [core package](https://www.npmjs.com/package/@ngx-popovers/core).
 
 ```typescript
 import { Arrow } from '@ngx-popovers/core';
@@ -69,8 +64,7 @@ import { Arrow } from '@ngx-popovers/core';
 
 Example usage:
 
-```html angular2html
-
+```html
 <ngx-popover>
   <button>
     Toggle Popover
@@ -86,11 +80,9 @@ Example usage:
 
 ### ngx-popover-close
 
-The `NgxPopoverClose` directive closes popover
-when handles a click to an element.
+The `NgxPopoverClose` directive closes the popover when a specified element is clicked.
 
-```html angular2html
-
+```html
 <ngx-popover>
   <button>
     Toggle Popover
@@ -107,18 +99,15 @@ when handles a click to an element.
 
 ### ngx-popover-anchor
 
-You can have a several components inside the `<ngx-popover />`.
-By default, the popover handles the all user's clicks, but it can be changed.
+You can have multiple components inside the `<ngx-popover />`. By default, the popover handles all user clicks, but it can be changed.
 
-The ngxPopoverAnchor directive can be useful
-if you want to change the trigger inside `<ngx-popover />`
+The `ngxPopoverAnchor` directive can be useful if you want to change the trigger inside `<ngx-popover />`.
 
-```html angular2html
-
+```html
 <ngx-popover>
   <p>
-    The clicks on this paragraph
-    will not triggered the popover 
+    Clicks on this paragraph
+    will not trigger the popover.
   </p>
   
   <button ngx-popover-anchor>
@@ -135,35 +124,34 @@ if you want to change the trigger inside `<ngx-popover />`
 
 ### API
 
-Input parameters
+Input Parameters
 
 | Input               | Description                                     | Type                    | Default             |
 |---------------------|-------------------------------------------------|-------------------------|---------------------|
-| `placement`         | the popover position                            | `Placement`             | `'bottom'`          |
-| `middleware`        | list of floating-ui middlewares without `arrow` | `MiddlewareList`        | `offset(4), flip()` |
-| `bindTo`            | render popover into element                     | `string \| HTMLElement` | `'.body'`           |
-| `autoUpdate`        | auto update the position of the Popover         | `boolean`               | `true`              |
-| `disabled`          | disables open/close on the trigger clicks       | `boolean`               | `false`             |
-| `animationDisabled` | disables show/hide animations                   | `boolean`               | `false`             |
-| `value`             | show or hide state of popover                   | `boolean`               | `false`             |
+| `placement`         | Popover position                                | `Placement`             | `'bottom'`          |
+| `middleware`        | List of floating-ui middlewares without `arrow` | `MiddlewareList`        | `offset(4), flip()` |
+| `bindTo`            | Render popover into element                     | `string \| HTMLElement` | `'.body'`           |
+| `autoUpdate`        | Auto update the position of the Popover         | `boolean`               | `true`              |
+| `disabled`          | Disable open/close on trigger clicks            | `boolean`               | `false`             |
+| `animationDisabled` | Disable show/hide animations                    | `boolean`               | `false`             |
+| `value`             | Show or hide state of popover                   | `boolean`               | `false`             |
 
-Output parameters
+Output Parameters
 
-| Output            | Description                                                           | Type                            |
-|-------------------|-----------------------------------------------------------------------|---------------------------------|
-| `valueChange`     | the `value` changes emitter                                           | `EventEmitter<boolean>`         |
-| `show`            | emits when the popover shows                                          | `EventEmitter`                  |
-| `hide`            | emits when the popover hides                                          | `EventEmitter`                  |
-| `clickedOutside`  | emits when user clicks outside the floating element                   | `EventEmitter<Element>`         |
-| `clickedInside`   | emits when user clicks inside the floating element.                   | `EventEmitter<Element>`         |
-| `animationStart`  | emits when animation starts                                           | `EventEmitter<AnimationEvent>`  |
-| `animationDone`   | emits when animation ends                                             | `EventEmitter<AnimationEvent>`  |
-| `computePosition` | emits every time when the floating component calls `computePosition`. | `EventEmitter<ComputePosition>` |
+| Output            | Description                                             | Type                            |
+|-------------------|---------------------------------------------------------|---------------------------------|
+| `valueChange`     | Emitter for changes in `value`                          | `EventEmitter<boolean>`         |
+| `show`            | Emitter for popover showing                             | `EventEmitter`                  |
+| `hide`            | Emitter for popover hiding                              | `EventEmitter`                  |
+| `clickedOutside`  | Emitter for clicks outside the floating element         | `EventEmitter<Element>`         |
+| `clickedInside`   | Emitter for clicks inside the floating element          | `EventEmitter<Element>`         |
+| `animationStart`  | Emitter for animation start                             | `EventEmitter<AnimationEvent>`  |
+| `animationDone`   | Emitter for animation end                               | `EventEmitter<AnimationEvent>`  |
+| `computePosition` | Emitter for every `computePosition` call                | `EventEmitter<ComputePosition>` |
 
 ## Configuration
 
-There is a configuration token `NGX_POPOVER_CONFIG`.
-Please, use the `NgxPopoverConfig` class to change the default floating properties.
+Use the `NGX_POPOVER_CONFIG` token to change default properties with the `NgxPopoverConfig` class.
 
 ```typescript
 import { Provider } from '@angular/core';
@@ -190,7 +178,7 @@ export const PopoverConfigProvider: Provider = {
 };
 ```
 
-And then just add your new provider to any module:
+Add your new provider to any module:
 
 ```typescript
 @Component({
@@ -206,7 +194,7 @@ And then just add your new provider to any module:
 
 ## Arrow component
 
-See the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
+Refer to the [core](https://www.npmjs.com/package/@ngx-popovers/core) package
 
 ## Sources
 
