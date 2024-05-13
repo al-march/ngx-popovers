@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "17.0.8",
     "@angular/platform-server": "17.0.8",
     "@angular/router": "17.0.8",
-    "@angular/ssr": "17.1.0",
+    "@angular/ssr": "17.3.7",
     "@floating-ui/dom": "^1.5.3",
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
