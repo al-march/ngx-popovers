@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PortalComponent } from './portal.component';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 const testContentId = 'test-id';
 
@@ -29,7 +29,6 @@ describe('PortalComponent', () => {
   };
 
   const content = () => document.querySelector(`#${testContentId}`) as HTMLElement;
-
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -69,12 +68,12 @@ describe('PortalComponent', () => {
     PortalComponent
   ],
   template: `
-    <ngx-portal [bindTo]="bindTo"><div [id]="testId">{{ testId }}</div></ngx-portal>
+    <ngx-portal [bindTo]="bindTo()">
+      <div [id]="testId">{{ testId }}</div>
+    </ngx-portal>
   `
 })
 class PortalComponentTest {
   testId = testContentId;
-
-  @Input()
-  bindTo?: HTMLElement | string;
+  bindTo = input<HTMLElement | string>();
 }

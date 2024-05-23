@@ -5,11 +5,12 @@ import {
   Component,
   ElementRef,
   inject,
-  Input,
+  input,
+  model,
   numberAttribute,
   OnChanges,
   OnDestroy,
-  ViewChild,
+  viewChild,
   ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -40,14 +41,9 @@ export class Arrow implements OnChanges, AfterViewInit, OnDestroy {
   arrowComponent = inject(NGX_ARROW_COMPONENT);
   cdRef = inject(ChangeDetectorRef);
 
-  @ViewChild('arrow')
-  arrowRef?: ElementRef<HTMLElement>;
-
-  @Input()
-  floating = inject(FloatingComponent, { optional: true });
-
-  @Input({ transform: numberAttribute })
-  padding = 0;
+  arrowRef = viewChild<ElementRef<HTMLElement>>('arrow');
+  floating = model(inject(FloatingComponent, { optional: true }));
+  padding = input(0, { transform: numberAttribute });
 
   styles: ArrowStyles = {};
 
@@ -66,8 +62,9 @@ export class Arrow implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   async updateState() {
-    if (this.floating) {
-      await this.floating.setArrow(this);
+    const floating = this.floating();
+    if (floating) {
+      await floating.setArrow(this);
     }
     this.observe();
   }
@@ -86,12 +83,13 @@ export class Arrow implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   private computeStyles$(): Observable<ArrowStyles> {
-    return this.floating?.computePosition$.pipe(
-      filter(Boolean),
-      map(data => {
-        return this.computePosition(data);
-      })
-    ) ?? of({});
+    return this.floating()?.computePosition$
+      .pipe(
+        filter(Boolean),
+        map(data => {
+          return this.computePosition(data);
+        })
+      ) ?? of({});
   }
 
   getSide(placement: Placement) {
@@ -104,7 +102,7 @@ export class Arrow implements OnChanges, AfterViewInit, OnDestroy {
    * Need for setting the Floating if DI is not allowed.
    */
   setFloating(floating: FloatingComponent) {
-    this.floating = floating;
+    this.floating.set(floating);
     this.cdRef.detectChanges();
     return this.updateState();
   }
@@ -114,7 +112,7 @@ export class Arrow implements OnChanges, AfterViewInit, OnDestroy {
    * to Arrow's styles object Record<string, string>
    */
   private computePosition({ middlewareData, placement }: ComputePositionReturn): ArrowStyles {
-    const arrowElement = this.arrowRef?.nativeElement;
+    const arrowElement = this.arrowRef()?.nativeElement;
 
     if (middlewareData.arrow && arrowElement) {
       const { x, y } = middlewareData.arrow;

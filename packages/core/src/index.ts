@@ -9,3 +9,5 @@ export * from './lib/arrow';
 export * from './lib/click-outside';
 // Services
 export * from './lib/platform.service';
+// Injections
+export * from './lib/injections';

@@ -54,7 +54,7 @@ describe('FloatingArrowComponent', () => {
     });
     fixture.detectChanges();
 
-    const arrow = component.arrowRef!.nativeElement;
+    const arrow = component.arrowRef()!.nativeElement;
     expect(arrow.style.left).toBe(x + 'px');
     expect(arrow.style.top).toBe(y + 'px');
   });
@@ -64,5 +64,13 @@ describe('FloatingArrowComponent', () => {
     expect(component.getSide('left-start')).toBe('right');
     expect(component.getSide('bottom')).toBe('top');
     expect(component.getSide('right-end')).toBe('left');
+  });
+
+  it('should transform padding', () => {
+    fixture.componentRef.setInput('padding', '10');
+    expect(component.padding()).toBe(10);
+
+    fixture.componentRef.setInput('padding', '0');
+    expect(component.padding()).toBe(0);
   });
 });

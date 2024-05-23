@@ -1,20 +1,22 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   EmbeddedViewRef,
-  inject,
   Inject,
-  Input,
+  input,
   OnChanges,
   OnDestroy,
   OnInit,
   Renderer2,
   TemplateRef,
-  ViewChild,
+  viewChild,
   ViewContainerRef
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { PlatformService } from '../platform.service';
+import { isServer } from '../injections';
+import { isHTML, isString } from '../utils/utils';
 
 @Component({
   selector: 'ngx-portal',
@@ -28,29 +30,27 @@ import { PlatformService } from '../platform.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PortalComponent implements OnInit, OnChanges, OnDestroy {
+  isServer = isServer();
 
-  isServer = inject(PlatformService).isServer();
+  portalContent = viewChild<TemplateRef<HTMLElement>>(TemplateRef);
+  bindTo = input<HTMLElement | string | undefined>();
 
-  @ViewChild(TemplateRef, { static: true })
-  portalContent?: TemplateRef<HTMLElement>;
-
-  @Input()
-  bindTo?: HTMLElement | string;
+  parent = computed(() => {
+    const bindTo = this.bindTo();
+    if (isHTML(bindTo)) {
+      return bindTo;
+    }
+    if (isString(bindTo)) {
+      return this.parentBySelector(bindTo);
+    }
+    return this.document.body;
+  });
 
   private view?: EmbeddedViewRef<HTMLElement>;
   private panelRef?: HTMLElement;
 
-  get parent() {
-    if (this.bindTo instanceof HTMLElement) {
-      return this.bindTo;
-    }
-    if (typeof this.bindTo === 'string') {
-      return this.parentBySelector(this.bindTo);
-    }
-    return this.document.body;
-  }
-
   parentBySelector(selector: string) {
+    console.log('selector', selector);
     const element = this.document.querySelector(selector);
     if (!element) {
       console.error(`cannot find HTMLElement with query selector: ${selector}`);
@@ -59,36 +59,39 @@ export class PortalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private viewContainerRef: ViewContainerRef,
-    private renderer: Renderer2
+    @Inject(DOCUMENT) protected readonly document: Document,
+    protected readonly viewContainerRef: ViewContainerRef,
+    protected readonly renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
     this.bind();
   }
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.bind();
+  }
+
+  ngOnDestroy() {
+    this.panelRef?.remove();
+    this.view?.destroy();
   }
 
   bind() {
     if (this.isServer) {
       return;
     }
-    if (this.portalContent && this.parent) {
-      this.view = this.viewContainerRef.createEmbeddedView(this.portalContent);
+
+    const portalContent = this.portalContent();
+
+    if (portalContent && this.parent()) {
+      this.view = this.viewContainerRef.createEmbeddedView(portalContent);
       this.panelRef = this.view.rootNodes[0];
       if (this.panelRef) {
-        this.renderer.appendChild(this.parent, this.panelRef);
+        this.renderer.appendChild(this.parent(), this.panelRef);
       } else {
         console.error(`cannot render component into ${this.parent}`);
       }
     }
-  }
-
-  ngOnDestroy() {
-    this.panelRef?.remove();
-    this.view?.destroy();
   }
 }

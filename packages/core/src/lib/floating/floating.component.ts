@@ -4,23 +4,24 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
   inject,
-  Input,
+  input,
+  model,
   OnChanges,
   OnDestroy,
-  Output,
-  ViewChild
+  output,
+  viewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
-import { arrow, ComputePositionReturn, Middleware, Placement } from '../type';
+import { arrow, ComputePositionReturn } from '../type';
 import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
 import { Arrow } from '../arrow';
 import { ClickOutsideDirective } from '../click-outside';
 import { PlatformService } from '../platform.service';
+import { isServer } from '../injections';
 
 
 @Component({
@@ -42,56 +43,45 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
   cdRef = inject(ChangeDetectorRef);
-  isServer = inject(PlatformService).isServer();
+  isServer = isServer();
 
-  @ViewChild('floating')
-  floatingRef?: ElementRef<HTMLElement>;
+  floatingRef = viewChild<ElementRef<HTMLElement>>('floating');
 
-  @Input({ required: true })
-  trigger?: HTMLElement;
-
-  @Input()
-  placement: Placement = this.config.placement;
+  trigger = input.required<HTMLElement>();
+  placement = input(this.config.placement);
 
   /**
    * Updates floating element automatically
    */
-  @Input({ transform: booleanAttribute })
-  autoUpdate = this.config.autoUpdate;
+  autoUpdate = input(this.config.autoUpdate, { transform: booleanAttribute });
 
   /**
    * Arrow component for arrow middleware.
    * It sets by <ngx-floating-arrow />
    */
-  @Input()
-  arrow?: Arrow;
+  arrow = model<Arrow>();
 
   /**
    * List of floating-ui middleware
    */
-  @Input()
-  middleware: Array<Middleware | null | undefined | false> = this.config.middleware;
+  middleware = input(this.config.middleware);
 
   /**
    * HTMLElement where floating renders
    */
-  @Input()
-  bindTo = this.config.bindTo;
+  bindTo = input(this.config.bindTo);
 
   /**
    * Emits when user clicks outside the floating element
    */
-  @Output()
-  clickedOutside = new EventEmitter<Element>();
+  clickedOutside = output<Element>();
 
   /**
    * Emits when user clicks inside the floating element
    */
-  @Output()
-  clickedInside = new EventEmitter<Element>();
+  clickedInside = output<Element>();
 
-  @Output()
-  computePositionReturn = new EventEmitter<ComputePositionReturn>();
+  computePositionReturn = output<ComputePositionReturn>();
 
   private _computePosition$ = new BehaviorSubject<ComputePositionReturn | undefined>(undefined);
   public computePosition$ = this._computePosition$
@@ -124,15 +114,16 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     this.cleanup?.();
-    const trigger = this.trigger;
-    const floating = this.floatingRef?.nativeElement;
+    const trigger = this.trigger();
+    const floating = this.floatingRef()?.nativeElement;
 
     if (trigger && floating) {
-      if (this.autoUpdate) {
+      if (this.autoUpdate()) {
         this.cleanup = this.floatingService.autoUpdate(trigger, floating, async () => {
           await this.computePosition(trigger, floating);
         });
       } else {
+        this.cleanup = undefined;
         await this.computePosition(trigger, floating);
       }
     }
@@ -143,8 +134,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   async computePosition(trigger: HTMLElement, floating: HTMLElement) {
     const computePositionReturn = await this.floatingService.computePosition(trigger, floating, {
-      placement: this.placement,
-      middleware: [...this.middleware, this.getArrowMiddleware()]
+      placement: this.placement(),
+      middleware: [...this.middleware(), this.getArrowMiddleware()]
     });
 
     this._computePosition$.next(computePositionReturn);
@@ -156,7 +147,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   onClickOutside(target: EventTarget) {
     if (target instanceof Element) {
       /* Ignore the trigger element */
-      if (target !== this.trigger) {
+      if (target !== this.trigger()) {
         this.clickedOutside.emit(target);
       }
     }
@@ -166,7 +157,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   onClickInside(target: EventTarget) {
     if (target instanceof Element) {
       /* Ignore the trigger element */
-      if (target !== this.trigger) {
+      if (target !== this.trigger()) {
         this.clickedInside.emit(target);
       }
     }
@@ -176,15 +167,17 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
    * Arrow sets from <ngx-arrow/> component
    */
   setArrow(arrow: Arrow) {
-    this.arrow = arrow;
+    this.arrow.set(arrow);
     return this.bind();
   }
 
   getArrowMiddleware() {
-    if (this.arrow?.arrowRef) {
+    const arr = this.arrow();
+    const arrRef = arr?.arrowRef();
+    if (arr && arrRef) {
       return arrow({
-        element: this.arrow.arrowRef!.nativeElement,
-        padding: this.arrow.padding
+        element: arrRef.nativeElement,
+        padding: arr.padding()
       });
     }
     return null;
