@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Directive, ElementRef, HostListener, output } from '@angular/core';
 import { isContainElement } from '../utils/utils';
 
 @Directive({
@@ -6,15 +6,8 @@ import { isContainElement } from '../utils/utils';
   standalone: true
 })
 export class ClickOutsideDirective {
-
-  @Input()
-  insideElements: HTMLElement[] = [];
-
-  @Output()
-  inside = new EventEmitter<EventTarget>();
-
-  @Output()
-  outside = new EventEmitter<EventTarget>();
+  inside = output<EventTarget>();
+  outside = output<EventTarget>();
 
   constructor(
     private el: ElementRef

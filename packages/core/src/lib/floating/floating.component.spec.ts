@@ -16,11 +16,21 @@ describe('FloatingComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(FloatingComponent);
+    fixture.componentRef.setInput('trigger', document.body);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   const floating = () => document.querySelector('.floating') as HTMLElement;
+
+  const parentId = 'parent-id';
+
+  const createParent = () => {
+    const parent = document.createElement('div');
+    parent.id = parentId;
+    document.body.appendChild(parent);
+    return parent;
+  };
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -28,9 +38,9 @@ describe('FloatingComponent', () => {
 
   it('should set default options', () => {
     const config = new NgxFloatingConfig();
-    expect(component.placement).toBe(config.placement);
-    expect(component.autoUpdate).toBe(config.autoUpdate);
-    expect(component.bindTo).toBe(config.bindTo);
+    expect(component.placement()).toBe(config.placement);
+    expect(component.autoUpdate()).toBe(config.autoUpdate);
+    expect(component.bindTo()).toBe(config.bindTo);
   });
 
   it('should call bind when placement changes', () => {
@@ -71,19 +81,24 @@ describe('FloatingComponent', () => {
     fixture.componentRef.setInput('autoUpdate', false);
     fixture.detectChanges();
 
+    expect(component.autoUpdate()).toBeFalsy();
     expect(component.cleanup).not.toBeTruthy();
   });
 
   it('should emit when click inside', () => {
     const inside = jest.spyOn(component.clickedInside, 'emit');
     floating().click();
+    fixture.detectChanges();
     expect(inside).toHaveBeenCalled();
     expect(inside).toHaveBeenCalledWith(floating());
   });
 
   it('should emit when click outside', () => {
+    const trigger = createParent();
+    fixture.componentRef.setInput('trigger', trigger);
     const outside = jest.spyOn(component.clickedOutside, 'emit');
     document.body.click();
+    fixture.detectChanges();
     expect(outside).toHaveBeenCalled();
     expect(outside).toHaveBeenCalledWith(document.body);
   });
