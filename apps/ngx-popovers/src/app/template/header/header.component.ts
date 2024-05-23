@@ -6,14 +6,12 @@ import { CoreService } from '../../core/core.service';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'dm-header',
   standalone: true,
-  imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive, FaIconComponent, FormsModule],
+  imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -27,9 +25,6 @@ export class HeaderComponent {
 
   @Output()
   toggleSidebar = new EventEmitter();
-
-  readonly faMoon = faMoon;
-  readonly faSun = faSun;
 
   constructor(
     public core: CoreService,
