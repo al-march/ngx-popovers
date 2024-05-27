@@ -41,7 +41,7 @@
     "@angular/compiler-cli": "17.3.9",
     "@angular/language-service": "17.3.9",
     "@nx/cypress": "19.0.6",
-    "@nx/eslint": "19.0.6",
+    "@nx/eslint": "19.1.0",
     "@nx/eslint-plugin": "19.0.6",
     "@nx/jest": "19.0.6",
     "@nx/js": "19.0.6",
