@@ -4,7 +4,7 @@ This library was created using [Nx](https://nx.dev) and [floating-ui](https://fl
 
 ![Dialog Preview](https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/dialog/assets/preview.png)
 
-> Check out the [Demo](https://ngx-popovers.vercel.app/dialog)
+> Check out the [Demo](https://ngx-popovers.vercel.app/docs/dialog)
 
 To use, install the package using the following command:
 

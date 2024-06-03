@@ -4,7 +4,7 @@ This library was generated with [Nx](https://nx.dev) using [floating-ui](https:/
 
 The Tooltip component displays tooltips next to the trigger element.
 
-> Check out the [Demo](https://ngx-popovers.vercel.app/tooltip)
+> Check out the [Demo](https://ngx-popovers.vercel.app/docs/tooltip)
 
 ## Usage
 

@@ -53,7 +53,7 @@ import {
 
 # portal
 
->  To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/portal) provided.
+>  To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/portal) provided.
 
 ## Usage
 
@@ -79,7 +79,7 @@ This component is essential for displaying tooltips correctly without overlappin
 
 The click outside directive manages clicks inside and outside HTMLElements. This directive is used by the ngx-floating component.
 
-> To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/click-outside) provided.
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/click-outside) provided.
 
 ## Usage
 
@@ -115,7 +115,7 @@ export class ClickOutsideExample {
 
 The Floating component implements the floating-ui library for Angular
 
-> To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/floating) provided.
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/floating) provided.
 
 ## Usage
 
@@ -194,7 +194,7 @@ The arrow component adds an arrow to the floating component.
 </ngx-floating>
 ```
 
-> To see a demo, click on the [link](https://ngx-popovers.vercel.app/core/arrow) provided.
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/arrow) provided.
 
 You can provide your own component for arrow visualization:
 

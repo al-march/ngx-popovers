@@ -4,7 +4,7 @@ This library was generated with [Nx](https://nx.dev) using [floating-ui](https:/
 
 ![Popover preview](https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/popover/assets/preview.png)
 
-> See [Demo](https://ngx-popovers.vercel.app/popover)
+> See [Demo](https://ngx-popovers.vercel.app/docs/popover)
 
 The popover is a simple-to-use component with a straightforward API. Just install and use.
 
