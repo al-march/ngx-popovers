@@ -23,7 +23,9 @@
             [routerLink]="gettingStartedRoute.path"
             routerLinkActive="active-link"
           >
-            <ng-template [ngComponentOutlet]="gettingStartedRoute.data?.['icon']" />
+            <ng-template
+              [ngComponentOutlet]="gettingStartedRoute.data?.['icon']"
+            />
             <span class="text-lg">{{ gettingStartedRoute.data?.['name'] }}</span>
           </a>
         </li>
@@ -50,12 +52,12 @@
                   <input
                     type="checkbox"
                     class="hidden"
-                    [(ngModel)]="routesExpanded[route.data!['name']]"
+                    [(ngModel)]="routesExpanded()[route.data!['name']]"
                   />
                   <span
                     class="icon top"
-                    [class.top]="routesExpanded[route.data!['name']]"
-                    [class.bottom]="!routesExpanded[route.data!['name']]"
+                    [class.top]="routesExpanded()[route.data!['name']]"
+                    [class.bottom]="!routesExpanded()[route.data!['name']]"
                   ></span>
                 </label>
               }
@@ -66,7 +68,7 @@
                 #submenu
                 class="py-1 overflow-hidden transition-all"
                 [style.height.px]="
-                  routesExpanded[route.data!['name']]
+                  routesExpanded()[route.data!['name']]
                     ? submenu.scrollHeight
                     : 0
                 "

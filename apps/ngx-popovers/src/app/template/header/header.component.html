@@ -7,14 +7,19 @@
         viewBox="0 0 24 24"
         class="inline-block w-5 h-5 stroke-current"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
       </svg>
     </button>
   </div>
   <div class="flex-1 overflow-hidden overflow-x-auto">
     <a
       class="btn btn-sm p-1 btn-ghost"
-      routerLink="/"
+      routerLink="/docs"
     >
       @if (smallScreen$ | async) {
         <pre [innerText]="'@ngx/...'"></pre>
@@ -23,13 +28,13 @@
       }
     </a>
 
-    @for (path of paths(); track path) {
+    @for (path of paths() | slice:1; track path) {
       <span>|</span>
       <a
         class="btn btn-sm p-1 btn-ghost"
         routerLinkActive
         #activeLink="routerLinkActive"
-        [routerLink]="paths() | slice:0:$index + 1"
+        [routerLink]="paths() | slice:0:$index + 2"
         [routerLinkActiveOptions]="{exact: true}"
         [class.text-primary]="activeLink.isActive"
       >
