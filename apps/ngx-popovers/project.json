@@ -16,7 +16,6 @@
         "index": "apps/ngx-popovers/src/index.html",
         "browser": "apps/ngx-popovers/src/main.ts",
         "polyfills": [
-          "zone.js"
         ],
         "tsConfig": "apps/ngx-popovers/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
