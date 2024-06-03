@@ -84,7 +84,7 @@ export class DialogComponent implements AfterViewInit {
         'There is no a template for the <ngx-dialog />.',
         'Please, add <ng-template ngx-dialog-template /> inside',
         'the <ngx-dialog /> component.',
-        '\n\n See docs: https://ngx-popovers.vercel.app/dialog for more information \n'
+        '\n\n See docs: https://ngx-popovers.vercel.app/docs/dialog for more information \n'
       ].join(' '));
     }
   }
