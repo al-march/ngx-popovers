@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { ThemeService } from '../../core/theme.service';
-import { ActivationStart, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CoreService } from '../../core/core.service';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'dm-header',
@@ -29,26 +30,27 @@ export class HeaderComponent {
   constructor(
     public core: CoreService,
     public router: Router,
+    public location: Location,
     public themeService: ThemeService,
     public breakpointObserver: BreakpointObserver
   ) {
-    this.parsePaths();
+    this.resolvePaths();
+    this.onPathsChange();
   }
 
-  parsePaths() {
+  onPathsChange() {
     this.router.events
-      .subscribe(event => {
-        if (event instanceof ActivationStart) {
-          const paths: string[] = [];
-          event.snapshot.pathFromRoot.map(path => {
-            const p = path.routeConfig?.path;
-            if (p) {
-              paths.push(p);
-            }
-          });
-          this.paths.set(paths);
+      .pipe(takeUntilDestroyed())
+      .subscribe((event) => {
+        if (event instanceof ActivationEnd) {
+          this.resolvePaths();
         }
       });
+  }
+
+  resolvePaths() {
+    const paths = this.location.path().split('/').filter(Boolean);
+    this.paths.set(['/', ...paths]);
   }
 
   onToggleSidebar() {
