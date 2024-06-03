@@ -14,7 +14,7 @@
       .
     </p>
     <p class="text-lg py-4">
-      <a [routerLink]="['/', 'core']" class="link inline-flex gap-2 items-center">
+      <a [routerLink]="['/', 'docs', 'core']" class="link inline-flex gap-2 items-center">
         <core-icon class="text-primary" /> Core package
       </a>
     </p>
@@ -29,7 +29,7 @@
       @for (component of subcomponents; track component.path) {
         <div class="flex flex-col gap-2">
           <a
-            [routerLink]="['/', 'core', component.path]"
+            [routerLink]="['/', 'docs', 'core', component.path]"
             class="link inline-flex gap-2 items-center pb-2"
           >
             <span class="text-primary">
