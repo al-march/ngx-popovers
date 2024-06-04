@@ -1,0 +1,15 @@
+<div class="clouds">
+  @for (cloud of clouds(); track cloud) {
+    <div
+      #cloudItem
+      class="clouds-item"
+    >
+      <ngx-cloud
+        class="absolute"
+        [scale]="cloud.scale"
+        [style.top.%]="cloud.top"
+        [style.left.%]="cloud.left"
+      />
+    </div>
+  }
+</div>
