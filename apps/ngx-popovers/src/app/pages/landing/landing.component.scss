@@ -25,22 +25,22 @@
     opacity: 0;
 
     h1 {
-      font-size: 14vw;
-      line-height: 1.35em;
+      font-size: 12.4vw;
       font-weight: 900;
 
-      @apply drop-shadow-xl;
+      @apply drop-shadow-2xl;
 
       @media screen and (min-width: 700px) {
-        font-size: 12vw;
+        font-size: 9vw;
       }
 
       @media screen and (min-width: 1200px) {
-        font-size: 10vw;
+        font-size: 8vw;
       }
     }
+
     p {
-      font-size: 3.4vw;
+      font-size: 3vw;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       white-space: break-spaces;
@@ -48,11 +48,11 @@
       @apply drop-shadow-xl;
 
       @media screen and (min-width: 700px) {
-        font-size: 2.9vw;
+        font-size: 2.2vw;
       }
 
       @media screen and (min-width: 1200px) {
-        font-size: 2.5vw;
+        font-size: 1.9vw;
       }
 
       span {
@@ -73,4 +73,12 @@
     width: 6vw;
     height: 10vw;
   }
+}
+
+.clouds {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
