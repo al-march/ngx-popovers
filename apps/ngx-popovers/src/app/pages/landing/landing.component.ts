@@ -34,6 +34,12 @@ export class LandingComponent implements AfterViewInit, OnDestroy {
     if (!this.isServer()) {
       anime.timeline()
         .add({
+          targets: '.landing-clouds',
+          opacity: [0, 1],
+          easing: 'linear',
+          duration: 400
+        })
+        .add({
           targets: '.landing-heading',
           opacity: [0, 1],
           easing: 'linear',
