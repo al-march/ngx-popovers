@@ -1,5 +1,5 @@
-import { Component, effect, ElementRef, input, OnDestroy, viewChildren } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, effect, ElementRef, inject, input, OnDestroy, PLATFORM_ID, viewChildren } from '@angular/core';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import anime from 'animejs';
 
 @Component({
@@ -10,6 +10,9 @@ import anime from 'animejs';
   styleUrl: './cloud.component.scss'
 })
 export class CloudComponent implements OnDestroy {
+  platformId = inject(PLATFORM_ID);
+  isServer = () => isPlatformServer(this.platformId);
+
   scale = input(1);
   reverse = input(false);
 
@@ -20,12 +23,14 @@ export class CloudComponent implements OnDestroy {
 
   constructor() {
     effect(() => {
-      const circles = this.circles();
+      if (!this.isServer()) {
+        const circles = this.circles();
 
-      if (circles) {
-        circles.forEach((circle) => {
-          this.animateCloudCircle(circle.nativeElement);
-        });
+        if (circles) {
+          circles.forEach((circle) => {
+            this.animateCloudCircle(circle.nativeElement);
+          });
+        }
       }
     });
   }

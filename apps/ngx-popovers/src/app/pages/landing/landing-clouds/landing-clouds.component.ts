@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, signal, viewChildren } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, signal, viewChildren } from '@angular/core';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { CloudComponent } from '@demo/pages/landing/landing-clouds/cloud';
 import anime from 'animejs';
 
@@ -15,6 +15,8 @@ function randomScale() {
   styleUrl: './landing-clouds.component.scss'
 })
 export class LandingCloudsComponent implements AfterViewInit {
+  platformId = inject(PLATFORM_ID);
+  isServer = () => isPlatformServer(this.platformId);
 
   clouds = signal([
     {
@@ -47,27 +49,29 @@ export class LandingCloudsComponent implements AfterViewInit {
   cloudsList = viewChildren<ElementRef<HTMLElement>>('cloudItem');
 
   ngAfterViewInit() {
-    const clouds = this.cloudsList().map(cloud => {
-      return cloud.nativeElement;
-    });
-
-    anime.timeline()
-      .add({
-        targets: clouds,
-        translateX: () => anime.random(-200, 200),
-        translateY: () => anime.random(-50, 250),
-        duration: 0
-      })
-      .add({
-        direction: 'alternate',
-        targets: clouds,
-        translateX: () => anime.random(-500, 500),
-        translateY: () => anime.random(-120, 120),
-        duration: () => anime.random(20_000, 45_000),
-        easing: 'linear',
-        delay: anime.stagger(20),
-        loop: true
+    if (!this.isServer()) {
+      const clouds = this.cloudsList().map(cloud => {
+        return cloud.nativeElement;
       });
+
+      anime.timeline()
+        .add({
+          targets: clouds,
+          translateX: () => anime.random(-200, 200),
+          translateY: () => anime.random(-50, 250),
+          duration: 0
+        })
+        .add({
+          direction: 'alternate',
+          targets: clouds,
+          translateX: () => anime.random(-500, 500),
+          translateY: () => anime.random(-120, 120),
+          duration: () => anime.random(20_000, 45_000),
+          easing: 'linear',
+          delay: anime.stagger(20),
+          loop: true
+        });
+    }
   }
 
 }
