@@ -43,6 +43,11 @@ export class LandingCloudsComponent implements AfterViewInit {
       scale: 0.6,
       top: 12,
       left: 32
+    },
+    {
+      scale: 0.5,
+      top: 90,
+      left: 80
     }
   ]);
 
