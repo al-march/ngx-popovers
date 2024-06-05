@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { CoreService } from '@demo/core/core.service';
 import { RouterLink } from '@angular/router';
 import { LandingCloudsComponent } from '@demo/pages/landing/landing-clouds';
+import { PopoverAnchor, PopoverComponent, PopoverTemplate } from '@ngx-popovers/popover';
+import { DocNavigationComponent } from '@demo/pages/documentation/components/doc-navigation';
 
 @Component({
   selector: 'ngx-popovers-landing',
@@ -14,7 +16,11 @@ import { LandingCloudsComponent } from '@demo/pages/landing/landing-clouds';
     FormsModule,
     RouterLink,
     NgOptimizedImage,
-    LandingCloudsComponent
+    LandingCloudsComponent,
+    PopoverComponent,
+    PopoverTemplate,
+    PopoverAnchor,
+    DocNavigationComponent
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
@@ -28,7 +34,8 @@ export class LandingComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     public core: CoreService
-  ) {}
+  ) {
+  }
 
   ngAfterViewInit() {
     if (!this.isServer()) {

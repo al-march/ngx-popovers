@@ -1,0 +1,77 @@
+<ul class="flex-1 p-2 min-h-full bg-inherit text-inherit">
+  <li>
+    <a
+      class="btn btn-ghost w-full justify-start"
+      [routerLink]="['/', 'docs', gettingStartedRoute.path]"
+      routerLinkActive="active-link"
+    >
+      <ng-template
+        [ngComponentOutlet]="gettingStartedRoute.data?.['icon']"
+      />
+      <span class="text-lg">{{ gettingStartedRoute.data?.['name'] }}</span>
+    </a>
+  </li>
+
+  <div class="divider my-1"></div>
+
+  <p class="font-semibold">Packages</p>
+
+  @for (route of componentsRoutes; track route.path) {
+    <li>
+      <div class="flex items-center p-0 m-0">
+        <a
+          class="btn btn-ghost flex-1 justify-start"
+          [routerLink]="['/', 'docs', route.path]"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <ng-template [ngComponentOutlet]="route.data?.['icon']" />
+          <span class="text-lg">{{ route.data?.['name'] }}</span>
+        </a>
+
+        @if (route?.children) {
+          <label class="btn btn-square btn-ghost">
+            <input
+              type="checkbox"
+              class="hidden"
+              [(ngModel)]="routesExpanded()[route.data!['name']]"
+            />
+            <span
+              class="icon top"
+              [class.top]="routesExpanded()[route.data!['name']]"
+              [class.bottom]="!routesExpanded()[route.data!['name']]"
+            ></span>
+          </label>
+        }
+      </div>
+
+      @if (route?.children) {
+        <ul
+          #submenu
+          class="pl-4 w-full overflow-hidden transition-all"
+          [style.height.px]="
+                  routesExpanded()[route.data!['name']]
+                    ? submenu.scrollHeight
+                    : 0
+                "
+        >
+          @for (child of route.children; track child.path) {
+            @if (child.path) {
+              <li>
+                <a
+                  class="btn btn-ghost w-full justify-start"
+                  [routerLink]="['/', 'docs', route.path, child.path]"
+                  routerLinkActive="active-link"
+                  [routerLinkActiveOptions]="{exact: true}"
+                >
+                  <ng-template [ngComponentOutlet]="child.data?.['icon']" />
+                  <span class="text-lg">{{ child.data?.['name'] }}</span>
+                </a>
+              </li>
+            }
+          }
+        </ul>
+      }
+    </li>
+  }
+</ul>
