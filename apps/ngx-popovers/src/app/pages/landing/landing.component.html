@@ -50,8 +50,6 @@
       <div class="mt-2 flex flex-col gap-2 items-center landing-docs-button">
         <ngx-popover
           [bindTo]="landingScreen"
-          [middleware]="middleware"
-          [(value)]="popover"
         >
           <button class="btn btn-lg btn-ghost uppercase glass">Documentation</button>
 
@@ -61,7 +59,7 @@
             [style.width.px]="landingInfo.scrollWidth"
             [style.min-height.px]="landingInfo.scrollHeight"
           >
-            <div class="landing-popover flex-1" #popoverContent>
+            <div class="landing-popover flex-1">
               <ngx-doc-navigation
                 class="flex w-full min-h-full glass"
               />
