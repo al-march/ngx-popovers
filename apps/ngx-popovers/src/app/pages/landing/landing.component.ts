@@ -32,9 +32,6 @@ export class LandingComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (!this.isServer()) {
-      this.animateBlocks();
-      this.animateBlocksShadow();
-
       anime.timeline()
         .add({
           targets: '.landing-heading',
@@ -53,26 +50,4 @@ export class LandingComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
   }
-
-  animateBlocks = () => {
-    anime({
-      targets: '.block',
-      scale: () => anime.random(1, 3),
-      rotate: () => `${anime.random(-15, 15)}deg`,
-      duration: 2000,
-      delay: anime.stagger(20),
-      easing: 'easeOutExpo',
-      complete: this.animateBlocks
-    });
-  };
-
-  animateBlocksShadow = () => {
-    return anime({
-      targets: '.block',
-      boxShadow: '6px 9px 5vw 4px rgb(0 0 0 / 10%)',
-      delay: anime.stagger(20),
-      duration: 3000,
-      easing: 'easeOutExpo'
-    });
-  };
 }
