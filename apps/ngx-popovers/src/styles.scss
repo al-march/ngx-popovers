@@ -12,3 +12,11 @@
   @apply bg-base-300 rounded p-1;
   @apply text-warning;
 }
+
+.gradient {
+  @apply bg-gradient-to-b from-[#ff53d9] to-[#747fff];
+}
+
+.text-gradient {
+  @apply inline-block bg-gradient-to-br from-rose-400 via-purple-500 to-cyan-500 bg-clip-text text-transparent;
+}
