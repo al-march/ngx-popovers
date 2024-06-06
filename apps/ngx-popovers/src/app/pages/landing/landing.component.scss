@@ -2,12 +2,11 @@
   &-screen {
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     color: theme('colors.white');
-    @apply bg-gradient-to-b from-[#ff53d9] to-[#747fff];
   }
 
   &-info {

@@ -1,0 +1,56 @@
+$control-offset: 10px;
+
+.placement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  &-controls {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-top {
+    left: 0;
+    top: $control-offset;
+    width: 100%;
+  }
+
+  &-bottom {
+    left: 0;
+    bottom: $control-offset;
+    width: 100%;
+  }
+
+  &-left {
+    left: $control-offset;
+    top: 0;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  &-right {
+    right: $control-offset;
+    top: 0;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.reference {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+  border: 1px dashed black;
+  color: black;
+}

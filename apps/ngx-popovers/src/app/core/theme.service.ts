@@ -21,12 +21,7 @@ export class ThemeService {
     rendererFactory: RendererFactory2
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
-    const theme = this.getTheme();
-    if (theme) {
-      if (theme === 'dark' || theme === 'light') {
-        this.theme.set(theme);
-      }
-    }
+    this.dark();
 
     effect(() => {
       const theme = this.theme();
