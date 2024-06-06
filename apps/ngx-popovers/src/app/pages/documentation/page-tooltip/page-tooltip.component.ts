@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
 import { HighlightComponent } from '@demo/core/highlight';
@@ -98,7 +98,8 @@ const templateExample = `
     ExampleComponent
   ],
   templateUrl: './page-tooltip.component.html',
-  styleUrl: './page-tooltip.component.scss'
+  styleUrl: './page-tooltip.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageTooltipComponent {
 

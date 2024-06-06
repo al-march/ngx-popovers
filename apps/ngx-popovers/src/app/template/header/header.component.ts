@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ThemeService } from '../../core/theme.service';
 import { ActivationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -14,7 +14,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   standalone: true,
   imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
 

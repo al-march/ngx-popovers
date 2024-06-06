@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
 import { CoreIcon } from '@demo/app-routes-icons';
@@ -76,7 +76,8 @@ export const PopoverConfigProvider: Provider = {
     PopoverModule
   ],
   templateUrl: './page-popover.component.html',
-  styleUrl: './page-popover.component.scss'
+  styleUrl: './page-popover.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PagePopoverComponent {
   usageExample = usageExample;

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '@demo/template/footer';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,8 @@ import { DocNavigationComponent } from '@demo/pages/documentation/components/doc
   standalone: true,
   imports: [CommonModule, FooterComponent, FormsModule, HeaderComponent, RouterLinkActive, RouterOutlet, RouterLink, DocNavigationComponent],
   templateUrl: './documentation-template.component.html',
-  styleUrl: './documentation-template.component.scss'
+  styleUrl: './documentation-template.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocumentationTemplateComponent {
   private readonly router = inject(Router);
