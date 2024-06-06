@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, signal, viewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  PLATFORM_ID,
+  signal,
+  viewChildren
+} from '@angular/core';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import { CloudComponent } from '@demo/pages/landing/landing-clouds/cloud';
 import anime from 'animejs';
@@ -12,7 +21,8 @@ function randomScale() {
   standalone: true,
   imports: [CommonModule, CloudComponent],
   templateUrl: './landing-clouds.component.html',
-  styleUrl: './landing-clouds.component.scss'
+  styleUrl: './landing-clouds.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingCloudsComponent implements AfterViewInit {
   platformId = inject(PLATFORM_ID);

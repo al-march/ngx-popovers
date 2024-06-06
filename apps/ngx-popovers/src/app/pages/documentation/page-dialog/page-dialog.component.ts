@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
 import { ExampleComponent } from '@demo/template/example';
@@ -47,7 +47,8 @@ const defaultExample = `
     NgxDialog
   ],
   templateUrl: './page-dialog.component.html',
-  styleUrl: './page-dialog.component.scss'
+  styleUrl: './page-dialog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageDialogComponent {
   defaultExample = defaultExample;

@@ -1,4 +1,14 @@
-import { Component, effect, ElementRef, inject, input, OnDestroy, PLATFORM_ID, viewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  ElementRef,
+  inject,
+  input,
+  OnDestroy,
+  PLATFORM_ID,
+  viewChildren
+} from '@angular/core';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import anime from 'animejs';
 
@@ -7,7 +17,8 @@ import anime from 'animejs';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cloud.component.html',
-  styleUrl: './cloud.component.scss'
+  styleUrl: './cloud.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CloudComponent implements OnDestroy {
   platformId = inject(PLATFORM_ID);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '../components/title/title.component';
 import { Arrow, FloatingComponent } from '@ngx-popovers/core';
@@ -22,7 +22,8 @@ import { HighlightComponent } from '@demo/core/highlight';
     HighlightComponent
   ],
   templateUrl: './page-getting-started.component.html',
-  styleUrl: './page-getting-started.component.scss'
+  styleUrl: './page-getting-started.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageGettingStartedComponent {
 }
