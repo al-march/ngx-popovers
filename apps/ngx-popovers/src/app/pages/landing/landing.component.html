@@ -1,72 +1,167 @@
-<div #landingScreen class="landing-screen">
-  <div class="landing-clouds">
-    <ngx-clouds />
-  </div>
-
-  <div #landingInfo class="landing-info">
-    <div class="w-64">
-      <img
-        class="w-full"
-        ngSrc="/assets/ng-logo.png"
-        priority=""
-        width="480"
-        height="480"
-        alt=""
-      >
+<main class="bg-base-100">
+  <div #landingScreen class="landing-screen gradient">
+    <div class="landing-clouds">
+      <ngx-clouds />
     </div>
 
-    <div class="landing-heading">
-      <div class="flex items-center justify-center gap-1">
-        <a
-          [href]="core.gitLink"
-          target="_blank"
-          class="btn btn-ghost"
+    <div #landingInfo class="landing-info">
+      <div class="w-64">
+        <img
+          class="w-full"
+          ngSrc="/assets/ng-logo.png"
+          priority=""
+          width="480"
+          height="480"
+          alt="Angular logo"
         >
-          <svg
-            height="24"
-            aria-hidden="true"
-            viewBox="0 0 16 16"
-            width="32"
-            data-view-component="true"
-            fill="currentColor"
-          >
-            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-          </svg>
-        </a>
-        <a
-          [href]="core.npmLink"
-          target="_blank"
-          class="btn btn-ghost"
-        >
-          v.{{ core.version }}
-        </a>
       </div>
 
-      <h1>{{ title }}</h1>
-      <div class="bg-white bg-opacity-75 p-1 -mx-2">
-        <p class="bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text will-change-auto [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]">{{ description }}</p>
-      </div>
-
-      <div class="mt-2 flex flex-col gap-2 items-center landing-docs-button">
-        <ngx-popover
-          [bindTo]="landingScreen"
-        >
-          <button class="btn btn-lg btn-ghost uppercase glass">Documentation</button>
-
-          <div
-            *ngx-popover-template
-            class="flex"
-            [style.width.px]="landingInfo.scrollWidth"
-            [style.min-height.px]="landingInfo.scrollHeight"
+      <div class="landing-heading">
+        <div class="flex items-center justify-center gap-1">
+          <a
+            [href]="core.gitLink"
+            target="_blank"
+            class="btn btn-ghost"
+            role="link"
+            ngxTooltip="Go to GitHub"
           >
-            <div class="landing-popover flex-1">
-              <ngx-doc-navigation
-                class="flex w-full min-h-full glass"
-              />
+            <svg
+              height="24"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              width="32"
+              data-view-component="true"
+              fill="currentColor"
+            >
+              <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+            </svg>
+          </a>
+          <a
+            [href]="core.npmLink"
+            target="_blank"
+            role="link"
+            class="btn btn-ghost"
+            ngxTooltip="Go to npm"
+          >
+            v.{{ core.version }}
+          </a>
+        </div>
+
+        <h1>{{ title }}</h1>
+        <div class="bg-white bg-opacity-75 p-1 -mx-2">
+          <h2 class="text-gradient">{{ description }}</h2>
+        </div>
+
+        <div class="mt-2 flex flex-col gap-2 items-center landing-docs-button">
+          <ngx-popover
+            [bindTo]="landingScreen"
+          >
+            <button class="btn btn-lg btn-ghost uppercase glass">Documentation</button>
+
+            <div
+              *ngx-popover-template
+              class="flex"
+              [style.width.px]="landingInfo.scrollWidth"
+              [style.min-height.px]="landingInfo.scrollHeight"
+            >
+              <div class="landing-popover flex-1">
+                <ngx-doc-navigation
+                  class="flex w-full min-h-full glass"
+                />
+              </div>
             </div>
-          </div>
-        </ngx-popover>
+          </ngx-popover>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="p-6 py-10 container mx-auto">
+    <h3 class="text-4xl text-gradient font-bold py-6">Smart Anchor Positioning</h3>
+
+    <p class="text-lg">
+      ngx-popovers is an library that helps to use the
+      <a
+        href="https://floating-ui.com/"
+        target="_blank"
+        class="link"
+        role="link"
+      >floating-ui
+      </a>
+      API
+    </p>
+
+    <div class="grid gap-2 lg:grid-cols-2 py-4">
+      <div class="mockup-code p-2">
+        <p class="pb-2 pl-2">
+          Places <span class="code inline p-0">ngx-floating</span>
+          component relative to another element.
+        </p>
+
+        <div class="h-[500px] grid">
+          <landing-ex-placement />
+        </div>
+      </div>
+
+      <div class="mockup-code p-2">
+        <p class="pb-2 pl-2">
+          Shifts <span class="code inline p-0">ngx-floating</span>
+          component to keep it in view.
+        </p>
+
+        <div class="h-[500px] overflow-hidden grid">
+          <landing-ex-shift />
+        </div>
+      </div>
+
+      <div class="mockup-code p-2">
+        <p class="pb-2 pl-2">
+          Changes the placement of
+          to keep it in view.
+        </p>
+
+        <div class="h-[500px] grid">
+          <landing-ex-flip />
+        </div>
+      </div>
+
+      <div class="mockup-code p-2">
+        <p class="pb-2 pl-2">
+          Changes the size of element
+          to keep it in view.
+        </p>
+
+        <div class="h-[500px] grid">
+          <landing-ex-size />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container mx-auto text-center p-4">
+    <div class="divider"></div>
+
+    <p>© {{year()}} • MIT License</p>
+    
+    <p>
+      Created by
+      <a
+        href="https://github.com/al-march"
+        target="_blank"
+        class="link"
+      >al-march</a>
+      with
+      <a
+        href="https://floating-ui.com/"
+        target="_blank"
+        class="link"
+      >floating-ui</a>
+      and
+      <a
+        href="https://angular.dev/"
+        target="_blank"
+        class="link"
+      >Angular</a>
+    </p>
+  </footer>
+</main>

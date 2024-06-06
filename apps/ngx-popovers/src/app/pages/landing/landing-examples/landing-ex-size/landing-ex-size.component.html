@@ -1,0 +1,20 @@
+<div class="size" data-theme="light">
+  <div #wrapper class="flex justify-center w-full overflow-hidden overflow-y-auto">
+    <div class="h-[1000px] flex items-center">
+      <div #reference class="reference">
+        <span>Scroll me!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-floating
+  [bindTo]="wrapper"
+  [trigger]="reference"
+  [middleware]="middleware"
+  placement="bottom"
+>
+  <div class="p-4 h-full bg-error text-error-content flex items-center">
+    Dropdown
+  </div>
+</ngx-floating>

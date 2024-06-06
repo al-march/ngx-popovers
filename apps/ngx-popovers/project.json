@@ -2,7 +2,7 @@
   "name": "ngx-popovers",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "ngx-popovers",
+  "prefix": "demo",
   "sourceRoot": "apps/ngx-popovers/src",
   "tags": [],
   "targets": {
@@ -96,6 +96,12 @@
       "options": {
         "buildTarget": "ngx-popovers:build",
         "staticFilePath": "dist/apps/ngx-popovers/browser"
+      }
+    },
+    "generators": {
+      "@nx/angular:component": {
+        "style": "scss",
+        "changeDetection": "OnPush"
       }
     }
   }

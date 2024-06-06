@@ -1,0 +1,41 @@
+<div class="placement" data-theme="light">
+
+  <div #reference class="reference">
+    <span>Reference</span>
+  </div>
+
+
+  <section class="placement-controls placement-top">
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="top-start" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="top" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="top-end" />
+  </section>
+
+  <section class="placement-controls placement-left">
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="left-start" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="left" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="left-end" />
+  </section>
+
+  <section class="placement-controls placement-right">
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="right-start" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="right" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="right-end" />
+  </section>
+
+  <section class="placement-controls placement-bottom">
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="bottom-start" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="bottom" />
+    <input [formControl]="control" type="radio" name="placement" class="radio" value="bottom-end" />
+  </section>
+</div>
+
+<ngx-floating
+  [trigger]="reference"
+  [placement]="control.value || 'top'"
+  [middleware]="[]"
+>
+  <div class="p-4 bg-error text-error-content">
+    {{ control.value }}
+  </div>
+</ngx-floating>

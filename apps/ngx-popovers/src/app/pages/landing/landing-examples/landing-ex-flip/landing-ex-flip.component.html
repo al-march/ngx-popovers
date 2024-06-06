@@ -1,0 +1,20 @@
+<div class="flip" data-theme="light">
+  <div #wrapper class="flex justify-center w-full overflow-hidden overflow-y-auto">
+    <div class="h-[1000px] flex items-center">
+      <div #reference class="reference">
+        <span>Scroll me!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-floating
+  [bindTo]="wrapper"
+  [trigger]="reference"
+  placement="top"
+  [middleware]="middleware"
+>
+  <div class="p-4 bg-error text-error-content flex items-center">
+    Tooltip
+  </div>
+</ngx-floating>
