@@ -50,7 +50,6 @@ export class PortalComponent implements OnInit, OnChanges, OnDestroy {
   private panelRef?: HTMLElement;
 
   parentBySelector(selector: string) {
-    console.log('selector', selector);
     const element = this.document.querySelector(selector);
     if (!element) {
       console.error(`cannot find HTMLElement with query selector: ${selector}`);
