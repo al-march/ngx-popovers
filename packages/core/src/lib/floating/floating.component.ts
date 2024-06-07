@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   booleanAttribute,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   inject,
@@ -42,7 +41,6 @@ import { isServer } from '../injections';
 export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   config = inject(NGX_FLOATING_CONFIG);
   floatingService = inject(FloatingService);
-  cdRef = inject(ChangeDetectorRef);
   isServer = isServer();
 
   floatingRef = viewChild<ElementRef<HTMLElement>>('floating');
@@ -140,7 +138,6 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     this._computePosition$.next(computePositionReturn);
     this.computePositionReturn.emit(computePositionReturn);
-    this.cdRef.detectChanges();
   }
 
   /* Check if user clicked outside the floating element*/
