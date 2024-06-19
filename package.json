@@ -4,9 +4,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve ngx-popovers",
-    "test:all": "nx test core && nx test tooltip && nx test popover && nx test dialog",
-    "build:all": "nx build core && nx build tooltip && nx build popover && nx build dialog",
-    "build:demo": "nx build ngx-popovers"
+    "build": "nx run-many -t build --projects=tag:package",
+    "test": "nx run-many -t test --projects=tag:package",
+    "build:demo": "nx build ngx-popovers",
+    "publish": "npm run test && npm run build && lerna publish --conventional-commits"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +68,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "jest-preset-angular": "14.1.0",
     "jsonc-eslint-parser": "^2.1.0",
+    "lerna": "^8.1.3",
     "ng-packagr": "18.0.0",
     "nx": "19.1.0",
     "postcss": "^8.4.5",

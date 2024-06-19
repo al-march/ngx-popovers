@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "version": "18.0.0",
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "directory": "{workspaceRoot}/dist/{projectRoot}"
+    }
+  }
+}
