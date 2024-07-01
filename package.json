@@ -23,7 +23,7 @@
     "@angular/platform-server": "18.0.0",
     "@angular/router": "18.0.0",
     "@angular/ssr": "18.0.1",
-    "@floating-ui/dom": "^1.5.3",
+    "@floating-ui/dom": "^1.6.7",
     "@nx/angular": "19.1.0",
     "animejs": "^3.2.2",
     "express": "^4.19.2",
