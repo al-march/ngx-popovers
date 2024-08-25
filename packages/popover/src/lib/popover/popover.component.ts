@@ -8,6 +8,7 @@ import {
   EventEmitter,
   HostListener,
   inject,
+  input,
   Input,
   OnChanges,
   Output,
@@ -67,6 +68,8 @@ export class PopoverComponent implements OnChanges {
 
   @Input()
   placement: Placement = this.config.placement;
+
+  strategy = input(this.config.strategy);
 
   @Input()
   middleware: MiddlewareList = this.config.middleware;

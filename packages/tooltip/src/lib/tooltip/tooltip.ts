@@ -6,11 +6,13 @@ import {
   ElementRef,
   EventEmitter,
   inject,
+  input,
   Input,
   numberAttribute,
   OnChanges,
   Output,
-  signal, TemplateRef
+  signal,
+  TemplateRef
 } from '@angular/core';
 import { Arrow, FloatingComponent, MiddlewareList, Placement, PlatformService } from '@ngx-popovers/core';
 import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
@@ -63,6 +65,8 @@ export class NgxTooltip implements OnChanges {
 
   @Input()
   middleware: MiddlewareList = this.config.middleware;
+
+  strategy = input(this.config.strategy);
 
   private _ngxValue = false;
 

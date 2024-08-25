@@ -1,6 +1,7 @@
 # Tooltip
 
-This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps.
+This library was generated with [Nx](https://nx.dev) using [floating-ui](https://floating-ui.com/)
+for [Angular](https://angular.dev/) apps.
 
 The Tooltip component displays tooltips next to the trigger element.
 
@@ -11,6 +12,7 @@ The Tooltip component displays tooltips next to the trigger element.
 To use this library, add `ngxTooltip` to the HTML element.
 
 ```html
+
 <button
   ngxTooltip="Tooltip message"
   placement="top-end"
@@ -24,6 +26,7 @@ To use this library, add `ngxTooltip` to the HTML element.
 You can show the tooltip with an arrow:
 
 ```html angular2html
+
 <button
   ngxTooltip="Tooltip message"
   placement="top-end"
@@ -52,12 +55,13 @@ Input Parameters
 
 Output Parameters
 
-| Output            | Description                                 | Type                            |
-|-------------------|---------------------------------------------|---------------------------------|
-| `ngxValueChange`  | Emitter for changes in `ngxValue`           | `EventEmitter<boolean>`         |
-| `showEnd`         | Emitter for when the component is shown     | `EventEmitter`                  |
-| `hideEnd`         | Emitter for when the component is hidden    | `EventEmitter`                  |
-| `computePosition` | Emitter for every call of `computePosition` | `EventEmitter<ComputePosition>` |
+| Output            | Description                                      | Type                                 |
+|-------------------|--------------------------------------------------|--------------------------------------|
+| `ngxValueChange`  | Emitter for changes in `ngxValue`                | `EventEmitter<boolean>`              |
+| `showEnd`         | Emitter for when the component is shown          | `EventEmitter`                       |
+| `hideEnd`         | Emitter for when the component is hidden         | `EventEmitter`                       |
+| `computePosition` | Emitter for every call of `computePosition`      | `EventEmitter<ComputePosition>`      |
+| `strategy`        | This is the type of CSS position property to use | `absolute` \| `fixed` \| `undefined` | `undefined`         |
 
 ## Configuration
 

@@ -47,6 +47,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   trigger = input.required<HTMLElement>();
   placement = input(this.config.placement);
+  strategy = input(this.config.strategy);
 
   /**
    * Updates floating element automatically
@@ -133,6 +134,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   async computePosition(trigger: HTMLElement, floating: HTMLElement) {
     const computePositionReturn = await this.floatingService.computePosition(trigger, floating, {
       placement: this.placement(),
+      strategy: this.strategy(),
       middleware: [...this.middleware(), this.getArrowMiddleware()]
     });
 

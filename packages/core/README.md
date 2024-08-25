@@ -53,7 +53,7 @@ import {
 
 # portal
 
->  To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/portal) provided.
+> To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/portal) provided.
 
 ## Usage
 
@@ -69,7 +69,7 @@ You can also display portal content within an element of your choice:
 </div>
 
 <ngx-portal [bindTo]="portalWillBeInsideMe">
-    <p>It will be displayed as the last child of the div</p>
+  <p>It will be displayed as the last child of the div</p>
 </ngx-portal>
 ```
 
@@ -77,7 +77,8 @@ This component is essential for displaying tooltips correctly without overlappin
 
 # ClickOutside directive
 
-The click outside directive manages clicks inside and outside HTMLElements. This directive is used by the ngx-floating component.
+The click outside directive manages clicks inside and outside HTMLElements. This directive is used by the ngx-floating
+component.
 
 > To see a demo, click on the [link](https://ngx-popovers.vercel.app/docs/core/click-outside) provided.
 
@@ -119,14 +120,13 @@ The Floating component implements the floating-ui library for Angular
 
 ## Usage
 
-
 For more information about the properties, refer to the official
 documentation for [floating-ui](https://floating-ui.com/docs/middleware).
 
 ```html
 
 <div #trigger>
-    <p>Trigger content</p>
+  <p>Trigger content</p>
 </div>
 
 <ngx-floating
@@ -144,21 +144,21 @@ documentation for [floating-ui](https://floating-ui.com/docs/middleware).
 
 Inputs
 
-| Method       | Description                                                   | Type                      | Default             |
-|--------------|---------------------------------------------------------------|---------------------------|---------------------|
-| `placement`  | controls the position of the floating relative to the trigger | `Placement`               | `bottom`            |
-| `middleware` | list of `middleware` from floating-ui                         | `MiddlewareList`          | `offset(4), flip()` |
-| `autoUpdate` | updates floating element automatically                        | `boolean`                 | `true`              |
-| `bindTo`     | urenders floating element as last child of bindTo             | `string` \| `HTMLElement` | `.body`             |
+| Input        | Description                                                   | Type                                 | Default             |
+|--------------|---------------------------------------------------------------|--------------------------------------|---------------------|
+| `placement`  | controls the position of the floating relative to the trigger | `Placement`                          | `bottom`            |
+| `middleware` | list of `middleware` from floating-ui                         | `MiddlewareList`                     | `offset(4), flip()` |
+| `autoUpdate` | updates floating element automatically                        | `boolean`                            | `true`              |
+| `bindTo`     | renders floating element as last child of bindTo              | `string` \| `HTMLElement`            | `.body`             |
+| `strategy`   | This is the type of CSS position property to use              | `absolute` \| `fixed` \| `undefined` | `undefined`         |
 
 Outputs
 
-| Method                  | Description                                                          | Type                    |
+| Output                  | Description                                                          | Type                    |
 |-------------------------|----------------------------------------------------------------------|-------------------------|
 | `clickedOutside`        | emits when user clicks outside the floating element                  | `Element`               |
 | `clickedInside`         | emits when user clicks inside the floating element                   | `Element`               |
 | `computePositionReturn` | emits every time when the floating component calls `computePosition` | `ComputePositionReturn` |
-
 
 ## Configuration
 
@@ -189,7 +189,7 @@ The arrow component adds an arrow to the floating component.
   [trigger]="trigger"
 >
   <p>Floating content</p>
-  
+
   <ngx-arrow padding="10" />
 </ngx-floating>
 ```
