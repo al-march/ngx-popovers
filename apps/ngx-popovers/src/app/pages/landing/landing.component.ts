@@ -14,7 +14,7 @@ import { CoreService } from '@demo/core/core.service';
 import { RouterLink } from '@angular/router';
 import { LandingCloudsComponent } from '@demo/pages/landing/landing-clouds';
 import { PopoverAnchor, PopoverComponent, PopoverTemplate } from '@ngx-popovers/popover';
-import { DocNavigationComponent } from '@demo/pages/documentation/components/doc-navigation';
+import { DocNavigationComponent } from '@demo/pages/documentation/ui/components/doc-navigation';
 import { FloatingComponent, PlatformService } from '@ngx-popovers/core';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import {

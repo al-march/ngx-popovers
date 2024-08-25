@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, Input, OnChanges, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
 import hljs from 'highlight.js/lib/core';
@@ -23,15 +23,17 @@ type CopyButton = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { ngSkipHydration: 'true' }
 })
-export class HighlightComponent implements OnChanges {
+export class HighlightComponent {
+  code = input<string | null | {} | undefined>(undefined);
+  codeString = computed(() => String(this.code()));
+  lang = input('');
 
-  @Input()
-  code = '';
-
-  @Input()
-  lang = '';
-
-  markup = signal('');
+  markup = computed(() => {
+    return hljs.highlight(
+      this.codeString(),
+      { language: this.lang() }
+    ).value;
+  });
   copying = signal<CopyStatus>(CopyStatus.WAIT);
 
   copyStatus = computed<CopyButton>(() => {
@@ -52,17 +54,8 @@ export class HighlightComponent implements OnChanges {
     private clipboard: Clipboard
   ) {}
 
-  ngOnChanges() {
-    const highlightedCode = hljs.highlight(
-      this.code,
-      { language: this.lang }
-    ).value;
-
-    this.markup.set(highlightedCode);
-  }
-
   copy() {
-    const success = this.clipboard.copy(this.code);
+    const success = this.clipboard.copy(this.codeString());
     if (success) {
       this.setCopyStatus(CopyStatus.SUCCESS);
     } else {

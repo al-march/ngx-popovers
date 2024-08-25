@@ -6,7 +6,7 @@ import { HeaderComponent } from '@demo/template/header';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DocNavigationComponent } from '@demo/pages/documentation/components/doc-navigation';
+import { DocNavigationComponent } from '@demo/pages/documentation/ui/components/doc-navigation';
 
 @Component({
   selector: 'ngx-popovers-documentation-template',

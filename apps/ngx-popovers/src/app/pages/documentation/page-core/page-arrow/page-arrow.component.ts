@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TitleComponent } from '../../components/title/title.component';
+import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
 import { HighlightComponent } from '@demo/core/highlight';
 
 const defaultUsage = `

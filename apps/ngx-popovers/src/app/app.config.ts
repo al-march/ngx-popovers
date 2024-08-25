@@ -8,10 +8,12 @@ import hljs from 'highlight.js/lib/core';
 import ts from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
 import bash from 'highlight.js/lib/languages/bash';
+import scss from 'highlight.js/lib/languages/scss';
 
 hljs.registerLanguage('typescript', ts);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('scss', scss);
 
 export const appConfig: ApplicationConfig = {
   providers: [
