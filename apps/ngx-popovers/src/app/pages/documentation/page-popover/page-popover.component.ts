@@ -13,30 +13,6 @@ import { PopoverModule } from '@ngx-popovers/popover';
 import { IndexComponent } from '@demo/pages/documentation/page-popover/examples/1/index.component';
 import { CodeExampleTabsComponent } from '@demo/pages/documentation/ui/code-example-tabs';
 
-const configExample = `
-import { Provider } from '@angular/core';
-import { NGX_POPOVER_CONFIG, NgxPopoverConfig } from '@ngx-popovers/popover';
-/**
- * You have to install core to import middleware.
- * Version of core is the same as @ngx-popovers/popover
- */
-import { flip, offset, shift } from '@ngx-popovers/core';
-
-export const PopoverConfigProvider: Provider = {
-  provide: NGX_POPOVER_CONFIG,
-  useValue: new NgxPopoverConfig({
-    placement: 'top-end',
-    arrow: true,
-    closeOnClickedOutside: true,
-    /* Middleware list from floating-ui */
-    middleware: [
-      flip(),
-      shift(),
-      offset(8),
-    ]
-  })
-};
-`.trim();
 
 @Component({
   selector: 'ngx-popovers-page-popover',
@@ -61,22 +37,33 @@ export const PopoverConfigProvider: Provider = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PagePopoverComponent {
-  configExample = configExample;
-
-  firstExample = {
+  example1 = {
     EXAMPLE: import('./examples/1/index.component').then(m => m.IndexComponent),
     HTML: import('./examples/1/index.component.html?raw').then(m => m.default),
     TS: import('./examples/1/index.component.ts?raw').then(m => m.default)
   };
 
+  example2 = {
+    EXAMPLE: import('./examples/2/index.component').then(m => m.IndexComponent),
+    HTML: import('./examples/2/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/2/index.component.ts?raw').then(m => m.default)
+  };
+
+  example3 = {
+    EXAMPLE: import('./examples/3/index.component').then(m => m.IndexComponent),
+    HTML: import('./examples/3/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/3/index.component.ts?raw').then(m => m.default)
+  };
+
+  example4 = {
+    EXAMPLE: import('./examples/4/index.component').then(m => m.IndexComponent),
+    HTML: import('./examples/4/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/4/index.component.ts?raw').then(m => m.default)
+  };
+
+  configExample = import('./examples/config.example.ts?raw').then(m => m.default);
+
   popoverValue = true;
 
   placement = signal<Placement>('left');
-
-  placementList: Placement[] = [
-    'left',
-    'bottom',
-    'right',
-    'top'
-  ];
 }
