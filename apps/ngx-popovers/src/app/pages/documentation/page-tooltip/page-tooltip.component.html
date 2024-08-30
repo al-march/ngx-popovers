@@ -16,7 +16,8 @@
     <p>This component created with:</p>
     <p class="text-lg py-4">
       <a [routerLink]="['/', 'docs', 'core']" class="link inline-flex gap-2 items-center">
-        <core-icon class="text-primary" /> Core
+        <core-icon class="text-primary" />
+        Core
       </a>
     </p>
 
@@ -46,7 +47,7 @@
     <dm-warning>
       <span>
         Install the
-        <a routerLink="/core" class="link">core</a>
+        <a [routerLink]="['/', 'docs', 'core']" class="link">core</a>
         package to use a middleware
       </span>
     </dm-warning>

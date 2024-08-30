@@ -1,0 +1,29 @@
+<div class="pb-4">
+  <header class="pb-2">
+    <demo-tabs [(active)]="activeTab">
+      @for (tab of tabs(); track tab) {
+        <button demoTab [value]="tab">{{ tabTypeToLabel[tab] }}</button>
+      }
+    </demo-tabs>
+  </header>
+
+  @switch (activeTab()) {
+    @case (tabType.EXAMPLE) {
+      <div
+        class="w-full min-h-[240px] flex items-center justify-center bg-base-100 rounded-b"
+      >
+        <ng-content />
+      </div>
+    }
+    @case (tabType.HTML) {
+      <highlight lang="html" [code]="html()" />
+    }
+    @case (tabType.TS) {
+      <highlight lang="typescript" [code]="ts()" />
+    }
+    @case (tabType.SCSS) {
+      <highlight lang="scss" [code]="scss()" />
+    }
+  }
+
+</div>

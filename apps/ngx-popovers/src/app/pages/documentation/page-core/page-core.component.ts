@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TitleComponent } from '../components/title/title.component';
+import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
 import { ArrowIcon, ClickOutsideIcon, CoreIcon, FloatingIcon, PortalIcon } from '@demo/app-routes-icons';
 import { RouterLink } from '@angular/router';
 import { HighlightComponent } from '@demo/core/highlight';

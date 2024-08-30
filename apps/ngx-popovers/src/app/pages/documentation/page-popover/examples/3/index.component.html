@@ -1,0 +1,48 @@
+<div class="flex-1 p-4 flex flex-col gap-2">
+  <p>Collapsible submenu</p>
+
+  <ngx-popover>
+    <div class="w-full flex justify-center">
+      <button class="btn btn-primary" ngx-popover-anchor>
+        Menu
+      </button>
+    </div>
+
+    <ng-template ngx-popover-template>
+      <ul class="menu bg-base-200 w-56 rounded-box">
+        <li ngx-popover-close>
+          <a>Item 1</a>
+        </li>
+        <li>
+          <details open>
+            <summary>Parent</summary>
+            <ul>
+              <li ngx-popover-close>
+                <a>Submenu 1</a>
+              </li>
+              <li ngx-popover-close>
+                <a>Submenu 2</a>
+              </li>
+              <li>
+                <details open>
+                  <summary>Parent</summary>
+                  <ul>
+                    <li ngx-popover-close>
+                      <a>Submenu 1</a>
+                    </li>
+                    <li ngx-popover-close>
+                      <a>Submenu 2</a>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li ngx-popover-close>
+          <a>Item 3</a>
+        </li>
+      </ul>
+    </ng-template>
+  </ngx-popover>
+</div>
