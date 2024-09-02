@@ -47,7 +47,7 @@
     "@nx/eslint-plugin": "19.1.0",
     "@nx/jest": "19.1.0",
     "@nx/js": "19.1.0",
-    "@nx/web": "19.1.0",
+    "@nx/web": "19.6.4",
     "@nx/workspace": "19.1.0",
     "@schematics/angular": "18.0.1",
     "@swc-node/register": "1.8.0",
