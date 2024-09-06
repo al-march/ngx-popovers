@@ -151,11 +151,11 @@ export class NgxTooltip implements OnChanges {
   computePosition = new EventEmitter<ComputePosition>();
 
   isTooltipCreated = signal(false);
-  isTriggerHovered = signal(false);
+  isReferenceHovered = signal(false);
   isTooltipHovered = signal(false);
   isAnimating = signal(false);
 
-  get trigger() {
+  get reference() {
     return this.el.nativeElement as HTMLElement;
   }
 
@@ -184,12 +184,12 @@ export class NgxTooltip implements OnChanges {
   mouseMoveListener() {
     this.moveSubscriber$?.unsubscribe();
 
-    this.moveSubscriber$ = fromEvent(this.trigger, 'mousemove').pipe(
+    this.moveSubscriber$ = fromEvent(this.reference, 'mousemove').pipe(
       filter(() => !this.tooltipDisabled),
-      tap(() => this.isTriggerHovered.set(true)),
+      tap(() => this.isReferenceHovered.set(true)),
       filter(() => !this.isTooltipCreated()),
       debounceTime(this.fixedDebounce),
-      filter(() => this.isTriggerHovered())
+      filter(() => this.isReferenceHovered())
     ).subscribe(() => {
       this.ngxValue = true;
       this.cdRef.detectChanges();
@@ -201,7 +201,7 @@ export class NgxTooltip implements OnChanges {
   focusListener() {
     this.focusListener$?.unsubscribe();
 
-    this.focusListener$ = fromEvent(this.trigger, 'focus').pipe(
+    this.focusListener$ = fromEvent(this.reference, 'focus').pipe(
       filter(() => !this.tooltipDisabled),
       filter(() => !this.isTooltipCreated()),
       debounceTime(this.fixedDebounce)
@@ -215,9 +215,9 @@ export class NgxTooltip implements OnChanges {
   mouseleaveListener() {
     this.leaveSubscriber$?.unsubscribe();
 
-    this.leaveSubscriber$ = fromEvent(this.trigger, 'mouseleave').pipe(
+    this.leaveSubscriber$ = fromEvent(this.reference, 'mouseleave').pipe(
       filter(() => !this.tooltipDisabled),
-      tap(() => this.isTriggerHovered.set(false)),
+      tap(() => this.isReferenceHovered.set(false)),
       filter(() => this.isTooltipCreated()),
       debounceTime(this.fixedDebounce),
       filter(() => !this.isTooltipHovered())
@@ -232,7 +232,7 @@ export class NgxTooltip implements OnChanges {
   blurListener() {
     this.blurListener$?.unsubscribe();
 
-    this.blurListener$ = fromEvent(this.trigger, 'blur').pipe(
+    this.blurListener$ = fromEvent(this.reference, 'blur').pipe(
       filter(() => !this.tooltipDisabled),
       filter(() => this.isTooltipCreated()),
       debounceTime(this.fixedDebounce),
@@ -241,7 +241,6 @@ export class NgxTooltip implements OnChanges {
       this.ngxValue = false;
     });
   }
-
 
   onShow() {
     if (this.isTooltipCreated()) {
@@ -280,23 +279,16 @@ export class NgxTooltip implements OnChanges {
     this.isTooltipHovered.set($event);
   }
 
-  private fixDebounce(time: unknown) {
-    if (typeof time === 'number') {
-      return time >= 0 ? time : 0;
-    }
-    return 0;
-  }
-
   onClickedInside(element: Element) {
     this.clickedInside.emit(element);
   }
 
   /**
-   * Check if user clicked outside the trigger and the tooltip element.
+   * Check if user clicked outside the reference and the tooltip element.
    * Close tooltip if user clicks outside (actually for touch devices)
    */
   onClickedOutside(element: Element) {
-    if (element !== this.trigger) {
+    if (element !== this.reference) {
       this.ngxValue = false;
     }
 
@@ -315,5 +307,12 @@ export class NgxTooltip implements OnChanges {
 
   onPositionReturn($event: ComputePosition) {
     this.computePosition.emit($event);
+  }
+
+  private fixDebounce(time: unknown) {
+    if (typeof time === 'number') {
+      return time >= 0 ? time : 0;
+    }
+    return 0;
   }
 }

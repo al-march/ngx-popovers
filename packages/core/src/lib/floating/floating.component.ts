@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   booleanAttribute,
   Component,
+  computed,
   ElementRef,
   inject,
   input,
@@ -13,7 +14,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
-import { arrow, ComputePositionReturn } from '../type';
+import { arrow, ComputePositionReturn, FloatingElement, ReferenceElement } from '../type';
 import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
@@ -45,39 +46,26 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   floatingRef = viewChild<ElementRef<HTMLElement>>('floating');
 
-  trigger = input.required<HTMLElement>();
+  /**
+   * TODO: remove after v.18
+   * @deprecated
+   */
+  trigger = input<HTMLElement>();
+  reference = input<ReferenceElement>();
+
+  /**
+   * TODO: remove and use reference after v.18
+   */
+  _reference = computed(() => this.reference() || this.trigger());
+
   placement = input(this.config.placement);
   strategy = input(this.config.strategy);
-
-  /**
-   * Updates floating element automatically
-   */
   autoUpdate = input(this.config.autoUpdate, { transform: booleanAttribute });
-
-  /**
-   * Arrow component for arrow middleware.
-   * It sets by <ngx-floating-arrow />
-   */
   arrow = model<Arrow>();
-
-  /**
-   * List of floating-ui middleware
-   */
   middleware = input(this.config.middleware);
-
-  /**
-   * HTMLElement where floating renders
-   */
   bindTo = input(this.config.bindTo);
 
-  /**
-   * Emits when user clicks outside the floating element
-   */
   clickedOutside = output<Element>();
-
-  /**
-   * Emits when user clicks inside the floating element
-   */
   clickedInside = output<Element>();
 
   computePositionReturn = output<ComputePositionReturn>();
@@ -113,17 +101,17 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     this.cleanup?.();
-    const trigger = this.trigger();
+    const reference = this._reference();
     const floating = this.floatingRef()?.nativeElement;
 
-    if (trigger && floating) {
+    if (reference && floating) {
       if (this.autoUpdate()) {
-        this.cleanup = this.floatingService.autoUpdate(trigger, floating, async () => {
-          await this.computePosition(trigger, floating);
+        this.cleanup = this.floatingService.autoUpdate(reference, floating, async () => {
+          await this.computePosition(reference, floating);
         });
       } else {
         this.cleanup = undefined;
-        await this.computePosition(trigger, floating);
+        await this.computePosition(reference, floating);
       }
     }
 
@@ -131,8 +119,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
 
-  async computePosition(trigger: HTMLElement, floating: HTMLElement) {
-    const computePositionReturn = await this.floatingService.computePosition(trigger, floating, {
+  async computePosition(reference: ReferenceElement, floating: FloatingElement) {
+    const computePositionReturn = await this.floatingService.computePosition(reference, floating, {
       placement: this.placement(),
       strategy: this.strategy(),
       middleware: [...this.middleware(), this.getArrowMiddleware()]
@@ -145,8 +133,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   /* Check if user clicked outside the floating element*/
   onClickOutside(target: EventTarget) {
     if (target instanceof Element) {
-      /* Ignore the trigger element */
-      if (target !== this.trigger()) {
+      /* Ignore the reference element */
+      if (target !== this._reference()) {
         this.clickedOutside.emit(target);
       }
     }
@@ -155,8 +143,8 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   /* Check if user clicked inside the floating element*/
   onClickInside(target: EventTarget) {
     if (target instanceof Element) {
-      /* Ignore the trigger element */
-      if (target !== this.trigger()) {
+      /* Ignore the reference element */
+      if (target !== this._reference()) {
         this.clickedInside.emit(target);
       }
     }

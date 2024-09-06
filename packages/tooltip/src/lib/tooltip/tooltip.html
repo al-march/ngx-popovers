@@ -1,8 +1,8 @@
 <ng-content />
 
-@if ((isTooltipCreated() || isAnimating()) && trigger.isConnected) {
+@if ((isTooltipCreated() || isAnimating()) && reference.isConnected) {
   <ngx-floating
-    [trigger]="trigger"
+    [reference]="reference"
     [placement]="placement"
     [middleware]="middleware"
     [autoUpdate]="autoUpdate"
