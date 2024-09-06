@@ -1,13 +1,13 @@
 <!--
   By default, this content will be
-  the anchor and trigger
+  the anchor and reference
   of the Popover
 -->
 <ng-content />
 
 @if (value || isAnimating()) {
   <ngx-floating
-    [trigger]="anchor"
+    [reference]="anchor"
     [placement]="placement"
     [middleware]="middleware"
     [autoUpdate]="autoUpdate"
