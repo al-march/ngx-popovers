@@ -1,24 +1,16 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, input, signal, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsComponent } from '@demo/shared/tabs';
 import { TabComponent } from '@demo/shared/tabs/tab';
 import { HighlightComponent } from '@demo/core/highlight';
 
-export enum SourceCode {
-  TS,
-  HTML,
-  SCSS,
-}
-
 enum TabType {
-  EXAMPLE,
   HTML,
   TS,
   SCSS
 }
 
 const tabTypeToLabel: Record<TabType, string> = {
-  [TabType.EXAMPLE]: 'Example',
   [TabType.HTML]: 'HTML',
   [TabType.TS]: 'Typescript',
   [TabType.SCSS]: 'SCSS'
@@ -29,17 +21,18 @@ const tabTypeToLabel: Record<TabType, string> = {
   standalone: true,
   imports: [CommonModule, TabsComponent, TabComponent, HighlightComponent],
   templateUrl: './code-example-tabs.component.html',
-  styleUrl: './code-example-tabs.component.scss'
+  styleUrl: './code-example-tabs.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeExampleTabsComponent {
-  activeTab = signal(0);
+  activeTab = signal(-1);
 
   html = input<string | null | {}>('');
   ts = input<string | null | {}>('');
   scss = input<string | null | {}>('');
 
   tabs = computed(() => {
-    const output: TabType[] = [TabType.EXAMPLE];
+    const output: TabType[] = [];
 
     if (this.html()) output.push(TabType.HTML);
     if (this.ts()) output.push(TabType.TS);
@@ -49,4 +42,13 @@ export class CodeExampleTabsComponent {
 
   tabType = TabType;
   tabTypeToLabel = tabTypeToLabel;
+
+  highlight = viewChild<ElementRef<HTMLElement>>('highlight');
+  codeHeight = computed(() => {
+    const content = this.highlight();
+    if (content) {
+      return content.nativeElement.scrollHeight;
+    }
+    return 0;
+  });
 }

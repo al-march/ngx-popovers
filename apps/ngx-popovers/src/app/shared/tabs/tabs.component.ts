@@ -21,7 +21,7 @@ export class TabsComponent<T> {
     takeUntilDestroyed()
   );
 
-  active = model<T>();
+  active = model<T | null>();
 
   constructor() {
     this.tabsChange$.subscribe((tabs) => {
@@ -30,6 +30,10 @@ export class TabsComponent<T> {
   }
 
   selectTab(index: T) {
-    this.active.set(index);
+    if (this.active() === index) {
+      this.active.set(null)
+    } else {
+      this.active.set(index);
+    }
   }
 }

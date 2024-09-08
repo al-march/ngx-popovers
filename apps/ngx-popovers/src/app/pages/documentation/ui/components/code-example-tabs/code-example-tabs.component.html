@@ -1,5 +1,12 @@
-<div class="pb-4">
-  <header class="pb-2">
+<div class="my-4 rounded-lg border border-2 border-neutral">
+
+  <div
+    class="w-full pb-4 min-h-[280px] flex items-center justify-center bg-base-100 rounded-b"
+  >
+    <ng-content />
+  </div>
+
+  <header>
     <demo-tabs [(active)]="activeTab">
       @for (tab of tabs(); track tab) {
         <button demoTab [value]="tab">{{ tabTypeToLabel[tab] }}</button>
@@ -7,23 +14,23 @@
     </demo-tabs>
   </header>
 
-  @switch (activeTab()) {
-    @case (tabType.EXAMPLE) {
-      <div
-        class="w-full min-h-[240px] flex items-center justify-center bg-base-100 rounded-b"
-      >
-        <ng-content />
-      </div>
+  <div class="content" [style.height.px]="codeHeight()">
+    @switch (activeTab()) {
+      @case (tabType.HTML) {
+        <div #highlight>
+          <highlight lang="html" [code]="html()" />
+        </div>
+      }
+      @case (tabType.TS) {
+        <div #highlight>
+          <highlight lang="typescript" [code]="ts()" />
+        </div>
+      }
+      @case (tabType.SCSS) {
+        <div #highlight>
+          <highlight lang="scss" [code]="scss()" />
+        </div>
+      }
     }
-    @case (tabType.HTML) {
-      <highlight lang="html" [code]="html()" />
-    }
-    @case (tabType.TS) {
-      <highlight lang="typescript" [code]="ts()" />
-    }
-    @case (tabType.SCSS) {
-      <highlight lang="scss" [code]="scss()" />
-    }
-  }
-
+  </div>
 </div>
