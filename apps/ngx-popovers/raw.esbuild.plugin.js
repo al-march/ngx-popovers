@@ -28,6 +28,8 @@ const rawPlugin = {
         ? args.path
         : path.resolve(args.pluginData.resolveDir, args.path);
 
+      console.log('fullPath', fullPath);
+
       const rawText = await readFile(fullPath.replace(/\?raw$/, ''));
       const contents = rawText.toString();
 

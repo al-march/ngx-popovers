@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
 import hljs from 'highlight.js/lib/core';
@@ -27,6 +27,8 @@ export class HighlightComponent {
   code = input<string | null | {} | undefined>(undefined);
   codeString = computed(() => String(this.code()));
   lang = input('');
+
+  clean = input(false, { transform: booleanAttribute });
 
   markup = computed(() => {
     return hljs.highlight(
