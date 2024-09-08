@@ -41,8 +41,8 @@ import { isServer } from '../injections';
   styleUrl: './floating.component.scss'
 })
 export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
-  private readonly config = inject(NGX_FLOATING_CONFIG);
-  private readonly floatingService = inject(FloatingService);
+  readonly config = inject(NGX_FLOATING_CONFIG);
+  readonly floatingService = inject(FloatingService);
   readonly isServer = isServer();
 
   floatingRef = viewChild<ElementRef<HTMLElement>>('floating');
