@@ -1,7 +1,8 @@
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
-import hljs from 'highlight.js/lib/core';
+import { PortalComponent } from '@ngx-popovers/core';
+import { CodeComponent } from './code/code.component';
 
 enum CopyStatus {
   WAIT,
@@ -17,7 +18,7 @@ type CopyButton = {
 @Component({
   selector: 'highlight',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PortalComponent, CodeComponent],
   templateUrl: './highlight.component.html',
   styleUrl: './highlight.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,30 +26,12 @@ type CopyButton = {
 })
 export class HighlightComponent {
   code = input<string | null | {} | undefined>(undefined);
-  codeString = computed(() => String(this.code()));
   lang = input('');
-
   clean = input(false, { transform: booleanAttribute });
 
-  markup = computed(() => {
-    return hljs.highlight(
-      this.codeString(),
-      { language: this.lang() }
-    ).value;
-  });
-  copying = signal<CopyStatus>(CopyStatus.WAIT);
-
-  copyStatus = computed<CopyButton>(() => {
-    const status = this.copying();
-    switch (status) {
-      case CopyStatus.SUCCESS:
-        return { text: 'Copied', status };
-      case CopyStatus.ERROR:
-        return { text: 'Error', status };
-      default:
-        return { text: 'Copy', status };
-    }
-  });
+  codeString = computed(() => String(this.code()));
+  copying = signal(CopyStatus.WAIT);
+  copyStatus = computed(() => this.computeStatus(this.copying()));
 
   statuses = CopyStatus;
 
@@ -65,11 +48,22 @@ export class HighlightComponent {
     }
   }
 
-  setCopyStatus(status: CopyStatus) {
+  private setCopyStatus(status: CopyStatus) {
     this.copying.set(status);
 
     setTimeout(() => {
       this.copying.set(CopyStatus.WAIT);
     }, 1500);
+  }
+
+  private computeStatus(status: CopyStatus) {
+    switch (status) {
+      case CopyStatus.SUCCESS:
+        return { text: 'Copied', status };
+      case CopyStatus.ERROR:
+        return { text: 'Error', status };
+      default:
+        return { text: 'Copy', status };
+    }
   }
 }
