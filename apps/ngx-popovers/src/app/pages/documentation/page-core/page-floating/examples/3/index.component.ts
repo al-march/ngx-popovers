@@ -6,7 +6,7 @@ export const FloatingConfigProvider: Provider = {
   provide: NGX_FLOATING_CONFIG,
   useValue: new NgxFloatingConfig({
     placement: 'right-start',
-    autoUpdate: false,
+    autoUpdate: true,
     middleware: [
       offset(40)
     ]
