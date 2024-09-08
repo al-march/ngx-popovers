@@ -130,7 +130,7 @@ documentation for [floating-ui](https://floating-ui.com/docs/middleware).
 </div>
 
 <ngx-floating
-  [trigger]="trigger"
+  [reference]="trigger"
   [placement]="'bottom'"
   [middleware]="middleware"
 >
@@ -186,7 +186,7 @@ The arrow component adds an arrow to the floating component.
 <div #trigger>Trigger</div>
 
 <ngx-floating
-  [trigger]="trigger"
+  [reference]="trigger"
 >
   <p>Floating content</p>
 

@@ -51,7 +51,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges, DoCheck, OnD
   floatingRef = viewChild<ElementRef<HTMLElement>>('floating');
 
   /**
-   * TODO: remove after v.18
+   * TODO
+   *  remove after v.18.
+   *  Use the `reference` input instead
    * @deprecated
    */
   trigger = input<HTMLElement>();

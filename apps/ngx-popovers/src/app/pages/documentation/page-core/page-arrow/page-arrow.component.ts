@@ -6,7 +6,7 @@ const defaultUsage = `
 <div #trigger>trigger</div>
 
 <ngx-floating
-  [trigger]="trigger"
+  [reference]="trigger"
   placement="bottom"
   bindTo=".body"
 >
