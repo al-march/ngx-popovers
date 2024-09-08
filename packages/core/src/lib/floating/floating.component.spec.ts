@@ -21,11 +21,11 @@ describe('FloatingComponent', () => {
     fixture.detectChanges();
   });
 
-  const floating = () => document.querySelector('.floating') as HTMLElement;
+  const floating = (): HTMLElement => document.querySelector('.floating')!;
 
   const parentId = 'parent-id';
 
-  const createParent = () => {
+  const createReference = () => {
     const parent = document.createElement('div');
     parent.id = parentId;
     document.body.appendChild(parent);
@@ -44,7 +44,7 @@ describe('FloatingComponent', () => {
   });
 
   it('should call bind when placement changes', () => {
-    const bind = jest.spyOn(component, 'bind');
+    const bind = jest.spyOn(component, 'bindToReference');
 
     fixture.componentRef.setInput('placement', 'top');
     fixture.detectChanges();
@@ -52,13 +52,13 @@ describe('FloatingComponent', () => {
   });
 
   it('should call bind when any prop changes', () => {
-    const bind = jest.spyOn(component, 'bind');
+    const bind = jest.spyOn(component, 'bindToReference');
     component.ngOnChanges();
     expect(bind).toHaveBeenCalled();
   });
 
   it('should call bind after content init', () => {
-    const bind = jest.spyOn(component, 'bind');
+    const bind = jest.spyOn(component, 'bindToReference');
     component.ngAfterViewInit();
     expect(bind).toHaveBeenCalled();
   });
@@ -94,7 +94,7 @@ describe('FloatingComponent', () => {
   });
 
   it('should emit when click outside', () => {
-    const trigger = createParent();
+    const trigger = createReference();
     fixture.componentRef.setInput('trigger', trigger);
     const outside = jest.spyOn(component.clickedOutside, 'emit');
     document.body.click();
@@ -117,9 +117,19 @@ describe('FloatingComponent', () => {
       }
     });
 
-    await component.bind();
+    await component.bindToReference();
     await awaitTime();
     expect(compute).toHaveBeenCalled();
+  });
+
+  it('should be removed if reference is not exist', () => {
+    const div = createReference();
+    fixture.componentRef.setInput('reference', div);
+    fixture.detectChanges();
+
+    div.remove();
+    fixture.detectChanges();
+    expect(floating()).toBeFalsy();
   });
 });
 

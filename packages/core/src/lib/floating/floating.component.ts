@@ -3,6 +3,8 @@ import {
   booleanAttribute,
   Component,
   computed,
+  DoCheck,
+  effect,
   ElementRef,
   inject,
   input,
@@ -10,6 +12,7 @@ import {
   OnChanges,
   OnDestroy,
   output,
+  signal,
   viewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -40,7 +43,7 @@ import { isServer } from '../injections';
   templateUrl: './floating.component.html',
   styleUrl: './floating.component.scss'
 })
-export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class FloatingComponent implements AfterViewInit, OnChanges, DoCheck, OnDestroy {
   readonly config = inject(NGX_FLOATING_CONFIG);
   readonly floatingService = inject(FloatingService);
   readonly isServer = isServer();
@@ -53,7 +56,6 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
    */
   trigger = input<HTMLElement>();
   reference = input<ReferenceElement>();
-
   /**
    * TODO: remove and use reference after v.18
    */
@@ -69,6 +71,9 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   clickedOutside = output<Element>();
   clickedInside = output<Element>();
   computePositionReturn = output<ComputePositionReturn>();
+
+  /* Is reference element exist in the DOM */
+  referenceConnected = signal(false);
 
   readonly arrowMiddleware = computed(() => this.getArrowMiddleware(this.arrow()));
 
@@ -86,18 +91,30 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
   cleanup?: () => void;
 
   ngAfterViewInit() {
-    return this.bind();
+    return this.bindToReference();
   }
 
   ngOnChanges() {
-    return this.bind();
+    return this.bindToReference();
+  }
+
+  ngDoCheck() {
+    this.referenceConnected.set((this._reference() as HTMLElement)?.isConnected);
   }
 
   ngOnDestroy() {
     this.cleanup?.();
   }
 
-  async bind() {
+  constructor() {
+    effect(() => {
+      if (this.referenceConnected()) {
+        this.bindToReference();
+      }
+    });
+  }
+
+  async bindToReference() {
     if (this.isServer) {
       return;
     }
@@ -156,7 +173,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
    */
   setArrow(arrow: Arrow) {
     this.arrow.set(arrow);
-    return this.bind();
+    return this.bindToReference();
   }
 
   private getArrowMiddleware(arr?: Arrow) {
