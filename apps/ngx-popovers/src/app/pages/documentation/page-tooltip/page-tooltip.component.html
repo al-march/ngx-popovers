@@ -2,7 +2,7 @@
   <page-title />
 
   <section class="py-4">
-    <h2 class="text-4xl mb-4 font-bold">About</h2>
+    <sub-title>About</sub-title>
     <p>
       The Tooltip component shows tooltips next to the trigger element.
       It can be rendered into any component you want with <code class="code">bindTo</code> input
@@ -23,38 +23,23 @@
 
     <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+    <sub-title>Usage</sub-title>
     <p>Default usage:</p>
 
-    <div class="my-4">
-      <highlight lang="html" [code]="usageExample" />
-    </div>
-
+    <demo-code-example-tabs
+      [html]="example1.HTML | async"
+      [ts]="example1.TS | async"
+    >
+      <ng-container
+        *ngComponentOutlet="example1.EXAMPLE | async"
+      />
+    </demo-code-example-tabs>
 
     <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
-
-    <p>
-      There is a configuration token <code class="code">NGX_TOOLTIP_CONFIG</code>.
-      <br>
-      Please, use the <code class="code">NgxTooltipConfig</code> class
-      to change the default tooltip properties.
-    </p>
-
     <br>
 
-    <dm-warning>
-      <span>
-        Install the
-        <a [routerLink]="['/', 'docs', 'core']" class="link">core</a>
-        package to use a middleware
-      </span>
-    </dm-warning>
-
-    <div class="my-4">
-      <highlight lang="typescript" [code]="configExample" />
-    </div>
+    <sub-title>Custom component</sub-title>
 
     <p>
       You can use your own component to visualize tooltips.
@@ -63,13 +48,63 @@
       that replaces the default component.
     </p>
 
-    <div class="my-4">
-      <highlight lang="typescript" [code]="configComponentExample" />
-    </div>
+    <demo-code-example-tabs
+      [html]="example2.HTML | async"
+      [ts]="example2.TS | async"
+    >
+      <ng-container
+        *ngComponentOutlet="example2.EXAMPLE | async"
+      />
+    </demo-code-example-tabs>
 
     <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+    <sub-title>Configuration</sub-title>
+
+    <br>
+
+    <p>
+      There is a configuration token <code class="code">NGX_TOOLTIP_CONFIG</code>.
+      <br>
+      Please, use the <code class="code">NgxTooltipConfig</code> class
+      to change the default tooltip properties.
+    </p>
+
+    <dm-warning class="block my-4">
+      <span>
+        You have to install the
+        <a [routerLink]="['/', 'docs', 'core']" class="link">core</a>
+        package to use a middleware
+      </span>
+    </dm-warning>
+
+    <demo-code-example-tabs
+      [html]="example3.HTML | async"
+      [ts]="example3.TS | async"
+    >
+      <ng-container
+        *ngComponentOutlet="example3.EXAMPLE | async"
+      />
+    </demo-code-example-tabs>
+
+    <div class="divider"></div>
+
+    <sub-title>With template</sub-title>
+
+    <p>The tooltip has an Input template</p>
+
+    <demo-code-example-tabs
+      [html]="example4.HTML | async"
+      [ts]="example4.TS | async"
+    >
+      <ng-container
+        *ngComponentOutlet="example4.EXAMPLE | async"
+      />
+    </demo-code-example-tabs>
+
+    <div class="divider"></div>
+
+    <sub-title>Example</sub-title>
 
     <section class="flex gap-2 items-center p-4 mb-4">
       <label class="form-control w-full max-w-xs">
@@ -135,32 +170,5 @@
     </ngx-example>
 
     <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">With template</h2>
-
-    <p>The tooltip has an Input template</p>
-
-    <div class="my-4">
-      <highlight lang="html" [code]="templateExample" />
-    </div>
-
-    <ngx-example
-      class="p-4 items-center"
-    >
-      <button
-        class="btn"
-        ngxTooltip
-        [template]="tooltipTemplate"
-      >
-        Hover me
-      </button>
-
-      <ng-template #tooltipTemplate>
-        <div class="bg-base-300 p-4 rounded">
-          <p>Tooltip's Template</p>
-          <button class="btn btn-xs btn-accent">Action</button>
-        </div>
-      </ng-template>
-    </ngx-example>
   </section>
 </div>

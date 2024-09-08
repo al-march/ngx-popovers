@@ -1,0 +1,14 @@
+<button
+  class="btn"
+  ngxTooltip
+  [template]="tooltipTemplate"
+>
+  Hover me
+</button>
+
+<ng-template #tooltipTemplate>
+  <div class="bg-base-300 p-4 rounded">
+    <p>Tooltip's Template</p>
+    <button class="btn btn-xs btn-accent">Action</button>
+  </div>
+</ng-template>
