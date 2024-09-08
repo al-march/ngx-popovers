@@ -1,0 +1,14 @@
+<div #reference>
+  <p>Reference content</p>
+</div>
+
+<ngx-floating
+  [reference]="reference"
+  bindTo=".page"
+>
+  <div class="floating">
+    <p>Floating content</p>
+  </div>
+
+  <ngx-arrow padding="12" />
+</ngx-floating>

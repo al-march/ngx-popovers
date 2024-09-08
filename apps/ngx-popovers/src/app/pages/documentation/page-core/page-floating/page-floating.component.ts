@@ -1,44 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
-import { HighlightComponent } from '@demo/core/highlight';
 import { RouterLink } from '@angular/router';
-import { Arrow, FloatingComponent, Middleware, offset, Placement } from '@ngx-popovers/core';
-import { flip } from '@floating-ui/dom';
-
-const example = `
-<div #trigger>
-  <p>Trigger content</p>
-</div>
-
-<ngx-floating
-  [trigger]="trigger"
-  [placement]="'bottom'"
-  [middleware]="middleware"
-  bindTo=".body"
->
-  <div class="floating">
-    <p>Floating content</p>
-  </div>
-
-  <ngx-arrow padding="12" />
-</ngx-floating>
-`.trim();
-
-const configExample = `
-export const FloatingConfigProvider: Provider = {
-  provide: NGX_FLOATING_CONFIG,
-  useValue: new NgxFloatingConfig({
-    placement: 'top-end',
-    autoUpdate: false,
-    middleware: [
-      flip(),
-      shift(),
-      offset(8),
-    ]
-  })
-};
-`.trim();
+import { Arrow } from '@ngx-popovers/core';
+import { CodeExampleTabsComponent } from 'apps/ngx-popovers/src/app/pages/documentation/ui/components';
 
 @Component({
   selector: 'ngx-popovers-page-floating',
@@ -46,33 +11,34 @@ export const FloatingConfigProvider: Provider = {
   imports: [
     CommonModule,
     TitleComponent,
-    HighlightComponent,
     RouterLink,
     Arrow,
-    FloatingComponent
+    CodeExampleTabsComponent
   ],
   templateUrl: './page-floating.component.html',
   styleUrl: './page-floating.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageFloatingComponent {
-  example = example;
-  configExample = configExample;
 
-  middleware: Middleware[] = [
-    offset(10),
-    flip({
-      fallbackStrategy: 'initialPlacement'
-    })
-  ];
+  example1 = {
+    EXAMPLE: import('./examples/1/index.component').then(m => m.IndexComponent),
+    HTML: import('./examples/1/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/1/index.component.ts?raw').then(m => m.default),
+    SCSS: import('./examples/1/index.component.scss?raw').then(m => m.default)
+  };
 
-  placement = signal<Placement>('left');
-  floating = signal(false);
+  example2 = {
+    EXAMPLE: import('./examples/2/index.component').then(m => m.IndexComponent),
+    HTML: import('./examples/2/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/2/index.component.ts?raw').then(m => m.default),
+    SCSS: import('./examples/2/index.component.scss?raw').then(m => m.default)
+  };
 
-  placementList: Placement[] = [
-    'left',
-    'bottom',
-    'right',
-    'top'
-  ];
+  example3 = {
+    EXAMPLE: import('./examples/3/index.component').then(m => m.IndexComponent),
+    HTML: import('./examples/3/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/3/index.component.ts?raw').then(m => m.default),
+    SCSS: import('./examples/3/index.component.scss?raw').then(m => m.default)
+  };
 }

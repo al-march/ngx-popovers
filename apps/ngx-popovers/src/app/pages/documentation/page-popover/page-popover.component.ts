@@ -11,7 +11,7 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { WarningComponent } from '@demo/shared/warning';
 import { PopoverModule } from '@ngx-popovers/popover';
 import { IndexComponent } from '@demo/pages/documentation/page-popover/examples/1/index.component';
-import { CodeExampleTabsComponent } from '@demo/pages/documentation/ui/code-example-tabs';
+import { CodeExampleTabsComponent } from '@demo/pages/documentation/ui/components/code-example-tabs';
 
 
 @Component({
