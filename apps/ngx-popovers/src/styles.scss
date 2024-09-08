@@ -5,7 +5,7 @@
 @import "highlight.js/scss/atom-one-dark";
 
 .page {
-  @apply p-4 text-lg;
+  @apply p-4 text-lg w-full relative overflow-hidden;
 }
 
 .code {
