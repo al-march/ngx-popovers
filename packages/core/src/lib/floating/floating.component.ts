@@ -13,6 +13,7 @@ import {
   viewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
 import { arrow, ComputePositionReturn, FloatingElement, ReferenceElement } from '../type';
 import { PortalComponent } from '../portal';
@@ -40,9 +41,9 @@ import { isServer } from '../injections';
   styleUrl: './floating.component.scss'
 })
 export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
-  config = inject(NGX_FLOATING_CONFIG);
-  floatingService = inject(FloatingService);
-  isServer = isServer();
+  private readonly config = inject(NGX_FLOATING_CONFIG);
+  private readonly floatingService = inject(FloatingService);
+  readonly isServer = isServer();
 
   floatingRef = viewChild<ElementRef<HTMLElement>>('floating');
 
@@ -67,18 +68,19 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   clickedOutside = output<Element>();
   clickedInside = output<Element>();
-
   computePositionReturn = output<ComputePositionReturn>();
 
+  readonly arrowMiddleware = computed(() => this.getArrowMiddleware(this.arrow()));
+
   private _computePosition$ = new BehaviorSubject<ComputePositionReturn | undefined>(undefined);
-  public computePosition$ = this._computePosition$
+  computePosition$ = this._computePosition$
     .asObservable()
     .pipe(shareReplay());
 
-  coords$ = this.computePosition$.pipe(
+  readonly coords = toSignal(this.computePosition$.pipe(
     filter(Boolean),
     map(({ x, y }) => ({ x, y }))
-  );
+  ));
 
   /* Uses for cleanup autoUpdate function */
   cleanup?: () => void;
@@ -118,12 +120,11 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     return;
   }
 
-
   async computePosition(reference: ReferenceElement, floating: FloatingElement) {
     const computePositionReturn = await this.floatingService.computePosition(reference, floating, {
       placement: this.placement(),
       strategy: this.strategy(),
-      middleware: [...this.middleware(), this.getArrowMiddleware()]
+      middleware: [...this.middleware(), this.arrowMiddleware()]
     });
 
     this._computePosition$.next(computePositionReturn);
@@ -158,8 +159,7 @@ export class FloatingComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this.bind();
   }
 
-  getArrowMiddleware() {
-    const arr = this.arrow();
+  private getArrowMiddleware(arr?: Arrow) {
     const arrRef = arr?.arrowRef();
     if (arr && arrRef) {
       return arrow({
