@@ -1,0 +1,29 @@
+.pre {
+  display: flex;
+  justify-content: flex-start;
+
+  &-lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0.4;
+    background: theme('colors.base-100');
+    pointer-events: none;
+    user-select: none;
+    padding-left: theme('padding.2');
+    padding-right: theme('padding.5');
+
+    &__item {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      padding-top: theme('padding[0.5]');
+      line-height: 1;
+    }
+  }
+
+  &-code {
+    overflow-x: auto;
+    padding-left: theme('padding.2');
+  }
+}

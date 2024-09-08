@@ -1,8 +1,9 @@
 <div class="relative">
   <div class="mockup-code" [class.!border-none]="clean()">
-    <code>
-      <pre [innerHTML]="markup()"></pre>
-    </code>
+    <demo-code
+      [code]="code()"
+      [lang]="lang()"
+    />
   </div>
 
   <div class="absolute right-0 top-2 pr-4">

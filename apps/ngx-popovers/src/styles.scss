@@ -20,3 +20,14 @@
 .text-gradient {
   @apply inline-block bg-gradient-to-br from-rose-400 via-purple-500 to-cyan-500 bg-clip-text text-transparent;
 }
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

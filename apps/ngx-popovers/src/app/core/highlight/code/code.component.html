@@ -1,0 +1,12 @@
+<pre class="pre">
+  <div class="pre-lines">
+    @for (line of markupLines(); track line) {
+      <div class="pre-lines__item">{{ line }}</div>
+    }
+  </div>
+
+  <code
+    class="pre-code scrollbar-hide"
+    [innerHTML]="markup()"
+  ></code>
+</pre>
