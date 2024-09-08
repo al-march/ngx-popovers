@@ -8,7 +8,7 @@
     "test": "nx run-many -t test --projects=tag:package",
     "build:demo": "nx build ngx-popovers",
     "postversion": "npm run build",
-    "publish": "npm run test && lerna publish --conventional-commits"
+    "publish": "npm run test && lerna publish --force-publish --conventional-commits"
   },
   "private": true,
   "dependencies": {
