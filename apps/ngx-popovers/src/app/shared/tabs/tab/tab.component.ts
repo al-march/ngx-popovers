@@ -38,15 +38,8 @@ export class TabComponent<T = any> {
     this.index.set(index);
   }
 
-  constructor() {
-    effect(() => {
-      console.log('value!', this.value());
-    });
-  }
-
   @HostListener('click')
   onClick() {
-
     this.tabs.selectTab(this.value() || this.index());
   }
 }

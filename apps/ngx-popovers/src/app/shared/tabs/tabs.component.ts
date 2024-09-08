@@ -30,7 +30,6 @@ export class TabsComponent<T> {
   }
 
   selectTab(index: T) {
-    console.log('selected tab', index);
     this.active.set(index);
   }
 }

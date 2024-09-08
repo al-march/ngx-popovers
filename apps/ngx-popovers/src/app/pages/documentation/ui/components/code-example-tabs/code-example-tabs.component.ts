@@ -21,7 +21,7 @@ const tabTypeToLabel: Record<TabType, string> = {
   [TabType.EXAMPLE]: 'Example',
   [TabType.HTML]: 'HTML',
   [TabType.TS]: 'Typescript',
-  [TabType.SCSS]: 'scss'
+  [TabType.SCSS]: 'SCSS'
 };
 
 @Component({
