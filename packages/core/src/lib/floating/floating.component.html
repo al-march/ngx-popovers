@@ -3,8 +3,8 @@
     <div
       #floating
       class="floating"
-      [style.left.px]="(coords$ | async)?.x"
-      [style.top.px]="(coords$ | async)?.y"
+      [style.left.px]="coords()?.x"
+      [style.top.px]="coords()?.y"
 
       ngxClickOutside
       (outside)="onClickOutside($event)"
