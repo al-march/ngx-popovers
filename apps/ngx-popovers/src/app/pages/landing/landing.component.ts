@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
 import { LandingCloudsComponent } from '@demo/pages/landing/landing-clouds';
 import { PopoverAnchor, PopoverComponent, PopoverTemplate } from '@ngx-popovers/popover';
 import { DocNavigationComponent } from '@demo/pages/documentation/ui/components/doc-navigation';
-import { FloatingComponent, PlatformService } from '@ngx-popovers/core';
+import { FloatingComponent, NGX_FLOATING_CONFIG, NgxFloatingConfig, PlatformService } from '@ngx-popovers/core';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
 import {
   LandingExFlipComponent,
@@ -23,6 +23,13 @@ import {
   LandingExShiftComponent,
   LandingExSizeComponent
 } from '@demo/pages/landing/landing-examples';
+
+const provideFloating = {
+  provide: NGX_FLOATING_CONFIG,
+  useValue: new NgxFloatingConfig({
+    strategy: 'absolute'
+  })
+};
 
 @Component({
   selector: 'ngx-popovers-landing',
@@ -44,7 +51,7 @@ import {
     LandingExFlipComponent,
     LandingExSizeComponent
   ],
-  providers: [PlatformService],
+  providers: [PlatformService, provideFloating],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

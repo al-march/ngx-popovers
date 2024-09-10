@@ -9,6 +9,12 @@
     color: theme('colors.white');
   }
 
+  @supports (min-height: 100svh) {
+    &-screen {
+      min-height: 100svh;
+    }
+  }
+
   &-info {
     display: flex;
     flex-direction: column;
