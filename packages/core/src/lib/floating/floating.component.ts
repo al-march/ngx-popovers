@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   booleanAttribute,
+  ChangeDetectionStrategy,
   Component,
   computed,
   DoCheck,
@@ -41,7 +42,8 @@ import { isServer } from '../injections';
     PlatformService
   ],
   templateUrl: './floating.component.html',
-  styleUrl: './floating.component.scss'
+  styleUrl: './floating.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FloatingComponent implements AfterViewInit, OnChanges, DoCheck, OnDestroy {
   readonly config = inject(NGX_FLOATING_CONFIG);
