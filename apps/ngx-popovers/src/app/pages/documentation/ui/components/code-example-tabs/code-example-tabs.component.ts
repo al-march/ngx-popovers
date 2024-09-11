@@ -1,8 +1,27 @@
-import { ChangeDetectionStrategy, Component, computed, ElementRef, input, signal, viewChild } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, input, signal, viewChild } from '@angular/core';
+import { HighlightComponent } from '@demo/core/highlight';
 import { TabsComponent } from '@demo/shared/tabs';
 import { TabComponent } from '@demo/shared/tabs/tab';
-import { HighlightComponent } from '@demo/core/highlight';
+import { NgxTooltip } from '@ngx-popovers/tooltip';
+import { LucideAngularModule } from 'lucide-angular';
+
+const TRANSITION = '{{duration}}ms ease-in-out';
+const DURATION = { params: { duration: 200 } };
+
+export const HeightCollapse = trigger('HeightCollapse', [
+  transition(
+    ':enter',
+    [style({ height: 0 }), animate(TRANSITION, style({ height: '*' }))],
+    DURATION,
+  ),
+  transition(
+    ':leave',
+    [style({ height: '*' }), animate(TRANSITION, style({ height: 0 }))],
+    DURATION,
+  ),
+]);
 
 enum TabType {
   HTML,
@@ -19,13 +38,22 @@ const tabTypeToLabel: Record<TabType, string> = {
 @Component({
   selector: 'demo-code-example-tabs',
   standalone: true,
-  imports: [CommonModule, TabsComponent, TabComponent, HighlightComponent],
+  imports: [
+    CommonModule,
+    NgxTooltip,
+    TabsComponent,
+    TabComponent,
+    HighlightComponent,
+    LucideAngularModule
+  ],
   templateUrl: './code-example-tabs.component.html',
   styleUrl: './code-example-tabs.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [HeightCollapse]
 })
 export class CodeExampleTabsComponent {
-  activeTab = signal(-1);
+  showCode = signal(false);
+  activeTab = signal(0);
 
   html = input<string | null | {}>('');
   ts = input<string | null | {}>('');

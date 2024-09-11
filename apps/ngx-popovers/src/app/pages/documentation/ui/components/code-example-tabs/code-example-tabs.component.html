@@ -1,39 +1,51 @@
 <div class="my-4 rounded-lg border border-2 border-neutral">
-
   <div
     class="w-full min-h-[280px] flex items-center justify-center bg-base-100 rounded-b"
   >
     <ng-content />
   </div>
 
-  <header>
-    <demo-tabs [(active)]="activeTab">
-      @for (tab of tabs(); track tab) {
-        <button demoTab [value]="tab">{{ tabTypeToLabel[tab] }}</button>
-      }
-    </demo-tabs>
-  </header>
+  <div class="divider m-0 h-0"></div>
 
-  <div 
-    class="content" 
-    [style.height.px]="codeHeight()"
-  >
-    @switch (activeTab()) {
-      @case (tabType.HTML) {
-        <div #highlight>
-          <highlight clean lang="html" [code]="html()" />
-        </div>
-      }
-      @case (tabType.TS) {
-        <div #highlight>
-          <highlight clean lang="typescript" [code]="ts()" />
-        </div>
-      }
-      @case (tabType.SCSS) {
-        <div #highlight>
-          <highlight clean lang="scss" [code]="scss()" />
-        </div>
-      }
-    }
-  </div>
+  <footer class="p-2 flex items-center justify-center">
+    <button
+      class="btn btn-sm btn-ghost btn-circle"
+      [class.btn-active]="showCode()"
+      (click)="showCode.set(!showCode())"
+    >
+      <lucide-icon class="w-4" name="code"></lucide-icon>
+    </button>
+  </footer>
+
+  @if (showCode()) {
+    <div class="overflow-hidden" @HeightCollapse>
+      <div class="divider m-0 mb-2 h-0"></div>
+
+      <demo-tabs [(active)]="activeTab">
+        @for (tab of tabs(); track tab) {
+          <button demoTab [value]="tab">{{ tabTypeToLabel[tab] }}</button>
+        }
+      </demo-tabs>
+
+      <div class="content">
+        @switch (activeTab()) {
+          @case (tabType.HTML) {
+            <div #highlight>
+              <highlight clean lang="html" [code]="html()" />
+            </div>
+          }
+          @case (tabType.TS) {
+            <div #highlight>
+              <highlight clean lang="typescript" [code]="ts()" />
+            </div>
+          }
+          @case (tabType.SCSS) {
+            <div #highlight>
+              <highlight clean lang="scss" [code]="scss()" />
+            </div>
+          }
+        }
+      </div>
+    </div>
+  }
 </div>

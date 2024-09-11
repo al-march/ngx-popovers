@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, contentChildren, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabComponent } from '@demo/shared/tabs/tab';
+import { ChangeDetectionStrategy, Component, contentChildren, model } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { TabComponent } from '@demo/shared/tabs/tab';
 import { shareReplay } from 'rxjs';
 
 @Component({
@@ -30,10 +30,6 @@ export class TabsComponent<T> {
   }
 
   selectTab(index: T) {
-    if (this.active() === index) {
-      this.active.set(null)
-    } else {
-      this.active.set(index);
-    }
+    this.active.set(index);
   }
 }
