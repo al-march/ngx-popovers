@@ -85,7 +85,7 @@ component.
 ## Usage
 
 ```typescript
-import { ClickOutsideDirective } from '@ngx-popovers/core';
+import { ClickOutsideDirective, ClickOutsideEvent } from '@ngx-popovers/core';
 
 @Component({
   selector: 'ngx-click-outside-example',
@@ -93,13 +93,17 @@ import { ClickOutsideDirective } from '@ngx-popovers/core';
   imports: [ClickOutsideDirective],
   template: `
     <div
-      ngxClickOutside
+      (ngxClickOutside)="onClick($event)"
       (inside)="onInsideClicked($event)"
       (outside)="onOutsideClicked($event)"
     ></div>
   `
 })
 export class ClickOutsideExample {
+  onClick(event: ClickOutsideEvent) {
+    console.log('Click!', el);
+  }
+
   onInsideClicked(el: EventTarget) {
     console.log('Inside click!', el);
   }
@@ -125,12 +129,12 @@ documentation for [floating-ui](https://floating-ui.com/docs/middleware).
 
 ```html
 
-<div #trigger>
-  <p>Trigger content</p>
+<div #reference>
+  <p>Reference content</p>
 </div>
 
 <ngx-floating
-  [reference]="trigger"
+  [reference]="reference"
   [placement]="'bottom'"
   [middleware]="middleware"
 >
