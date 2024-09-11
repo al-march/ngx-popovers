@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
+import { RouterOutlet } from '@angular/router';
 import { ArrowProvider } from './core/custom-arrow';
 import { PopoverProvider } from './core/custom-popover';
-import { RouterOutlet } from '@angular/router';
+import { TooltipConfigProvider, TooltipProvider } from './core/custom-tooltip';
 
 @Component({
   standalone: true,
