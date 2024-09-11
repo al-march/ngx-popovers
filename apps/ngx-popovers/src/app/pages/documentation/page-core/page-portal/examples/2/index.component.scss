@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  padding: theme('padding.4') 0;
+}
+
+.section {
+  height: 140px;
+  min-width: 100px;
+  overflow: hidden;
+  padding: theme('padding.2');
+  flex: theme('flex.1');
+  border: theme('borderWidth.2') solid theme('colors.base-200');
+  border-radius: theme('borderRadius.lg');
+  transition: .4s ease background;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    background: theme('colors.base-300');
+  }
+
+  &-portal {
+    flex: theme('flex.1');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,53 +1,47 @@
 <div class="page">
-  <page-title description="The Portal component displays the content on the body by default or another DOM element." />
+  <page-title
+    description="The Portal component displays the content on the body by default or another DOM element."
+  />
+
+  <p>
+    Pop-up menus and notifications often need to appear above all other elements
+    and should not depend on the container in which they were created.
+    <strong>NgxPortal</strong> is used in all component based on the
+    <a routerLink="../floating">ngxFloating</a>
+    component, such as tooltips and popovers.
+  </p>
+
+  <div class="divider"></div>
 
   <section class="py-4">
-    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
-
+    <sub-title>Usage</sub-title>
     <p class="text-xl">Default usage:</p>
 
-    <div class="my-4">
-      <highlight lang="typescript" [code]="portalUsageHtml" />
-    </div>
-
-    <p class="text-xl">Usage with bindTo</p>
-
-    <div class="my-4">
-      <highlight lang="html" [code]="portalUsageWithBindHtml" />
-    </div>
+    <demo-code-example-tabs
+      [html]="example1.HTML | async"
+      [ts]="example1.TS | async"
+      [scss]="example1.SCSS | async"
+    >
+      <ng-container *ngComponentOutlet="example1.EXAMPLE | async" />
+    </demo-code-example-tabs>
 
     <div class="divider"></div>
 
-    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+    <sub-title>Example</sub-title>
 
     <p>
-      You can display portal content into any DOM element.
-      Select any container for demonstration
+      You can display portal content into any DOM element. Select any container
+      for demonstration
     </p>
 
-    <br>
-    <pre>bindTo: {{ selector() }}</pre>
+    <br />
 
-    <div class="flex gap-2 py-4">
-      @for (sect of sections; track sect) {
-        <section
-          [id]="sect"
-          class="flex-1 h-[120px] border-2 border-dashed border-primary rounded flex flex-col overflow-hidden"
-        >
-          <button class="btn btn-sm" (click)="section.set(sect)">{{ sect }}</button>
-          <div class="flex-1 flex items-center justify-center"></div>
-        </section>
-      }
-
-      <br>
-
-      @if (section()) {
-        <ngx-portal
-          [bindTo]="selector()"
-        >
-          <div class="p-4 bg-primary">Portal!</div>
-        </ngx-portal>
-      }
-    </div>
+    <demo-code-example-tabs
+      [html]="example2.HTML | async"
+      [ts]="example2.TS | async"
+      [scss]="example2.SCSS | async"
+    >
+      <ng-container *ngComponentOutlet="example2.EXAMPLE | async" />
+    </demo-code-example-tabs>
   </section>
 </div>

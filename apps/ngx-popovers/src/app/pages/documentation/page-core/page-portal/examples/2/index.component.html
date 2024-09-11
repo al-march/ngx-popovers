@@ -1,0 +1,17 @@
+<pre>bindTo: {{ selector() }}</pre>
+
+<div class="grid grid-cols-2 gap-2">
+  @for (sect of sections; track sect) {
+    <section [id]="sect" class="section" (click)="section.set(sect)">
+      <label class="text-center">{{ sect }}</label>
+      <div class="flex-1"></div>
+      <div class="section-portal"></div>
+    </section>
+  }
+</div>
+
+@if (section()) {
+  <ngx-portal [bindTo]="selector()">
+    <div class="p-4 bg-primary text-primary-content rounded-xl">Portal!</div>
+  </ngx-portal>
+}
