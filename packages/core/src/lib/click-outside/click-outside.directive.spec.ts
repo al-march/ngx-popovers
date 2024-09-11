@@ -1,4 +1,4 @@
-import { ClickOutsideDirective } from './click-outside.directive';
+import { ClickOutsideDirective, ClickOutsideEvent } from './click-outside.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <div
       id="test-id"
-      ngxClickOutside
+      (ngxClickOutside)="click($event)"
       (inside)="inside($event)"
       (outside)="outside($event)"
     ></div>
@@ -15,11 +15,10 @@ import { Component } from '@angular/core';
   standalone: true
 })
 class ClickOutsideDirectiveTest {
-  inside($event: EventTarget) {}
-
-  outside($event: EventTarget) {}
+  inside: (event: EventTarget) => void = jest.fn();
+  outside: (event: EventTarget) => void = jest.fn();
+  click: (event: ClickOutsideEvent) => void = jest.fn();
 }
-
 
 describe('ClickOutsideDirective', () => {
   let elRef: HTMLElement;
@@ -39,23 +38,31 @@ describe('ClickOutsideDirective', () => {
     fixture.detectChanges();
   });
 
-  const content = () => document.querySelector('#test-id') as HTMLElement;
+  const content = (): HTMLElement => document.querySelector('#test-id')!;
 
   it('should create an instance', () => {
     expect(component).toBeTruthy();
   });
 
   it('should emit inside click', () => {
-    const inside = jest.spyOn(component, 'inside');
     content().click();
-    expect(inside).toHaveBeenCalled();
-    expect(inside).toHaveBeenCalledWith(content());
+    const event: ClickOutsideEvent = {
+      inside: true,
+      outside: false,
+      target: content()
+    };
+    expect(component.inside).toHaveBeenCalledWith(event.target);
+    expect(component.click).toHaveBeenCalledWith(event);
   });
 
   it('should emit outside click', () => {
-    const outside = jest.spyOn(component, 'outside');
     document.body.click();
-    expect(outside).toHaveBeenCalled();
-    expect(outside).toHaveBeenCalledWith(document.body);
-  })
+    const event: ClickOutsideEvent = {
+      inside: false,
+      outside: true,
+      target: document.body
+    };
+    expect(component.outside).toHaveBeenCalledWith(event.target);
+    expect(component.click).toHaveBeenCalledWith(event);
+  });
 });

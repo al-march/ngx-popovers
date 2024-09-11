@@ -24,7 +24,7 @@ import { PortalComponent } from '../portal';
 import { NGX_FLOATING_CONFIG } from './core/floating.injections';
 import { FloatingService } from '../floating.service';
 import { Arrow } from '../arrow';
-import { ClickOutsideDirective } from '../click-outside';
+import { ClickOutsideDirective, ClickOutsideEvent } from '../click-outside';
 import { PlatformService } from '../platform.service';
 import { isServer } from '../injections';
 
@@ -150,6 +150,15 @@ export class FloatingComponent implements AfterViewInit, OnChanges, DoCheck, OnD
 
     this._computePosition$.next(computePositionReturn);
     this.computePositionReturn.emit(computePositionReturn);
+  }
+
+  onClick({ target, inside, outside }: ClickOutsideEvent) {
+    if (inside) {
+      this.onClickInside(target);
+    }
+    if (outside) {
+      this.onClickOutside(target);
+    }
   }
 
   /* Check if user clicked outside the floating element*/
