@@ -32,7 +32,7 @@
 
 <ngx-floating
   [reference]="reference"
-  [placement]="'top'"
+  [placement]="control.value || 'bottom'"
   [middleware]="[]"
 >
   <div class="p-4 bg-error text-error-content">
