@@ -23,7 +23,20 @@
   }
 
   &-code {
+    width: 100%;
     overflow-x: auto;
     padding-left: theme('padding.2');
+
+    .line {
+      position: relative;
+      display: inline-block;
+    }
+
+    pre {
+      &:before {
+        content: none;
+        margin: 0;
+      }
+    }
   }
 }
