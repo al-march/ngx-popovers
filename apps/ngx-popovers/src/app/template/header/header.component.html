@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100">
+<div #navbar class="navbar bg-base-100">
   <div class="flex-none">
     <button class="btn btn-square btn-ghost" (click)="onToggleSidebar()">
       <svg
@@ -49,7 +49,8 @@
       target="_blank"
       class="btn btn-sm btn-ghost"
       ngxTooltip="npm page"
-      [arrow]="true"
+      arrow
+      [bindTo]="navbar"
     >
       v.{{ core.version }}
     </a>
@@ -58,7 +59,8 @@
       target="_blank"
       class="btn btn-sm btn-circle btn-ghost"
       ngxTooltip="github page"
-      [arrow]="true"
+      arrow
+      [bindTo]="navbar"
     >
       <svg
         height="24"
