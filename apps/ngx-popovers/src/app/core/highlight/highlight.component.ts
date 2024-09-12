@@ -10,11 +10,6 @@ enum CopyStatus {
   ERROR
 }
 
-type CopyButton = {
-  text: string;
-  status: CopyStatus;
-}
-
 @Component({
   selector: 'highlight',
   standalone: true,
@@ -22,7 +17,6 @@ type CopyButton = {
   templateUrl: './highlight.component.html',
   styleUrl: './highlight.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { ngSkipHydration: 'true' }
 })
 export class HighlightComponent {
   code = input<string | null | {} | undefined>(undefined);

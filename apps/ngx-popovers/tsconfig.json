@@ -9,7 +9,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "lib": ["ESNext"],
     "resolveJsonModule": true,
     "paths": {
       "@ngx-popovers/core": ["packages/core/src/index.ts"],
