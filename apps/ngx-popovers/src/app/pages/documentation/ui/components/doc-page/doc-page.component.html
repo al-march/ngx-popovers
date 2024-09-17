@@ -12,11 +12,10 @@
       <ul class="menu p-0 pt-4 m-0">
         @for (sect of sections(); track sect.name()) {
           <li>
-            <a
-              class="first-letter:uppercase"
-              [href]="location + '#' + sect.id()"
-            >
-              {{ sect.name() }}
+            <a [href]="location + '#' + sect.id()">
+              <span class="first-letter:uppercase">
+                {{ sect.name() }}
+              </span>
             </a>
           </li>
         }
