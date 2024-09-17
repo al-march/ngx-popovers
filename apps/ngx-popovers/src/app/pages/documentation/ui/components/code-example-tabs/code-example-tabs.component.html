@@ -1,4 +1,4 @@
-<div class="my-4 rounded-lg border border-2 border-neutral">
+<div class="my-4 rounded-lg border-2 border-neutral">
   <div
     class="w-full min-h-[280px] flex items-center justify-center bg-base-100 rounded-b"
   >
@@ -21,11 +21,13 @@
     <div class="overflow-hidden" @HeightCollapse>
       <div class="divider m-0 mb-2 h-0"></div>
 
-      <demo-tabs [(active)]="activeTab">
-        @for (tab of tabs(); track tab) {
-          <button demoTab [value]="tab">{{ tabTypeToLabel[tab] }}</button>
-        }
-      </demo-tabs>
+      <div class="w-full overflow-hidden overflow-x-auto">
+        <demo-tabs [(active)]="activeTab">
+          @for (tab of tabs(); track tab) {
+            <button demoTab [value]="tab">{{ tabTypeToLabel[tab] }}</button>
+          }
+        </demo-tabs>
+      </div>
 
       <div class="content">
         @switch (activeTab()) {

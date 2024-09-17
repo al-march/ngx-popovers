@@ -1,15 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
-import { HighlightComponent } from '@demo/core/highlight';
-import { RouterLink } from '@angular/router';
-import { Placement } from '@floating-ui/dom';
-import { NgxTooltip } from '@ngx-popovers/tooltip';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { CoreIcon } from '@demo/app-routes-icons';
+import { HighlightComponent } from '@demo/core/highlight';
+import { CodeExampleTabsComponent, SubTitleComponent } from '@demo/pages/documentation/ui/components';
+import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
 import { WarningComponent } from '@demo/shared/warning';
 import { ExampleComponent } from '@demo/template/example';
-import { CoreIcon } from '@demo/app-routes-icons';
-import { CodeExampleTabsComponent, SubTitleComponent } from '@demo/pages/documentation/ui/components';
+import { Placement } from '@floating-ui/dom';
+import { NgxTooltip } from '@ngx-popovers/tooltip';
+import { DocPageComponent } from "../ui/components/doc-page/doc-page.component";
+import { DocSectionComponent } from "../ui/components/doc-page/doc-section/doc-section.component";
 
 
 @Component({
@@ -26,8 +28,10 @@ import { CodeExampleTabsComponent, SubTitleComponent } from '@demo/pages/documen
     WarningComponent,
     ExampleComponent,
     CodeExampleTabsComponent,
-    SubTitleComponent
-  ],
+    SubTitleComponent,
+    DocPageComponent,
+    DocSectionComponent
+],
   templateUrl: './page-tooltip.component.html',
   styleUrl: './page-tooltip.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

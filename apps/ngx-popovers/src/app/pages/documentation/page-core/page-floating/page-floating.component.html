@@ -1,10 +1,10 @@
-<div class="page">
+<demo-doc-page>
   <page-title description="The Floating component implements the floating-ui library for Angular." />
 
-  <section class="py-4">
-    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
+  <demo-doc-section name="usage">
+    <demo-sub-title>Usage</demo-sub-title>
 
-    <p class="text-xl">Default usage:</p>
+    <p class="text-xl" id="default">Default usage:</p>
 
     <demo-code-example-tabs
       [html]="example1.HTML | async"
@@ -23,17 +23,15 @@
       <a class="link" [routerLink]="['/', 'core', 'arrow']">Arrow</a>
       inside.
     </p>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">Example</h2>
+  <demo-doc-section name="placements">
+    <demo-sub-title>Placements</demo-sub-title>
 
     <p>
       In the example below, the floating component is rendered
-      inside the dotted area to limit its visibility.
+      according placement.
     </p>
-
-    <br>
 
     <demo-code-example-tabs
       [html]="example2.HTML | async"
@@ -44,10 +42,10 @@
         *ngComponentOutlet="example2.EXAMPLE | async"
       />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+  <demo-doc-section name="configuration">
+    <demo-sub-title>Configuration</demo-sub-title>
 
     <p>There is a configuration token <code class="code">NGX_FLOATING_CONFIG</code>.</p>
     <p>Please, use the <code class="code">NgxFloatingConfig</code> class to change the default floating properties.</p>
@@ -63,5 +61,5 @@
         />
       </demo-code-example-tabs>
     </div>
-  </section>
-</div>
+  </demo-doc-section>
+</demo-doc-page>

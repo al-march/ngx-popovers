@@ -1,50 +1,51 @@
-<div class="page">
+<demo-doc-page>
   <page-title />
 
-  <section class="py-4">
-    <sub-title>About</sub-title>
+  <demo-doc-section name="about">
+    <demo-sub-title>About</demo-sub-title>
     <p>
-      The Tooltip component shows tooltips next to the trigger element.
-      It can be rendered into any component you want with <code class="code">bindTo</code> input
+      The Tooltip component shows tooltips next to the trigger element. It can
+      be rendered into any component you want with
+      <code class="code">bindTo</code> input
     </p>
-    <br>
+    <br />
 
     <highlight lang="bash" [code]="'npm i @ngx-popovers/tooltip'" />
 
-    <br>
+    <br />
 
     <p>This component created with:</p>
     <p class="text-lg py-4">
-      <a [routerLink]="['/', 'docs', 'core']" class="link inline-flex gap-2 items-center">
+      <a
+        [routerLink]="['/', 'docs', 'core']"
+        class="link inline-flex gap-2 items-center"
+      >
         <core-icon class="text-primary" />
         Core
       </a>
     </p>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <sub-title>Usage</sub-title>
+  <demo-doc-section name="usage">
+    <demo-sub-title>Usage</demo-sub-title>
     <p>Default usage:</p>
 
     <demo-code-example-tabs
       [html]="example1.HTML | async"
       [ts]="example1.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example1.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example1.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <br>
-
-    <sub-title>Custom component</sub-title>
+  <demo-doc-section name="custom component">
+    <demo-sub-title>Custom component</demo-sub-title>
 
     <p>
       You can use your own component to visualize tooltips.
-      <br>
-      There is an injection token <code class="code">NGX_TOOLTIP_COMPONENT</code>
+      <br />
+      There is an injection token
+      <code class="code">NGX_TOOLTIP_COMPONENT</code>
       that replaces the default component.
     </p>
 
@@ -52,22 +53,19 @@
       [html]="example2.HTML | async"
       [ts]="example2.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example2.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example2.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <sub-title>Configuration</sub-title>
-
-    <br>
+  <demo-doc-section name="configuration">
+    <demo-sub-title>Configuration</demo-sub-title>
 
     <p>
-      There is a configuration token <code class="code">NGX_TOOLTIP_CONFIG</code>.
-      <br>
-      Please, use the <code class="code">NgxTooltipConfig</code> class
-      to change the default tooltip properties.
+      There is a configuration token
+      <code class="code">NGX_TOOLTIP_CONFIG</code>.
+      <br />
+      Please, use the <code class="code">NgxTooltipConfig</code> class to change
+      the default tooltip properties.
     </p>
 
     <dm-warning class="block my-4">
@@ -82,14 +80,12 @@
       [html]="example3.HTML | async"
       [ts]="example3.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example3.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example3.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <sub-title>With template</sub-title>
+  <demo-doc-section name="with template">
+    <demo-sub-title>With template</demo-sub-title>
 
     <p>The tooltip has an Input template</p>
 
@@ -97,14 +93,12 @@
       [html]="example4.HTML | async"
       [ts]="example4.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example4.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example4.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <sub-title>Example</sub-title>
+  <demo-doc-section name="example">
+    <demo-sub-title>Example</demo-sub-title>
 
     <section class="flex gap-2 items-center p-4 mb-4">
       <label class="form-control w-full max-w-xs">
@@ -152,9 +146,13 @@
       </div>
     </section>
 
-    <ngx-example class="min-h-[400px] max-w-[800px] flex items-center justify-center">
+    <ngx-example
+      class="min-h-[400px] max-w-[800px] flex items-center justify-center"
+    >
       <div #demoWrapper>
-        <div class="w-32 h-32 border-2 border-dashed border-secondary rounded flex">
+        <div
+          class="w-32 h-32 border-2 border-dashed border-secondary rounded flex"
+        >
           <div
             tabindex="0"
             class="flex-1"
@@ -168,7 +166,5 @@
         </div>
       </div>
     </ngx-example>
-
-    <div class="divider"></div>
-  </section>
-</div>
+  </demo-doc-section>
+</demo-doc-page>

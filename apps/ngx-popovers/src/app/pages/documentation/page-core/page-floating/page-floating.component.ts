@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
 import { RouterLink } from '@angular/router';
 import { Arrow } from '@ngx-popovers/core';
-import { CodeExampleTabsComponent } from 'apps/ngx-popovers/src/app/pages/documentation/ui/components';
+import {
+  CodeExampleTabsComponent, DocSectionComponent,
+  SubTitleComponent
+} from 'apps/ngx-popovers/src/app/pages/documentation/ui/components';
+import { DocPageComponent } from '@demo/pages/documentation/ui/components/doc-page/doc-page.component';
 
 @Component({
   selector: 'ngx-popovers-page-floating',
@@ -13,7 +17,10 @@ import { CodeExampleTabsComponent } from 'apps/ngx-popovers/src/app/pages/docume
     TitleComponent,
     RouterLink,
     Arrow,
-    CodeExampleTabsComponent
+    CodeExampleTabsComponent,
+    DocPageComponent,
+    SubTitleComponent,
+    DocSectionComponent
   ],
   templateUrl: './page-floating.component.html',
   styleUrl: './page-floating.component.scss',

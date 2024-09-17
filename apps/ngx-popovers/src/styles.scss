@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .page {
   @apply p-4 text-lg w-full relative overflow-hidden;
 }

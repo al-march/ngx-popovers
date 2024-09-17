@@ -1,4 +1,4 @@
-<div class="page">
+<demo-doc-page>
   <page-title
     description="The Portal component displays the content on the body by default or another DOM element."
   />
@@ -11,10 +11,8 @@
     component, such as tooltips and popovers.
   </p>
 
-  <div class="divider"></div>
-
-  <section class="py-4">
-    <sub-title>Usage</sub-title>
+  <demo-doc-section name="Usage">
+    <demo-sub-title>Usage</demo-sub-title>
     <p class="text-xl">Default usage:</p>
 
     <demo-code-example-tabs
@@ -24,17 +22,15 @@
     >
       <ng-container *ngComponentOutlet="example1.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <sub-title>Example</sub-title>
+  <demo-doc-section name="examples">
+    <demo-sub-title>Examples</demo-sub-title>
 
     <p>
       You can display portal content into any DOM element. Select any container
       for demonstration
     </p>
-
-    <br />
 
     <demo-code-example-tabs
       [html]="example2.HTML | async"
@@ -43,5 +39,5 @@
     >
       <ng-container *ngComponentOutlet="example2.EXAMPLE | async" />
     </demo-code-example-tabs>
-  </section>
-</div>
+  </demo-doc-section>
+</demo-doc-page>
