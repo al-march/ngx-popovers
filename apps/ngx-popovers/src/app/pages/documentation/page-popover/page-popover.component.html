@@ -1,146 +1,91 @@
-<div class="page">
+<demo-doc-page>
   <page-title />
 
-  <section class="py-4">
-    <h2 class="text-4xl mb-4 font-bold">About</h2>
+  <demo-doc-section name="about">
+    <demo-sub-title>About</demo-sub-title>
+
     <p>
-      Popover component displays content next to the trigger element on mouse click.
-      It can be rendered into any component you want with <code class="code">bindTo</code> input
+      Popover component displays content next to the trigger element on mouse
+      click. It can be rendered into any component you want with
+      <code class="code">bindTo</code> input
     </p>
-    <br>
 
-    <highlight lang="bash" [code]="'npm i @ngx-popovers/popover'" />
-
-    <br>
+    <highlight
+      class="block my-4"
+      lang="bash"
+      [code]="'npm i @ngx-popovers/popover'"
+    />
 
     <p>This component created with:</p>
     <p class="text-lg py-4">
-      <a [routerLink]="['/', 'docs', 'core']" class="link inline-flex gap-2 items-center">
+      <a
+        [routerLink]="['/', 'docs', 'core']"
+        class="link inline-flex gap-2 items-center"
+      >
         <core-icon class="text-primary" />
         Core
       </a>
     </p>
+  </demo-doc-section>
 
-    <div class="divider"></div>
+  <demo-doc-section name="usage">
+    <demo-sub-title>Usage</demo-sub-title>
 
-    <ngx-example class="min-h-[200px] max-w-[800px] flex items-center justify-center">
-      <ngx-popover
-        [disabled]="false"
-        [(value)]="popoverValue"
-        [animationDisabled]="false"
-        [closeOnClickedOutside]="false"
-      >
-        <button class="btn btn-accent">
-          Click me!
-        </button>
-
-        <ng-template ngx-popover-template>
-          <div class="card bg-base-100 border-4 border-base-300 shadow-xl">
-            <div class="card-body p-4 items-center text-center">
-              <h2 class="card-title">I am Popover!</h2>
-              <p class="divider my-0"></p>
-              <p>
-                <b class="text-info">Dynamic</b>,
-                <b class="text-warning">Reusable</b>,
-                <b class="text-accent">Universal</b>
-              </p>
-              <p>
-                Just install and use it <br> with all the advantages of
-                <a
-                  class="link"
-                  target="_blank"
-                  href="https://floating-ui.com/"
-                  ngxTooltip="The best library for Popovers!"
-                  arrow
-                >
-                  floating-ui
-                </a>
-              </p>
-
-              <div class="card-actions">
-                <button
-                  class="btn btn-sm btn-primary"
-                  ngx-popover-close
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-
-        <ngx-arrow />
-
-      </ngx-popover>
-    </ngx-example>
-
-    <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
     <p>Default usage:</p>
 
     <demo-code-example-tabs
       [html]="example1.HTML | async"
       [ts]="example1.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example1.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example1.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
+  <demo-doc-section name="placements">
+    <demo-sub-title>Placements</demo-sub-title>
 
-    <h2 class="text-4xl mb-4 font-bold">Examples</h2>
-    <p class="py-6">Placements:</p>
-
+    <p>You can use any placement from floating-ui</p>
     <demo-code-example-tabs
       [html]="example2.HTML | async"
       [ts]="example2.TS | async"
+      [scss]="example2.SCSS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example2.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example2.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <br>
-    <div class="divider"></div>
-    <p class="text-xl">Menu:</p>
-    <br>
+  <demo-doc-section name="menu">
+    <demo-sub-title>Menu</demo-sub-title>
 
     <demo-code-example-tabs
       [html]="example3.HTML | async"
       [ts]="example3.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example3.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example3.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <br>
-    <div class="divider"></div>
-    <br>
+  <demo-doc-section name="icon menu">
+    <demo-sub-title>Icon menu</demo-sub-title>
 
     <demo-code-example-tabs
       [html]="example4.HTML | async"
       [ts]="example4.TS | async"
     >
-      <ng-container
-        *ngComponentOutlet="example4.EXAMPLE | async"
-      />
+      <ng-container *ngComponentOutlet="example4.EXAMPLE | async" />
     </demo-code-example-tabs>
+  </demo-doc-section>
 
-    <div class="divider"></div>
-
-    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+  <demo-doc-section name="configuration">
+    <demo-sub-title>Configuration</demo-sub-title>
 
     <p>
-      There is a configuration token <code class="code">NGX_POPOVER_CONFIG</code>.
-      <br>
-      Please, use the <code class="code">NgxPopoverConfig</code> class
-      to change the default tooltip properties.
+      There is a configuration token
+      <code class="code">NGX_POPOVER_CONFIG</code>.
+      <br />
+      Please, use the <code class="code">NgxPopoverConfig</code> class to change
+      the default tooltip properties.
     </p>
-
-    <br>
 
     <dm-warning>
       <span>
@@ -153,5 +98,5 @@
     <div class="my-4">
       <highlight lang="typescript" [code]="configExample | async" />
     </div>
-  </section>
-</div>
+  </demo-doc-section>
+</demo-doc-page>

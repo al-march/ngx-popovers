@@ -1,12 +1,11 @@
-import { Component, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Provider } from '@angular/core';
 import { NGX_TOOLTIP_COMPONENT, NgxTooltip, TooltipBase } from '@ngx-popovers/tooltip';
 
 /**
  * You have to install core to import middleware.
  * Version of the core is the same as the tooltip package.
  */
-
 @Component({
   standalone: true,
   template: `
@@ -27,9 +26,7 @@ export const TooltipProvider: Provider = {
   selector: 'demo-index',
   standalone: true,
   imports: [CommonModule, NgxTooltip],
-  providers: [
-    TooltipProvider
-  ],
+  providers: [TooltipProvider],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss'
 })

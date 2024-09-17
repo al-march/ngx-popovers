@@ -1,0 +1,30 @@
+.doc-page {
+  display: flex;
+  gap: theme('gap.4');
+  padding: theme('padding.4');
+  position: relative;
+  width: 100%;
+
+  &__content {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__aside {
+    flex: 1 1 0;
+    position: sticky;
+    min-width: 200px;
+    top: theme('size.14');
+    height: max-content;
+  }
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column-reverse;
+
+    &__aside {
+      position: static;
+      padding: 0;
+    }
+  }
+}

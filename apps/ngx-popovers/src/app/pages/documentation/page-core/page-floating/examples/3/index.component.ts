@@ -1,11 +1,17 @@
-import { Component, Provider } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Arrow, FloatingComponent, NGX_FLOATING_CONFIG, NgxFloatingConfig, offset } from '@ngx-popovers/core';
+import { Component, Provider } from '@angular/core';
+import {
+  Arrow,
+  FloatingComponent,
+  NGX_FLOATING_CONFIG,
+  NgxFloatingConfig,
+  offset
+} from '@ngx-popovers/core';
 
 export const FloatingConfigProvider: Provider = {
   provide: NGX_FLOATING_CONFIG,
   useValue: new NgxFloatingConfig({
-    placement: 'right-start',
+    placement: 'top-start',
     autoUpdate: true,
     middleware: [
       offset(40)

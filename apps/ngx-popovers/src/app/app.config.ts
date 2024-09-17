@@ -10,7 +10,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
     provideRouter(appRoutes, withInMemoryScrolling({
-      scrollPositionRestoration: 'enabled'
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled'
     })),
     provideAnimationsAsync(),
     importProvidersFrom(
