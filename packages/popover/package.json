@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/popover",
-  "version": "18.1.2",
+  "version": "18.2.0",
   "description": "Popover component based on Angular 17+ and Floating-ui displays content next to the trigger element on mouse click",
   "keywords": [
     "components",

@@ -1,6 +1,6 @@
 {
   "name": "@ngx-popovers/dialog",
-  "version": "18.1.2",
+  "version": "18.2.0",
   "description": "The simplest Dialog component based on Angular 17+",
   "keywords": [
     "components",

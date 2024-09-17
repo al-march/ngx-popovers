@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.2.0](https://github.com/al-march/ngx-popovers/compare/v18.1.2...v18.2.0) (2024-09-17)
+
+**Note:** Version bump only for package @ngx-popovers/popover
+
 ## [18.1.2](https://github.com/al-march/ngx-popovers/compare/v18.1.1...v18.1.2) (2024-09-08)
 
 **Note:** Version bump only for package @ngx-popovers/popover
