@@ -1,22 +1,26 @@
-<div class="page">
-  <page-title description="The Arrow component adds arrow to the floating elements." />
+<demo-doc-page>
+  <page-title
+    description="The Arrow component adds arrow to the floating elements."
+  />
 
-  <section class="py-4">
-    <h2 class="text-4xl mb-4 font-bold">Usage</h2>
-    <p>
-      The arrow component should be used into the floating component
-    </p>
+  <demo-doc-section name="usage">
+    <demo-sub-title>Usage</demo-sub-title>
 
-    <div class="my-4">
-      <highlight lang="html" [code]="defaultUsage" />
-    </div>
+    <p>The arrow component should be used into the floating component</p>
 
-    <div class="divider"></div>
-    <h2 class="text-4xl mb-4 font-bold">Configuration</h2>
+    <demo-code-example-tabs
+      [html]="example1.HTML | async"
+      [ts]="example1.TS | async"
+      [scss]="example1.SCSS | async"
+    >
+      <ng-container *ngComponentOutlet="example1.EXAMPLE | async" />
+    </demo-code-example-tabs>
+  </demo-doc-section>
+
+  <demo-doc-section name="configuration">
+    <demo-sub-title>Configuration</demo-sub-title>
 
     <p>You can use your own arrow component</p>
-    <div class="my-4">
-      <highlight lang="typescript" [code]="configExample" />
-    </div>
-  </section>
-</div>
+    <highlight lang="typescript" [code]="configExample | async" />
+  </demo-doc-section>
+</demo-doc-page>
