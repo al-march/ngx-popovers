@@ -9,7 +9,7 @@ tmp
 node_modules
 
 # IDEs and editors
-/.idea
+.idea
 .project
 .classpath
 .c9/

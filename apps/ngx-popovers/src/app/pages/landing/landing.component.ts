@@ -59,14 +59,16 @@ const provideFloating = {
     'data-theme': 'dark'
   }
 })
-export class LandingComponent implements AfterViewInit, OnDestroy {
+export class LandingComponent implements AfterViewInit {
   platformId = inject(PLATFORM_ID);
-  isServer = () => isPlatformServer(this.platformId);
+  private readonly isServer = () => isPlatformServer(this.platformId);
 
-  title = 'ngx-popovers';
-  description = 'Angular Floating components';
 
-  year = signal(new Date().getFullYear());
+  readonly title = 'ngx-popovers';
+  readonly description = 'Angular Floating components';
+
+  readonly giveStarPopover = signal(false);
+  readonly year = signal(new Date().getFullYear());
 
   constructor(
     public core: CoreService
@@ -94,9 +96,10 @@ export class LandingComponent implements AfterViewInit, OnDestroy {
           opacity: [0, 1],
           duration: 400
         });
-    }
-  }
 
-  ngOnDestroy() {
+      setTimeout(() => {
+        this.giveStarPopover.set(true);
+      }, 1500)
+    }
   }
 }
