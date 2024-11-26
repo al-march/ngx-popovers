@@ -1,50 +1,30 @@
-<div class="page">
+<demo-doc-page>
   <page-title />
 
-  <section class="py-4">
-    <h2 class="text-4xl mb-4 font-bold">About</h2>
-
+  <demo-doc-section name="about">
+    <demo-sub-title>About</demo-sub-title>
     <p>Dialog is used to show a content when you click a button.</p>
 
-    <div class="my-4">
-      <highlight lang="bash" [code]="'npm i @ngx-popovers/dialog'" />
-    </div>
+    <highlight
+      class="block my-4"
+      lang="bash"
+      [code]="'npm i @ngx-popovers/dialog'"
+    />
 
-    <h2 class="text-2xl mb-4 font-bold">Default example</h2>
+  </demo-doc-section>
 
+  <demo-doc-section name="usage">
+    <demo-sub-title>Usage</demo-sub-title>
     <p>
       Below you can see the easiest way to add a dialog to your page.
       This dialog will be rendered as the last child of the body.
     </p>
 
-    <ngx-example class="py-10 my-4 max-w-[800px] items-center">
-      <ngx-dialog [(value)]="open" contentClass="first">
-        <button class="btn btn-accent" ngx-dialog-trigger>Toggle</button>
-
-        <ng-template ngx-dialog-template>
-          <div class="modal-box">
-            <p class="text-2xl">Hello! I am Dialog</p>
-            <div class="divider"></div>
-            <p>
-              Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit.
-            </p>
-
-            <div class="py-4"></div>
-
-            <button
-              class="btn btn-sm btn-error ml-auto"
-              ngx-dialog-close
-            >
-              Close
-            </button>
-          </div>
-        </ng-template>
-      </ngx-dialog>
-    </ngx-example>
-
-    <div class="my-4">
-      <highlight lang="html" [code]="defaultExample" />
-    </div>
-  </section>
-</div>
+    <demo-code-example-tabs
+      [html]="example1.HTML | async"
+      [ts]="example1.TS | async"
+    >
+      <ng-container *ngComponentOutlet="example1.EXAMPLE | async" />
+    </demo-code-example-tabs>
+  </demo-doc-section>
+</demo-doc-page>

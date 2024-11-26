@@ -4,6 +4,12 @@ import { TitleComponent } from '@demo/pages/documentation/ui/components/title/ti
 import { ExampleComponent } from '@demo/template/example';
 import { HighlightComponent } from '@demo/core/highlight';
 import { NgxDialog } from '@ngx-popovers/dialog';
+import {
+  CodeExampleTabsComponent,
+  DocPageComponent,
+  DocSectionComponent,
+  SubTitleComponent
+} from '@demo/pages/documentation/ui/components';
 
 const defaultExample = `
 <ngx-dialog>
@@ -44,14 +50,22 @@ const defaultExample = `
     TitleComponent,
     ExampleComponent,
     HighlightComponent,
-    NgxDialog
+    NgxDialog,
+    DocPageComponent,
+    DocSectionComponent,
+    SubTitleComponent,
+    CodeExampleTabsComponent
   ],
   templateUrl: './page-dialog.component.html',
   styleUrl: './page-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageDialogComponent {
-  defaultExample = defaultExample;
-
   open = false;
+
+  example1 = {
+    EXAMPLE: import('./examples/1/index.component').then(c => c.IndexComponent),
+    HTML: import('./examples/1/index.component.html?raw').then(m => m.default),
+    TS: import('./examples/1/index.component.ts?raw').then(m => m.default)
+  };
 }
