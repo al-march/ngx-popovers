@@ -1,19 +1,17 @@
-import { ChangeDetectionStrategy, Component, effect, ElementRef, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FloatingComponent, isServer, offset, size } from '@ngx-popovers/core';
+import { FloatingComponent, offset, size } from '@ngx-popovers/core';
+import { ScrollToCenterDirective } from '@demo/pages/landing/tools';
 
 @Component({
   selector: 'landing-ex-size',
   standalone: true,
-  imports: [CommonModule, FloatingComponent],
+  imports: [CommonModule, FloatingComponent, ScrollToCenterDirective],
   templateUrl: './landing-ex-size.component.html',
   styleUrl: './landing-ex-size.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingExSizeComponent {
-  isBrowser = !isServer();
-  reference = viewChild<ElementRef<HTMLElement>>('reference');
-
   middleware = [
     size({
       apply({ availableWidth, availableHeight, elements }) {
@@ -26,14 +24,4 @@ export class LandingExSizeComponent {
     }),
     offset(5)
   ];
-
-  constructor() {
-    if (this.isBrowser) {
-      effect(() => {
-        this.reference()?.nativeElement.scrollIntoView({
-          block: 'center'
-        });
-      });
-    }
-  }
 }
