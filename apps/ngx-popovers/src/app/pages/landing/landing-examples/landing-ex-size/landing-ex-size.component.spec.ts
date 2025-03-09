@@ -7,7 +7,7 @@ describe('LandingExSizeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LandingExSizeComponent],
+      imports: [LandingExSizeComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LandingExSizeComponent);

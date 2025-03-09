@@ -3,6 +3,7 @@ import { DialogComponent } from '../dialog';
 
 @Directive({
   selector: '[ngx-dialog-close]',
+  standalone: false
 })
 export class DialogCloseDirective {
   dialog = inject(DialogComponent);

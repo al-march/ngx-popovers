@@ -11,17 +11,37 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "paths": {
-      "@ngx-popovers/core": ["packages/core/src/index.ts"],
-      "@ngx-popovers/dialog": ["packages/dialog/src/index.ts"],
-      "@ngx-popovers/popover": ["packages/popover/src/index.ts"],
-      "@ngx-popovers/tooltip": ["packages/tooltip/src/index.ts"],
+      "@ngx-popovers/core": [
+        "packages/core/src/index.ts"
+      ],
+      "@ngx-popovers/dialog": [
+        "packages/dialog/src/index.ts"
+      ],
+      "@ngx-popovers/popover": [
+        "packages/popover/src/index.ts"
+      ],
+      "@ngx-popovers/tooltip": [
+        "packages/tooltip/src/index.ts"
+      ],
       // Local paths
-      "@demo/pages/*": ["apps/ngx-popovers/src/app/pages/*"],
-      "@demo/shared/*": ["apps/ngx-popovers/src/app/shared/*"],
-      "@demo/template/*": ["apps/ngx-popovers/src/app/template/*"],
-      "@demo/core/*": ["apps/ngx-popovers/src/app/core/*"],
-      "@demo/app-routes": ["apps/ngx-popovers/src/app/app.routes.ts"],
-      "@demo/app-routes-icons": ["apps/ngx-popovers/src/app/routes-icons.ts"]
+      "@demo/pages/*": [
+        "apps/ngx-popovers/src/app/pages/*"
+      ],
+      "@demo/shared/*": [
+        "apps/ngx-popovers/src/app/shared/*"
+      ],
+      "@demo/template/*": [
+        "apps/ngx-popovers/src/app/template/*"
+      ],
+      "@demo/core/*": [
+        "apps/ngx-popovers/src/app/core/*"
+      ],
+      "@demo/app-routes": [
+        "apps/ngx-popovers/src/app/app.routes.ts"
+      ],
+      "@demo/app-routes-icons": [
+        "apps/ngx-popovers/src/app/routes-icons.ts"
+      ]
     }
   },
   "files": [],

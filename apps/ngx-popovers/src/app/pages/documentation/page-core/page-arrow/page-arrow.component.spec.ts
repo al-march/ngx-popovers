@@ -10,8 +10,8 @@ describe('PageArrowComponent', () => {
     await TestBed.configureTestingModule({
       imports: [PageArrowComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(PageArrowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

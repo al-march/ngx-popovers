@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from '@demo/template/footer';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '@demo/template/header';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DocNavigationComponent } from '@demo/pages/documentation/ui/components/doc-navigation';
 
 @Component({
   selector: 'ngx-popovers-documentation-template',
-  standalone: true,
-  imports: [CommonModule, FooterComponent, FormsModule, HeaderComponent, RouterLinkActive, RouterOutlet, RouterLink, DocNavigationComponent],
+  imports: [CommonModule, FooterComponent, FormsModule, HeaderComponent, RouterOutlet, DocNavigationComponent],
   templateUrl: './documentation-template.component.html',
   styleUrl: './documentation-template.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

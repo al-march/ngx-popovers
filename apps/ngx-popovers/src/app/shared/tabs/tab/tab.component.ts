@@ -1,19 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  HostListener,
-  inject,
-  input,
-  signal
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, HostListener, inject, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsComponent } from '@demo/shared/tabs';
 
 @Component({
   selector: 'button[demoTab]',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './tab.component.html',
   styleUrl: './tab.component.scss',

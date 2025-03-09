@@ -7,7 +7,7 @@ describe('DocumentationTemplateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DocumentationTemplateComponent],
+      imports: [DocumentationTemplateComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(DocumentationTemplateComponent);

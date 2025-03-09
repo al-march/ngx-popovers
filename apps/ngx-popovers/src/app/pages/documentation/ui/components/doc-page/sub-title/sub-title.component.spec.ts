@@ -7,7 +7,7 @@ describe('PageTitleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SubTitleComponent],
+      imports: [SubTitleComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SubTitleComponent);

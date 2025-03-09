@@ -1,10 +1,12 @@
 import { AfterViewInit, Directive, ElementRef, inject } from '@angular/core';
+import { isServer } from '@ngx-popovers/core';
 
 @Directive({
   selector: '[demoScrollToCenter]',
   standalone: true
 })
 export class ScrollToCenterDirective implements AfterViewInit {
+  readonly isServer = isServer();
   readonly el: ElementRef<HTMLElement> = inject(ElementRef);
 
   get parent() {
@@ -12,6 +14,10 @@ export class ScrollToCenterDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if (this.isServer) {
+      return;
+    }
+
     const container = this.parent;
     const element = this.el?.nativeElement;
 

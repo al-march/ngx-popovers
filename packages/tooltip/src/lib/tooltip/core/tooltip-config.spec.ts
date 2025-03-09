@@ -17,7 +17,7 @@ describe('TooltipConfig', () => {
       debounce: 1000,
       placement: 'left',
       bindTo: '.body',
-      autoUpdate: false,
+      autoUpdate: false
     });
 
     expect(config.debounce).toBe(1000);

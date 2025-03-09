@@ -16,7 +16,7 @@ describe('FloatingConfig', () => {
     const config = new NgxFloatingConfig({
       placement: 'left',
       bindTo: '.body',
-      autoUpdate: false,
+      autoUpdate: false
     });
 
     expect(config.placement).toBe('left');

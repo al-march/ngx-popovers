@@ -12,12 +12,12 @@ export const isContainElement = <T extends Node>(current: T | null, target: T | 
 
 export const awaitTime = (time = 0) => {
   return new Promise(r => setTimeout(r, time));
-}
+};
 
 export const isHTML = (input: unknown): input is HTMLElement => {
   return input instanceof HTMLElement;
-}
+};
 
 export const isString = (input: unknown): input is string => {
   return typeof input === 'string';
-}
+};

@@ -3,3 +3,5 @@
 /coverage
 .angular
 .nx
+
+/.nx/workspace-data

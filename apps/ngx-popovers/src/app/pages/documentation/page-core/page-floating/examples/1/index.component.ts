@@ -4,7 +4,6 @@ import { Arrow, flip, FloatingComponent, offset, shift } from '@ngx-popovers/cor
 
 @Component({
   selector: 'demo-index',
-  standalone: true,
   imports: [
     CommonModule,
     FloatingComponent,

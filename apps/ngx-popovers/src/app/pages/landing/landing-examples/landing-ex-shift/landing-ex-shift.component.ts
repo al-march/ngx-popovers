@@ -5,7 +5,6 @@ import { ScrollToCenterDirective } from '@demo/pages/landing/tools';
 
 @Component({
   selector: 'landing-ex-shift',
-  standalone: true,
   imports: [
     FloatingComponent,
     FormsModule,

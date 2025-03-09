@@ -20,7 +20,6 @@ import { isHTML, isString } from '../utils/utils';
 
 @Component({
   selector: 'ngx-portal',
-  standalone: true,
   imports: [CommonModule],
   providers: [
     PlatformService

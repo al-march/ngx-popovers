@@ -3,6 +3,7 @@ import { DialogComponent } from '../dialog';
 
 @Directive({
   selector: '[ngx-dialog-trigger]',
+  standalone: false
 })
 export class DialogTriggerDirective {
   dialog = inject(DialogComponent);

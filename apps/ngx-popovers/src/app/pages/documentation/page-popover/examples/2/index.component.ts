@@ -4,7 +4,6 @@ import { Arrow, Placement } from '@ngx-popovers/core';
 import { PopoverComponent, PopoverTemplate } from '@ngx-popovers/popover';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     Arrow,

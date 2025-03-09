@@ -10,8 +10,8 @@ describe('DocNavigationComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DocNavigationComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(DocNavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

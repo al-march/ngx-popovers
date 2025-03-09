@@ -24,7 +24,6 @@ const provideFloating = {
 
 @Component({
   selector: 'ngx-popovers-landing',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

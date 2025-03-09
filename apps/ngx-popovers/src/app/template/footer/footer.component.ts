@@ -4,7 +4,6 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 @Component({
   selector: 'dm-footer',
-  standalone: true,
   imports: [CommonModule, NgxTooltip],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',

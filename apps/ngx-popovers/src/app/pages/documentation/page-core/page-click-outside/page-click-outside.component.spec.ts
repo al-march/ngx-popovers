@@ -7,7 +7,7 @@ describe('PageClickOutsideComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageClickOutsideComponent],
+      imports: [PageClickOutsideComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageClickOutsideComponent);

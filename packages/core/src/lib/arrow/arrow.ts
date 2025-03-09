@@ -30,7 +30,6 @@ const staticSides: Record<string, string> = {
 
 @Component({
   selector: 'ngx-arrow',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './arrow.html',
   styleUrl: './arrow.scss',

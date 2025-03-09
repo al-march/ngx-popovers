@@ -18,7 +18,8 @@ import { Component } from '@angular/core';
     DialogContentComponent
   ]
 })
-class DialogContentTest {}
+class DialogContentTest {
+}
 
 describe('DialogContentComponent', () => {
   let component: DialogContentTest;
@@ -49,7 +50,7 @@ describe('DialogContentComponent', () => {
 
   it('should render content', () => {
     expect(document.querySelector('#content-test-id')).toBeInTheDocument();
-  })
+  });
 
   it('should focus native element', async () => {
     expect(document.activeElement).toBe(content().el.nativeElement);
@@ -57,7 +58,7 @@ describe('DialogContentComponent', () => {
 
   it('should save previous focus', () => {
     expect(content().prevActiveEl).toBe(btn);
-  })
+  });
 
   it('should return focus to an element after destroy', async () => {
     fixture.destroy();

@@ -53,5 +53,5 @@ describe('utils', () => {
       expect(isContainElement(parent, document.body)).toBeFalsy();
       expect(isContainElement(child, document.body)).toBeFalsy();
     });
-  })
+  });
 });

@@ -6,14 +6,14 @@ import {
   inject,
   Input,
   Output,
-  signal, TemplateRef
+  signal,
+  TemplateRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NGX_TOOLTIP_COMPONENT } from '../core/tooltip.injections';
 
 @Component({
   selector: 'ngx-tooltip-template',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './tooltip-template.component.html',
   styleUrl: './tooltip-template.component.css',

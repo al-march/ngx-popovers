@@ -4,7 +4,6 @@ import { FloatingComponent, Placement } from '@ngx-popovers/core';
 
 @Component({
   selector: 'landing-ex-placement',
-  standalone: true,
   imports: [
     FloatingComponent,
     FormsModule,

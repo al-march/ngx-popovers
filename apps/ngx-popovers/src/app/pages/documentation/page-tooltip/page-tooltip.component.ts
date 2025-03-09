@@ -10,13 +10,12 @@ import { WarningComponent } from '@demo/shared/warning';
 import { ExampleComponent } from '@demo/template/example';
 import { Placement } from '@floating-ui/dom';
 import { NgxTooltip } from '@ngx-popovers/tooltip';
-import { DocPageComponent } from "../ui/components/doc-page/doc-page.component";
-import { DocSectionComponent } from "../ui/components/doc-page/doc-section/doc-section.component";
+import { DocPageComponent } from '../ui/components/doc-page/doc-page.component';
+import { DocSectionComponent } from '../ui/components/doc-page/doc-section/doc-section.component';
 
 
 @Component({
   selector: 'ngx-popovers-page-tooltip',
-  standalone: true,
   imports: [
     CommonModule,
     TitleComponent,
@@ -31,7 +30,7 @@ import { DocSectionComponent } from "../ui/components/doc-page/doc-section/doc-s
     SubTitleComponent,
     DocPageComponent,
     DocSectionComponent
-],
+  ],
   templateUrl: './page-tooltip.component.html',
   styleUrl: './page-tooltip.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

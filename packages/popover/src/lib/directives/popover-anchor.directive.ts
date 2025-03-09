@@ -7,7 +7,7 @@ import { PopoverComponent } from '../popover/popover.component';
  */
 @Directive({
   selector: '[ngx-popover-anchor]',
-  standalone: true,
+  standalone: true
 })
 export class PopoverAnchor {
   popover = inject(PopoverComponent);

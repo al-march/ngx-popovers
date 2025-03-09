@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
 import { HighlightComponent } from '@demo/core/highlight';
 import { ExampleComponent } from '@demo/template/example';
-import { Arrow, ClickOutsideDirective, flip, FloatingComponent, offset } from '@ngx-popovers/core';
+import { ClickOutsideDirective, flip, FloatingComponent, offset } from '@ngx-popovers/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 class LogItem {
@@ -51,15 +51,13 @@ export class ClickOutsideExample {
 
 @Component({
   selector: 'ngx-popovers-page-click-outside',
-  standalone: true,
   imports: [
     CommonModule,
     TitleComponent,
     HighlightComponent,
     ExampleComponent,
     ClickOutsideDirective,
-    FloatingComponent,
-    Arrow
+    FloatingComponent
   ],
   templateUrl: './page-click-outside.component.html',
   styleUrl: './page-click-outside.component.scss',

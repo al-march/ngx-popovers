@@ -30,15 +30,15 @@ export class ClickOutsideDirective {
         this.ngxClickOutside.emit({
           inside: true,
           outside: false,
-          target,
-        })
+          target
+        });
       } else {
         this.outside.emit(target);
         this.ngxClickOutside.emit({
           inside: false,
           outside: true,
-          target,
-        })
+          target
+        });
       }
     }
   }

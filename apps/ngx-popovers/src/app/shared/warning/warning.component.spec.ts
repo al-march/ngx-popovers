@@ -7,7 +7,7 @@ describe('WarningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WarningComponent],
+      imports: [WarningComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(WarningComponent);

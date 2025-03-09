@@ -6,7 +6,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'demo-code',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './code.component.html',
   styleUrl: './code.component.scss',

@@ -4,9 +4,9 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 
 @Component({
   selector: 'demo-index',
-  standalone: true,
   imports: [CommonModule, NgxTooltip],
   templateUrl: './index.component.html',
-  styleUrl: './index.component.scss',
+  styleUrl: './index.component.scss'
 })
-export class IndexComponent {}
+export class IndexComponent {
+}

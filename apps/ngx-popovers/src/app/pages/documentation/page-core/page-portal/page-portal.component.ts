@@ -1,26 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HighlightComponent } from '@demo/core/highlight';
 import { CodeExampleTabsComponent, SubTitleComponent, TitleComponent } from '@demo/pages/documentation/ui/components';
-import { PortalComponent } from '@ngx-popovers/core';
-import { DocPageComponent } from "../../ui/components/doc-page/doc-page.component";
-import { DocSectionComponent } from "../../ui/components/doc-page/doc-section/doc-section.component";
+import { DocPageComponent } from '../../ui/components/doc-page/doc-page.component';
+import { DocSectionComponent } from '../../ui/components/doc-page/doc-section/doc-section.component';
 
 @Component({
   selector: 'ngx-popovers-page-portal',
-  standalone: true,
   imports: [
     CommonModule,
     TitleComponent,
-    HighlightComponent,
-    PortalComponent,
     CodeExampleTabsComponent,
     SubTitleComponent,
     RouterLink,
     DocSectionComponent,
     DocPageComponent
-],
+  ],
   templateUrl: './page-portal.component.html',
   styleUrl: './page-portal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -10,8 +10,8 @@ describe('LandingExPlacementComponent', () => {
     await TestBed.configureTestingModule({
       imports: [LandingExPlacementComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(LandingExPlacementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
