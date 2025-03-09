@@ -1,6 +1,7 @@
 # Dialog
 
-This library was created using [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/) for [Angular](https://angular.dev/) apps.
+This library was created using [Nx](https://nx.dev) and [floating-ui](https://floating-ui.com/)
+for [Angular](https://angular.dev/) apps.
 
 ![Dialog Preview](https://raw.githubusercontent.com/al-march/ngx-popovers/main/packages/dialog/assets/preview.png)
 
@@ -106,23 +107,23 @@ The `NgxDialogClose` directive closes the dialog when a click event is detected 
 
 Input Parameters
 
-| Input                  | Description                            | Type      | Default |
-|------------------------|----------------------------------------|-----------|---------|
-| `closeOnBackdropClick` | Close dialog when clicking backdrop    | `boolean` | `true`  |
-| `backdropClass`        | Class for the backdrop element         | `string`  | `''`    |
-| `contentClass`         | Class for the dialog wrapper element   | `string`  | `''`    |
-| `animationDisabled`    | Disable show/hide animations           | `boolean` | `false` |
-| `value`                | Show or hide dialog                    | `boolean` | `false` |
+| Input                  | Description                          | Type      | Default |
+|------------------------|--------------------------------------|-----------|---------|
+| `closeOnBackdropClick` | Close dialog when clicking backdrop  | `boolean` | `true`  |
+| `backdropClass`        | Class for the backdrop element       | `string`  | `''`    |
+| `contentClass`         | Class for the dialog wrapper element | `string`  | `''`    |
+| `animationDisabled`    | Disable show/hide animations         | `boolean` | `false` |
+| `value`                | Show or hide dialog                  | `boolean` | `false` |
 
 Output Parameters
 
-| Output           | Description                    | Type                           |
-|------------------|--------------------------------|--------------------------------|
-| `valueChange`    | Emits when `value` changes     | `EventEmitter<boolean>`        |
-| `show`           | Emits when the popover shows   | `EventEmitter`                 |
-| `hide`           | Emits when the popover hides   | `EventEmitter`                 |
-| `animationStart` | Emits when animation starts    | `EventEmitter<AnimationEvent>` |
-| `animationDone`  | Emits when animation ends      | `EventEmitter<AnimationEvent>` |
+| Output           | Description                  | Type                           |
+|------------------|------------------------------|--------------------------------|
+| `valueChange`    | Emits when `value` changes   | `EventEmitter<boolean>`        |
+| `show`           | Emits when the popover shows | `EventEmitter`                 |
+| `hide`           | Emits when the popover hides | `EventEmitter`                 |
+| `animationStart` | Emits when animation starts  | `EventEmitter<AnimationEvent>` |
+| `animationDone`  | Emits when animation ends    | `EventEmitter<AnimationEvent>` |
 
 ### Configuration
 

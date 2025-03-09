@@ -6,7 +6,6 @@ import { shareReplay } from 'rxjs';
 
 @Component({
   selector: 'demo-tabs',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',

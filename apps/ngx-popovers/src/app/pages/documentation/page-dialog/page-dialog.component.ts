@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
-import { ExampleComponent } from '@demo/template/example';
 import { HighlightComponent } from '@demo/core/highlight';
 import { NgxDialog } from '@ngx-popovers/dialog';
 import {
@@ -44,11 +43,9 @@ const defaultExample = `
 
 @Component({
   selector: 'ngx-popovers-page-dialog',
-  standalone: true,
   imports: [
     CommonModule,
     TitleComponent,
-    ExampleComponent,
     HighlightComponent,
     NgxDialog,
     DocPageComponent,

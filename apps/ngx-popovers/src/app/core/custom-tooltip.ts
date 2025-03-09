@@ -27,7 +27,7 @@ export const TooltipConfigProvider: Provider = {
     middleware: [
       flip(),
       shift(),
-      offset(8),
+      offset(8)
     ]
   })
 };

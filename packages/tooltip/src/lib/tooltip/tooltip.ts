@@ -24,7 +24,6 @@ import { ComputePosition } from './types';
 
 @Component({
   selector: '[ngxTooltip]',
-  standalone: true,
   imports: [
     TooltipTemplate,
     FloatingComponent,

@@ -16,7 +16,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'ngx-doc-navigation',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     RouterLinkActive,

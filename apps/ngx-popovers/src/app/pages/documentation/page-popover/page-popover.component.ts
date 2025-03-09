@@ -4,22 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CoreIcon } from '@demo/app-routes-icons';
 import { HighlightComponent } from '@demo/core/highlight';
-import { IndexComponent } from '@demo/pages/documentation/page-popover/examples/1/index.component';
 import { CodeExampleTabsComponent } from '@demo/pages/documentation/ui/components/code-example-tabs';
 import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
 import { WarningComponent } from '@demo/shared/warning';
-import { ExampleComponent } from '@demo/template/example';
-import { Arrow, Placement } from '@ngx-popovers/core';
+import { Placement } from '@ngx-popovers/core';
 import { PopoverModule } from '@ngx-popovers/popover';
-import { NgxTooltip } from '@ngx-popovers/tooltip';
-import { DocPageComponent } from "../ui/components/doc-page/doc-page.component";
-import { DocSectionComponent } from "../ui/components/doc-page/doc-section/doc-section.component";
-import { SubTitleComponent } from "../ui/components/doc-page/sub-title/sub-title.component";
+import { DocPageComponent } from '../ui/components/doc-page/doc-page.component';
+import { DocSectionComponent } from '../ui/components/doc-page/doc-section/doc-section.component';
+import { SubTitleComponent } from '../ui/components/doc-page/sub-title/sub-title.component';
 
 
 @Component({
   selector: 'ngx-popovers-page-popover',
-  standalone: true,
   imports: [
     CommonModule,
     TitleComponent,
@@ -27,17 +23,13 @@ import { SubTitleComponent } from "../ui/components/doc-page/sub-title/sub-title
     FormsModule,
     HighlightComponent,
     RouterLink,
-    ExampleComponent,
-    NgxTooltip,
     WarningComponent,
-    Arrow,
     PopoverModule,
-    IndexComponent,
     CodeExampleTabsComponent,
     DocPageComponent,
     DocSectionComponent,
     SubTitleComponent
-],
+  ],
   templateUrl: './page-popover.component.html',
   styleUrl: './page-popover.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

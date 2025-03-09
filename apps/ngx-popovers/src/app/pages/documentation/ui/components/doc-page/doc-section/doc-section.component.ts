@@ -4,7 +4,6 @@ import { DocPageComponent } from '@demo/pages/documentation/ui/components';
 
 @Component({
   selector: 'demo-doc-section',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './doc-section.component.html',
   styleUrl: './doc-section.component.scss',

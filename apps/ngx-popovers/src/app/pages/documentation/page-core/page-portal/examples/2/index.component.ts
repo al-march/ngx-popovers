@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortalComponent } from "@ngx-popovers/core";
+import { PortalComponent } from '@ngx-popovers/core';
 
 @Component({
   selector: 'demo-index',
-  standalone: true,
   imports: [CommonModule, PortalComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent {
   sections = [

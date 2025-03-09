@@ -7,7 +7,7 @@ describe('CodeExampleTabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CodeExampleTabsComponent],
+      imports: [CodeExampleTabsComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CodeExampleTabsComponent);

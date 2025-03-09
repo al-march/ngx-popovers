@@ -1,5 +1,5 @@
-import { Component, Provider } from "@angular/core";
-import { ArrowBase, NGX_ARROW_COMPONENT } from "@ngx-popovers/core";
+import { Component, Provider } from '@angular/core';
+import { ArrowBase, NGX_ARROW_COMPONENT } from '@ngx-popovers/core';
 
 @Component({
   standalone: true,

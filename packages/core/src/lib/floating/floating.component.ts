@@ -31,7 +31,6 @@ import { isServer } from '../injections';
 
 @Component({
   selector: 'ngx-floating',
-  standalone: true,
   imports: [
     CommonModule,
     PortalComponent,

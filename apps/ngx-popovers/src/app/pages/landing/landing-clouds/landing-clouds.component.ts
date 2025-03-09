@@ -18,7 +18,6 @@ function randomScale() {
 
 @Component({
   selector: 'ngx-clouds',
-  standalone: true,
   imports: [CommonModule, CloudComponent],
   templateUrl: './landing-clouds.component.html',
   styleUrl: './landing-clouds.component.scss',

@@ -4,7 +4,6 @@ import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { PopoverAnchor, PopoverClose, PopoverComponent, PopoverTemplate } from '@ngx-popovers/popover';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     NgxTooltip,

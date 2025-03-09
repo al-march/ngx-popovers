@@ -6,7 +6,8 @@ import {
   EventEmitter,
   HostListener,
   inject,
-  Input, OnDestroy,
+  Input,
+  OnDestroy,
   Output,
   TemplateRef
 } from '@angular/core';
@@ -15,7 +16,6 @@ import { PreventScrollingDirective } from './prevent-scrolling.directive';
 
 @Component({
   selector: 'ngx-dialog-content',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './dialog-content.component.html',
   styleUrl: './dialog-content.component.scss',

@@ -1,12 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Provider } from '@angular/core';
-import {
-  Arrow,
-  FloatingComponent,
-  NGX_FLOATING_CONFIG,
-  NgxFloatingConfig,
-  offset
-} from '@ngx-popovers/core';
+import { Arrow, FloatingComponent, NGX_FLOATING_CONFIG, NgxFloatingConfig, offset } from '@ngx-popovers/core';
 
 export const FloatingConfigProvider: Provider = {
   provide: NGX_FLOATING_CONFIG,
@@ -21,7 +15,6 @@ export const FloatingConfigProvider: Provider = {
 
 @Component({
   selector: 'demo-index',
-  standalone: true,
   imports: [CommonModule, Arrow, FloatingComponent],
   providers: [FloatingConfigProvider],
   templateUrl: './index.component.html',

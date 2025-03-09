@@ -11,7 +11,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'dm-header',
-  standalone: true,
   imports: [CommonModule, NgxTooltip, RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

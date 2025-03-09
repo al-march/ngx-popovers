@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component, computed, ElementRef, input, signal
 import { HighlightComponent } from '@demo/core/highlight';
 import { TabsComponent } from '@demo/shared/tabs';
 import { TabComponent } from '@demo/shared/tabs/tab';
-import { NgxTooltip } from '@ngx-popovers/tooltip';
 import { LucideAngularModule } from 'lucide-angular';
 
 const TRANSITION = '{{duration}}ms ease-in-out';
@@ -14,13 +13,13 @@ export const HeightCollapse = trigger('HeightCollapse', [
   transition(
     ':enter',
     [style({ height: 0 }), animate(TRANSITION, style({ height: '*' }))],
-    DURATION,
+    DURATION
   ),
   transition(
     ':leave',
     [style({ height: '*' }), animate(TRANSITION, style({ height: 0 }))],
-    DURATION,
-  ),
+    DURATION
+  )
 ]);
 
 enum TabType {
@@ -37,10 +36,8 @@ const tabTypeToLabel: Record<TabType, string> = {
 
 @Component({
   selector: 'demo-code-example-tabs',
-  standalone: true,
   imports: [
     CommonModule,
-    NgxTooltip,
     TabsComponent,
     TabComponent,
     HighlightComponent,

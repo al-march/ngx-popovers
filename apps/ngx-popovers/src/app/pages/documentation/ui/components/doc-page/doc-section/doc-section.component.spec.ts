@@ -7,7 +7,7 @@ describe('DocSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DocSectionComponent],
+      imports: [DocSectionComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(DocSectionComponent);

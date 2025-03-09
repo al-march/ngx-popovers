@@ -2,14 +2,13 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HighlightComponent } from '@demo/core/highlight';
 import { TitleComponent } from '@demo/pages/documentation/ui/components/title/title.component';
-import { CodeExampleTabsComponent } from "../../ui/components/code-example-tabs/code-example-tabs.component";
-import { DocPageComponent } from "../../ui/components/doc-page/doc-page.component";
-import { DocSectionComponent } from "../../ui/components/doc-page/doc-section/doc-section.component";
-import { SubTitleComponent } from "../../ui/components/doc-page/sub-title/sub-title.component";
+import { CodeExampleTabsComponent } from '../../ui/components/code-example-tabs/code-example-tabs.component';
+import { DocPageComponent } from '../../ui/components/doc-page/doc-page.component';
+import { DocSectionComponent } from '../../ui/components/doc-page/doc-section/doc-section.component';
+import { SubTitleComponent } from '../../ui/components/doc-page/sub-title/sub-title.component';
 
 @Component({
   selector: 'ngx-popovers-page-arrow',
-  standalone: true,
   imports: [
     CommonModule,
     TitleComponent,
@@ -19,7 +18,7 @@ import { SubTitleComponent } from "../../ui/components/doc-page/sub-title/sub-ti
     SubTitleComponent,
     CodeExampleTabsComponent,
     AsyncPipe
-],
+  ],
   templateUrl: './page-arrow.component.html',
   styleUrl: './page-arrow.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ngx-example',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './example.component.html',
   styleUrl: './example.component.scss',

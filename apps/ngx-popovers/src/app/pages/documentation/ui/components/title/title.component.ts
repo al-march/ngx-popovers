@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'page-title',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './title.component.html',
   styleUrl: './title.component.scss'

@@ -23,7 +23,6 @@ export const TooltipConfigProvider: Provider = {
 
 @Component({
   selector: 'demo-index',
-  standalone: true,
   imports: [CommonModule, NgxTooltip],
   providers: [TooltipConfigProvider],
   templateUrl: './index.component.html',

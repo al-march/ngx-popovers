@@ -26,8 +26,7 @@ import { PopoverTemplate } from '../directives/popover-template.directive';
 
 @Component({
   selector: 'ngx-popover',
-  standalone: true,
-  imports: [CommonModule, Arrow, FloatingComponent],
+  imports: [CommonModule, FloatingComponent],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',
   encapsulation: ViewEncapsulation.None,

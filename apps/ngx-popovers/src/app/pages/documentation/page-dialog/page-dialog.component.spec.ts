@@ -7,7 +7,7 @@ describe('PageDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageDialogComponent],
+      imports: [PageDialogComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageDialogComponent);

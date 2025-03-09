@@ -14,7 +14,6 @@ import anime from 'animejs';
 
 @Component({
   selector: 'ngx-cloud',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './cloud.component.html',
   styleUrl: './cloud.component.scss',

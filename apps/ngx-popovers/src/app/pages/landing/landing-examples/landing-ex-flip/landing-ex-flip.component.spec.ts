@@ -7,7 +7,7 @@ describe('LandingExFlipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LandingExFlipComponent],
+      imports: [LandingExFlipComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LandingExFlipComponent);

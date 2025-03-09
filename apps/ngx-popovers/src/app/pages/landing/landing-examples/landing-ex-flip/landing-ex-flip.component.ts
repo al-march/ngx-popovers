@@ -5,7 +5,6 @@ import { ScrollToCenterDirective } from '@demo/pages/landing/tools';
 
 @Component({
   selector: 'landing-ex-flip',
-  standalone: true,
   imports: [CommonModule, FloatingComponent, ScrollToCenterDirective],
   templateUrl: './landing-ex-flip.component.html',
   styleUrl: './landing-ex-flip.component.scss',

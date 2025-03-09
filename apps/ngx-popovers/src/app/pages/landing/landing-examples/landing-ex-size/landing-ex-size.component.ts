@@ -5,7 +5,6 @@ import { ScrollToCenterDirective } from '@demo/pages/landing/tools';
 
 @Component({
   selector: 'landing-ex-size',
-  standalone: true,
   imports: [CommonModule, FloatingComponent, ScrollToCenterDirective],
   templateUrl: './landing-ex-size.component.html',
   styleUrl: './landing-ex-size.component.scss',

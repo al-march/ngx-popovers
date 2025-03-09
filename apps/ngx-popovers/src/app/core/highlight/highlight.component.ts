@@ -1,7 +1,6 @@
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { PortalComponent } from '@ngx-popovers/core';
 import { CodeComponent } from './code/code.component';
 
 enum CopyStatus {
@@ -12,11 +11,10 @@ enum CopyStatus {
 
 @Component({
   selector: 'highlight',
-  standalone: true,
-  imports: [CommonModule, PortalComponent, CodeComponent],
+  imports: [CommonModule, CodeComponent],
   templateUrl: './highlight.component.html',
   styleUrl: './highlight.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HighlightComponent {
   code = input<string | null | {} | undefined>(undefined);

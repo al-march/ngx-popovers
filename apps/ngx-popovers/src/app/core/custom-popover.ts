@@ -10,4 +10,4 @@ export const PopoverProvider: Provider = {
       flip()
     ]
   })
-}
+};

@@ -1,4 +1,10 @@
-import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  inject,
+  provideAppInitializer,
+  provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -9,6 +15,7 @@ import { HighlightService } from '@demo/core/highlight/highlight.service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
+    provideExperimentalZonelessChangeDetection(),
     provideRouter(appRoutes, withInMemoryScrolling({
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled'
@@ -17,16 +24,12 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       LucideAngularModule.pick({ Code })
     ),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (service: HighlightService) => {
-        return () => service.init({
-          langs: ['ts', 'angular-html', 'scss', 'bash'],
-          themes: ['one-dark-pro']
-        });
-      },
-      deps: [HighlightService],
-      multi: true
-    }
+    provideAppInitializer(async () => {
+      const service = inject(HighlightService);
+      await service.init({
+        langs: ['ts', 'angular-html', 'scss', 'bash'],
+        themes: ['one-dark-pro']
+      });
+    })
   ]
 };

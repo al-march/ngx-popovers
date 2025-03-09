@@ -10,8 +10,8 @@ describe('LandingExShiftComponent', () => {
     await TestBed.configureTestingModule({
       imports: [LandingExShiftComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(LandingExShiftComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

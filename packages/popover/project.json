@@ -3,7 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/popover/src",
   "prefix": "ngx-popovers",
-  "tags": ["package", "popover"],
+  "tags": [
+    "package",
+    "popover"
+  ],
   "projectType": "library",
   "targets": {
     "build": {

@@ -4,7 +4,6 @@ import { NgxDialog } from '@ngx-popovers/dialog';
 
 @Component({
   selector: 'demo-index',
-  standalone: true,
   imports: [CommonModule, NgxDialog],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',

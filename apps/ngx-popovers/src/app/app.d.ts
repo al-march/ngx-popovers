@@ -1,4 +1,4 @@
-declare module "*?raw" {
+declare module '*?raw' {
   const src: string;
   export default src;
 }

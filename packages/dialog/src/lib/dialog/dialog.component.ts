@@ -37,7 +37,8 @@ import { NGX_DIALOG_CONFIG } from '../core';
         }))
       ])
     ])
-  ]
+  ],
+  standalone: false
 })
 export class DialogComponent implements AfterViewInit {
   private readonly config = inject(NGX_DIALOG_CONFIG);

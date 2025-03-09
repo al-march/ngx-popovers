@@ -7,7 +7,7 @@ describe('Index2Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IndexComponent],
+      imports: [IndexComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(IndexComponent);
